@@ -1,0 +1,54 @@
+name: Gauguin corrected source comparison
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'patches/**'
+      - '.github/workflows/logic-safety-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  corrected-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out proposed patch
+        uses: actions/checkout@v4
+
+      - name: Check out developer's v0.52.1 source
+        uses: actions/checkout@v4
+        with:
+          repository: meikpiep/gauguin
+          ref: v0.52.1
+          path: upstream
+
+      - name: Apply patch, failing if original source does not match
+        shell: bash
+        run: |
+          cd upstream
+          git apply --check ../patches/combined-logic-safety.patch
+          git apply ../patches/combined-logic-safety.patch
+          git diff --check
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Run developer's real core and solver tests on corrected source
+        working-directory: upstream
+        run: ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver
+
+      - name: Collect test reports even if a test fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gauguin-corrected-source-test-reports
+          path: |
+            upstream/**/build/test-results/test/**
+            upstream/**/build/reports/tests/**
+          if-no-files-found: warn
