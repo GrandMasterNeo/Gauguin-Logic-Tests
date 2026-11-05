@@ -92,7 +92,7 @@
              cage.cells.forEachIndexed { cellIndex, cell ->
                  cell.possibles.forEach { possible ->
                      if (newPossibles.none { it[cellIndex] == possible }) {
-@@ -141,6 +147,23 @@
+@@ -141,6 +147,29 @@
          return deletedPossibles
      }
  
@@ -108,7 +108,13 @@
 +            }) return false
 +
 +        if (tryGrid.cages.any { cage ->
-+                cage.cells.all { it.isUserValueSet } && !cage.isUserMathCorrect()
++                if (!cage.cells.all { it.isUserValueSet }) {
++                    false
++                } else if (cage.cells.size == 1) {
++                    cage.cells.single().userValue != cage.result
++                } else {
++                    !cage.isUserMathCorrect()
++                }
 +            }) return false
 +        return true
 +    }
