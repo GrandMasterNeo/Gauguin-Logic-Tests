@@ -6,6 +6,9 @@ class PossiblesReducer(
     private val cage: GridCage,
 ) {
     fun reduceToPossibleCombinations(possibleCombinations: Collection<IntArray>): Boolean {
+        // No matching combinations indicates inconsistent input, not proof that all candidates are invalid.
+        if (possibleCombinations.isEmpty()) return false
+
         var foundPossibles = false
 
         cage.cells.forEachIndexed { cellIndex, cell ->

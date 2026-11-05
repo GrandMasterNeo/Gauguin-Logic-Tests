@@ -39,7 +39,7 @@ class NishioWithPairs : HumanSolverStrategy {
                     val nishioCore = NishioCore(grid, possiblesCache, cell, possible)
                     val result = nishioCore.tryWithNishio()
 
-                    if (result.hasFindings()) {
+                    if (result is NishioResult.Contradictions) {
                         val changedCells = nishioCore.applyFindings(result)
 
                         return HumanSolverStrategyResult.Success(changedCells)

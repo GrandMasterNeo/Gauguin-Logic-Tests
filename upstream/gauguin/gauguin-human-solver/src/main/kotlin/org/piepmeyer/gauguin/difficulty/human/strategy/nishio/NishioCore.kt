@@ -21,6 +21,9 @@ class NishioCore(
         logger.trace { tryGrid }
 
         do {
+            // Trial failure must not be accepted as a valid solved branch or as a deduction.
+            if (!isConsistentTrial(tryGrid)) return NishioResult.Contradictions()
+
             val cellWithSinglePossible = tryGrid.cells.firstOrNull { it.possibles.size == 1 }
 
             if (cellWithSinglePossible == null) {
@@ -129,6 +132,9 @@ class NishioCore(
                         }
                     }.toSet()
 
+            // An inconsistent combination cache must never erase every candidate.
+            if (newPossibles.isEmpty()) return@forEach
+
             cage.cells.forEachIndexed { cellIndex, cell ->
                 cell.possibles.forEach { possible ->
                     if (newPossibles.none { it[cellIndex] == possible }) {
@@ -139,6 +145,23 @@ class NishioCore(
             }
         }
         return deletedPossibles
+    }
+
+    private fun isConsistentTrial(tryGrid: Grid): Boolean {
+        if (tryGrid.cells.any { !it.isUserValueSet && it.possibles.isEmpty() }) return false
+
+        val placedCells = tryGrid.cells.filter { it.isUserValueSet }
+        if (placedCells.groupBy { it.row }.values.any { row ->
+                row.map { it.userValue }.size != row.map { it.userValue }.toSet().size
+            }) return false
+        if (placedCells.groupBy { it.column }.values.any { column ->
+                column.map { it.userValue }.size != column.map { it.userValue }.toSet().size
+            }) return false
+
+        if (tryGrid.cages.any { cage ->
+                cage.cells.all { it.isUserValueSet } && !cage.isUserMathCorrect()
+            }) return false
+        return true
     }
 
     fun applyFindings(result: NishioResult): List<GridCell> {

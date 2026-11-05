@@ -1,0 +1,118 @@
+--- a/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/HumanSolver.kt
++++ b/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/HumanSolver.kt
+@@ -42,6 +42,13 @@
+                 cache.validateEntries(changedCells)
+             }
+ 
++            // Empty cage combinations represent a contradiction, not a deduction.
++            // Never hand an inconsistent cache to strategies that may use all(empty).
++            if (hasContradictoryCandidates()) {
++                logger.warn { "Human solver stopped: contradictory candidates or cage combinations." }
++                return HumanSolverResult(false, usedNishio, difficulty + difficultyUnsolvedCell)
++            }
++
+             progress = doProgress()
+ 
+             if (progress.success) {
+@@ -79,6 +86,10 @@
+         revealedCells++
+     }
+ 
++    private fun hasContradictoryCandidates(): Boolean =
++        grid.cells.any { !it.isUserValueSet && it.possibles.isEmpty() } ||
++            grid.cages.any { cache.possibles(it).isEmpty() }
++
+     private fun doProgress(): HumanSolverStep {
+         humanSolverStrategy.forEach {
+             val result = it.solver.fillCells(grid, cache)
+--- a/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/PossiblesReducer.kt
++++ b/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/PossiblesReducer.kt
+@@ -6,6 +6,9 @@
+     private val cage: GridCage,
+ ) {
+     fun reduceToPossibleCombinations(possibleCombinations: Collection<IntArray>): Boolean {
++        // No matching combinations indicates inconsistent input, not proof that all candidates are invalid.
++        if (possibleCombinations.isEmpty()) return false
++
+         var foundPossibles = false
+ 
+         cage.cells.forEachIndexed { cellIndex, cell ->
+--- a/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/strategy/AbstractTwoCagesTakeAllPossibles.kt
++++ b/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/strategy/AbstractTwoCagesTakeAllPossibles.kt
+@@ -53,7 +53,7 @@
+                         possiblesCageTwo
+                             .minOf { it.count { it == possible } }
+ 
+-                if (minimumOccurrances == 3) {
++                if (minimumOccurrances == numberOfLines) {
+                     val result = reduceIfPossible(lines, possible, cageOne, cageTwo)
+ 
+                     if (result.madeChanges()) {
+--- a/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/strategy/nishio/NishioWithPairs.kt
++++ b/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/strategy/nishio/NishioWithPairs.kt
+@@ -39,7 +39,7 @@
+                     val nishioCore = NishioCore(grid, possiblesCache, cell, possible)
+                     val result = nishioCore.tryWithNishio()
+ 
+-                    if (result.hasFindings()) {
++                    if (result is NishioResult.Contradictions) {
+                         val changedCells = nishioCore.applyFindings(result)
+ 
+                         return HumanSolverStrategyResult.Success(changedCells)
+--- a/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/strategy/nishio/AdvancedNishioWithPairs.kt
++++ b/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/strategy/nishio/AdvancedNishioWithPairs.kt
+@@ -27,7 +27,7 @@
+                     val nishioCore = NishioCore(grid, possiblesCache, cell, possible)
+                     val result = nishioCore.tryWithNishio()
+ 
+-                    if (result.hasFindings()) {
++                    if (result is NishioResult.Contradictions) {
+                         logger.info {
+                             "Using advanced nishio on cell ${cell.cellNumber} with possible $possible, result is ${result::class.simpleName}."
+                         }
+--- a/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/strategy/nishio/NishioCore.kt
++++ b/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/strategy/nishio/NishioCore.kt
+@@ -21,6 +21,9 @@
+         logger.trace { tryGrid }
+ 
+         do {
++            // Trial failure must not be accepted as a valid solved branch or as a deduction.
++            if (!isConsistentTrial(tryGrid)) return NishioResult.Contradictions()
++
+             val cellWithSinglePossible = tryGrid.cells.firstOrNull { it.possibles.size == 1 }
+ 
+             if (cellWithSinglePossible == null) {
+@@ -129,6 +132,9 @@
+                         }
+                     }.toSet()
+ 
++            // An inconsistent combination cache must never erase every candidate.
++            if (newPossibles.isEmpty()) return@forEach
++
+             cage.cells.forEachIndexed { cellIndex, cell ->
+                 cell.possibles.forEach { possible ->
+                     if (newPossibles.none { it[cellIndex] == possible }) {
+@@ -141,6 +147,23 @@
+         return deletedPossibles
+     }
+ 
++    private fun isConsistentTrial(tryGrid: Grid): Boolean {
++        if (tryGrid.cells.any { !it.isUserValueSet && it.possibles.isEmpty() }) return false
++
++        val placedCells = tryGrid.cells.filter { it.isUserValueSet }
++        if (placedCells.groupBy { it.row }.values.any { row ->
++                row.map { it.userValue }.size != row.map { it.userValue }.toSet().size
++            }) return false
++        if (placedCells.groupBy { it.column }.values.any { column ->
++                column.map { it.userValue }.size != column.map { it.userValue }.toSet().size
++            }) return false
++
++        if (tryGrid.cages.any { cage ->
++                cage.cells.all { it.isUserValueSet } && !cage.isUserMathCorrect()
++            }) return false
++        return true
++    }
++
+     fun applyFindings(result: NishioResult): List<GridCell> {
+         if (result is NishioResult.Contradictions) {
+             return if (cell.possibles.size == 2) {

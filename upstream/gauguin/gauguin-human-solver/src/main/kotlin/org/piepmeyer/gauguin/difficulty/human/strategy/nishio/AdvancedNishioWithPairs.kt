@@ -27,7 +27,7 @@ class AdvancedNishioWithPairs : HumanSolverStrategy {
                     val nishioCore = NishioCore(grid, possiblesCache, cell, possible)
                     val result = nishioCore.tryWithNishio()
 
-                    if (result.hasFindings()) {
+                    if (result is NishioResult.Contradictions) {
                         logger.info {
                             "Using advanced nishio on cell ${cell.cellNumber} with possible $possible, result is ${result::class.simpleName}."
                         }

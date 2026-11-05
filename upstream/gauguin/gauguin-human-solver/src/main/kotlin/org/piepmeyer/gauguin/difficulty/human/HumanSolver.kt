@@ -42,6 +42,13 @@ class HumanSolver(
                 cache.validateEntries(changedCells)
             }
 
+            // Empty cage combinations represent a contradiction, not a deduction.
+            // Never hand an inconsistent cache to strategies that may use all(empty).
+            if (hasContradictoryCandidates()) {
+                logger.warn { "Human solver stopped: contradictory candidates or cage combinations." }
+                return HumanSolverResult(false, usedNishio, difficulty + difficultyUnsolvedCell)
+            }
+
             progress = doProgress()
 
             if (progress.success) {
@@ -78,6 +85,10 @@ class HumanSolver(
 
         revealedCells++
     }
+
+    private fun hasContradictoryCandidates(): Boolean =
+        grid.cells.any { !it.isUserValueSet && it.possibles.isEmpty() } ||
+            grid.cages.any { cache.possibles(it).isEmpty() }
 
     private fun doProgress(): HumanSolverStep {
         humanSolverStrategy.forEach {

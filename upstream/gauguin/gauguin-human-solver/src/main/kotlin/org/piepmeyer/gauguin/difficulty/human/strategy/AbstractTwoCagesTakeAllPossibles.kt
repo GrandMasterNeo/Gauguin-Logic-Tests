@@ -53,7 +53,7 @@ abstract class AbstractTwoCagesTakeAllPossibles(
                         possiblesCageTwo
                             .minOf { it.count { it == possible } }
 
-                if (minimumOccurrances == 3) {
+                if (minimumOccurrances == numberOfLines) {
                     val result = reduceIfPossible(lines, possible, cageOne, cageTwo)
 
                     if (result.madeChanges()) {
