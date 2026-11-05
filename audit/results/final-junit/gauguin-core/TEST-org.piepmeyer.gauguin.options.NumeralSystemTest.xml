@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.options.NumeralSystemTest" tests="37" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:56.624Z" hostname="2a9d8987d813" time="0.048">
+  <properties/>
+  <testcase name="(-4, -100)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(-2, -10)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(-1, -1)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(0, 0)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(1, 1)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(2, 10)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(3, 11)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(4, 100)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(-5, -11)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(-1, -1)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(0, 0)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(1, 1)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(3, 3)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(4, 10)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(5, 11)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(-9, -11)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(-5, -5)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(0, 0)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(1, 1)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(3, 3)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(7, 7)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(8, 10)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(9, 11)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(-5, -5)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(0, 0)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(1, 1)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(9, 9)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.001"/>
+  <testcase name="(10, 10)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(11, 11)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(-15, -F)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(-5, -5)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(0, 0)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(1, 1)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(9, 9)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(10, A)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(15, F)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.0"/>
+  <testcase name="(16, 10)" classname="org.piepmeyer.gauguin.options.NumeralSystemTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

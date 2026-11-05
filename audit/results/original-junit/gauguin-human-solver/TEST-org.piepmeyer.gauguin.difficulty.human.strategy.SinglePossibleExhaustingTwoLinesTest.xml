@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.difficulty.human.strategy.SinglePossibleExhaustingTwoLinesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:51.959Z" hostname="2a9d8987d813" time="0.011">
+  <properties/>
+  <testcase name="3x4 detects 3,1,3 in top right 7+ as invalid" classname="org.piepmeyer.gauguin.difficulty.human.strategy.SinglePossibleExhaustingTwoLinesTest" time="0.006"/>
+  <system-out><![CDATA[Grid:
+|  -  - |  -  - |  -  - |  -  - |
+|  -  - |  -  - |  -  - |  -  - |
+|  4  - |  1  - |  -  - |  -  - |
+
+
+?[48;5;229m    7+  0   [1,2]?[0m ?[48;5;229m        0   [3,4]?[0m ?[48;5;194m    7+  1 [2,3,4]?[0m ?[48;5;194m        1 [1,2,4]?[0m 
+?[48;5;229m        0   [1,3]?[0m ?[48;5;153m   11+  2   [2,4]?[0m ?[48;5;153m        2   [2,4]?[0m ?[48;5;194m        1   [1,3]?[0m 
+?[48;5;190m    4/  3       4?[0m ?[48;5;190m        3       1?[0m ?[48;5;153m        2   [2,3]?[0m ?[48;5;153m        2   [2,3]?[0m 
+Grid:
+|  -  - |  -  - |  -  - |  -  - |
+|  -  - |  -  - |  -  - |  -  - |
+|  4  - |  1  - |  -  - |  -  - |
+
+
+?[48;5;229m    7+  0 [1,2]?[0m ?[48;5;229m        0 [3,4]?[0m ?[48;5;194m    7+  1 [2,4]?[0m ?[48;5;194m        1 [2,4]?[0m 
+?[48;5;229m        0 [1,3]?[0m ?[48;5;153m   11+  2 [2,4]?[0m ?[48;5;153m        2 [2,4]?[0m ?[48;5;194m        1   [1]?[0m 
+?[48;5;190m    4/  3     4?[0m ?[48;5;190m        3     1?[0m ?[48;5;153m        2 [2,3]?[0m ?[48;5;153m        2 [2,3]?[0m 
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

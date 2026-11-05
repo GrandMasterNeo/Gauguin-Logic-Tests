@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.grid.GridPossibleSolutionLogicTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:56.514Z" hostname="2a9d8987d813" time="0.028">
+  <properties/>
+  <testcase name="valid nishio solution having all cells without value without any possible gets detected" classname="org.piepmeyer.gauguin.grid.GridPossibleSolutionLogicTest" time="0.002"/>
+  <testcase name="valid nishio solution having all cells without value without any possible gets solved" classname="org.piepmeyer.gauguin.grid.GridPossibleSolutionLogicTest" time="0.001"/>
+  <testcase name="invalid nishio solution gets detected" classname="org.piepmeyer.gauguin.grid.GridPossibleSolutionLogicTest" time="0.001"/>
+  <testcase name="3x2 grid valid nishio solution gets filled" classname="org.piepmeyer.gauguin.grid.GridPossibleSolutionLogicTest" time="0.003"/>
+  <testcase name="3x2 grid empty cell gets not filled on rectangle grid via small side" classname="org.piepmeyer.gauguin.grid.GridPossibleSolutionLogicTest" time="0.003"/>
+  <testcase name="2x3 grid empty cell gets not filled on rectangle grid via small side" classname="org.piepmeyer.gauguin.grid.GridPossibleSolutionLogicTest" time="0.003"/>
+  <testcase name="3x3 grid wrong value gets detected" classname="org.piepmeyer.gauguin.grid.GridPossibleSolutionLogicTest" time="0.002"/>
+  <system-out><![CDATA[15:36:56.526 [Test worker @spec-scope-872687161#107] DEBUG o.p.g.g.GridPossibleSolutionLogicTest -- Grid:
+|  2  2 |  -  1 |
+|  -  1 |  2  2 |
+
+
+?[48;5;229m    2x  0  2?[0m ?[48;5;229m        0 []?[0m 
+?[48;5;229m        0 []?[0m ?[48;5;194m     2  1  2?[0m 
+15:36:56.528 [Test worker @spec-scope-872687161#108] DEBUG o.p.g.g.GridPossibleSolutionLogicTest -- Grid:
+|  2  2 |  -  1 |
+|  -  1 |  2  2 |
+
+
+?[48;5;229m    2x  0  2?[0m ?[48;5;229m        0 []?[0m 
+?[48;5;229m        0 []?[0m ?[48;5;194m     2  1  2?[0m 
+15:36:56.530 [Test worker @spec-scope-872687161#109] DEBUG o.p.g.g.GridPossibleSolutionLogicTest -- Grid:
+|  2  2 |  -  1 |
+|  -  1 |  1  2 |
+
+
+?[48;5;229m    2x  0  2?[0m ?[48;5;229m        0 []?[0m 
+?[48;5;229m        0 []?[0m ?[48;5;194m     2  1  1?[0m 
+15:36:56.531 [Test worker @spec-scope-872687161#110] DEBUG o.p.g.g.GridPossibleSolutionLogicTest -- Grid:
+|  3  3 |  2  2 |  -  1 |
+|  1  1 |  3  3 |  -  2 |
+
+
+?[48;5;229m    9x  0  3?[0m ?[48;5;194m     2  1  2?[0m ?[48;5;153m    2/  2 []?[0m 
+?[48;5;229m        0  1?[0m ?[48;5;229m        0  3?[0m ?[48;5;153m        2 []?[0m 
+15:36:56.533 [Test worker @spec-scope-872687161#110] DEBUG o.p.g.g.GridPossibleSolutionLogicTest -- Grid:
+|  3  3 |  2  2 |  1  1 |
+|  1  1 |  3  3 |  2  2 |
+
+
+?[48;5;229m    9x  0 3?[0m ?[48;5;194m     2  1 2?[0m ?[48;5;153m    2/  2 1?[0m 
+?[48;5;229m        0 1?[0m ?[48;5;229m        0 3?[0m ?[48;5;153m        2 2?[0m 
+15:36:56.535 [Test worker @spec-scope-872687161#111] DEBUG o.p.g.g.GridPossibleSolutionLogicTest -- Grid:
+|  -  3 |  -  2 |  -  1 |
+|  -  1 |  -  3 |  2  2 |
+
+
+?[48;5;229m    9x  0 [3]?[0m ?[48;5;194m     2  1 [2]?[0m ?[48;5;153m    2/  2  []?[0m 
+?[48;5;229m        0 [1]?[0m ?[48;5;229m        0 [3]?[0m ?[48;5;153m        2   2?[0m 
+15:36:56.536 [Test worker @spec-scope-872687161#111] DEBUG o.p.g.g.GridPossibleSolutionLogicTest -- Grid:
+|  3  3 |  2  2 |  -  1 |
+|  1  1 |  3  3 |  2  2 |
+
+
+?[48;5;229m    9x  0  3?[0m ?[48;5;194m     2  1  2?[0m ?[48;5;153m    2/  2 []?[0m 
+?[48;5;229m        0  1?[0m ?[48;5;229m        0  3?[0m ?[48;5;153m        2  2?[0m 
+15:36:56.538 [Test worker @spec-scope-872687161#112] DEBUG o.p.g.g.GridPossibleSolutionLogicTest -- Grid:
+|  -  1 |  -  3 |
+|  -  3 |  -  2 |
+|  2  2 |  -  1 |
+
+
+?[48;5;229m    9x  0 [1]?[0m ?[48;5;229m        0 [3]?[0m 
+?[48;5;229m        0 [3]?[0m ?[48;5;194m     2  1 [2]?[0m 
+?[48;5;153m    2/  2   2?[0m ?[48;5;153m        2  []?[0m 
+15:36:56.540 [Test worker @spec-scope-872687161#112] DEBUG o.p.g.g.GridPossibleSolutionLogicTest -- Grid:
+|  1  1 |  3  3 |
+|  3  3 |  2  2 |
+|  2  2 |  -  1 |
+
+
+?[48;5;229m    9x  0  1?[0m ?[48;5;229m        0  3?[0m 
+?[48;5;229m        0  3?[0m ?[48;5;194m     2  1  2?[0m 
+?[48;5;153m    2/  2  2?[0m ?[48;5;153m        2 []?[0m 
+15:36:56.541 [Test worker @spec-scope-872687161#113] DEBUG o.p.g.g.GridPossibleSolutionLogicTest -- Grid:
+|  -  2 |  3  3 |  1  1 |
+|  -  3 |  1  2 |  2  2 |
+|  -  1 |  1  2 |  3  3 |
+
+
+?[48;5;229m    6+  0 []?[0m ?[48;5;194m    2-  1  3?[0m ?[48;5;194m        1  1?[0m 
+?[48;5;229m        0 []?[0m ?[48;5;229m        0  1?[0m ?[48;5;153m    1-  2  2?[0m 
+?[48;5;190m    2x  3 []?[0m ?[48;5;190m        3  1?[0m ?[48;5;153m        2  3?[0m 
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

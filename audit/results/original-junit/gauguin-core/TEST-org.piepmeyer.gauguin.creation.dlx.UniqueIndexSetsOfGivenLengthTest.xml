@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.creation.dlx.UniqueIndexSetsOfGivenLengthTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:54.868Z" hostname="2a9d8987d813" time="0.057">
+  <properties/>
+  <testcase name="one copy returns input values" classname="org.piepmeyer.gauguin.creation.dlx.UniqueIndexSetsOfGivenLengthTest" time="0.015"/>
+  <testcase name="two copies of three elements" classname="org.piepmeyer.gauguin.creation.dlx.UniqueIndexSetsOfGivenLengthTest" time="0.035"/>
+  <testcase name="three copies of three elements" classname="org.piepmeyer.gauguin.creation.dlx.UniqueIndexSetsOfGivenLengthTest" time="0.001"/>
+  <testcase name="three copies of four elements" classname="org.piepmeyer.gauguin.creation.dlx.UniqueIndexSetsOfGivenLengthTest" time="0.001"/>
+  <system-out><![CDATA[kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory
+15:36:54.922 [Test worker @spec-scope-1908613085#81] DEBUG o.p.g.c.d.UniqueIndexSetsOfGivenLength -- result is of size 3
+15:36:54.924 [Test worker @spec-scope-1908613085#82] DEBUG o.p.g.c.d.UniqueIndexSetsOfGivenLength -- result is of size 1
+15:36:54.925 [Test worker @spec-scope-1908613085#83] DEBUG o.p.g.c.d.UniqueIndexSetsOfGivenLength -- result is of size 4
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,55 @@
+Picked up JAVA_TOOL_OPTIONS: -Dhttps.proxyHost=proxy -Dhttps.proxyPort=8080 -Dhttp.proxyHost=proxy -Dhttp.proxyPort=8080 -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Reusing configuration cache.
+> Task :gauguin-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gauguin-grid-creation-via-merge:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gauguin-human-solver:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gauguin-core:kspKotlin SKIPPED
+> Task :gauguin-core:processResources UP-TO-DATE
+> Task :gauguin-core:compileKotlin UP-TO-DATE
+> Task :gauguin-core:compileJava NO-SOURCE
+> Task :gauguin-core:classes UP-TO-DATE
+> Task :gauguin-core:jar UP-TO-DATE
+> Task :gauguin-core:kspTestFixturesKotlin SKIPPED
+> Task :gauguin-core:processTestFixturesResources NO-SOURCE
+> Task :gauguin-grid-creation-via-merge:kspKotlin SKIPPED
+> Task :gauguin-core:compileTestFixturesKotlin UP-TO-DATE
+> Task :gauguin-grid-creation-via-merge:compileKotlin UP-TO-DATE
+> Task :gauguin-grid-creation-via-merge:compileJava NO-SOURCE
+> Task :gauguin-grid-creation-via-merge:processResources NO-SOURCE
+> Task :gauguin-grid-creation-via-merge:classes UP-TO-DATE
+> Task :gauguin-core:compileTestFixturesJava NO-SOURCE
+> Task :gauguin-core:testFixturesClasses UP-TO-DATE
+> Task :gauguin-grid-creation-via-merge:jar UP-TO-DATE
+> Task :gauguin-core:kspTestKotlin SKIPPED
+> Task :gauguin-core:testFixturesJar UP-TO-DATE
+> Task :gauguin-core:processTestResources UP-TO-DATE
+> Task :gauguin-human-solver:kspKotlin SKIPPED
+> Task :gauguin-human-solver:compileKotlin UP-TO-DATE
+> Task :gauguin-human-solver:compileJava NO-SOURCE
+> Task :gauguin-human-solver:processResources NO-SOURCE
+> Task :gauguin-human-solver:classes UP-TO-DATE
+> Task :gauguin-human-solver:jar UP-TO-DATE
+> Task :gauguin-human-solver:kspTestFixturesKotlin SKIPPED
+> Task :gauguin-human-solver:compileTestFixturesKotlin NO-SOURCE
+> Task :gauguin-human-solver:compileTestFixturesJava NO-SOURCE
+> Task :gauguin-human-solver:processTestFixturesResources NO-SOURCE
+> Task :gauguin-human-solver:testFixturesClasses UP-TO-DATE
+> Task :gauguin-human-solver:testFixturesJar UP-TO-DATE
+> Task :gauguin-human-solver:kspTestKotlin SKIPPED
+> Task :gauguin-core:compileTestKotlin UP-TO-DATE
+> Task :gauguin-core:compileTestJava NO-SOURCE
+> Task :gauguin-core:testClasses UP-TO-DATE
+> Task :gauguin-core:test UP-TO-DATE
+> Task :gauguin-human-solver:processTestResources NO-SOURCE
+> Task :gauguin-human-solver:compileTestKotlin
+> Task :gauguin-human-solver:compileTestJava NO-SOURCE
+> Task :gauguin-human-solver:testClasses UP-TO-DATE
+
+> Task :gauguin-human-solver:test
+Picked up JAVA_TOOL_OPTIONS: -Dhttps.proxyHost=proxy -Dhttps.proxyPort=8080 -Dhttp.proxyHost=proxy -Dhttp.proxyPort=8080 -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts
+
+BUILD SUCCESSFUL in 14s
+15 actionable tasks: 2 executed, 13 up-to-date
+Configuration cache entry reused.
