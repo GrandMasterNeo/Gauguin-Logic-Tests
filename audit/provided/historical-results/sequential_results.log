@@ -1,0 +1,6 @@
+SEQUENTIAL results tested=220 ambiguous=11 statesAfterChanges=2806 cacheChecks=3026 stableHalts=220
+Total strategy calls=11021 changedSteps=2806 removals=2649 placements=2733 exceptions=0 invalid=0
+ACTIVE ASinglePossibleInCell calls=3026 changes=2732 removals=2575 placements=2732
+ACTIVE ARemovePossibleWithoutCombination calls=294 changes=73 removals=73 placements=0
+ACTIVE ASinglePossibleInLine calls=221 changes=1 removals=1 placements=1
+Activated strategies=3 / 37
