@@ -13,7 +13,7 @@ cd upstream/gauguin
 ```
 
 The original baseline workflow continues to test upstream. The separate
-`corrected-source-tests.yml` workflow tests this branch's source and uploads reports.
+`logic-safety-ci.yml` workflow tests this branch's source and uploads reports.
 The original test run and subsequent Nishio test corrections are documented in
 `audit/RESULTS.md`; focused safety regressions
 use the production core classes. Supplied stub audits live under `audit/provided`

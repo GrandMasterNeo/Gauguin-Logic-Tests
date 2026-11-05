@@ -109,11 +109,14 @@ can affect solver completion/difficulty behavior; unchanged UI/rules do not prov
 identical puzzle generation or gameplay experience. No APK was built, signed,
 published or installed, and the separate v8 installation was not accessed.
 
-## Pull request status
+## Review branch publication
 
-Local development branch: `dev/gauguin-0.52.1-logic-safety`.
-Git push returned HTTP 403 (permission denied), and the GitHub connector's branch
-creation also returned HTTP 403 (`Resource not accessible by integration`).
-The branch is therefore local only. No remote PR exists. `PR_DESCRIPTION.md` is
-ready for a draft PR targeting `main` once GitHub Contents and Pull requests write
-access is available. Main was not changed or merged.
+The initial attempt to publish `dev/gauguin-0.52.1-logic-safety` was blocked by
+GitHub HTTP 403. The user subsequently enabled connector write access and created
+`logic-safety-review`. The completed work is integrated into that branch,
+preserving its existing patch and commit history, for a PR targeting `main`.
+The existing `logic-safety-ci.yml` now tests the imported corrected source and
+revised tests; it also checks that the staged patch matches the supplied patch.
+The duplicate local workflow was consolidated into this existing workflow.
+Remote CI results are separate from the recorded local test evidence above.
+Main remains unchanged; no APK is built or published by this workflow.
