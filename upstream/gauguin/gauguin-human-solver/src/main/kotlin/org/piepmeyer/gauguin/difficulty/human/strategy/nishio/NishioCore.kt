@@ -3,6 +3,7 @@ package org.piepmeyer.gauguin.difficulty.human.strategy.nishio
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.piepmeyer.gauguin.difficulty.human.GridLinesProvider
 import org.piepmeyer.gauguin.grid.Grid
+import org.piepmeyer.gauguin.grid.GridCageAction
 import org.piepmeyer.gauguin.grid.GridCell
 
 private val logger = KotlinLogging.logger {}
@@ -159,7 +160,13 @@ class NishioCore(
             }) return false
 
         if (tryGrid.cages.any { cage ->
-                cage.cells.all { it.isUserValueSet } && !cage.isUserMathCorrect()
+                if (!cage.cells.all { it.isUserValueSet }) {
+                    false
+                } else if (cage.cells.size == 1 && cage.action == GridCageAction.ACTION_NONE) {
+                    cage.cells.single().userValue != cage.result
+                } else {
+                    !cage.isUserMathCorrect()
+                }
             }) return false
         return true
     }
