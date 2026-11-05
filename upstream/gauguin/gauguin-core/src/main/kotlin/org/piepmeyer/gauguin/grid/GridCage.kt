@@ -1,0 +1,144 @@
+package org.piepmeyer.gauguin.grid
+
+import org.piepmeyer.gauguin.creation.cage.GridCageType
+
+class GridCage(
+    val id: Int,
+    private val showOperators: Boolean,
+    val action: GridCageAction,
+    val cageType: GridCageType,
+) {
+    var cells: List<GridCell> = mutableListOf()
+
+    var result = 0
+
+    private fun isAddMathsCorrect(): Boolean {
+        var total = 0
+        for (cell in cells) {
+            total += cell.userValue ?: return false
+        }
+        return total == result
+    }
+
+    private fun isMultiplyMathsCorrect(): Boolean {
+        var total = 1
+        for (cell in cells) {
+            total *= cell.userValue ?: return false
+        }
+        return total == result
+    }
+
+    fun isDivideMathsCorrect(): Boolean {
+        if (cells.size != 2) {
+            return false
+        }
+
+        val useValueOne = cells[0].userValue ?: return false
+        val useValueTwo = cells[1].userValue ?: return false
+
+        return if (result != 0) {
+            if (useValueOne > useValueTwo) {
+                useValueOne == useValueTwo * result
+            } else {
+                useValueTwo == useValueOne * result
+            }
+        } else {
+            (useValueOne == 0).xor(useValueTwo == 0)
+        }
+    }
+
+    private fun isSubtractMathsCorrect(): Boolean {
+        if (cells.size != 2) {
+            return false
+        }
+
+        val firstValue = cells[0].userValue ?: return false
+        val secondValue = cells[1].userValue ?: return false
+
+        return if (firstValue > secondValue) {
+            firstValue - secondValue == result
+        } else {
+            secondValue - firstValue == result
+        }
+    }
+
+    fun isMathsCorrect(): Boolean {
+        if (cells.size == 1) {
+            return if (action == GridCageAction.ACTION_NONE) {
+                cells[0].isUserValueCorrect
+            } else {
+                true
+            }
+        }
+        return if (showOperators) {
+            when (action) {
+                GridCageAction.ACTION_ADD -> isAddMathsCorrect()
+                GridCageAction.ACTION_MULTIPLY -> isMultiplyMathsCorrect()
+                GridCageAction.ACTION_DIVIDE -> isDivideMathsCorrect()
+                GridCageAction.ACTION_SUBTRACT -> isSubtractMathsCorrect()
+                GridCageAction.ACTION_NONE, GridCageAction.ACTION_SINGLE_ALL_POSSIBLES -> true
+            }
+        } else {
+            isAddMathsCorrect() ||
+                isMultiplyMathsCorrect() ||
+                isDivideMathsCorrect() ||
+                isSubtractMathsCorrect()
+        }
+    }
+
+    fun isUserMathCorrect(): Boolean =
+        if (cells.any { !it.isUserValueSet }) {
+            true
+        } else {
+            isMathsCorrect()
+        }
+
+    fun addCell(cell: GridCell) {
+        cells = cells + cell
+        cell.cage = this
+    }
+
+    val numberOfCells: Int
+        get() = cells.size
+
+    fun getCell(cellNumber: Int): GridCell = cells[cellNumber]
+
+    fun cageText(): String =
+        if (showOperators) {
+            result.toString() + action.operationDisplayName
+        } else {
+            result.toString()
+        }
+
+    companion object {
+        fun createWithCells(
+            id: Int,
+            grid: Grid,
+            action: GridCageAction,
+            firstCell: GridCell,
+            cageType: GridCageType,
+        ): GridCage {
+            val cage = GridCage(id, grid.options.showOperators, action, cageType)
+            for (coordinate in cageType.coordinates) {
+                val col = firstCell.column + coordinate.first
+                val row = firstCell.row + coordinate.second
+                cage.addCell(grid.getValidCellAt(row, col))
+            }
+            return cage
+        }
+
+        fun createWithSingleCellArithmetic(
+            id: Int,
+            grid: Grid,
+            gridCell: GridCell,
+        ): GridCage {
+            val cage = GridCage(id, grid.options.showOperators, GridCageAction.ACTION_NONE, GridCageType.SINGLE)
+            cage.result = gridCell.value
+            cage.addCell(gridCell)
+
+            return cage
+        }
+    }
+
+    override fun toString(): String = "GridCage id=$id"
+}

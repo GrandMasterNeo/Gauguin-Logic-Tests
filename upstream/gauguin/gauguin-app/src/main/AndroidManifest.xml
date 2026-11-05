@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:installLocation="auto"
+    android:versionCode="77"
+    android:versionName="0.52.1">
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:name=".MainApplication"
+        android:supportsRtl="true"
+        android:allowBackup="true"
+        android:usesCleartextTraffic="false">
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.newgame.NewGameActivity" />
+        <activity android:name=".ui.challenge.ChooseChallengeActivity" />
+        <activity android:name=".ui.LoadGameListActivity" />
+        <activity android:name=".ui.statistics.StatisticsActivity" />
+        <activity android:name=".ui.statistics.legacy.LegacyStatisticsActivity" />
+        <activity android:name=".ui.statistics.legacy.LegacyStatisticsMaximizeOneDiagramActivity" />
+        <activity android:name=".ui.AboutActivity" />
+        <activity
+            android:name=".ui.SettingsActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

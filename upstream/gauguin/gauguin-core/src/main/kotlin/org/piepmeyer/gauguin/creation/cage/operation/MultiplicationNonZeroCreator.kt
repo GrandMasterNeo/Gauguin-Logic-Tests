@@ -1,0 +1,41 @@
+package org.piepmeyer.gauguin.creation.cage.operation
+
+import org.piepmeyer.gauguin.creation.cage.GridCageType
+
+class MultiplicationNonZeroCreator(
+    private val cageType: GridCageType,
+    private val possibleNonZeroDigits: Set<Int>,
+    private val targetValue: Int,
+    private val numberOfCells: Int,
+) {
+    private var numbers: IntArray = IntArray(numberOfCells)
+    private var combinations = emptySet<IntArray>()
+
+    fun create(): Set<IntArray> {
+        fillCombinations(targetValue, numberOfCells)
+        return combinations
+    }
+
+    private fun fillCombinations(
+        targetValue: Int,
+        numberOfCells: Int,
+    ) {
+        if (numberOfCells == 1) {
+            if (targetValue in possibleNonZeroDigits) {
+                numbers[0] = targetValue
+                if (cageType.satisfiesConstraints(numbers)) {
+                    combinations += numbers.clone()
+                }
+            }
+
+            return
+        }
+
+        possibleNonZeroDigits
+            .filter { targetValue % it == 0 }
+            .forEach {
+                numbers[numberOfCells - 1] = it
+                fillCombinations(targetValue / it, numberOfCells - 1)
+            }
+    }
+}

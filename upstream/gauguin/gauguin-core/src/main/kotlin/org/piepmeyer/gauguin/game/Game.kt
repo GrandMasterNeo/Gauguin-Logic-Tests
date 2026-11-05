@@ -1,0 +1,376 @@
+package org.piepmeyer.gauguin.game
+
+import io.github.oshai.kotlinlogging.KotlinLogging
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import org.koin.core.annotation.InjectedParam
+import org.piepmeyer.gauguin.creation.cage.GridCageType
+import org.piepmeyer.gauguin.grid.Grid
+import org.piepmeyer.gauguin.grid.GridCell
+import org.piepmeyer.gauguin.grid.GridNishioLogic
+import org.piepmeyer.gauguin.grid.GridPossibleSolutionLogic
+import org.piepmeyer.gauguin.grid.GridSolutionLogic
+import org.piepmeyer.gauguin.grid.GridView
+import org.piepmeyer.gauguin.preferences.ApplicationPreferences
+import org.piepmeyer.gauguin.preferences.StatisticsManagerWriting
+import org.piepmeyer.gauguin.undo.UndoManager
+import org.piepmeyer.gauguin.undo.UndoManagerImpl
+
+private val logger = KotlinLogging.logger {}
+
+enum class FastFinishingModeState {
+    Fast,
+    Regular,
+}
+
+enum class PossibleSolutionCheckState {
+    NishioMayBeChecked,
+    SolutionMayBeChecked,
+    NotApplicable,
+}
+
+data class Game(
+    val initalGrid: Grid,
+    var gridUI: GridView,
+    @InjectedParam private val statisticsManager: StatisticsManagerWriting,
+    @InjectedParam private val applicationPreferences: ApplicationPreferences,
+) {
+    private var vipSolvedListeners = mutableListOf<GameSolvedListener>()
+    private var solvedListeners = mutableListOf<GameSolvedListener>()
+
+    private val mutableGridState = MutableStateFlow(initalGrid)
+    private val mutableFastFinishingModeState = MutableStateFlow(FastFinishingModeState.Regular)
+    private val mutablePossibleSolutionCheckState = MutableStateFlow(possibleSolutionCheckState(initalGrid))
+
+    val gridState: StateFlow<Grid> = mutableGridState.asStateFlow()
+    val fastFinishingModeState: StateFlow<FastFinishingModeState> = mutableFastFinishingModeState.asStateFlow()
+    val possibleSolutionCheckState: StateFlow<PossibleSolutionCheckState> = mutablePossibleSolutionCheckState.asStateFlow()
+
+    private var gameMode: GameMode = RegularGameMode(this, applicationPreferences)
+
+    var grid: Grid = initalGrid
+        private set
+
+    val undoManager: UndoManager = UndoManagerImpl { grid }
+
+    var lastPossibles = emptySet<Int>()
+
+    fun enterFastFinishingMode() {
+        gameMode = FastFinishingGameMode(this)
+        mutableFastFinishingModeState.value = FastFinishingModeState.Fast
+        lastPossibles = emptySet()
+
+        gridUI.invalidate()
+    }
+
+    fun exitFastFinishingMode() {
+        gameMode = RegularGameMode(this, applicationPreferences)
+        mutableFastFinishingModeState.value = FastFinishingModeState.Regular
+        lastPossibles = emptySet()
+
+        gridUI.invalidate()
+    }
+
+    fun useGrid(newGrid: Grid) {
+        logger.info { "Updating grid, old grid: ${grid.detailedToString()}" }
+        logger.info { "Updating grid, new grid: ${newGrid.detailedToString()}" }
+        grid = newGrid
+        gridUI.grid = grid
+
+        ensureNotInFastFinishingMode()
+
+        lastPossibles = emptySet()
+        clearUndoList()
+        grid.updateDuplicatedNumbersInRowOrColumn()
+
+        mutableGridState.value = grid
+        logger.info { "Updated grid to: ${grid.detailedToString()}" }
+    }
+
+    fun enterNumber(
+        number: Int,
+        cell: GridCell? = null,
+    ) {
+        val cellToEnterNumber = cell ?: grid.selectedCell ?: return
+
+        if (!grid.isActive) {
+            return
+        }
+
+        gridHasBeenPlayed()
+
+        clearLastModified()
+        undoManager.saveUndo(cellToEnterNumber, false)
+        cellToEnterNumber.setUserValueExtern(number)
+
+        if (applicationPreferences.removePencils()) {
+            removePossibles(cellToEnterNumber)
+        }
+
+        if (grid.isSolved()) {
+            gridHasJustBeenSolved()
+        }
+
+        userValueChanged()
+
+        gridUI.requestFocus()
+        gridUI.invalidate()
+    }
+
+    private fun gridHasJustBeenSolved() {
+        grid.isActive = false
+
+        grid.selectedCell = null
+        grid.cells.forEach { it.isSelected = false }
+
+        ensureNotInFastFinishingMode()
+
+        statisticsManager.gridSolvedByEnteringNumber(grid)
+
+        updatePossibleSolutionState()
+
+        vipSolvedListeners.forEach { it.puzzleSolved() }
+        solvedListeners.forEach { it.puzzleSolved() }
+    }
+
+    private fun userValueChanged() {
+        grid.userValueChanged()
+
+        updatePossibleSolutionState()
+    }
+
+    private fun updatePossibleSolutionState() {
+        mutablePossibleSolutionCheckState.value = possibleSolutionCheckState(grid)
+    }
+
+    private fun possibleSolutionCheckState(grid: Grid): PossibleSolutionCheckState {
+        val state =
+            if (GridNishioLogic(grid).isSolutionCheckable()) {
+                PossibleSolutionCheckState.NishioMayBeChecked
+            } else if (GridPossibleSolutionLogic(grid).isSolutionCheckable()) {
+                PossibleSolutionCheckState.SolutionMayBeChecked
+            } else {
+                PossibleSolutionCheckState.NotApplicable
+            }
+
+        logger.info { "Possible solution state: $state" }
+
+        return state
+    }
+
+    fun revealCell(cell: GridCell) {
+        cell.isCheated = true
+
+        if (!cell.isUserValueCorrect) {
+            enterNumber(cell.value, cell)
+        }
+    }
+
+    private fun ensureNotInFastFinishingMode() {
+        if (mutableFastFinishingModeState.value == FastFinishingModeState.Fast) {
+            exitFastFinishingMode()
+        }
+    }
+
+    fun addGameVipSolvedHandler(listener: GameSolvedListener) {
+        vipSolvedListeners.add(listener)
+    }
+
+    fun addGameSolvedHandler(listener: GameSolvedListener) {
+        solvedListeners.add(listener)
+    }
+
+    fun enterPossibleNumber(number: Int) {
+        val selectedCell = grid.selectedCell ?: return
+        if (!grid.isActive || selectedCell.isCheated) {
+            return
+        }
+
+        gridHasBeenPlayed()
+
+        gameMode.enterPossibleNumber(selectedCell, number)
+
+        updatePossibleSolutionState()
+        gridUI.requestFocus()
+        gridUI.invalidate()
+    }
+
+    fun enterPossibleNumberCore(
+        selectedCell: GridCell,
+        number: Int,
+    ) {
+        clearLastModified()
+        undoManager.saveUndo(selectedCell, false)
+        selectedCell.userValue?.let { userValue ->
+            selectedCell.clearUserValue()
+            selectedCell.togglePossible(userValue)
+            userValueChanged()
+        }
+        selectedCell.togglePossible(number)
+        lastPossibles = selectedCell.possibles.toSet()
+    }
+
+    private fun gridHasBeenPlayed() {
+        if (!grid.startedToBePlayed) {
+            grid.startedToBePlayed = true
+
+            statisticsManager.puzzleStartedToBePlayed()
+        }
+    }
+
+    private fun removePossibles(
+        selectedCell: GridCell,
+        saveUndo: Boolean = true,
+    ) {
+        val possibleCells = grid.getPossiblesInRowCol(selectedCell)
+        for (cell in possibleCells) {
+            if (saveUndo) {
+                undoManager.saveUndo(cell, true)
+                cell.isLastModified = true
+            }
+            selectedCell.userValue?.let { userValue -> cell.removePossible(userValue) }
+        }
+    }
+
+    fun cellClicked(cell: GridCell) {
+        selectCell(cell)
+
+        gameMode.cellClicked(cell)
+
+        gridUI.requestFocus()
+        gridUI.invalidate()
+    }
+
+    fun selectCell(cell: GridCell) {
+        if (grid.selectedCell == cell) {
+            return
+        }
+
+        grid.selectedCell = cell
+
+        grid.cells.forEach { it.isSelected = false }
+
+        cell.isSelected = true
+    }
+
+    fun eraseSelectedCell() {
+        val selectedCell = grid.selectedCell ?: return
+
+        if (!grid.isActive || selectedCell.isCheated) {
+            return
+        }
+
+        if (selectedCell.isUserValueSet || selectedCell.possibles.isNotEmpty()) {
+            clearLastModified()
+            undoManager.saveUndo(selectedCell, false)
+            selectedCell.clearUserValue()
+            selectedCell.clearPossibles()
+            userValueChanged()
+        }
+    }
+
+    fun longClickOnSelectedCell(): Boolean {
+        val selectedCell = grid.selectedCell ?: return false
+
+        if (!grid.isActive || selectedCell.isCheated) {
+            return false
+        }
+
+        gameMode.cellLongClicked(selectedCell)
+
+        return true
+    }
+
+    fun copyPossiblesFromLastEnteredCell(selectedCell: GridCell) {
+        if (lastPossibles.isNotEmpty()) {
+            undoManager.saveUndo(selectedCell, false)
+            selectedCell.possibles = lastPossibles
+            gridUI.invalidate()
+        }
+    }
+
+    private fun clearUserValues() {
+        ensureNotInFastFinishingMode()
+        lastPossibles = emptySet()
+
+        grid.clearUserValues()
+        gridUI.invalidate()
+    }
+
+    private fun clearLastModified() {
+        grid.clearLastModified()
+        gridUI.invalidate()
+    }
+
+    fun markInvalidChoices() {
+        grid.markInvalidChoices()
+        gridUI.invalidate()
+    }
+
+    fun undoOneStep() {
+        ensureNotInFastFinishingMode()
+
+        clearLastModified()
+        undoManager.restoreUndo()
+        userValueChanged()
+
+        gridUI.invalidate()
+    }
+
+    fun restartGame() {
+        clearUserValues()
+
+        grid.markInvalidChoices()
+        grid.updateDuplicatedNumbersInRowOrColumn()
+        grid.cells.forEach {
+            it.clearPossibles()
+            it.isLastModified = false
+        }
+        grid.selectedCell = null
+        grid.isActive = true
+    }
+
+    fun clearUndoList() {
+        undoManager.clear()
+    }
+
+    fun solveAllMissingCells() {
+        grid.cells.forEach {
+            cellClicked(it)
+            enterNumber(it.value)
+        }
+    }
+
+    fun isInFastFinishingMode(): Boolean = gameMode.isFastFinishingMode()
+
+    fun fillSingleCagesInNewGrid() {
+        grid.cages
+            .filter { it.cageType == GridCageType.SINGLE }
+            .forEach {
+                val onlyCell = it.getCell(0)
+
+                onlyCell.setUserValueIntern(onlyCell.value)
+                onlyCell.clearPossibles()
+
+                if (applicationPreferences.removePencils()) {
+                    removePossibles(onlyCell, false)
+                }
+            }
+    }
+
+    fun solveViaPossibleSolution(gridSolutionLogic: GridSolutionLogic) {
+        if (!gridSolutionLogic.isValidSolution()) {
+            return
+        }
+
+        gridSolutionLogic.solveViaSolution()
+
+        grid.clearLastModified()
+
+        gridHasJustBeenSolved()
+
+        gridUI.requestFocus()
+        gridUI.invalidate()
+    }
+}

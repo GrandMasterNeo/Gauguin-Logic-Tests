@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainGameDifficultyLevelConstaintLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/difficultyLevelHighlighter"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/veryEasy"
+        app:layout_constraintBottom_toBottomOf="@+id/veryEasy"
+        android:backgroundTint="?colorOnSecondary"
+        style="@style/Widget.Material3.CardView.Filled"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/noDifficultyCalculated"
+        style="@style/LabelLargeOnSecondary"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/game_difficulty_no_difficulty_calculated_for_game_variant"
+        android:textColor="?colorOnSecondaryContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/veryEasy"
+        style="@style/DifficultyLevelDescriptionLabel"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/game_setting_difficulty_very_easy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/easy"
+        style="@style/DifficultyLevelDescriptionLabel"
+        android:text="@string/game_setting_difficulty_easy"
+        app:layout_constraintStart_toStartOf="@id/veryEasy"
+        app:layout_constraintTop_toBottomOf="@id/veryEasy" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/medium"
+        style="@style/DifficultyLevelDescriptionLabel"
+        android:text="@string/game_setting_difficulty_medium"
+        app:layout_constraintStart_toStartOf="@id/easy"
+        app:layout_constraintTop_toBottomOf="@id/easy" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/hard"
+        style="@style/DifficultyLevelDescriptionLabel"
+        android:text="@string/game_setting_difficulty_hard"
+        app:layout_constraintStart_toStartOf="@id/medium"
+        app:layout_constraintTop_toBottomOf="@id/medium" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/extreme"
+        style="@style/DifficultyLevelDescriptionLabel"
+        android:text="@string/game_setting_difficulty_extreme"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintStart_toStartOf="@id/hard"
+        app:layout_constraintTop_toBottomOf="@id/hard"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierAfterLabels"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="veryEasy,easy,medium,hard,extreme" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrierBeforeStars"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="veryEasyMinimumValue,easyMinimumValue,mediumMinimumValue,hardMinimumValue,extremeMinimumValue" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/veryEasyMinimumValue"
+        android:text="@string/game_difficulty_level_unknown_bound_at_start_or_end_of_range"
+        style="@style/DifficultyLevelMinimumValueLabel"
+        app:layout_constraintStart_toEndOf="@id/barrierAfterLabels"
+        app:layout_constraintTop_toTopOf="@+id/veryEasy"
+        app:layout_constraintBottom_toBottomOf="@+id/veryEasy"
+        app:layout_constraintEnd_toEndOf="@id/barrierBeforeStars"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/easyMinimumValue"
+        style="@style/DifficultyLevelMinimumValueLabel"
+        app:layout_constraintStart_toEndOf="@id/barrierAfterLabels"
+        app:layout_constraintTop_toTopOf="@+id/easy"
+        app:layout_constraintBottom_toBottomOf="@+id/easy"
+        app:layout_constraintEnd_toEndOf="@id/barrierBeforeStars"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mediumMinimumValue"
+        style="@style/DifficultyLevelMinimumValueLabel"
+        app:layout_constraintStart_toEndOf="@id/barrierAfterLabels"
+        app:layout_constraintTop_toTopOf="@+id/medium"
+        app:layout_constraintBottom_toBottomOf="@+id/medium"
+        app:layout_constraintEnd_toEndOf="@id/barrierBeforeStars"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/hardMinimumValue"
+        style="@style/DifficultyLevelMinimumValueLabel"
+        app:layout_constraintStart_toEndOf="@id/barrierAfterLabels"
+        app:layout_constraintTop_toTopOf="@+id/hard"
+        app:layout_constraintBottom_toBottomOf="@+id/hard"
+        app:layout_constraintEnd_toEndOf="@id/barrierBeforeStars"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/extremeMinimumValue"
+        style="@style/DifficultyLevelMinimumValueLabel"
+        app:layout_constraintStart_toEndOf="@id/barrierAfterLabels"
+        app:layout_constraintTop_toTopOf="@+id/extreme"
+        app:layout_constraintBottom_toBottomOf="@+id/extreme"
+        app:layout_constraintEnd_toEndOf="@id/barrierBeforeStars"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarVeryEasyOne"
+        style="@style/DifficultyLevelImageViewStarOutline"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@id/barrierBeforeStars"
+        app:layout_constraintTop_toTopOf="@+id/veryEasyMinimumValue"
+        app:layout_constraintBottom_toBottomOf="@+id/veryEasyMinimumValue"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarVeryEasyTwo"
+        style="@style/DifficultyLevelImageViewStarOutline"
+        app:layout_constraintStart_toEndOf="@id/ratingStarVeryEasyOne"
+        app:layout_constraintTop_toTopOf="@id/ratingStarVeryEasyOne"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarVeryEasyOne"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarVeryEasyThree"
+        style="@style/DifficultyLevelImageViewStarOutline"
+        app:layout_constraintStart_toEndOf="@id/ratingStarVeryEasyTwo"
+        app:layout_constraintTop_toTopOf="@id/ratingStarVeryEasyTwo"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarVeryEasyTwo"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarVeryEasyFour"
+        style="@style/DifficultyLevelImageViewStarOutline"
+        app:layout_constraintStart_toEndOf="@id/ratingStarVeryEasyThree"
+        app:layout_constraintTop_toTopOf="@id/ratingStarVeryEasyThree"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarVeryEasyThree"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarEasyOne"
+        style="@style/DifficultyLevelImageViewStarFilled"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@id/barrierBeforeStars"
+        app:layout_constraintTop_toTopOf="@+id/easyMinimumValue"
+        app:layout_constraintBottom_toBottomOf="@+id/easyMinimumValue"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarEasyTwo"
+        style="@style/DifficultyLevelImageViewStarOutline"
+        app:layout_constraintStart_toEndOf="@id/ratingStarEasyOne"
+        app:layout_constraintTop_toTopOf="@id/ratingStarEasyOne"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarEasyOne"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarEasyThree"
+        style="@style/DifficultyLevelImageViewStarOutline"
+        app:layout_constraintStart_toEndOf="@id/ratingStarEasyTwo"
+        app:layout_constraintTop_toTopOf="@id/ratingStarEasyTwo"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarEasyTwo"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarEasyFour"
+        style="@style/DifficultyLevelImageViewStarOutline"
+        app:layout_constraintStart_toEndOf="@id/ratingStarEasyThree"
+        app:layout_constraintTop_toTopOf="@id/ratingStarEasyThree"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarEasyThree"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarMediumOne"
+        style="@style/DifficultyLevelImageViewStarFilled"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@id/barrierBeforeStars"
+        app:layout_constraintTop_toTopOf="@+id/mediumMinimumValue"
+        app:layout_constraintBottom_toBottomOf="@+id/mediumMinimumValue"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarMediumTwo"
+        style="@style/DifficultyLevelImageViewStarFilled"
+        app:layout_constraintStart_toEndOf="@id/ratingStarMediumOne"
+        app:layout_constraintTop_toTopOf="@id/ratingStarMediumOne"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarMediumOne"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarMediumThree"
+        style="@style/DifficultyLevelImageViewStarOutline"
+        app:layout_constraintStart_toEndOf="@id/ratingStarMediumTwo"
+        app:layout_constraintTop_toTopOf="@id/ratingStarMediumTwo"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarMediumTwo"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarMediumFour"
+        style="@style/DifficultyLevelImageViewStarOutline"
+        app:layout_constraintStart_toEndOf="@id/ratingStarMediumThree"
+        app:layout_constraintTop_toTopOf="@id/ratingStarMediumThree"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarMediumThree"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarHardOne"
+        style="@style/DifficultyLevelImageViewStarFilled"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@id/barrierBeforeStars"
+        app:layout_constraintTop_toTopOf="@+id/hardMinimumValue"
+        app:layout_constraintBottom_toBottomOf="@+id/hardMinimumValue"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarHardTwo"
+        style="@style/DifficultyLevelImageViewStarFilled"
+        app:layout_constraintStart_toEndOf="@id/ratingStarHardOne"
+        app:layout_constraintTop_toTopOf="@id/ratingStarHardOne"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarHardOne"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarHardThree"
+        style="@style/DifficultyLevelImageViewStarFilled"
+        app:layout_constraintStart_toEndOf="@id/ratingStarHardTwo"
+        app:layout_constraintTop_toTopOf="@id/ratingStarHardTwo"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarHardTwo"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarHardFour"
+        style="@style/DifficultyLevelImageViewStarOutline"
+        app:layout_constraintStart_toEndOf="@id/ratingStarHardThree"
+        app:layout_constraintTop_toTopOf="@id/ratingStarHardThree"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarHardThree"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarExtremeOne"
+        style="@style/DifficultyLevelImageViewStarFilled"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@id/barrierBeforeStars"
+        app:layout_constraintTop_toTopOf="@+id/extremeMinimumValue"
+        app:layout_constraintBottom_toBottomOf="@+id/extremeMinimumValue"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarExtremeTwo"
+        style="@style/DifficultyLevelImageViewStarFilled"
+        app:layout_constraintStart_toEndOf="@id/ratingStarExtremeOne"
+        app:layout_constraintTop_toTopOf="@id/ratingStarExtremeOne"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarExtremeOne"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarExtremeThree"
+        style="@style/DifficultyLevelImageViewStarFilled"
+        app:layout_constraintStart_toEndOf="@id/ratingStarExtremeTwo"
+        app:layout_constraintTop_toTopOf="@id/ratingStarExtremeTwo"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarExtremeTwo"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/ratingStarExtremeFour"
+        style="@style/DifficultyLevelImageViewStarFilled"
+        app:layout_constraintStart_toEndOf="@id/ratingStarExtremeThree"
+        app:layout_constraintTop_toTopOf="@id/ratingStarExtremeThree"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarExtremeThree"
+        android:importantForAccessibility="no"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/veryEasyMaximumValue"
+        style="@style/DifficultyLevelMaximumValueLabel"
+        app:layout_constraintStart_toEndOf="@id/ratingStarVeryEasyFour"
+        app:layout_constraintTop_toTopOf="@id/ratingStarVeryEasyFour"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarVeryEasyFour"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/easyMaximumValue"
+        style="@style/DifficultyLevelMaximumValueLabel"
+        app:layout_constraintStart_toEndOf="@id/ratingStarEasyFour"
+        app:layout_constraintTop_toTopOf="@id/ratingStarEasyFour"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarEasyFour"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mediumMaximumValue"
+        style="@style/DifficultyLevelMaximumValueLabel"
+        app:layout_constraintStart_toEndOf="@id/ratingStarMediumFour"
+        app:layout_constraintTop_toTopOf="@id/ratingStarMediumFour"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarMediumFour"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/hardMaximumValue"
+        style="@style/DifficultyLevelMaximumValueLabel"
+        app:layout_constraintStart_toEndOf="@id/ratingStarHardFour"
+        app:layout_constraintTop_toTopOf="@id/ratingStarHardFour"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarHardFour"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/extremeMaximumValue"
+        android:text="@string/game_difficulty_level_unknown_bound_at_start_or_end_of_range"
+        style="@style/DifficultyLevelMaximumValueLabel"
+        app:layout_constraintStart_toEndOf="@id/ratingStarExtremeFour"
+        app:layout_constraintTop_toTopOf="@id/ratingStarExtremeFour"
+        app:layout_constraintBottom_toBottomOf="@id/ratingStarExtremeFour"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
