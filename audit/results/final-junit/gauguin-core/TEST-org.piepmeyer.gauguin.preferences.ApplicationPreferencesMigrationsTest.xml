@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:56.673Z" hostname="2a9d8987d813" time="0.215">
+  <properties/>
+  <testcase name="night mode migration gets not triggered if night mode is already in use" classname="org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest" time="0.004"/>
+  <testcase name="OldThemeMigrationTestData(sharedPreferenceValue=null, expectedTheme=GAUGUIN, expectedNightMode=DARK)" classname="org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest" time="0.001"/>
+  <testcase name="OldThemeMigrationTestData(sharedPreferenceValue=unknown, expectedTheme=GAUGUIN, expectedNightMode=DARK)" classname="org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest" time="0.0"/>
+  <testcase name="OldThemeMigrationTestData(sharedPreferenceValue=DARK, expectedTheme=GAUGUIN, expectedNightMode=DARK)" classname="org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest" time="0.0"/>
+  <testcase name="OldThemeMigrationTestData(sharedPreferenceValue=LIGHT, expectedTheme=GAUGUIN, expectedNightMode=LIGHT)" classname="org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest" time="0.0"/>
+  <testcase name="OldThemeMigrationTestData(sharedPreferenceValue=DYNAMIC_COLORS, expectedTheme=DYNAMIC_COLORS, expectedNightMode=LIGHT)" classname="org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest" time="0.0"/>
+  <testcase name="OldThemeMigrationTestData(sharedPreferenceValue=SYSTEM_DEFAULT, expectedTheme=GAUGUIN, expectedNightMode=SYSTEM_DEFAULT)" classname="org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest" time="0.0"/>
+  <testcase name="difficulty migration gets not triggered if difficulties are already in use" classname="org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest" time="0.004"/>
+  <testcase name="difficulty migration gets not triggered if no difficulty preference is used yet" classname="org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest" time="0.002"/>
+  <testcase name="DifficultyMigrationTestData" classname="org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest" time="0.0"/>
+  <testcase name="(1) DifficultyMigrationTestData" classname="org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest" time="0.0"/>
+  <testcase name="(2) DifficultyMigrationTestData" classname="org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest" time="0.0"/>
+  <system-out><![CDATA[Warning, type class kotlin.collections.Set used in data testing does not have a stable toString()
+Warning, type class java.util.Collections$SingletonSet used in data testing does not have a stable toString()
+Warning, type class org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest$1$DifficultyMigrationTestData used in data testing does not have a stable toString()
+Warning, type class kotlin.collections.Set used in data testing does not have a stable toString()
+Warning, type class java.util.Collections$SingletonSet used in data testing does not have a stable toString()
+Warning, type class org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest$1$DifficultyMigrationTestData used in data testing does not have a stable toString()
+Warning, type class kotlin.collections.Set used in data testing does not have a stable toString()
+Warning, type class java.util.LinkedHashSet used in data testing does not have a stable toString()
+Warning, type class org.piepmeyer.gauguin.preferences.ApplicationPreferencesMigrationsTest$1$DifficultyMigrationTestData used in data testing does not have a stable toString()
+WARN: Duplicated test name DifficultyMigrationTestData. To disable this message, set DuplicateTestNameMode to Silent.
+WARN: Duplicated test name DifficultyMigrationTestData. To disable this message, set DuplicateTestNameMode to Silent.
+WARN: Duplicated test name DifficultyMigrationTestData. To disable this message, set DuplicateTestNameMode to Silent.
+WARN: Duplicated test name DifficultyMigrationTestData. To disable this message, set DuplicateTestNameMode to Silent.
+15:36:56.754 [Test worker @spec-scope-1537246781#132] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#298
+15:36:56.754 [Test worker @spec-scope-1537246781#132] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:56.754 [Test worker @spec-scope-1537246781#132] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:56.755 [Test worker @spec-scope-1537246781#132] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:56.755 [Test worker @spec-scope-1537246781#132] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:56.755 [Test worker @spec-scope-1537246781#132] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:56.755 [Test worker @spec-scope-1537246781#132] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.755 [Test worker @spec-scope-1537246781#132] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.756 [Test worker @spec-scope-1537246781#132] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.756 [Test worker @spec-scope-1537246781#132] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [nightMode]
+15:36:56.756 [Test worker @spec-scope-1537246781#132] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.756 [Test worker @spec-scope-1537246781#132] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#298).getString(eq(nightMode), null()))
+15:36:56.756 [Test worker @spec-scope-1537246781#132] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#298).getString(eq(nightMode), null())
+15:36:56.756 [Test worker @spec-scope-1537246781#132] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.757 [Test worker @spec-scope-1537246781#132] DEBUG i.m.i.r.states.AnsweringState -- Answering DARK on ApplicationPreferences(#298).getString(nightMode, null)
+15:36:56.759 [Test worker @spec-scope-1537246781#133] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#299
+15:36:56.759 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:56.759 [Test worker @spec-scope-1537246781#133] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:56.759 [Test worker @spec-scope-1537246781#133] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:56.759 [Test worker @spec-scope-1537246781#133] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:56.759 [Test worker @spec-scope-1537246781#133] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:56.759 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.759 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.759 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.759 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [nightMode]
+15:36:56.759 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.759 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#299).getString(eq(nightMode), null()))
+15:36:56.759 [Test worker @spec-scope-1537246781#133] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#299).getString(eq(nightMode), null())
+15:36:56.760 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.760 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.760 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.760 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.760 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [theme]
+15:36:56.760 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.760 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#299).getString(eq(theme), null()))
+15:36:56.760 [Test worker @spec-scope-1537246781#133] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#299).getString(eq(theme), null())
+15:36:56.760 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.760 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.760 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.761 [Test worker @spec-scope-1537246781#133] TRACE i.m.p.j.t.JvmInlineInstrumentation -- Retransforming classes org.piepmeyer.gauguin.preferences.Theme
+15:36:56.795 [Test worker @spec-scope-1537246781#133] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.795 [Test worker @spec-scope-1537246781#133] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.795 [Test worker @spec-scope-1537246781#133] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.796 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.796 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setTheme(Theme)
+15:36:56.796 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setTheme(Theme): [Ref(Theme@12c448c)]
+15:36:56.796 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#299).setTheme(eq(GAUGUIN)))
+15:36:56.796 [Test worker @spec-scope-1537246781#133] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#299).setTheme(eq(GAUGUIN)))
+15:36:56.796 [Test worker @spec-scope-1537246781#133] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Theme name=child of #299#300
+15:36:56.796 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.796 [Test worker @spec-scope-1537246781#133] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.796 [Test worker @spec-scope-1537246781#133] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.796 [Test worker @spec-scope-1537246781#133] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.796 [Test worker @spec-scope-1537246781#133] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#299).setTheme(eq(GAUGUIN))
+15:36:56.796 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.797 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.797 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.797 [Test worker @spec-scope-1537246781#133] TRACE i.m.p.j.t.JvmInlineInstrumentation -- Retransforming classes org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.838 [Test worker @spec-scope-1537246781#133] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.838 [Test worker @spec-scope-1537246781#133] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.838 [Test worker @spec-scope-1537246781#133] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.839 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.839 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setNightMode(NightMode)
+15:36:56.839 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setNightMode(NightMode): [Ref(NightMode@48214788)]
+15:36:56.839 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#299).setNightMode(eq(DARK)))
+15:36:56.839 [Test worker @spec-scope-1537246781#133] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#299).setNightMode(eq(DARK)))
+15:36:56.839 [Test worker @spec-scope-1537246781#133] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for NightMode name=child of #299#301
+15:36:56.839 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.839 [Test worker @spec-scope-1537246781#133] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.839 [Test worker @spec-scope-1537246781#133] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.839 [Test worker @spec-scope-1537246781#133] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.839 [Test worker @spec-scope-1537246781#133] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#299).setNightMode(eq(DARK))
+15:36:56.839 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.839 [Test worker @spec-scope-1537246781#133] DEBUG i.m.i.r.states.AnsweringState -- Answering null on ApplicationPreferences(#299).getString(nightMode, null)
+15:36:56.840 [Test worker @spec-scope-1537246781#133] DEBUG i.m.i.r.states.AnsweringState -- Answering null on ApplicationPreferences(#299).getString(theme, null)
+15:36:56.840 [Test worker @spec-scope-1537246781#133] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on ApplicationPreferences(#299).setTheme(GAUGUIN)
+15:36:56.840 [Test worker @spec-scope-1537246781#133] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on ApplicationPreferences(#299).setNightMode(DARK)
+15:36:56.840 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.CommonCallRecorder -- Starting verification
+15:36:56.840 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.840 [Test worker @spec-scope-1537246781#133] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.840 [Test worker @spec-scope-1537246781#133] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.840 [Test worker @spec-scope-1537246781#133] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.841 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.841 [Test worker @spec-scope-1537246781#133] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.841 [Test worker @spec-scope-1537246781#133] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.841 [Test worker @spec-scope-1537246781#133] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.841 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.841 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setTheme(Theme)
+15:36:56.841 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setTheme(Theme): [Ref(Theme@12c448c)]
+15:36:56.841 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#299).setTheme(eq(GAUGUIN)))
+15:36:56.841 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #1: setNightMode(NightMode)
+15:36:56.841 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setNightMode(NightMode): [Ref(NightMode@48214788)]
+15:36:56.841 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#299).setNightMode(eq(DARK)))
+15:36:56.841 [Test worker @spec-scope-1537246781#133] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#299).setTheme(eq(GAUGUIN)))
+15:36:56.841 [Test worker @spec-scope-1537246781#133] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#299).setNightMode(eq(DARK)))
+15:36:56.842 [Test worker @spec-scope-1537246781#133] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently:
+ApplicationPreferences(#299).setTheme(eq(GAUGUIN)), ApplicationPreferences(#299).setNightMode(eq(DARK))
+15:36:56.842 [Test worker @spec-scope-1537246781#133] TRACE i.m.i.r.states.RecordingState -- Done verification. Outcome: OK(verifiedCalls=[ApplicationPreferences(#299).setTheme(GAUGUIN), ApplicationPreferences(#299).setNightMode(DARK)])
+15:36:56.844 [Test worker @spec-scope-1537246781#134] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#302
+15:36:56.844 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:56.844 [Test worker @spec-scope-1537246781#134] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:56.844 [Test worker @spec-scope-1537246781#134] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:56.844 [Test worker @spec-scope-1537246781#134] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:56.844 [Test worker @spec-scope-1537246781#134] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:56.844 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.844 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.844 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.844 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [nightMode]
+15:36:56.844 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.844 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#302).getString(eq(nightMode), null()))
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#302).getString(eq(nightMode), null())
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [theme]
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#302).getString(eq(theme), null()))
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#302).getString(eq(theme), null())
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setTheme(Theme)
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setTheme(Theme): [Ref(Theme@12c448c)]
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#302).setTheme(eq(GAUGUIN)))
+15:36:56.845 [Test worker @spec-scope-1537246781#134] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#302).setTheme(eq(GAUGUIN)))
+15:36:56.846 [Test worker @spec-scope-1537246781#134] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Theme name=child of #302#303
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#302).setTheme(eq(GAUGUIN))
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setNightMode(NightMode)
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setNightMode(NightMode): [Ref(NightMode@48214788)]
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#302).setNightMode(eq(DARK)))
+15:36:56.846 [Test worker @spec-scope-1537246781#134] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#302).setNightMode(eq(DARK)))
+15:36:56.846 [Test worker @spec-scope-1537246781#134] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for NightMode name=child of #302#304
+15:36:56.847 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.847 [Test worker @spec-scope-1537246781#134] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.847 [Test worker @spec-scope-1537246781#134] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.847 [Test worker @spec-scope-1537246781#134] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.847 [Test worker @spec-scope-1537246781#134] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#302).setNightMode(eq(DARK))
+15:36:56.847 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.847 [Test worker @spec-scope-1537246781#134] DEBUG i.m.i.r.states.AnsweringState -- Answering null on ApplicationPreferences(#302).getString(nightMode, null)
+15:36:56.847 [Test worker @spec-scope-1537246781#134] DEBUG i.m.i.r.states.AnsweringState -- Answering unknown on ApplicationPreferences(#302).getString(theme, null)
+15:36:56.847 [Test worker @spec-scope-1537246781#134] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on ApplicationPreferences(#302).setTheme(GAUGUIN)
+15:36:56.847 [Test worker @spec-scope-1537246781#134] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on ApplicationPreferences(#302).setNightMode(DARK)
+15:36:56.847 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.CommonCallRecorder -- Starting verification
+15:36:56.847 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.847 [Test worker @spec-scope-1537246781#134] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.847 [Test worker @spec-scope-1537246781#134] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.847 [Test worker @spec-scope-1537246781#134] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.847 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.847 [Test worker @spec-scope-1537246781#134] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.847 [Test worker @spec-scope-1537246781#134] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.847 [Test worker @spec-scope-1537246781#134] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.848 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.848 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setTheme(Theme)
+15:36:56.848 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setTheme(Theme): [Ref(Theme@12c448c)]
+15:36:56.848 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#302).setTheme(eq(GAUGUIN)))
+15:36:56.848 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #1: setNightMode(NightMode)
+15:36:56.848 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setNightMode(NightMode): [Ref(NightMode@48214788)]
+15:36:56.848 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#302).setNightMode(eq(DARK)))
+15:36:56.848 [Test worker @spec-scope-1537246781#134] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#302).setTheme(eq(GAUGUIN)))
+15:36:56.848 [Test worker @spec-scope-1537246781#134] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#302).setNightMode(eq(DARK)))
+15:36:56.848 [Test worker @spec-scope-1537246781#134] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently:
+ApplicationPreferences(#302).setTheme(eq(GAUGUIN)), ApplicationPreferences(#302).setNightMode(eq(DARK))
+15:36:56.848 [Test worker @spec-scope-1537246781#134] TRACE i.m.i.r.states.RecordingState -- Done verification. Outcome: OK(verifiedCalls=[ApplicationPreferences(#302).setTheme(GAUGUIN), ApplicationPreferences(#302).setNightMode(DARK)])
+15:36:56.849 [Test worker @spec-scope-1537246781#135] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#305
+15:36:56.849 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:56.849 [Test worker @spec-scope-1537246781#135] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:56.849 [Test worker @spec-scope-1537246781#135] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [nightMode]
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#305).getString(eq(nightMode), null()))
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#305).getString(eq(nightMode), null())
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [theme]
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#305).getString(eq(theme), null()))
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#305).getString(eq(theme), null())
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.850 [Test worker @spec-scope-1537246781#135] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setTheme(Theme)
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setTheme(Theme): [Ref(Theme@12c448c)]
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#305).setTheme(eq(GAUGUIN)))
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#305).setTheme(eq(GAUGUIN)))
+15:36:56.851 [Test worker @spec-scope-1537246781#135] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Theme name=child of #305#306
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#305).setTheme(eq(GAUGUIN))
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setNightMode(NightMode)
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setNightMode(NightMode): [Ref(NightMode@48214788)]
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#305).setNightMode(eq(DARK)))
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#305).setNightMode(eq(DARK)))
+15:36:56.851 [Test worker @spec-scope-1537246781#135] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for NightMode name=child of #305#307
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.851 [Test worker @spec-scope-1537246781#135] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#305).setNightMode(eq(DARK))
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.852 [Test worker @spec-scope-1537246781#135] DEBUG i.m.i.r.states.AnsweringState -- Answering null on ApplicationPreferences(#305).getString(nightMode, null)
+15:36:56.852 [Test worker @spec-scope-1537246781#135] DEBUG i.m.i.r.states.AnsweringState -- Answering DARK on ApplicationPreferences(#305).getString(theme, null)
+15:36:56.852 [Test worker @spec-scope-1537246781#135] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on ApplicationPreferences(#305).setTheme(GAUGUIN)
+15:36:56.852 [Test worker @spec-scope-1537246781#135] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on ApplicationPreferences(#305).setNightMode(DARK)
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.CommonCallRecorder -- Starting verification
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setTheme(Theme)
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setTheme(Theme): [Ref(Theme@12c448c)]
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#305).setTheme(eq(GAUGUIN)))
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #1: setNightMode(NightMode)
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setNightMode(NightMode): [Ref(NightMode@48214788)]
+15:36:56.852 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#305).setNightMode(eq(DARK)))
+15:36:56.853 [Test worker @spec-scope-1537246781#135] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#305).setTheme(eq(GAUGUIN)))
+15:36:56.853 [Test worker @spec-scope-1537246781#135] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#305).setNightMode(eq(DARK)))
+15:36:56.853 [Test worker @spec-scope-1537246781#135] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently:
+ApplicationPreferences(#305).setTheme(eq(GAUGUIN)), ApplicationPreferences(#305).setNightMode(eq(DARK))
+15:36:56.853 [Test worker @spec-scope-1537246781#135] TRACE i.m.i.r.states.RecordingState -- Done verification. Outcome: OK(verifiedCalls=[ApplicationPreferences(#305).setTheme(GAUGUIN), ApplicationPreferences(#305).setNightMode(DARK)])
+15:36:56.854 [Test worker @spec-scope-1537246781#136] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#308
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [nightMode]
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#308).getString(eq(nightMode), null()))
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#308).getString(eq(nightMode), null())
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [theme]
+15:36:56.854 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#308).getString(eq(theme), null()))
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#308).getString(eq(theme), null())
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setTheme(Theme)
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setTheme(Theme): [Ref(Theme@12c448c)]
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#308).setTheme(eq(GAUGUIN)))
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#308).setTheme(eq(GAUGUIN)))
+15:36:56.855 [Test worker @spec-scope-1537246781#136] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Theme name=child of #308#309
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#308).setTheme(eq(GAUGUIN))
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.855 [Test worker @spec-scope-1537246781#136] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setNightMode(NightMode)
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setNightMode(NightMode): [Ref(NightMode@728ce413)]
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#308).setNightMode(eq(LIGHT)))
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#308).setNightMode(eq(LIGHT)))
+15:36:56.856 [Test worker @spec-scope-1537246781#136] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for NightMode name=child of #308#310
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#308).setNightMode(eq(LIGHT))
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.856 [Test worker @spec-scope-1537246781#136] DEBUG i.m.i.r.states.AnsweringState -- Answering null on ApplicationPreferences(#308).getString(nightMode, null)
+15:36:56.856 [Test worker @spec-scope-1537246781#136] DEBUG i.m.i.r.states.AnsweringState -- Answering LIGHT on ApplicationPreferences(#308).getString(theme, null)
+15:36:56.856 [Test worker @spec-scope-1537246781#136] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on ApplicationPreferences(#308).setTheme(GAUGUIN)
+15:36:56.856 [Test worker @spec-scope-1537246781#136] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on ApplicationPreferences(#308).setNightMode(LIGHT)
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.CommonCallRecorder -- Starting verification
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.856 [Test worker @spec-scope-1537246781#136] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.857 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.857 [Test worker @spec-scope-1537246781#136] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.857 [Test worker @spec-scope-1537246781#136] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.857 [Test worker @spec-scope-1537246781#136] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.857 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.857 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setTheme(Theme)
+15:36:56.857 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setTheme(Theme): [Ref(Theme@12c448c)]
+15:36:56.857 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#308).setTheme(eq(GAUGUIN)))
+15:36:56.857 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #1: setNightMode(NightMode)
+15:36:56.857 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setNightMode(NightMode): [Ref(NightMode@728ce413)]
+15:36:56.857 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#308).setNightMode(eq(LIGHT)))
+15:36:56.857 [Test worker @spec-scope-1537246781#136] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#308).setTheme(eq(GAUGUIN)))
+15:36:56.857 [Test worker @spec-scope-1537246781#136] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#308).setNightMode(eq(LIGHT)))
+15:36:56.857 [Test worker @spec-scope-1537246781#136] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently:
+ApplicationPreferences(#308).setTheme(eq(GAUGUIN)), ApplicationPreferences(#308).setNightMode(eq(LIGHT))
+15:36:56.857 [Test worker @spec-scope-1537246781#136] TRACE i.m.i.r.states.RecordingState -- Done verification. Outcome: OK(verifiedCalls=[ApplicationPreferences(#308).setTheme(GAUGUIN), ApplicationPreferences(#308).setNightMode(LIGHT)])
+15:36:56.858 [Test worker @spec-scope-1537246781#137] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#311
+15:36:56.858 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:56.858 [Test worker @spec-scope-1537246781#137] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:56.858 [Test worker @spec-scope-1537246781#137] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:56.858 [Test worker @spec-scope-1537246781#137] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:56.858 [Test worker @spec-scope-1537246781#137] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:56.858 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.858 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.858 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [nightMode]
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#311).getString(eq(nightMode), null()))
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#311).getString(eq(nightMode), null())
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [theme]
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#311).getString(eq(theme), null()))
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#311).getString(eq(theme), null())
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setTheme(Theme)
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setTheme(Theme): [Ref(Theme@7d143e6e)]
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#311).setTheme(eq(DYNAMIC_COLORS)))
+15:36:56.859 [Test worker @spec-scope-1537246781#137] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#311).setTheme(eq(DYNAMIC_COLORS)))
+15:36:56.860 [Test worker @spec-scope-1537246781#137] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Theme name=child of #311#312
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#311).setTheme(eq(DYNAMIC_COLORS))
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setNightMode(NightMode)
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setNightMode(NightMode): [Ref(NightMode@728ce413)]
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#311).setNightMode(eq(LIGHT)))
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#311).setNightMode(eq(LIGHT)))
+15:36:56.860 [Test worker @spec-scope-1537246781#137] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for NightMode name=child of #311#313
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#311).setNightMode(eq(LIGHT))
+15:36:56.860 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.860 [Test worker @spec-scope-1537246781#137] DEBUG i.m.i.r.states.AnsweringState -- Answering null on ApplicationPreferences(#311).getString(nightMode, null)
+15:36:56.861 [Test worker @spec-scope-1537246781#137] DEBUG i.m.i.r.states.AnsweringState -- Answering DYNAMIC_COLORS on ApplicationPreferences(#311).getString(theme, null)
+15:36:56.861 [Test worker @spec-scope-1537246781#137] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on ApplicationPreferences(#311).setTheme(DYNAMIC_COLORS)
+15:36:56.861 [Test worker @spec-scope-1537246781#137] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on ApplicationPreferences(#311).setNightMode(LIGHT)
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.CommonCallRecorder -- Starting verification
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setTheme(Theme)
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setTheme(Theme): [Ref(Theme@7d143e6e)]
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#311).setTheme(eq(DYNAMIC_COLORS)))
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #1: setNightMode(NightMode)
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setNightMode(NightMode): [Ref(NightMode@728ce413)]
+15:36:56.861 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#311).setNightMode(eq(LIGHT)))
+15:36:56.862 [Test worker @spec-scope-1537246781#137] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#311).setTheme(eq(DYNAMIC_COLORS)))
+15:36:56.862 [Test worker @spec-scope-1537246781#137] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#311).setNightMode(eq(LIGHT)))
+15:36:56.862 [Test worker @spec-scope-1537246781#137] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently:
+ApplicationPreferences(#311).setTheme(eq(DYNAMIC_COLORS)), ApplicationPreferences(#311).setNightMode(eq(LIGHT))
+15:36:56.862 [Test worker @spec-scope-1537246781#137] TRACE i.m.i.r.states.RecordingState -- Done verification. Outcome: OK(verifiedCalls=[ApplicationPreferences(#311).setTheme(DYNAMIC_COLORS), ApplicationPreferences(#311).setNightMode(LIGHT)])
+15:36:56.863 [Test worker @spec-scope-1537246781#138] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#314
+15:36:56.863 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:56.863 [Test worker @spec-scope-1537246781#138] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:56.863 [Test worker @spec-scope-1537246781#138] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:56.863 [Test worker @spec-scope-1537246781#138] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:56.863 [Test worker @spec-scope-1537246781#138] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:56.863 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.863 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.863 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.863 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [nightMode]
+15:36:56.863 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.863 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#314).getString(eq(nightMode), null()))
+15:36:56.863 [Test worker @spec-scope-1537246781#138] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#314).getString(eq(nightMode), null())
+15:36:56.863 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.863 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [theme]
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#314).getString(eq(theme), null()))
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#314).getString(eq(theme), null())
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setTheme(Theme)
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setTheme(Theme): [Ref(Theme@12c448c)]
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#314).setTheme(eq(GAUGUIN)))
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#314).setTheme(eq(GAUGUIN)))
+15:36:56.864 [Test worker @spec-scope-1537246781#138] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Theme name=child of #314#315
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.864 [Test worker @spec-scope-1537246781#138] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#314).setTheme(eq(GAUGUIN))
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setNightMode(NightMode)
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setNightMode(NightMode): [Ref(NightMode@1eff0d64)]
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#314).setNightMode(eq(SYSTEM_DEFAULT)))
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#314).setNightMode(eq(SYSTEM_DEFAULT)))
+15:36:56.865 [Test worker @spec-scope-1537246781#138] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for NightMode name=child of #314#316
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#314).setNightMode(eq(SYSTEM_DEFAULT))
+15:36:56.865 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.865 [Test worker @spec-scope-1537246781#138] DEBUG i.m.i.r.states.AnsweringState -- Answering null on ApplicationPreferences(#314).getString(nightMode, null)
+15:36:56.865 [Test worker @spec-scope-1537246781#138] DEBUG i.m.i.r.states.AnsweringState -- Answering SYSTEM_DEFAULT on ApplicationPreferences(#314).getString(theme, null)
+15:36:56.866 [Test worker @spec-scope-1537246781#138] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on ApplicationPreferences(#314).setTheme(GAUGUIN)
+15:36:56.866 [Test worker @spec-scope-1537246781#138] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on ApplicationPreferences(#314).setNightMode(SYSTEM_DEFAULT)
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.CommonCallRecorder -- Starting verification
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Theme hashcode=64231d5d
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.Theme itself because it is final.
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.Theme via instantiator
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.Theme
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for NightMode hashcode=2ff35904
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.preferences.NightMode itself because it is final.
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.preferences.NightMode via instantiator
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.NightMode
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setTheme(Theme)
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setTheme(Theme): [Ref(Theme@12c448c)]
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#314).setTheme(eq(GAUGUIN)))
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #1: setNightMode(NightMode)
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setNightMode(NightMode): [Ref(NightMode@1eff0d64)]
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#314).setNightMode(eq(SYSTEM_DEFAULT)))
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#314).setTheme(eq(GAUGUIN)))
+15:36:56.866 [Test worker @spec-scope-1537246781#138] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#314).setNightMode(eq(SYSTEM_DEFAULT)))
+15:36:56.867 [Test worker @spec-scope-1537246781#138] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently:
+ApplicationPreferences(#314).setTheme(eq(GAUGUIN)), ApplicationPreferences(#314).setNightMode(eq(SYSTEM_DEFAULT))
+15:36:56.867 [Test worker @spec-scope-1537246781#138] TRACE i.m.i.r.states.RecordingState -- Done verification. Outcome: OK(verifiedCalls=[ApplicationPreferences(#314).setTheme(GAUGUIN), ApplicationPreferences(#314).setNightMode(SYSTEM_DEFAULT)])
+15:36:56.868 [Test worker @spec-scope-1537246781#139] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#317
+15:36:56.868 [Test worker @spec-scope-1537246781#139] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:56.868 [Test worker @spec-scope-1537246781#139] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:56.868 [Test worker @spec-scope-1537246781#139] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:56.868 [Test worker @spec-scope-1537246781#139] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:56.868 [Test worker @spec-scope-1537246781#139] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:56.868 [Test worker @spec-scope-1537246781#139] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.870 [Test worker @spec-scope-1537246781#139] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=4f0ee1eb
+15:36:56.870 [Test worker @spec-scope-1537246781#139] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getStringSet(String, Set)
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getStringSet(String, Set): [difficulties]
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getStringSet(String, Set): [null]
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#317).getStringSet(eq(difficulties), null()))
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#317).getStringSet(eq(difficulties), null()))
+15:36:56.871 [Test worker @spec-scope-1537246781#139] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Set name=child of #317#318
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=4f0ee1eb
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#317).getStringSet(eq(difficulties), null())
+15:36:56.871 [Test worker @spec-scope-1537246781#139] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.871 [Test worker @spec-scope-1537246781#139] DEBUG i.m.i.r.states.AnsweringState -- Answering [EASY] on ApplicationPreferences(#317).getStringSet(difficulties, null)
+15:36:56.872 [Test worker @spec-scope-1537246781#140] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#319
+15:36:56.872 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:56.872 [Test worker @spec-scope-1537246781#140] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=4f0ee1eb
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getStringSet(String, Set)
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getStringSet(String, Set): [difficulties]
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getStringSet(String, Set): [null]
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#319).getStringSet(eq(difficulties), null()))
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#319).getStringSet(eq(difficulties), null()))
+15:36:56.873 [Test worker @spec-scope-1537246781#140] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Set name=child of #319#320
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=4f0ee1eb
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#319).getStringSet(eq(difficulties), null())
+15:36:56.873 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.874 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.874 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.874 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.874 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [difficulty]
+15:36:56.874 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.874 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#319).getString(eq(difficulty), null()))
+15:36:56.874 [Test worker @spec-scope-1537246781#140] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#319).getString(eq(difficulty), null())
+15:36:56.874 [Test worker @spec-scope-1537246781#140] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.874 [Test worker @spec-scope-1537246781#140] DEBUG i.m.i.r.states.AnsweringState -- Answering null on ApplicationPreferences(#319).getStringSet(difficulties, null)
+15:36:56.874 [Test worker @spec-scope-1537246781#140] DEBUG i.m.i.r.states.AnsweringState -- Answering null on ApplicationPreferences(#319).getString(difficulty, null)
+15:36:56.875 [Test worker @spec-scope-1537246781#141] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#321
+15:36:56.875 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=4f0ee1eb
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getStringSet(String, Set)
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getStringSet(String, Set): [difficulties]
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getStringSet(String, Set): [null]
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#321).getStringSet(eq(difficulties), null()))
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#321).getStringSet(eq(difficulties), null()))
+15:36:56.876 [Test worker @spec-scope-1537246781#141] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Set name=child of #321#322
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=4f0ee1eb
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.876 [Test worker @spec-scope-1537246781#141] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.877 [Test worker @spec-scope-1537246781#141] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#321).getStringSet(eq(difficulties), null())
+15:36:56.877 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.877 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.877 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.877 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.877 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [difficulty]
+15:36:56.877 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.877 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#321).getString(eq(difficulty), null()))
+15:36:56.877 [Test worker @spec-scope-1537246781#141] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#321).getString(eq(difficulty), null())
+15:36:56.877 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.878 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.878 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=1267c7b1
+15:36:56.878 [Test worker @spec-scope-1537246781#141] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.878 [Test worker @spec-scope-1537246781#141] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.878 [Test worker @spec-scope-1537246781#141] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.878 [Test worker @spec-scope-1537246781#141] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.878 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.878 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setDifficultiesSetting(Set)
+15:36:56.878 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setDifficultiesSetting(Set): [Ref(SingletonSet@730b8793)]
+15:36:56.878 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#321).setDifficultiesSetting(eq([EASY])))
+15:36:56.878 [Test worker @spec-scope-1537246781#141] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#321).setDifficultiesSetting(eq([EASY])))
+15:36:56.878 [Test worker @spec-scope-1537246781#141] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Set name=child of #321#323
+15:36:56.878 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=1267c7b1
+15:36:56.878 [Test worker @spec-scope-1537246781#141] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.879 [Test worker @spec-scope-1537246781#141] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.879 [Test worker @spec-scope-1537246781#141] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.879 [Test worker @spec-scope-1537246781#141] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.879 [Test worker @spec-scope-1537246781#141] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#321).setDifficultiesSetting(eq([EASY]))
+15:36:56.879 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.879 [Test worker @spec-scope-1537246781#141] DEBUG i.m.i.r.states.AnsweringState -- Answering null on ApplicationPreferences(#321).getStringSet(difficulties, null)
+15:36:56.879 [Test worker @spec-scope-1537246781#141] DEBUG i.m.i.r.states.AnsweringState -- Answering EASY on ApplicationPreferences(#321).getString(difficulty, null)
+15:36:56.879 [Test worker @spec-scope-1537246781#141] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on ApplicationPreferences(#321).setDifficultiesSetting([EASY])
+15:36:56.879 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.CommonCallRecorder -- Starting verification
+15:36:56.879 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=1267c7b1
+15:36:56.879 [Test worker @spec-scope-1537246781#141] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.879 [Test worker @spec-scope-1537246781#141] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.879 [Test worker @spec-scope-1537246781#141] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.879 [Test worker @spec-scope-1537246781#141] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.879 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.880 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setDifficultiesSetting(Set)
+15:36:56.880 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setDifficultiesSetting(Set): [Ref(SingletonSet@730b8793)]
+15:36:56.880 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#321).setDifficultiesSetting(eq([EASY])))
+15:36:56.880 [Test worker @spec-scope-1537246781#141] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#321).setDifficultiesSetting(eq([EASY])))
+15:36:56.880 [Test worker @spec-scope-1537246781#141] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#321).setDifficultiesSetting(eq([EASY]))
+15:36:56.880 [Test worker @spec-scope-1537246781#141] TRACE i.m.i.r.states.RecordingState -- Done verification. Outcome: OK(verifiedCalls=[ApplicationPreferences(#321).setDifficultiesSetting([EASY])])
+15:36:56.881 [Test worker @spec-scope-1537246781#142] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#324
+15:36:56.881 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:56.881 [Test worker @spec-scope-1537246781#142] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:56.881 [Test worker @spec-scope-1537246781#142] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:56.881 [Test worker @spec-scope-1537246781#142] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:56.881 [Test worker @spec-scope-1537246781#142] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:56.881 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=4f0ee1eb
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getStringSet(String, Set)
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getStringSet(String, Set): [difficulties]
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getStringSet(String, Set): [null]
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#324).getStringSet(eq(difficulties), null()))
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#324).getStringSet(eq(difficulties), null()))
+15:36:56.882 [Test worker @spec-scope-1537246781#142] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Set name=child of #324#325
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=4f0ee1eb
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#324).getStringSet(eq(difficulties), null())
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.882 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [difficulty]
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#324).getString(eq(difficulty), null()))
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#324).getString(eq(difficulty), null())
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=1267c7b1
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setDifficultiesSetting(Set)
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setDifficultiesSetting(Set): [Ref(SingletonSet@4f00ee48)]
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#324).setDifficultiesSetting(eq([EXTREME])))
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#324).setDifficultiesSetting(eq([EXTREME])))
+15:36:56.883 [Test worker @spec-scope-1537246781#142] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Set name=child of #324#326
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=1267c7b1
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.883 [Test worker @spec-scope-1537246781#142] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.884 [Test worker @spec-scope-1537246781#142] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#324).setDifficultiesSetting(eq([EXTREME]))
+15:36:56.884 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.884 [Test worker @spec-scope-1537246781#142] DEBUG i.m.i.r.states.AnsweringState -- Answering null on ApplicationPreferences(#324).getStringSet(difficulties, null)
+15:36:56.884 [Test worker @spec-scope-1537246781#142] DEBUG i.m.i.r.states.AnsweringState -- Answering EXTREME on ApplicationPreferences(#324).getString(difficulty, null)
+15:36:56.884 [Test worker @spec-scope-1537246781#142] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on ApplicationPreferences(#324).setDifficultiesSetting([EXTREME])
+15:36:56.884 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.CommonCallRecorder -- Starting verification
+15:36:56.884 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=1267c7b1
+15:36:56.884 [Test worker @spec-scope-1537246781#142] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.884 [Test worker @spec-scope-1537246781#142] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.884 [Test worker @spec-scope-1537246781#142] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.884 [Test worker @spec-scope-1537246781#142] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.884 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.884 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setDifficultiesSetting(Set)
+15:36:56.884 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setDifficultiesSetting(Set): [Ref(SingletonSet@4f00ee48)]
+15:36:56.884 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#324).setDifficultiesSetting(eq([EXTREME])))
+15:36:56.884 [Test worker @spec-scope-1537246781#142] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#324).setDifficultiesSetting(eq([EXTREME])))
+15:36:56.884 [Test worker @spec-scope-1537246781#142] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#324).setDifficultiesSetting(eq([EXTREME]))
+15:36:56.884 [Test worker @spec-scope-1537246781#142] TRACE i.m.i.r.states.RecordingState -- Done verification. Outcome: OK(verifiedCalls=[ApplicationPreferences(#324).setDifficultiesSetting([EXTREME])])
+15:36:56.885 [Test worker @spec-scope-1537246781#143] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#327
+15:36:56.885 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:56.885 [Test worker @spec-scope-1537246781#143] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:56.885 [Test worker @spec-scope-1537246781#143] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:56.885 [Test worker @spec-scope-1537246781#143] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:56.885 [Test worker @spec-scope-1537246781#143] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:56.885 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=4f0ee1eb
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getStringSet(String, Set)
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getStringSet(String, Set): [difficulties]
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getStringSet(String, Set): [null]
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#327).getStringSet(eq(difficulties), null()))
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#327).getStringSet(eq(difficulties), null()))
+15:36:56.886 [Test worker @spec-scope-1537246781#143] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Set name=child of #327#328
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=4f0ee1eb
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#327).getStringSet(eq(difficulties), null())
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getString(String, String)
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of getString(String, String): [difficulty]
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 1 argument of getString(String, String): [null]
+15:36:56.886 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#327).getString(eq(difficulty), null()))
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#327).getString(eq(difficulty), null())
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=1267c7b1
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setDifficultiesSetting(Set)
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setDifficultiesSetting(Set): [Ref(LinkedHashSet@410f8fd3)]
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#327).setDifficultiesSetting(eq([VERY_EASY, EASY, MEDIUM, HARD, EXTREME])))
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#327).setDifficultiesSetting(eq([VERY_EASY, EASY, MEDIUM, HARD, EXTREME])))
+15:36:56.887 [Test worker @spec-scope-1537246781#143] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Set name=child of #327#329
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=1267c7b1
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#327).setDifficultiesSetting(eq([VERY_EASY, EASY, MEDIUM, HARD, EXTREME]))
+15:36:56.887 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.887 [Test worker @spec-scope-1537246781#143] DEBUG i.m.i.r.states.AnsweringState -- Answering null on ApplicationPreferences(#327).getStringSet(difficulties, null)
+15:36:56.887 [Test worker @spec-scope-1537246781#143] DEBUG i.m.i.r.states.AnsweringState -- Answering ANY on ApplicationPreferences(#327).getString(difficulty, null)
+15:36:56.888 [Test worker @spec-scope-1537246781#143] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on ApplicationPreferences(#327).setDifficultiesSetting([VERY_EASY, EASY, MEDIUM, HARD, EXTREME])
+15:36:56.888 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.CommonCallRecorder -- Starting verification
+15:36:56.888 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=1267c7b1
+15:36:56.888 [Test worker @spec-scope-1537246781#143] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:56.888 [Test worker @spec-scope-1537246781#143] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:56.888 [Test worker @spec-scope-1537246781#143] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:56.888 [Test worker @spec-scope-1537246781#143] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:56.888 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.888 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: setDifficultiesSetting(Set)
+15:36:56.888 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of setDifficultiesSetting(Set): [Ref(LinkedHashSet@410f8fd3)]
+15:36:56.888 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#327).setDifficultiesSetting(eq([VERY_EASY, EASY, MEDIUM, HARD, EXTREME])))
+15:36:56.888 [Test worker @spec-scope-1537246781#143] TRACE i.m.impl.recording.PermanentMocker -- Child search key: ApplicationPreferences(#327).setDifficultiesSetting(eq([VERY_EASY, EASY, MEDIUM, HARD, EXTREME])))
+15:36:56.888 [Test worker @spec-scope-1537246781#143] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#327).setDifficultiesSetting(eq([VERY_EASY, EASY, MEDIUM, HARD, EXTREME]))
+15:36:56.888 [Test worker @spec-scope-1537246781#143] TRACE i.m.i.r.states.RecordingState -- Done verification. Outcome: OK(verifiedCalls=[ApplicationPreferences(#327).setDifficultiesSetting([VERY_EASY, EASY, MEDIUM, HARD, EXTREME])])
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

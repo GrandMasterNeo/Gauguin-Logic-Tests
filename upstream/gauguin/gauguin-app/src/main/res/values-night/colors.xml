@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorCustomColor1">#e4c547</color>
+    <color name="colorOnCustomColor1">#3b2f00</color>
+    <color name="colorCustomColor1Container">#554600</color>
+    <color name="colorOnCustomColor1Container">#ffe171</color>
+    <color name="colorCustomColor2">#ffb3b0</color>
+    <color name="colorOnCustomColor2">#5f1317</color>
+    <color name="colorCustomColor2Container">#7e2a2b</color>
+    <color name="colorOnCustomColor2Container">#ffdad8</color>
+    <color name="md_theme_light_primaryContainer" tools:ignore="MissingDefaultResource">#CAF154</color>
+    <color name="md_theme_light_onPrimaryContainer" tools:ignore="MissingDefaultResource">#161E00</color>
+    <color name="md_theme_light_secondary" tools:ignore="MissingDefaultResource">#205FA6</color>
+    <color name="md_theme_light_onSecondary" tools:ignore="MissingDefaultResource">#FFFFFF</color>
+    <color name="md_theme_dark_surface_black" tools:ignore="MissingDefaultResource">#000000</color>
+</resources>

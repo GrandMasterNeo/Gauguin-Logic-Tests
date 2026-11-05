@@ -1,0 +1,35 @@
+{
+  "gauguin-core": {
+    "reports": 23,
+    "status": "reported",
+    "tests": 263,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "added_regression_tests": 0,
+    "failure_details": []
+  },
+  "gauguin-human-solver": {
+    "reports": 21,
+    "status": "reported",
+    "tests": 36,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0,
+    "added_regression_tests": 3,
+    "failure_details": [
+      {
+        "class": "org.piepmeyer.gauguin.difficulty.human.strategy.nishio.NishioWithPairsTest",
+        "test": "fillCells fills all cells as the grid got solved",
+        "message": "org.opentest4j.AssertionFailedError: expected:<true> but was:<false>",
+        "report": "TEST-org.piepmeyer.gauguin.difficulty.human.strategy.nishio.NishioWithPairsTest.xml"
+      },
+      {
+        "class": "org.piepmeyer.gauguin.difficulty.human.strategy.nishio.NishioWithPairsTest",
+        "test": "tryWithNishio results nishio solved",
+        "message": "org.opentest4j.AssertionFailedError: expected:<org.piepmeyer.gauguin.difficulty.human.strategy.nishio.NishioResult.Solved> but was:<org.piepmeyer.gauguin.difficulty.human.strategy.nishio.NishioResult.Contradictions>",
+        "report": "TEST-org.piepmeyer.gauguin.difficulty.human.strategy.nishio.NishioWithPairsTest.xml"
+      }
+    ]
+  }
+}

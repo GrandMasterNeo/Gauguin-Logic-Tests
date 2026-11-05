@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/navigation_drawer_picture"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/navigation_drawer_header_gauguin_the_siesta"
+        android:transitionName="app_picture_navigation_and_about_dialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/navigation_drawer_app_icon"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/navigation_drawer_app_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:srcCompat="@drawable/app_icon_stripped"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAccessibility="no"
+        />
+
+    <TextView
+        android:id="@+id/navigation_drawer_app_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toEndOf="@id/navigation_drawer_app_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="textStart"
+        android:text="@string/app_name"
+        android:textColor="@color/md_theme_dark_primaryFixed"
+        style="@style/TextAppearance.Material3.HeadlineMedium" />
+
+
+    <TextView
+        android:id="@+id/navigation_drawer_app_version"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="@id/navigation_drawer_picture"
+        app:layout_constraintBottom_toBottomOf="@id/navigation_drawer_picture"
+        android:textAlignment="textStart"
+        android:text="@string/about_version_name"
+        android:textColor="@color/md_theme_dark_primaryFixed"
+        style="@style/TextAppearance.Material3.LabelSmall" />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:id="@+id/navigation_drawer_choose_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:icon="@drawable/light_mode_24px"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
