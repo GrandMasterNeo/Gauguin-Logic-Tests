@@ -9,6 +9,7 @@ Resolved commit: `e7e9763d1cbd627e18e692b8fc9b623cdebedeaf`
 The complete tracked tree was imported using `git archive` into `upstream/gauguin`.
 Original license, legal notices, assets and source headers are retained. The initial
 import is a separate commit, allowing the six-file safety patch to be reviewed alone.
+The attachment ZIP SHA-256 is `7b5cc43680f5a88e720a5c6da420c9f32f09a4a1dc6adbd4f2cc3d782f9742ef`.
 The supplied patch is preserved in `provided/Combined_Source_Fixes.patch` and applied
 without changes. `provided/REPORT.md` contains historical claims from the supplied
 bundle; these are not fresh test results from this repository.

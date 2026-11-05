@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.difficulty.human.strategy.YWingTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:52.056Z" hostname="2a9d8987d813" time="0.009">
+  <properties/>
+  <testcase name="Y wing gets found in small grid" classname="org.piepmeyer.gauguin.difficulty.human.strategy.YWingTest" time="0.006"/>
+  <system-out><![CDATA[Grid:
+|  -  - |  -  - |  -  - |
+|  -  - |  -  - |  -  - |
+|  -  - |  -  - |  -  - |
+
+
+?[48;5;229m     1  0   [1,2]?[0m ?[48;5;194m     1  1 [1,2,3]?[0m ?[48;5;153m     1  2   [1,3]?[0m 
+?[48;5;190m     1  3 [1,2,3]?[0m ?[48;5;227m     1  4 [1,2,3]?[0m ?[48;5;218m     1  5 [1,2,3]?[0m 
+?[48;5;224m     1  6   [2,3]?[0m ?[48;5;185m     1  7 [1,2,3]?[0m ?[48;5;229m     1  8 [1,2,3]?[0m 
+Grid:
+|  -  - |  -  - |  -  - |
+|  -  - |  -  - |  -  - |
+|  -  - |  -  - |  -  - |
+
+
+?[48;5;229m     1  0   [1,2]?[0m ?[48;5;194m     1  1 [1,2,3]?[0m ?[48;5;153m     1  2   [1,3]?[0m 
+?[48;5;190m     1  3 [1,2,3]?[0m ?[48;5;227m     1  4 [1,2,3]?[0m ?[48;5;218m     1  5 [1,2,3]?[0m 
+?[48;5;224m     1  6   [2,3]?[0m ?[48;5;185m     1  7 [1,2,3]?[0m ?[48;5;229m     1  8   [1,2]?[0m 
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

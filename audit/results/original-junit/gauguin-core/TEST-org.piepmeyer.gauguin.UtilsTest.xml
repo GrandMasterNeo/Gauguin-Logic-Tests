@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.UtilsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:48.813Z" hostname="2a9d8987d813" time="0.344">
+  <properties/>
+  <testcase name="duration of zero shows minutes and seconds" classname="org.piepmeyer.gauguin.UtilsTest" time="0.084"/>
+  <testcase name="duration of 61 seconds shows 1:01" classname="org.piepmeyer.gauguin.UtilsTest" time="0.004"/>
+  <testcase name="duration less than one hour does not contain hour component" classname="org.piepmeyer.gauguin.UtilsTest" time="0.001"/>
+  <testcase name="duration with more than one hour does contain hour component" classname="org.piepmeyer.gauguin.UtilsTest" time="0.001"/>
+  <testcase name="duration with two-digit hours does contain two-digit hour component" classname="org.piepmeyer.gauguin.UtilsTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.creation.cage.TestGridCageType" tests="24" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:53.553Z" hostname="2a9d8987d813" time="0.099">
+  <properties/>
+  <testcase name="SINGLE" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.004"/>
+  <testcase name="DOUBLE_HORIZONTAL" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.0"/>
+  <testcase name="DOUBLE_VERTICAL" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.0"/>
+  <testcase name="TRIPLE_HORIZONTAL" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.0"/>
+  <testcase name="TRIPLE_VERTICAL" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.0"/>
+  <testcase name="FOUR_VERTICAL" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.0"/>
+  <testcase name="FOUR_HORIZONTAL" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.0"/>
+  <testcase name="ANGLE_LEFT_BOTTOM" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.0"/>
+  <testcase name="ANGLE_RIGHT_TOP" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.0"/>
+  <testcase name="ANGLE_LEFT_TOP" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.0"/>
+  <testcase name="ANGLE_RIGHT_BOTTOM" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.001"/>
+  <testcase name="SQUARE" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.001"/>
+  <testcase name="L_VERTICAL_SHORT_RIGHT_TOP" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.001"/>
+  <testcase name="L_HORIZONTAL_SHORT_LEFT_BOTTOM" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.0"/>
+  <testcase name="L_VERTICAL_SHORT_LEFT_BOTTOM" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.0"/>
+  <testcase name="L_HORIZONTAL_SHORT_RIGHT_BOTTOM" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.001"/>
+  <testcase name="L_VERTICAL_SHORT_RIGHT_BOTTOM" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.0"/>
+  <testcase name="L_HORIZONTAL_SHORT_RIGHT_TOP" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.001"/>
+  <testcase name="L_HORIZONTAL_SHORT_LEFT_TOP" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.0"/>
+  <testcase name="L_VERTICAL_SHORT_LEFT_TOP" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.0"/>
+  <testcase name="TETRIS_HORIZONTAL_LEFT_TOP" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.0"/>
+  <testcase name="TETRIS_VERTICAL_LEFT_TOP" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.001"/>
+  <testcase name="TETRIS_HORIZONTAL_RIGHT_TOP" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.001"/>
+  <testcase name="classic types" classname="org.piepmeyer.gauguin.creation.cage.TestGridCageType" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.difficulty.human.strategy.HiddenPairTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:51.714Z" hostname="2a9d8987d813" time="0.011">
+  <properties/>
+  <testcase name="1x6 grid" classname="org.piepmeyer.gauguin.difficulty.human.strategy.HiddenPairTest" time="0.007"/>
+  <system-out><![CDATA[Grid:
+|  -  - |
+|  -  - |
+|  -  - |
+|  -  - |
+|  -  - |
+|  -  - |
+
+
+?[48;5;229m     2  0 [1,2,3,4,5,6]?[0m 
+?[48;5;194m     4  1 [1,2,3,4,5,6]?[0m 
+?[48;5;153m   12x  2     [2,3,4,6]?[0m 
+?[48;5;153m        2     [2,3,4,6]?[0m 
+?[48;5;190m     4  3         [2,3]?[0m 
+?[48;5;227m     4  4       [1,2,3]?[0m 
+Grid:
+|  -  - |
+|  -  - |
+|  -  - |
+|  -  - |
+|  -  - |
+|  -  - |
+
+
+?[48;5;229m     2  0 [1,4,5,6]?[0m 
+?[48;5;194m     4  1 [1,4,5,6]?[0m 
+?[48;5;153m   12x  2 [2,3,4,6]?[0m 
+?[48;5;153m        2 [2,3,4,6]?[0m 
+?[48;5;190m     4  3     [2,3]?[0m 
+?[48;5;227m     4  4       [1]?[0m 
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

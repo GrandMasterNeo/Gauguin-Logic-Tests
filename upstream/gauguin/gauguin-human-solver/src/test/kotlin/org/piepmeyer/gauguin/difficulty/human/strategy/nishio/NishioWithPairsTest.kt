@@ -25,19 +25,23 @@ class NishioWithPairsTest :
             solver.tryWithNishio()::class shouldBe NishioResult.Contradictions::class
         }
 
-        test("fillCells fills all cells as the grid got solved") {
+        test("fillCells places a proven value without committing a solved speculative branch") {
             val grid = createGridToBeSolvedViaNishio()
 
             println(grid)
 
-            val expectedChangedCells = grid.cells.filter { !it.isUserValueSet }
+            val before = grid.cells.map { it.userValue to it.possibles }
+            val originallyPlacedCells = grid.cells.filter { it.isUserValueSet }.toSet()
 
             val solver = NishioWithPairs()
 
             val solverResult = solver.fillCellsWithNewCacheReturningDetails(grid)
             solverResult::class shouldBe HumanSolverStrategyResult.Success::class
 
-            grid.cells.all { it.isUserValueSet } shouldBe true
+            grid.cells[0].userValue shouldBe 1
+            grid.cells.filter { it.isUserValueSet }.toSet() shouldBe originallyPlacedCells + grid.cells[0]
+            val expectedChangedCells =
+                grid.cells.filterIndexed { index, cell -> before[index] != (cell.userValue to cell.possibles) }
 
             withClue("solver details") {
                 (solverResult as HumanSolverStrategyResult.Success).changedCells shouldContainExactlyInAnyOrder expectedChangedCells
@@ -98,6 +102,8 @@ private fun createGridToBeSolvedViaNishio(): Grid {
     grid.cells[3].possibles = setOf(1, 3)
     grid.cells[4].possibles = setOf(2, 4)
     grid.cells[5].userValue = 1
+    // A filled single cage is validated against its stored solution value by the production core.
+    grid.cells[6].value = 3
     grid.cells[6].userValue = 3
     grid.cells[7].possibles = setOf(2, 4)
     grid.cells[8].userValue = 3
