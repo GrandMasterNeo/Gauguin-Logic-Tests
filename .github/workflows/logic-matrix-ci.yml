@@ -32,6 +32,13 @@ jobs:
         env:
           GAUGUIN_AUDIT_SIZE: ${{ matrix.size }}
         run: ./gradlew :gauguin-human-solver:integrationTest --tests "*HumanLogic*MatrixTest" --no-daemon --stacktrace -Pbuildserver
+      - name: Sweep ten Very Easy and Easy samples on default 9x9 to 11x11 generator
+        if: matrix.size != 4
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_AUDIT_SIZE: ${{ matrix.size }}
+          GAUGUIN_SWEEP_SEEDS: '10'
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests "*DefaultDifficultySweepTest" --no-daemon --stacktrace -Pbuildserver
       - name: Preserve JUnit and test reports
         if: always()
         uses: actions/upload-artifact@v4
