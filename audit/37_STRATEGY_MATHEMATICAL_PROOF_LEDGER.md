@@ -59,7 +59,7 @@ not certifications of implementation correctness.
 | 3 | `ASinglePossibleInLine` | In a complete line, an unplaced digit with exactly one remaining candidate position is forced there; **must exclude digits already placed elsewhere in line**. | L1, L3 |
 | 4 | `ARemoveImpossibleCombinationInLineBecauseOfSingleCell` | Reject an otherwise available cage candidate when its unique cage tuple would consume every candidate of a different cell in the same line, or overlap a value forced into that line by another cage. | L1–L3 |
 | 5 | `ANakedPair` | Two unfilled cells with the same two candidates in an all-different line use both; remove them from other line cells. | L1, L4 |
-| 6 | `APossibleMustBeContainedInSingleCageInLine` | When only one cage can supply mandatory digit `d` in a complete line, restrict that cage to tuples placing `d` in the line. | L2, L3 |
+| 6 | `APossibleMustBeContainedInSingleCageInLine` | When only one cage can supply a mandatory **not-yet-placed** digit `d` in a complete line, restrict that cage to tuples placing `d` in the line. Already-placed digits must be excluded explicitly. | L2, L3 |
 | 7 | `APossibleMustBeContainedInSingleCageInLineDeleteFromOtherCages` | If every viable tuple of a cage places `d` in a line, no outside cell of the same line may use `d`. | L2, L3 |
 | 8 | `ANakedTriple` | Three unfilled line cells whose candidate union has cardinality three exhaust those three digits. | L1, L4 |
 | 9 | `ANakedQuartet` | Four unfilled line cells whose candidate union has cardinality four exhaust those four digits. | L1, L4 |
@@ -106,6 +106,12 @@ not certifications of implementation correctness.
   a digit already placed in a line could be placed again. A guard and a focused
   regression test have been added on the draft branch; their final CI outcome
   must be inspected.
+- A subsequent enumerated run exposed a second **real conditional flaw** in
+  `APossibleMustBeContainedInSingleCageInLine`: in a partially filled line
+  with stale candidate masks, it could force a digit already placed elsewhere
+  into a second cage. At variation 10, this removed **7 of 22** feasible
+  complete Latin squares. The strategy now explicitly skips digits already
+  placed in that line. The corrected enumerated test is awaiting verification.
 - A separate independent reference oracle compares the core cage combination
   generator to exhaustive arithmetic and row/column geometry. Until that
   oracle passes, **L2 remains an unverified prerequisite**, not an axiom we
