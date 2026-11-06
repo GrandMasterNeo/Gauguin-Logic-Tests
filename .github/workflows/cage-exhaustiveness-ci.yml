@@ -14,7 +14,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        size: [4, 9, 11]
+        include:
+          - { size: 4, cage_type: "" }
+          - { size: 9, cage_type: "" }
+          - { size: 11, cage_type: DOUBLE_HORIZONTAL }
+          - { size: 11, cage_type: TRIPLE_HORIZONTAL }
+          - { size: 11, cage_type: ANGLE_RIGHT_BOTTOM }
+          - { size: 11, cage_type: SQUARE }
+          - { size: 11, cage_type: FOUR_HORIZONTAL }
+    name: cage-oracle (${{ matrix.size }}, ${{ matrix.cage_type || 'all geometries' }})
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -27,12 +35,13 @@ jobs:
         working-directory: upstream/gauguin
         env:
           GAUGUIN_CAGE_SIZE: ${{ matrix.size }}
+          GAUGUIN_CAGE_TYPE: ${{ matrix.cage_type }}
         run: ./gradlew :gauguin-human-solver:integrationTest --tests "*CageCombinationExhaustivenessTest" --no-daemon --stacktrace -Pbuildserver
       - name: Preserve reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cage-exhaustiveness-${{ matrix.size }}
+          name: cage-exhaustiveness-${{ matrix.size }}-${{ matrix.cage_type || 'all' }}
           path: |
             upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
             upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
