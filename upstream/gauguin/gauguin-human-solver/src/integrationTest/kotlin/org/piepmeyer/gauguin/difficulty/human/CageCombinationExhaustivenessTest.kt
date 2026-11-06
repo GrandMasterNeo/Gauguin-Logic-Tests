@@ -22,7 +22,7 @@ import org.piepmeyer.gauguin.options.GameVariant
  * For each tested geometry, enumerates every possible tuple, independently
  * checks row/column clashes by coordinate (rather than using the code's
  * cageType.satisfiesConstraints function), and groups targets by arithmetic
- * result. Then checks selected target groups against GridSingleCageCreator.
+ * result. Then checks every reachable target group against GridSingleCageCreator.
  *
  * This tests small/large square sizes, 1-based, 0-based and noncontiguous
  * prime digits and includes product-0 cages where applicable.
@@ -99,9 +99,13 @@ class CageCombinationExhaustivenessTest :
             "Unknown cage geometry filter: $typeFilter"
         }
         val selectedTypes = cageTypes.filter { typeFilter == null || it.name == typeFilter }
+        val digitFilter = System.getenv("GAUGUIN_CAGE_DIGITS")?.takeIf { it.isNotBlank() }
+        require(digitFilter == null || digitSettings.any { it.name == digitFilter }) {
+            "Unknown digit setting filter: $digitFilter"
+        }
 
         for (size in listOf(4, 9, 11).filter { sizeFilter == null || it == sizeFilter }) {
-            for (digitSetting in digitSettings) {
+            for (digitSetting in digitSettings.filter { digitFilter == null || it.name == digitFilter }) {
                 test("independently exhaustive cage tuples size=$size digits=$digitSetting") {
                     var checkedTargets = 0
                     var validatedLegalTuples = 0
@@ -147,18 +151,7 @@ class CageCombinationExhaustivenessTest :
                                 }
                             }.filter { it >= 0 }.distinct().sorted()
 
-                            val picked = listOfNotNull(
-                                results.firstOrNull(),
-                                results.getOrNull(results.size / 4),
-                                results.getOrNull(results.size / 2),
-                                results.getOrNull(results.size * 3 / 4),
-                                results.lastOrNull(),
-                                0.takeIf { it in results },
-                                200.takeIf { it in results },
-                                220.takeIf { it in results },
-                            ).distinct()
-
-                            for (target in picked) {
+                            for (target in results) {
                                 val cage = GridCage.createWithCells(
                                     0, grid, action,
                                     grid.getValidCellAt(0, 0), type,
@@ -187,7 +180,7 @@ class CageCombinationExhaustivenessTest :
                     }
                     println(
                         "CAGE_EXHAUSTIVENESS size=$size digits=$digitSetting " +
-                            "cageType=${typeFilter ?: "ALL"} checkedTargetGroups=$checkedTargets " +
+                            "cageType=${typeFilter ?: "ALL"} digitFilter=${digitFilter ?: "ALL"} checkedTargetGroups=$checkedTargets " +
                             "independentlyEnumeratedLegalTuples=$validatedLegalTuples",
                     )
                 }
