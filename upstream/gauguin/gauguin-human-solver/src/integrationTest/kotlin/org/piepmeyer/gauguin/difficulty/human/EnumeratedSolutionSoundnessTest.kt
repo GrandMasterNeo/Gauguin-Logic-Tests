@@ -135,6 +135,7 @@ class EnumeratedSolutionSoundnessTest :
                         cell.possibles = masks[cell.cellNumber]
                         if (cell.cellNumber in placedIndices) {
                             cell.userValue = required[0][cell.cellNumber]
+                            cell.possibles = emptySet()
                         }
                     }
                     val cache = HumanSolverCacheImpl.createValidatedCache(grid)
