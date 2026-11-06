@@ -26,7 +26,7 @@ jobs:
       - name: Check all 37 strategies against two simultaneously valid solutions
         working-directory: upstream/gauguin
         env:
-          GAUGUIN_TWO_SOLUTIONS_VARIATIONS: '12'
+          GAUGUIN_TWO_SOLUTIONS_VARIATIONS: '96'
         run: ./gradlew :gauguin-human-solver:integrationTest --tests "*AllStrategyTwoSolutionsOracleTest" --no-daemon --stacktrace -Pbuildserver
       - name: Archive JUnit reports
         if: always()
