@@ -5,6 +5,7 @@ on:
     paths:
       - 'upstream/gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/EnumeratedSolutionSoundnessTest.kt'
       - 'upstream/gauguin/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/strategy/**'
+      - 'upstream/gauguin/gauguin-human-solver/src/test/kotlin/org/piepmeyer/gauguin/difficulty/human/strategy/SinglePossibleInLineStaleCandidateTest.kt'
       - '.github/workflows/enumerated-soundness-ci.yml'
   workflow_dispatch:
 permissions:
@@ -19,6 +20,9 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
+      - name: Prevent duplicate hidden-single placement with stale candidates
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-human-solver:test --tests "*SinglePossibleInLineStaleCandidateTest" --no-daemon --stacktrace -Pbuildserver
       - name: Enumerate 4x4 Latin squares and verify every feasible solution after each strategy
         working-directory: upstream/gauguin
         env:
