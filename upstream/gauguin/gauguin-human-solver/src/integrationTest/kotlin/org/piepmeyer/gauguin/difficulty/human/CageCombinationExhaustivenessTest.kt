@@ -94,6 +94,11 @@ class CageCombinationExhaustivenessTest :
         // board-size/digit-set cases preserves coverage and pinpoints failure.
         val sizeFilter = System.getenv("GAUGUIN_CAGE_SIZE")?.toIntOrNull()
         require(sizeFilter == null || sizeFilter in setOf(4, 9, 11))
+        val typeFilter = System.getenv("GAUGUIN_CAGE_TYPE")?.takeIf { it.isNotBlank() }
+        require(typeFilter == null || cageTypes.any { it.name == typeFilter }) {
+            "Unknown cage geometry filter: $typeFilter"
+        }
+        val selectedTypes = cageTypes.filter { typeFilter == null || it.name == typeFilter }
 
         for (size in listOf(4, 9, 11).filter { sizeFilter == null || it == sizeFilter }) {
             for (digitSetting in digitSettings) {
@@ -108,7 +113,7 @@ class CageCombinationExhaustivenessTest :
                     val digits = variant.possibleDigits.sorted()
                     val grid = Grid(variant)
 
-                    for (type in cageTypes) {
+                    for (type in selectedTypes) {
                         val valid = allValidTuples(type, digits)
                         validatedLegalTuples += valid.size
                         (valid.isNotEmpty()) shouldBe true
@@ -182,7 +187,7 @@ class CageCombinationExhaustivenessTest :
                     }
                     println(
                         "CAGE_EXHAUSTIVENESS size=$size digits=$digitSetting " +
-                            "checkedTargetGroups=$checkedTargets " +
+                            "cageType=${typeFilter ?: "ALL"} checkedTargetGroups=$checkedTargets " +
                             "independentlyEnumeratedLegalTuples=$validatedLegalTuples",
                     )
                 }
