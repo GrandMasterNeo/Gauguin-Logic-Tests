@@ -11,6 +11,10 @@ permissions:
   contents: read
 jobs:
   cage-oracle:
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [4, 9, 11]
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -19,14 +23,16 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - name: Compare cage generation against independently enumerated legal tuples
+      - name: Compare independently enumerated cage tuples for size ${{ matrix.size }}
         working-directory: upstream/gauguin
+        env:
+          GAUGUIN_CAGE_SIZE: ${{ matrix.size }}
         run: ./gradlew :gauguin-human-solver:integrationTest --tests "*CageCombinationExhaustivenessTest" --no-daemon --stacktrace -Pbuildserver
       - name: Preserve reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cage-exhaustiveness
+          name: cage-exhaustiveness-${{ matrix.size }}
           path: |
             upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
             upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
