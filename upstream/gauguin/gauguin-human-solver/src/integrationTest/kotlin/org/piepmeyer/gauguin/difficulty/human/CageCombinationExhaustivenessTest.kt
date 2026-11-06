@@ -87,12 +87,20 @@ class CageCombinationExhaustivenessTest :
                 else -> false
             }
 
-        test("cage combination cache matches independent arithmetic and geometry oracle through 11x11") {
-            var checkedTargets = 0
-            var validatedLegalTuples = 0
+        // Kotest applies a 10-minute timeout to an individual test. The
+        // old monolithic 4/9/11 x three-digit-sets test completed all 513
+        // target comparisons, then exceeded that timeout while finalizing.
+        // Splitting the same exhaustive checks into separately reported
+        // board-size/digit-set cases preserves coverage and pinpoints failure.
+        val sizeFilter = System.getenv("GAUGUIN_CAGE_SIZE")?.toIntOrNull()
+        require(sizeFilter == null || sizeFilter in setOf(4, 9, 11))
 
-            for (size in listOf(4, 9, 11)) {
-                for (digitSetting in digitSettings) {
+        for (size in listOf(4, 9, 11).filter { sizeFilter == null || it == sizeFilter }) {
+            for (digitSetting in digitSettings) {
+                test("independently exhaustive cage tuples size=$size digits=$digitSetting") {
+                    var checkedTargets = 0
+                    var validatedLegalTuples = 0
+
                     val variant = GameVariant(
                         GridSize(size, size),
                         GameOptionsVariant.createClassic(digitSetting),
@@ -168,14 +176,16 @@ class CageCombinationExhaustivenessTest :
                             }
                         }
                     }
+
+                    withClue("tested all requested operations and targets size=$size digits=$digitSetting") {
+                        (checkedTargets > 0) shouldBe true
+                    }
+                    println(
+                        "CAGE_EXHAUSTIVENESS size=$size digits=$digitSetting " +
+                            "checkedTargetGroups=$checkedTargets " +
+                            "independentlyEnumeratedLegalTuples=$validatedLegalTuples",
+                    )
                 }
             }
-
-            println(
-                "CAGE_EXHAUSTIVENESS checkedTargetGroups=$checkedTargets " +
-                    "independentlyEnumeratedLegalTuples=$validatedLegalTuples " +
-                    "boardSizes=[4,9,11] " +
-                    "digitSets=[ONE,ZERO,PRIMES]",
-            )
         }
     })
