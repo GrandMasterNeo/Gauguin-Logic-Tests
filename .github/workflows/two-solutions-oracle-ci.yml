@@ -4,6 +4,8 @@ on:
     branches: [logic-safety-review]
     paths:
       - 'upstream/gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/AllStrategyTwoSolutionsOracleTest.kt'
+      - 'upstream/gauguin/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/strategy/nishio/NishioCore.kt'
+      - 'upstream/gauguin/gauguin-human-solver/src/test/kotlin/org/piepmeyer/gauguin/difficulty/human/strategy/nishio/NishioMissingContradictionRegressionTest.kt'
       - '.github/workflows/two-solutions-oracle-ci.yml'
   workflow_dispatch:
 permissions:
@@ -18,6 +20,9 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
+      - name: Verify missed contradiction regressions in both Nishio strategies
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-human-solver:test --tests "*NishioMissingContradictionRegressionTest" --no-daemon --stacktrace -Pbuildserver
       - name: Check all 37 strategies against two simultaneously valid solutions
         working-directory: upstream/gauguin
         env:
