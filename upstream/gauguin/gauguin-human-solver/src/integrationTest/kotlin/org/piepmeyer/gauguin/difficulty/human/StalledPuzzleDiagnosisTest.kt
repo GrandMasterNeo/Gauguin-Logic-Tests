@@ -73,9 +73,6 @@ class StalledPuzzleDiagnosisTest :
                         val noTrialGrid = grid.copyWithEmptyUserValues()
                         val noTrialSolver = HumanSolver(noTrialGrid, validate = true, avoidNishio = true)
                         noTrialSolver.prepareGrid()
-                        val noTrialTime = measureNanoTime {
-                            // run below separately so both results can be logged
-                        }
                         val withoutTrial = noTrialSolver.solveAndCalculateDifficulty(avoidReveal = true)
 
                         val fullGrid = grid.copyWithEmptyUserValues()
