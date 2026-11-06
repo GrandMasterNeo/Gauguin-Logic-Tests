@@ -15,14 +15,28 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { size: 4, cage_type: "" }
-          - { size: 9, cage_type: "" }
-          - { size: 11, cage_type: DOUBLE_HORIZONTAL }
-          - { size: 11, cage_type: TRIPLE_HORIZONTAL }
-          - { size: 11, cage_type: ANGLE_RIGHT_BOTTOM }
-          - { size: 11, cage_type: SQUARE }
-          - { size: 11, cage_type: FOUR_HORIZONTAL }
-    name: cage-oracle (${{ matrix.size }}, ${{ matrix.cage_type || 'all geometries' }})
+          - { size: 4, cage_type: "", digits: FIRST_DIGIT_ONE }
+          - { size: 4, cage_type: "", digits: FIRST_DIGIT_ZERO }
+          - { size: 4, cage_type: "", digits: PRIME_NUMBERS }
+          - { size: 9, cage_type: "", digits: FIRST_DIGIT_ONE }
+          - { size: 9, cage_type: "", digits: FIRST_DIGIT_ZERO }
+          - { size: 9, cage_type: "", digits: PRIME_NUMBERS }
+          - { size: 11, cage_type: "DOUBLE_HORIZONTAL", digits: FIRST_DIGIT_ONE }
+          - { size: 11, cage_type: "TRIPLE_HORIZONTAL", digits: FIRST_DIGIT_ONE }
+          - { size: 11, cage_type: "ANGLE_RIGHT_BOTTOM", digits: FIRST_DIGIT_ONE }
+          - { size: 11, cage_type: "SQUARE", digits: FIRST_DIGIT_ONE }
+          - { size: 11, cage_type: "FOUR_HORIZONTAL", digits: FIRST_DIGIT_ONE }
+          - { size: 11, cage_type: "DOUBLE_HORIZONTAL", digits: FIRST_DIGIT_ZERO }
+          - { size: 11, cage_type: "TRIPLE_HORIZONTAL", digits: FIRST_DIGIT_ZERO }
+          - { size: 11, cage_type: "ANGLE_RIGHT_BOTTOM", digits: FIRST_DIGIT_ZERO }
+          - { size: 11, cage_type: "SQUARE", digits: FIRST_DIGIT_ZERO }
+          - { size: 11, cage_type: "FOUR_HORIZONTAL", digits: FIRST_DIGIT_ZERO }
+          - { size: 11, cage_type: "DOUBLE_HORIZONTAL", digits: PRIME_NUMBERS }
+          - { size: 11, cage_type: "TRIPLE_HORIZONTAL", digits: PRIME_NUMBERS }
+          - { size: 11, cage_type: "ANGLE_RIGHT_BOTTOM", digits: PRIME_NUMBERS }
+          - { size: 11, cage_type: "SQUARE", digits: PRIME_NUMBERS }
+          - { size: 11, cage_type: "FOUR_HORIZONTAL", digits: PRIME_NUMBERS }
+    name: cage-oracle (${{ matrix.size }}, ${{ matrix.cage_type || 'all geometries' }}, ${{ matrix.digits }})
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -36,12 +50,13 @@ jobs:
         env:
           GAUGUIN_CAGE_SIZE: ${{ matrix.size }}
           GAUGUIN_CAGE_TYPE: ${{ matrix.cage_type }}
+          GAUGUIN_CAGE_DIGITS: ${{ matrix.digits }}
         run: ./gradlew :gauguin-human-solver:integrationTest --tests "*CageCombinationExhaustivenessTest" --no-daemon --stacktrace -Pbuildserver
       - name: Preserve reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cage-exhaustiveness-${{ matrix.size }}-${{ matrix.cage_type || 'all' }}
+          name: cage-exhaustiveness-${{ matrix.size }}-${{ matrix.cage_type || 'all' }}-${{ matrix.digits }}
           path: |
             upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
             upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
