@@ -1,0 +1,40 @@
+name: Advanced human strategy safety (Medium Hard Extreme)
+on:
+  pull_request:
+    branches: [logic-safety-review]
+    paths:
+      - 'upstream/gauguin/gauguin-human-solver/**'
+      - '.github/workflows/advanced-logic-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  strategy-soundness:
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [9, 10, 11]
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Trace and assert every deduction on Medium Hard Extreme
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_AUDIT_SIZE: ${{ matrix.size }}
+          GAUGUIN_ADVANCED_SEEDS: '2'
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests "*AdvancedDifficultyStrategySafetyTest" --no-daemon --stacktrace -Pbuildserver
+      - name: Preserve diagnostic test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: advanced-strategy-${{ matrix.size }}
+          path: |
+            upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
+            upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
+          if-no-files-found: warn
