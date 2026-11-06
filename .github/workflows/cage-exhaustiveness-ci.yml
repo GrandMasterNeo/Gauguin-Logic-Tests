@@ -1,0 +1,33 @@
+name: Independent cage-combination exhaustiveness
+on:
+  pull_request:
+    branches: [logic-safety-review]
+    paths:
+      - 'upstream/gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/CageCombinationExhaustivenessTest.kt'
+      - 'upstream/gauguin/gauguin-core/src/main/kotlin/org/piepmeyer/gauguin/creation/cage/**'
+      - '.github/workflows/cage-exhaustiveness-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cage-oracle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Compare cage generation against independently enumerated legal tuples
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests "*CageCombinationExhaustivenessTest" --no-daemon --stacktrace -Pbuildserver
+      - name: Preserve reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cage-exhaustiveness
+          path: |
+            upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
+            upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
+          if-no-files-found: warn
