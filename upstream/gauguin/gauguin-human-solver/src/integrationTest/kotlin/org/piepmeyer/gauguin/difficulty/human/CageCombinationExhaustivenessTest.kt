@@ -104,10 +104,15 @@ class CageCombinationExhaustivenessTest :
             "Unknown digit setting filter: $digitFilter"
         }
 
+        val shardCount = System.getenv("GAUGUIN_CAGE_SHARD_COUNT")?.toIntOrNull() ?: 1
+        val shardIndex = System.getenv("GAUGUIN_CAGE_SHARD_INDEX")?.toIntOrNull() ?: 0
+        require(shardCount in 1..16 && shardIndex in 0 until shardCount)
+
         for (size in listOf(4, 9, 11).filter { sizeFilter == null || it == sizeFilter }) {
             for (digitSetting in digitSettings.filter { digitFilter == null || it.name == digitFilter }) {
                 test("independently exhaustive cage tuples size=$size digits=$digitSetting") {
                     var checkedTargets = 0
+                    var targetOrdinal = 0
                     var validatedLegalTuples = 0
 
                     val variant = GameVariant(
@@ -152,6 +157,7 @@ class CageCombinationExhaustivenessTest :
                             }.filter { it >= 0 }.distinct().sorted()
 
                             for (target in results) {
+                                if (targetOrdinal++ % shardCount != shardIndex) continue
                                 val cage = GridCage.createWithCells(
                                     0, grid, action,
                                     grid.getValidCellAt(0, 0), type,
@@ -180,7 +186,7 @@ class CageCombinationExhaustivenessTest :
                     }
                     println(
                         "CAGE_EXHAUSTIVENESS size=$size digits=$digitSetting " +
-                            "cageType=${typeFilter ?: "ALL"} digitFilter=${digitFilter ?: "ALL"} checkedTargetGroups=$checkedTargets " +
+                            "cageType=${typeFilter ?: "ALL"} digitFilter=${digitFilter ?: "ALL"} shard=$shardIndex/$shardCount checkedTargetGroups=$checkedTargets " +
                             "independentlyEnumeratedLegalTuples=$validatedLegalTuples",
                     )
                 }
