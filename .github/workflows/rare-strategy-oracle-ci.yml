@@ -1,0 +1,39 @@
+name: Rare strategy candidate oracle
+on:
+  pull_request:
+    branches: [logic-safety-review]
+    paths:
+      - 'upstream/gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/RareStrategyCandidateOracleTest.kt'
+      - '.github/workflows/rare-strategy-oracle-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  oracle:
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [9, 11]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Challenge 13 previously unexercised strategies with valid solution candidate masks
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_AUDIT_SIZE: ${{ matrix.size }}
+          GAUGUIN_ORACLE_VARIATIONS: '30'
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests "*RareStrategyCandidateOracleTest" --no-daemon --stacktrace -Pbuildserver
+      - name: Preserve JUnit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rare-strategy-oracle-${{ matrix.size }}
+          path: |
+            upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
+            upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
+          if-no-files-found: warn
