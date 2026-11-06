@@ -4,6 +4,7 @@ on:
     branches: [logic-safety-review]
     paths:
       - 'upstream/gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/RareStrategyCandidateOracleTest.kt'
+      - 'upstream/gauguin/gauguin-human-solver/src/test/kotlin/org/piepmeyer/gauguin/difficulty/human/strategy/XWingOracleRegressionTest.kt'
       - '.github/workflows/rare-strategy-oracle-ci.yml'
   workflow_dispatch:
 permissions:
@@ -22,6 +23,10 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
+      - name: Exercise both X-Wing rectangle orientations against a complete solution
+        if: matrix.size == 9
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-human-solver:test --tests "*XWingOracleRegressionTest" --no-daemon --stacktrace -Pbuildserver
       - name: Challenge 13 previously unexercised strategies with valid solution candidate masks
         working-directory: upstream/gauguin
         env:
