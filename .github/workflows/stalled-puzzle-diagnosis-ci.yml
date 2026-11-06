@@ -1,0 +1,39 @@
+name: Stalled puzzle diagnosis (no production changes)
+on:
+  pull_request:
+    branches: [logic-safety-review]
+    paths:
+      - 'upstream/gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/StalledPuzzleDiagnosisTest.kt'
+      - '.github/workflows/stalled-puzzle-diagnosis-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  stalled-puzzles:
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [9, 10, 11]
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Reproduce stalled case using production HumanSolver and sample human-solvability gate
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_STALL_SIZE: ${{ matrix.size }}
+          GAUGUIN_STALL_RETRIES: '2'
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests "*StalledPuzzleDiagnosisTest" --no-daemon --stacktrace -Pbuildserver
+      - name: Archive reports and console logs as JUnit attachments
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stalled-diagnosis-${{ matrix.size }}
+          path: |
+            upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
+            upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
+          if-no-files-found: warn
