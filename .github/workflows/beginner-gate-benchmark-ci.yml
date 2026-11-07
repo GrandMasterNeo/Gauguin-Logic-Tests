@@ -1,0 +1,69 @@
+name: Beginner human-solvability gate benchmark (diagnostic)
+on:
+  push:
+    branches: [logic-matrix-audit]
+    paths:
+      - 'upstream/gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/BeginnerGateBenchmarkTest.kt'
+      - '.github/workflows/beginner-gate-benchmark-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  gate-benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Measure bounded 10x10 Easy generation and no-trial verification costs
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_GATE_SEEDS: '50'
+          GAUGUIN_GATE_RETRIES: '2'
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests "*BeginnerGateBenchmarkTest" --no-daemon --stacktrace -Pbuildserver
+      - name: Verify and publish benchmark records from JUnit
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import pathlib, re, sys, xml.etree.ElementTree as ET
+          root = pathlib.Path("upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest")
+          lines = []
+          for path in root.rglob("*.xml"):
+              try:
+                  tree = ET.parse(path)
+              except ET.ParseError:
+                  continue
+              for element in tree.iter():
+                  if element.tag in ("system-out", "system-err") and element.text:
+                      lines.extend(re.findall(r"GATE_(?:CASE|SUMMARY)[^\r\n]*", element.text))
+          cases = [x for x in lines if x.startswith("GATE_CASE ")]
+          summaries = [x for x in lines if x.startswith("GATE_SUMMARY ")]
+          seeds = set()
+          for case in cases:
+              match = re.search(r"size=10 level=EASY seed=(\d+) ", case)
+              if match: seeds.add(int(match.group(1)))
+          ok = len(cases) == 50 and seeds == set(range(50)) and len(summaries) == 1 and "seeds=50 retries=2 " in summaries[0]
+          with open(__import__("os").environ["GITHUB_STEP_SUMMARY"], "a") as out:
+              out.write("## Beginner gate benchmark\n\n")
+              for line in summaries:
+                  out.write("- `" + line + "`\n")
+              if not ok: out.write("\nIncomplete JUnit reporting; benchmark is not verified.\n")
+          for line in summaries: print(line)
+          if not ok:
+              print(f"ERROR: incomplete gate benchmark records cases={len(cases)} uniqueSeeds={len(seeds)} summaries={len(summaries)}", file=sys.stderr)
+              sys.exit(1)
+          print("GATE_REPORTING_VERIFIED cases=50 summaries=1")
+          PY
+      - name: Archive benchmark JUnit and HTML reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: beginner-gate-benchmark
+          path: |
+            upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
+            upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
+          if-no-files-found: warn
