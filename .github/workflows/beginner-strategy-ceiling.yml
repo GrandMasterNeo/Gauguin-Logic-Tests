@@ -1,0 +1,93 @@
+name: Gauguin beginner logic strategy ceiling
+on:
+  push:
+    paths:
+      - '.github/workflows/beginner-strategy-ceiling.yml'
+      - 'beginner-audit/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  beginner-strategy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [9, 10, 11]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: audit
+      - uses: actions/checkout@v4
+        with:
+          repository: meikpiep/gauguin
+          ref: v0.52.1
+          path: gauguin
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Inject isolated test and strategy instrumentation
+        run: |
+          cp audit/beginner-audit/BeginnerStrategyCeilingAuditTest.kt gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/BeginnerStrategyCeilingAuditTest.kt
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('gauguin/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/HumanSolver.kt')
+          t = p.read_text()
+          old = """    avoidNishio: Boolean = false,
+) {"""
+          new = """    avoidNishio: Boolean = false,
+    maxStrategyDifficulty: Int = Int.MAX_VALUE,
+) {"""
+          assert t.count(old) == 1, 'Expected solver signature changed'
+          t = t.replace(old, new)
+          old = """    private val humanSolverStrategy: List<HumanSolverStrategies> =
+        if (avoidNishio) {
+            HumanSolverStrategies.entries.filter { !it.isNishio }
+        } else {
+            HumanSolverStrategies.entries
+        }"""
+          new = """    private val humanSolverStrategy: List<HumanSolverStrategies> =
+        HumanSolverStrategies.entries.filter {
+            it.difficulty <= maxStrategyDifficulty && (!avoidNishio || !it.isNishio)
+        }"""
+          assert t.count(old) == 1, 'Expected strategy selector changed'
+          t = t.replace(old, new)
+          old = '    private var currentStep = 0'
+          new = """    private var currentStep = 0
+    var auditMaxStrategyDifficulty = 0
+        private set
+    var auditSuccessfulSteps = 0
+        private set"""
+          assert t.count(old) == 1, 'Expected currentStep changed'
+          t = t.replace(old, new)
+          old = '                changedCells = result.changedCells'
+          new = """                auditMaxStrategyDifficulty = maxOf(auditMaxStrategyDifficulty, it.difficulty)
+                auditSuccessfulSteps++
+                changedCells = result.changedCells"""
+          assert t.count(old) == 1, 'Expected strategy success hook changed'
+          t = t.replace(old, new)
+          p.write_text(t)
+          gradle = Path('gauguin/gauguin-human-solver/build.gradle.kts')
+          src = gradle.read_text()
+          anchor = '                implementation(project())'
+          assert src.count(anchor) == 1, 'Expected integration test dependency anchor changed'
+          src = src.replace(anchor, anchor + '\n                implementation.bundle(libs.bundles.koin)')
+          gradle.write_text(src)
+          PY
+      - name: Test the smallest successful non-Nishio strategy tier
+        working-directory: gauguin
+        env:
+          GAUGUIN_AUDIT_SIZE: ${{ matrix.size }}
+          GAUGUIN_BEGINNER_SAMPLES: '4'
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests '*BeginnerStrategyCeilingAuditTest' --no-daemon --stacktrace -Pbuildserver
+      - name: Save beginner strategy ceiling results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gauguin-beginner-audit-${{ matrix.size }}x${{ matrix.size }}
+          path: gauguin/gauguin-human-solver/build/beginner-audit/*.csv
+          if-no-files-found: warn
