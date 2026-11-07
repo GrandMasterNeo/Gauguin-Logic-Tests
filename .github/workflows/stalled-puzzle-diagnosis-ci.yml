@@ -28,6 +28,40 @@ jobs:
           GAUGUIN_STALL_SIZE: ${{ matrix.size }}
           GAUGUIN_STALL_RETRIES: '2'
         run: ./gradlew :gauguin-human-solver:integrationTest --tests "*StalledPuzzleDiagnosisTest" --no-daemon --stacktrace -Pbuildserver
+      - name: Publish reproducible stalled-puzzle diagnostics
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os
+          import pathlib
+          import re
+          import xml.etree.ElementTree as ET
+
+          root = pathlib.Path("upstream/gauguin/gauguin-human-solver/build/test-results")
+          patterns = re.compile(r"(?:STALL_REPRO|STALL_GENERATION_INITIAL|STALL_GATE_TRIAL)[^\r\n]*")
+          records = []
+          for path in root.rglob("*.xml"):
+              try:
+                  tree = ET.parse(path)
+              except ET.ParseError:
+                  continue
+              for element in tree.iter():
+                  if element.tag in ("system-out", "system-err") and element.text:
+                      records.extend(patterns.findall(element.text))
+          records = sorted(set(records))
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:
+              out.write("## Stalled-puzzle diagnostics\n\n")
+              if records:
+                  for record in records:
+                      out.write("- `" + record.strip() + "`\n")
+              else:
+                  out.write("No STALL diagnostic records found in JUnit XML; inspect uploaded reports.\n")
+          for record in records:
+              print(record)
+          if not records:
+              print("WARNING: no STALL diagnostic records found in JUnit XML")
+          PY
       - name: Archive reports and console logs as JUnit attachments
         if: always()
         uses: actions/upload-artifact@v4
