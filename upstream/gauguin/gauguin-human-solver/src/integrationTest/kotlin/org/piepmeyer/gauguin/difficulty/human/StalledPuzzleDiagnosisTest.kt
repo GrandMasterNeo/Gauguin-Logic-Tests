@@ -151,7 +151,12 @@ class StalledPuzzleDiagnosisTest :
                         withClue("no empty cell candidate sets in $tag") {
                             unsolvedCells.count { it.possibles.isEmpty() } shouldBe 0
                         }
-                        return result.success
+                        // Beginner levels require completion without speculative trial.
+                        return if (case.level == DifficultySetting.EASY || case.level == DifficultySetting.VERY_EASY) {
+                            withoutTrial.success
+                        } else {
+                            result.success
+                        }
                     }
 
                     var firstGrid: Grid? = null
@@ -162,7 +167,7 @@ class StalledPuzzleDiagnosisTest :
                     println(
                         "STALL_GENERATION_INITIAL board=${case.size} level=${case.level} " +
                             "seed=${case.seed} generateMs=${initialGenerateNs / 1_000_000} " +
-                            "solved=$initialSolved",
+                            "gateAccepted=$initialSolved",
                     )
 
                     if (!initialSolved) {
@@ -176,7 +181,7 @@ class StalledPuzzleDiagnosisTest :
                             println(
                                 "STALL_GATE_TRIAL board=${case.size} level=${case.level} " +
                                     "seed=${case.seed} retry=$retry " +
-                                    "generateMs=${nextGenerateNs / 1_000_000} solved=$solved",
+                                    "generateMs=${nextGenerateNs / 1_000_000} gateAccepted=$solved",
                             )
                             if (solved) {
                                 foundAt = retry
@@ -185,7 +190,7 @@ class StalledPuzzleDiagnosisTest :
                         }
                         println(
                             "STALL_GATE_SUMMARY board=${case.size} level=${case.level} " +
-                                "seed=${case.seed} firstSolvableRetry=${foundAt ?: "none"} " +
+                                "seed=${case.seed} firstAcceptedRetry=${foundAt ?: "none"} " +
                                 "retriesAllowed=$retries",
                         )
                     }
