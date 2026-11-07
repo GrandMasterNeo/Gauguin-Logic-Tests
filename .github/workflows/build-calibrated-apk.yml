@@ -1,0 +1,124 @@
+name: Build calibrated Gauguin APK
+
+on:
+  push:
+    paths:
+      - 'calibrated/**'
+      - '.github/workflows/build-calibrated-apk.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Calibrated APK + tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - name: Checkout calibration patches
+        uses: actions/checkout@v4
+        with:
+          path: patch
+
+      - name: Checkout pinned upstream Gauguin v0.52.1
+        uses: actions/checkout@v4
+        with:
+          repository: meikpiep/gauguin
+          ref: v0.52.1
+          path: gauguin
+
+      - name: Configure Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install Android SDK and licenses
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android 37 and build-tools 37
+        run: |
+          sdkmanager "platforms;android-37" "build-tools;37.0.0" "platform-tools"
+
+      - name: Apply source patches and isolate test app
+        run: |
+          set -eu
+          cd gauguin
+          echo "Upstream commit: $(git rev-parse HEAD)"
+          cd ..
+          rsync -a patch/calibrated/src/ gauguin/
+          cp patch/calibrated/tests/CalibrationSmokeTest.kt gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/CalibrationSmokeTest.kt
+
+          python3 - <<'PY'
+          from pathlib import Path
+          app = Path("gauguin/gauguin-app/build.gradle.kts")
+          s = app.read_text()
+          old = 'applicationIdSuffix = ".debug"'
+          assert s.count(old) == 1
+          s = s.replace(old, 'applicationIdSuffix = ".debug.calibrated"')
+          app.write_text(s)
+
+          manifest = Path("gauguin/gauguin-app/src/main/AndroidManifest.xml")
+          t = manifest.read_text()
+          old_label = 'android:label="@string/app_name"'
+          assert t.count(old_label) == 1
+          manifest.write_text(t.replace(old_label, 'android:label="Gauguin Calibrated"'))
+
+          gradle = Path("gauguin/gauguin-human-solver/build.gradle.kts")
+          t = gradle.read_text()
+          anchor = '                implementation(project())'
+          assert t.count(anchor) == 1
+          t = t.replace(anchor, anchor + '\n                implementation.bundle(libs.bundles.koin)')
+          gradle.write_text(t)
+          PY
+
+          cd gauguin
+          git status --short
+          echo "Target: separate install org.piepmeyer.gauguin.debug.calibrated"
+
+      - name: Test original logic and compiled calibration
+        working-directory: gauguin
+        run: |
+          ./gradlew :gauguin-core:test :gauguin-human-solver:test :gauguin-human-solver:integrationTest --tests '*CalibrationSmokeTest' --no-daemon --no-configuration-cache -Pbuildserver
+
+      - name: Build installable debug APK
+        working-directory: gauguin
+        run: |
+          ./gradlew :gauguin-app:assembleDebug --no-daemon --no-configuration-cache -Pbuildserver
+
+      - name: Inspect package and signature
+        run: |
+          set -eu
+          APK=$(find gauguin/gauguin-app/build/outputs/apk/debug -name '*.apk' | head -1)
+          test -s "$APK"
+          sha256sum "$APK"
+          SDK_ROOT="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-$HOME/android-sdk}}"
+          if [ -x "$SDK_ROOT/build-tools/37.0.0/apksigner" ]; then
+            "$SDK_ROOT/build-tools/37.0.0/apksigner" verify --verbose "$APK"
+          fi
+          if [ -x "$SDK_ROOT/build-tools/37.0.0/aapt" ]; then
+            "$SDK_ROOT/build-tools/37.0.0/aapt" dump badging "$APK" | grep 'package:'
+          fi
+          mkdir -p output
+          cp "$APK" output/Gauguin_0.52.1_Calibrated_Debug.apk
+          sha256sum output/Gauguin_0.52.1_Calibrated_Debug.apk > output/SHA256.txt
+
+      - name: Publish installable APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Gauguin-0.52.1-Calibrated-APK
+          path: output/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Publish test diagnostics if needed
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: calibration-test-reports
+          path: |
+            gauguin/gauguin-human-solver/build/reports/tests/
+            gauguin/gauguin-core/build/reports/tests/
+          if-no-files-found: warn
