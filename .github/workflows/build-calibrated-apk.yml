@@ -52,6 +52,7 @@ jobs:
           cd ..
           rsync -a patch/calibrated/src/ gauguin/
           cp patch/calibrated/tests/CalibrationSmokeTest.kt gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/CalibrationSmokeTest.kt
+          cp patch/calibrated/tests/OperationBalanceIntegrationTest.kt gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/OperationBalanceIntegrationTest.kt
 
           python3 - <<'PY'
           from pathlib import Path
@@ -59,14 +60,14 @@ jobs:
           s = app.read_text()
           old = 'applicationIdSuffix = ".debug"'
           assert s.count(old) == 1
-          s = s.replace(old, 'applicationIdSuffix = ".debug.calibrated"')
+          s = s.replace(old, 'applicationIdSuffix = ".debug.balanced"')
           app.write_text(s)
 
           manifest = Path("gauguin/gauguin-app/src/main/AndroidManifest.xml")
           t = manifest.read_text()
           old_label = 'android:label="@string/app_name"'
           assert t.count(old_label) == 1
-          manifest.write_text(t.replace(old_label, 'android:label="Gauguin Calibrated"'))
+          manifest.write_text(t.replace(old_label, 'android:label="Gauguin Balanced"'))
 
           gradle = Path("gauguin/gauguin-human-solver/build.gradle.kts")
           t = gradle.read_text()
@@ -78,13 +79,13 @@ jobs:
 
           cd gauguin
           git status --short
-          echo "Target: separate install org.piepmeyer.gauguin.debug.calibrated"
+          echo "Target: separate install org.piepmeyer.gauguin.debug.balanced"
 
       - name: Test original logic and compiled calibration
         working-directory: gauguin
         run: |
           ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --no-configuration-cache -Pbuildserver
-          ./gradlew :gauguin-human-solver:integrationTest --tests '*CalibrationSmokeTest' --no-daemon --no-configuration-cache -Pbuildserver
+          ./gradlew :gauguin-human-solver:integrationTest --tests '*CalibrationSmokeTest' --tests '*OperationBalanceIntegrationTest' --no-daemon --no-configuration-cache -Pbuildserver
 
       - name: Build installable debug APK
         working-directory: gauguin
@@ -105,14 +106,23 @@ jobs:
             "$SDK_ROOT/build-tools/37.0.0/aapt" dump badging "$APK" | grep 'package:'
           fi
           mkdir -p output
-          cp "$APK" output/Gauguin_0.52.1_Calibrated_Debug.apk
-          sha256sum output/Gauguin_0.52.1_Calibrated_Debug.apk > output/SHA256.txt
+          cp "$APK" output/Gauguin_0.52.1_Balanced_Debug.apk
+          sha256sum output/Gauguin_0.52.1_Balanced_Debug.apk > output/SHA256.txt
+
+      - name: Publish operation-mix measurements
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Gauguin-Balanced-Operation-Audit
+          path: gauguin/gauguin-human-solver/build/operation-balance/*.csv
+          if-no-files-found: warn
+          retention-days: 30
 
       - name: Publish installable APK
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Gauguin-0.52.1-Calibrated-APK
+          name: Gauguin-0.52.1-Balanced-APK
           path: output/
           if-no-files-found: warn
           retention-days: 30
