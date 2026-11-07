@@ -1,0 +1,56 @@
+name: Gauguin operation mix audit
+on:
+  push:
+    paths:
+      - '.github/workflows/operation-mix-audit.yml'
+      - 'audits/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  operation-mix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [9, 10, 11]
+    steps:
+      - name: Checkout audit harness
+        uses: actions/checkout@v4
+        with:
+          path: audit
+
+      - name: Checkout exact original Gauguin baseline
+        uses: actions/checkout@v4
+        with:
+          repository: meikpiep/gauguin
+          ref: v0.52.1
+          path: gauguin
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Inject audit-only integration test
+        run: |
+          cp audit/audits/OperationMixAuditTest.kt gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/OperationMixAuditTest.kt
+
+      - name: Sample old and new generators across all five difficulty settings
+        working-directory: gauguin
+        env:
+          GAUGUIN_AUDIT_SIZE: ${{ matrix.size }}
+          GAUGUIN_AUDIT_SAMPLES: '4'
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests '*OperationMixAuditTest' --no-daemon --stacktrace -Pbuildserver
+
+      - name: Publish per-puzzle operation audit CSV
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gauguin-operation-mix-${{ matrix.size }}x${{ matrix.size }}
+          path: gauguin/build/operation-mix/*.csv
+          if-no-files-found: warn
