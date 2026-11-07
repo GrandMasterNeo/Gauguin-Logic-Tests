@@ -1,5 +1,10 @@
 name: Expanded default-generator human difficulty sweep (diagnostic)
 on:
+  push:
+    branches: [logic-matrix-audit]
+    paths:
+      - 'upstream/gauguin/gauguin-human-solver/**'
+      - '.github/workflows/expanded-human-sweep-ci.yml'
   pull_request:
     branches: [logic-safety-review]
     paths:
