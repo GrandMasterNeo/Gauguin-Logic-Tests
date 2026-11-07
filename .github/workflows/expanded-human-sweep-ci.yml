@@ -14,7 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         size: [9, 10, 11]
-        seed_count: [25]
+        seed_count: [50]
     name: default-generator-sweep (${{ matrix.size }}x${{ matrix.size }}, ${{ matrix.seed_count }} seeds per level)
     runs-on: ubuntu-latest
     timeout-minutes: 60
@@ -56,7 +56,7 @@ jobs:
           with summary.open("a", encoding="utf-8") as out:
               out.write("## Human-solving diagnostic statistics\n\n")
               if lines:
-                  out.write("Each level has 25 seeded puzzles; completion counts are diagnostic, not pass criteria.\n\n")
+                  out.write("Each level has the configured number of seeded puzzles; completion counts are diagnostic, not pass criteria.\n\n")
                   for line in lines:
                       out.write("- `" + line.strip() + "`\n")
               else:
