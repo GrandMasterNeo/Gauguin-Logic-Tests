@@ -1,0 +1,60 @@
+name: Gauguin human solver difficulty audit
+on:
+  push:
+    paths:
+      - '.github/workflows/human-difficulty-audit.yml'
+      - 'human-audit/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  human-difficulty:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [9, 10, 11]
+    steps:
+      - name: Checkout audit harness
+        uses: actions/checkout@v4
+        with:
+          path: audit
+      - name: Checkout Gauguin v0.52.1 baseline
+        uses: actions/checkout@v4
+        with:
+          repository: meikpiep/gauguin
+          ref: v0.52.1
+          path: gauguin
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Inject isolated human difficulty test and test-only Koin dependency
+        run: |
+          cp audit/human-audit/HumanDifficultyAuditTest.kt gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/HumanDifficultyAuditTest.kt
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('gauguin/gauguin-human-solver/build.gradle.kts')
+          t = p.read_text()
+          anchor = '                implementation(project())'
+          assert t.count(anchor) == 1
+          t = t.replace(anchor, anchor + '\n                implementation.bundle(libs.bundles.koin)')
+          p.write_text(t)
+          PY
+      - name: Measure logic-only solve reachability and Nishio dependency
+        working-directory: gauguin
+        env:
+          GAUGUIN_AUDIT_SIZE: ${{ matrix.size }}
+          GAUGUIN_HUMAN_SAMPLES: '1'
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests '*HumanDifficultyAuditTest' --no-daemon --stacktrace -Pbuildserver
+      - name: Upload audit results, including partial rows on a failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gauguin-human-audit-${{ matrix.size }}x${{ matrix.size }}
+          path: gauguin/gauguin-human-solver/build/human-audit/*.csv
+          if-no-files-found: warn
