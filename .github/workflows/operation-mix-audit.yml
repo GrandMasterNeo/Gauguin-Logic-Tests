@@ -40,6 +40,18 @@ jobs:
         run: |
           cp audit/audits/OperationMixAuditTest.kt gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/OperationMixAuditTest.kt
 
+      - name: Make Koin available to injected integration test
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('gauguin/gauguin-human-solver/build.gradle.kts')
+          t = p.read_text()
+          anchor = '                implementation(project())'
+          assert t.count(anchor) == 1, 'Integration-test dependency insertion anchor changed'
+          t = t.replace(anchor, anchor + '\\n                implementation(libs.bundles.koin)')
+          p.write_text(t)
+          PY
+
       - name: Sample old and new generators across all five difficulty settings
         working-directory: gauguin
         env:
