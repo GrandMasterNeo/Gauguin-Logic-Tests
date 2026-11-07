@@ -15,6 +15,12 @@ class PossibleMustBeContainedInSingleCageInLine : HumanSolverStrategy {
 
         lines.forEach { line ->
             for (singlePossible in grid.variant.possibleDigits) {
+                // A line already containing this digit needs no further
+                // placement. Stale candidate masks in other cells must not
+                // force an additional copy into a cage.
+                if (line.cells().any { it.userValue == singlePossible }) {
+                    continue
+                }
                 val cagesWithPossible =
                     line
                         .cells()
