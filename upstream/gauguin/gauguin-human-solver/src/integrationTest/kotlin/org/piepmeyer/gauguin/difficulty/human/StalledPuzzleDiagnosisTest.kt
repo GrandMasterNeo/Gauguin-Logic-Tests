@@ -95,26 +95,28 @@ class StalledPuzzleDiagnosisTest :
                             }
                         }
 
-                        val unsolvedCells = fullGrid.cells.filter { !it.isUserValueSet }
+                        // Diagnose the non-speculative stall, not the full solver's (often solved) grid.
+                        val diagnosticGrid = noTrialGrid
+                        val unsolvedCells = diagnosticGrid.cells.filter { !it.isUserValueSet }
                         val candidateHistogram = unsolvedCells
                             .groupingBy { it.possibles.size }.eachCount().toSortedMap()
-                        val cache = HumanSolverCacheImpl.createValidatedCache(fullGrid)
-                        val emptyCages = fullGrid.cages.count { cache.possibles(it).isEmpty() }
+                        val cache = HumanSolverCacheImpl.createValidatedCache(diagnosticGrid)
+                        val emptyCages = diagnosticGrid.cages.count { cache.possibles(it).isEmpty() }
                         val cageForcedCells = unsolvedCells.count { cell ->
                             val cage = cell.cage()
                             val index = cage.cells.indexOf(cell)
                             cache.possibles(cage).map { it[index] }.distinct().size == 1
                         }
-                        val rowColSingles = fullGrid.variant.possibleDigits.sumOf { digit ->
+                        val rowColSingles = diagnosticGrid.variant.possibleDigits.sumOf { digit ->
                             val rowSingles = (0 until case.size).count { row ->
-                                fullGrid.cells.none { it.row == row && it.userValue == digit } &&
-                                    fullGrid.cells.count {
+                                diagnosticGrid.cells.none { it.row == row && it.userValue == digit } &&
+                                    diagnosticGrid.cells.count {
                                         it.row == row && !it.isUserValueSet && digit in it.possibles
                                     } == 1
                             }
                             val colSingles = (0 until case.size).count { col ->
-                                fullGrid.cells.none { it.column == col && it.userValue == digit } &&
-                                    fullGrid.cells.count {
+                                diagnosticGrid.cells.none { it.column == col && it.userValue == digit } &&
+                                    diagnosticGrid.cells.count {
                                         it.column == col && !it.isUserValueSet && digit in it.possibles
                                     } == 1
                             }
@@ -126,13 +128,13 @@ class StalledPuzzleDiagnosisTest :
                             val allowed = cache.possibles(cage).map { it[index] }.toSet()
                             cell.possibles.count { it !in allowed }
                         }
-                        val minCageOptions = fullGrid.cages.minOfOrNull { cache.possibles(it).size } ?: 0
+                        val minCageOptions = diagnosticGrid.cages.minOfOrNull { cache.possibles(it).size } ?: 0
 
                         println(
                             "STALL_REPRO tag=$tag board=${case.size} level=${case.level} seed=${case.seed} " +
                                 "solvedWithoutTrial=${withoutTrial.success} " +
                                 "filledWithoutTrial=${noTrialGrid.cells.count { it.isUserValueSet }} " +
-                                "solvedWithTrial=${result.success} filled=${fullGrid.cells.count { it.isUserValueSet }} " +
+                                "solvedWithTrial=${result.success} filled=${diagnosticGrid.cells.count { it.isUserValueSet }} " +
                                 "usedTrial=${result.usedNishio} difficulty=${result.difficulty} " +
                                 "solverMs=${solverNs / 1_000_000} " +
                                 "candidatesTotal=${unsolvedCells.sumOf { it.possibles.size }} " +
