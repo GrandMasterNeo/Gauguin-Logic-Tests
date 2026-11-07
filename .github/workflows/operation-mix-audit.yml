@@ -52,5 +52,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: gauguin-operation-mix-${{ matrix.size }}x${{ matrix.size }}
-          path: gauguin/build/operation-mix/*.csv
-          if-no-files-found: warn
+          path: gauguin/gauguin-human-solver/build/operation-mix/*.csv
+          if-no-files-found: error
