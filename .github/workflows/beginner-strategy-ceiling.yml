@@ -35,47 +35,53 @@ jobs:
           cp audit/beginner-audit/BeginnerStrategyCeilingAuditTest.kt gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/BeginnerStrategyCeilingAuditTest.kt
           python3 - <<'PY'
           from pathlib import Path
+          nl = chr(10)
           p = Path('gauguin/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/HumanSolver.kt')
           t = p.read_text()
-          old = """    avoidNishio: Boolean = false,
-) {"""
-          new = """    avoidNishio: Boolean = false,
-    maxStrategyDifficulty: Int = Int.MAX_VALUE,
-) {"""
-          assert t.count(old) == 1, 'Expected solver signature changed'
+          old = nl.join(['    avoidNishio: Boolean = false,', ') {'])
+          new = nl.join(['    avoidNishio: Boolean = false,', '    maxStrategyDifficulty: Int = Int.MAX_VALUE,', ') {'])
+          assert t.count(old) == 1, 'Unexpected solver signature'
           t = t.replace(old, new)
-          old = """    private val humanSolverStrategy: List<HumanSolverStrategies> =
-        if (avoidNishio) {
-            HumanSolverStrategies.entries.filter { !it.isNishio }
-        } else {
-            HumanSolverStrategies.entries
-        }"""
-          new = """    private val humanSolverStrategy: List<HumanSolverStrategies> =
-        HumanSolverStrategies.entries.filter {
-            it.difficulty <= maxStrategyDifficulty && (!avoidNishio || !it.isNishio)
-        }"""
-          assert t.count(old) == 1, 'Expected strategy selector changed'
+          old = nl.join([
+              '    private val humanSolverStrategy: List<HumanSolverStrategies> =',
+              '        if (avoidNishio) {',
+              '            HumanSolverStrategies.entries.filter { !it.isNishio }',
+              '        } else {',
+              '            HumanSolverStrategies.entries',
+              '        }',
+          ])
+          new = nl.join([
+              '    private val humanSolverStrategy: List<HumanSolverStrategies> =',
+              '        HumanSolverStrategies.entries.filter {',
+              '            it.difficulty <= maxStrategyDifficulty && (!avoidNishio || !it.isNishio)',
+              '        }',
+          ])
+          assert t.count(old) == 1, 'Unexpected selector'
           t = t.replace(old, new)
           old = '    private var currentStep = 0'
-          new = """    private var currentStep = 0
-    var auditMaxStrategyDifficulty = 0
-        private set
-    var auditSuccessfulSteps = 0
-        private set"""
-          assert t.count(old) == 1, 'Expected currentStep changed'
+          new = nl.join([
+              '    private var currentStep = 0',
+              '    var auditMaxStrategyDifficulty = 0',
+              '        private set',
+              '    var auditSuccessfulSteps = 0',
+              '        private set',
+          ])
+          assert t.count(old) == 1, 'Unexpected currentStep'
           t = t.replace(old, new)
           old = '                changedCells = result.changedCells'
-          new = """                auditMaxStrategyDifficulty = maxOf(auditMaxStrategyDifficulty, it.difficulty)
-                auditSuccessfulSteps++
-                changedCells = result.changedCells"""
-          assert t.count(old) == 1, 'Expected strategy success hook changed'
+          new = nl.join([
+              '                auditMaxStrategyDifficulty = maxOf(auditMaxStrategyDifficulty, it.difficulty)',
+              '                auditSuccessfulSteps++',
+              '                changedCells = result.changedCells',
+          ])
+          assert t.count(old) == 1, 'Unexpected success hook'
           t = t.replace(old, new)
           p.write_text(t)
           gradle = Path('gauguin/gauguin-human-solver/build.gradle.kts')
           src = gradle.read_text()
           anchor = '                implementation(project())'
-          assert src.count(anchor) == 1, 'Expected integration test dependency anchor changed'
-          src = src.replace(anchor, anchor + '\n                implementation.bundle(libs.bundles.koin)')
+          assert src.count(anchor) == 1
+          src = src.replace(anchor, anchor + nl + '                implementation.bundle(libs.bundles.koin)')
           gradle.write_text(src)
           PY
       - name: Test the smallest successful non-Nishio strategy tier
