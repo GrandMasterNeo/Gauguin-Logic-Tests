@@ -22,7 +22,7 @@ jobs:
         run: |
           set -euo pipefail
           yes | "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null || true
-          "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" "platforms;android-37" "build-tools;37.0.0"
+          "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --channel=3 "platforms;android-37" "build-tools;37.0.0"
       - name: Assemble debug APK from unchanged application source
         working-directory: upstream/gauguin
         run: ./gradlew :gauguin-app:assembleDebug --no-daemon --stacktrace -Pbuildserver
