@@ -1,6 +1,9 @@
 package org.piepmeyer.gauguin.difficulty.human
 
 import io.kotest.core.spec.style.FunSpec
+import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
+import org.koin.dsl.module
 import kotlinx.coroutines.runBlocking
 import org.piepmeyer.gauguin.creation.MergingCageGridCalculator
 import org.piepmeyer.gauguin.creation.RandomCageGridCalculator
@@ -8,6 +11,7 @@ import org.piepmeyer.gauguin.creation.RandomPossibleDigitsShuffler
 import org.piepmeyer.gauguin.creation.SeedRandomizerMock
 import org.piepmeyer.gauguin.creation.cage.GridSingleCageCreator
 import org.piepmeyer.gauguin.difficulty.GameDifficultyRater
+import org.piepmeyer.gauguin.difficulty.GameDifficultyRatingService
 import org.piepmeyer.gauguin.difficulty.ensureDifficultyCalculated
 import org.piepmeyer.gauguin.grid.GridCageAction
 import org.piepmeyer.gauguin.grid.GridSize
@@ -20,7 +24,11 @@ import kotlin.math.ln
 /** Audit full uniquely-solvable boards; leave production code unchanged. */
 class OperationMixAuditTest : FunSpec({
     test("measure operation mix on generated boards") {
-        runBlocking {
+        startKoin {
+            modules(module { single { GameDifficultyRatingService() } })
+        }
+        try {
+          runBlocking {
             val size = System.getenv("GAUGUIN_AUDIT_SIZE")?.toIntOrNull() ?: 9
             val samples = System.getenv("GAUGUIN_AUDIT_SAMPLES")?.toIntOrNull() ?: 4
             require(size in 3..11)
@@ -105,6 +113,9 @@ class OperationMixAuditTest : FunSpec({
             file.parentFile.mkdirs()
             file.writeText(rows.joinToString("\n", postfix = "\n"))
             println("Audit saved: " + file.absolutePath + " with " + (rows.size - 1) + " boards")
+          }
+        } finally {
+            stopKoin()
         }
     }
 })
