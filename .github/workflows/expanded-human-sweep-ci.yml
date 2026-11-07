@@ -50,7 +50,7 @@ jobs:
                   continue
               for element in tree.iter():
                   if element.tag in ("system-out", "system-err") and element.text:
-                      lines.extend(re.findall(r"SWEEP_SUMMARY[^\r\n]*", element.text))
+                      lines.extend(re.findall(r"SWEEP_(?:SUMMARY|STALL)[^\r\n]*", element.text))
           lines = sorted(set(lines))
           summary = pathlib.Path(os.environ["GITHUB_STEP_SUMMARY"])
           with summary.open("a", encoding="utf-8") as out:
@@ -60,11 +60,11 @@ jobs:
                   for line in lines:
                       out.write("- `" + line.strip() + "`\n")
               else:
-                  out.write("No SWEEP_SUMMARY records found in JUnit XML. Inspect uploaded test reports.\n")
+                  out.write("No SWEEP_SUMMARY or SWEEP_STALL records found in JUnit XML. Inspect uploaded test reports.\n")
           for line in lines:
               print(line)
           if not lines:
-              print("WARNING: no SWEEP_SUMMARY records found in JUnit XML")
+              print("WARNING: no SWEEP_SUMMARY or SWEEP_STALL records found in JUnit XML")
           PY
       - name: Preserve JUnit and test reports
         if: always()
