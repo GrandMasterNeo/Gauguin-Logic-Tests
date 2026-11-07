@@ -1,0 +1,42 @@
+name: Expanded default-generator human difficulty sweep (diagnostic)
+on:
+  pull_request:
+    branches: [logic-safety-review]
+    paths:
+      - 'upstream/gauguin/gauguin-human-solver/**'
+      - '.github/workflows/expanded-human-sweep-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  default-generator-sweep:
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [9, 10, 11]
+        seed_count: [25]
+    name: default-generator-sweep (${{ matrix.size }}x${{ matrix.size }}, ${{ matrix.seed_count }} seeds per level)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Run seeded default-generator Very Easy and Easy human-solving sweep
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_AUDIT_SIZE: ${{ matrix.size }}
+          GAUGUIN_SWEEP_SEEDS: ${{ matrix.seed_count }}
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests "*DefaultDifficultySweepTest" --no-daemon --stacktrace -Pbuildserver
+      - name: Preserve JUnit and test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: expanded-human-sweep-${{ matrix.size }}
+          path: |
+            upstream/gauguin/gauguin-human-solver/build/test-results/**
+            upstream/gauguin/gauguin-human-solver/build/reports/tests/**
+          if-no-files-found: warn
