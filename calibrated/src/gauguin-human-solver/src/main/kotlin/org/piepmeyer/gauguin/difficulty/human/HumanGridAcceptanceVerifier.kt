@@ -1,6 +1,7 @@
 package org.piepmeyer.gauguin.difficulty.human
 
 import org.piepmeyer.gauguin.creation.GridAcceptanceVerifier
+import org.piepmeyer.gauguin.creation.cage.GridSingleCageCreator
 import org.piepmeyer.gauguin.difficulty.GameDifficultyRater
 import org.piepmeyer.gauguin.grid.Grid
 import org.piepmeyer.gauguin.grid.GridCageAction
@@ -58,6 +59,34 @@ class HumanGridAcceptanceVerifier : GridAcceptanceVerifier {
                 if (additionShare > maximumAdditionShare) {
                     return false
                 }
+            }
+        }
+
+        // Candidate-set distribution is a separate difficulty dimension.
+        // Count distinct unordered arithmetic combinations, not permutations.
+        // This experimental policy applies only to 11x11 and deliberately
+        // permits larger candidate sets in Medium AND Hard.
+        if (grid.variant.gridSize.width == 11) {
+            val combinationCounts = grid.cages
+                .filter { it.action != GridCageAction.ACTION_NONE }
+                .map { cage ->
+                    GridSingleCageCreator(grid.variant, cage)
+                        .possibleCombinations
+                        .map { it.sorted() }
+                        .toSet()
+                        .size
+                }
+            val twelveOrMore = combinationCounts.count { it >= 12 }
+            val twentyOrMore = combinationCounts.count { it >= 20 }
+            val acceptable = when (level) {
+                DifficultySetting.VERY_EASY -> twelveOrMore <= 5 && twentyOrMore <= 1
+                DifficultySetting.EASY -> twelveOrMore <= 6 && twentyOrMore <= 2
+                DifficultySetting.MEDIUM -> twelveOrMore in 2..8 && twentyOrMore in 1..4
+                DifficultySetting.HARD -> twelveOrMore in 3..10 && twentyOrMore in 1..6
+                DifficultySetting.EXTREME -> true
+            }
+            if (!acceptable) {
+                return false
             }
         }
 

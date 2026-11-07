@@ -20,11 +20,43 @@ class GridCageOperationDecider(
         if (operationSet == GridCageOperation.OPERATIONS_MULT) {
             return GridCageAction.ACTION_MULTIPLY
         }
+        if (balancedLargeGrid && operationSet == GridCageOperation.OPERATIONS_ALL) {
+            return decideLargeGridOperation()
+        }
         return when (getCalculationDecision()) {
             CageCalculationDecision.ADDITION_AND_SUBTRACTION ->
                 decideBetweenAdditionAndSubtraction()
             CageCalculationDecision.MULTIPLICATION_AND_DIVISION ->
                 decideBetweenMultiplicationAndDivision()
+        }
+    }
+
+    /**
+     * Experimental 11x11 operation distribution. Target relative weights:
+     * multiply 65, add 17, subtract 8, divide 8 (sum=98, normalized).
+     *
+     * Division can only be selected for divisible two-cell cages; probabilities
+     * are conditioned on cage size and arithmetic validity, not fixed quotas.
+     * A separate human-difficulty verifier still decides puzzle acceptance.
+     */
+    private fun decideLargeGridOperation(): GridCageAction {
+        if (cells.size > 2) {
+            return if (randomizer.nextDouble() < 0.20) {
+                GridCageAction.ACTION_ADD
+            } else {
+                GridCageAction.ACTION_MULTIPLY
+            }
+        }
+
+        // Divisibility is checked before selecting the operation.
+        if (canHandleDivide() && randomizer.nextDouble() < 0.64) {
+            return GridCageAction.ACTION_DIVIDE
+        }
+        val p = randomizer.nextDouble()
+        return when {
+            p < 0.27 -> GridCageAction.ACTION_SUBTRACT
+            p < 0.42 -> GridCageAction.ACTION_ADD
+            else -> GridCageAction.ACTION_MULTIPLY
         }
     }
 

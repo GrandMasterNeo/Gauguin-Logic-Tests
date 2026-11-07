@@ -53,6 +53,7 @@ jobs:
           rsync -a patch/calibrated/src/ gauguin/
           cp patch/calibrated/tests/CalibrationSmokeTest.kt gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/CalibrationSmokeTest.kt
           cp patch/calibrated/tests/OperationBalanceIntegrationTest.kt gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/OperationBalanceIntegrationTest.kt
+          cp patch/calibrated/tests/CandidateDistributionIntegrationTest.kt gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/CandidateDistributionIntegrationTest.kt
 
           python3 - <<'PY'
           from pathlib import Path
@@ -85,7 +86,7 @@ jobs:
         working-directory: gauguin
         run: |
           ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --no-configuration-cache -Pbuildserver
-          ./gradlew :gauguin-human-solver:integrationTest --tests '*CalibrationSmokeTest' --tests '*OperationBalanceIntegrationTest' --no-daemon --no-configuration-cache -Pbuildserver
+          ./gradlew :gauguin-human-solver:integrationTest --tests '*CalibrationSmokeTest' --tests '*OperationBalanceIntegrationTest' --tests '*CandidateDistributionIntegrationTest' --no-daemon --no-configuration-cache -Pbuildserver
 
       - name: Build installable debug APK
         working-directory: gauguin
