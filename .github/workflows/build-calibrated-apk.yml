@@ -80,7 +80,8 @@ jobs:
       - name: Test original logic and compiled calibration
         working-directory: gauguin
         run: |
-          ./gradlew :gauguin-core:test :gauguin-human-solver:test :gauguin-human-solver:integrationTest --tests '*CalibrationSmokeTest' --no-daemon --no-configuration-cache -Pbuildserver
+          ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --no-configuration-cache -Pbuildserver
+          ./gradlew :gauguin-human-solver:integrationTest --tests '*CalibrationSmokeTest' --no-daemon --no-configuration-cache -Pbuildserver
 
       - name: Build installable debug APK
         working-directory: gauguin
