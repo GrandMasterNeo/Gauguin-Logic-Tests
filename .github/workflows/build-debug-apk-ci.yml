@@ -22,7 +22,13 @@ jobs:
         run: |
           set -euo pipefail
           yes | "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null || true
-          "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --channel=3 "platforms;android-37" "build-tools;37.0.0"
+          "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --channel=3 "platforms;android-37.0" "build-tools;37.0.0"
+          test -f "${ANDROID_HOME}/platforms/android-37.0/android.jar"
+          # Existing application configuration requests android-37; the published SDK is android-37.0.
+          if [ ! -e "${ANDROID_HOME}/platforms/android-37" ]; then
+            ln -s android-37.0 "${ANDROID_HOME}/platforms/android-37"
+          fi
+          test -f "${ANDROID_HOME}/platforms/android-37/android.jar"
       - name: Assemble debug APK from unchanged application source
         working-directory: upstream/gauguin
         run: ./gradlew :gauguin-app:assembleDebug --no-daemon --stacktrace -Pbuildserver
