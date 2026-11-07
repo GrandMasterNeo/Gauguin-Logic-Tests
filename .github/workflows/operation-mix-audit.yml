@@ -48,7 +48,7 @@ jobs:
           t = p.read_text()
           anchor = '                implementation(project())'
           assert t.count(anchor) == 1, 'Integration-test dependency insertion anchor changed'
-          t = t.replace(anchor, anchor + '\n                implementation(libs.bundles.koin)')
+          t = t.replace(anchor, anchor + '\n                implementation.bundle(libs.bundles.koin)')
           p.write_text(t)
           PY
 
