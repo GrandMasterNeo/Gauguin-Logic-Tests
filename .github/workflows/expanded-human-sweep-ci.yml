@@ -31,6 +31,41 @@ jobs:
           GAUGUIN_AUDIT_SIZE: ${{ matrix.size }}
           GAUGUIN_SWEEP_SEEDS: ${{ matrix.seed_count }}
         run: ./gradlew :gauguin-human-solver:integrationTest --tests "*DefaultDifficultySweepTest" --no-daemon --stacktrace -Pbuildserver
+      - name: Publish per-level solving statistics
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os
+          import pathlib
+          import re
+          import xml.etree.ElementTree as ET
+
+          root = pathlib.Path("upstream/gauguin/gauguin-human-solver/build/test-results")
+          lines = []
+          for path in root.rglob("*.xml"):
+              try:
+                  tree = ET.parse(path)
+              except ET.ParseError:
+                  continue
+              for element in tree.iter():
+                  if element.tag in ("system-out", "system-err") and element.text:
+                      lines.extend(re.findall(r"SWEEP_SUMMARY[^\r\n]*", element.text))
+          lines = sorted(set(lines))
+          summary = pathlib.Path(os.environ["GITHUB_STEP_SUMMARY"])
+          with summary.open("a", encoding="utf-8") as out:
+              out.write("## Human-solving diagnostic statistics\n\n")
+              if lines:
+                  out.write("Each level has 25 seeded puzzles; completion counts are diagnostic, not pass criteria.\n\n")
+                  for line in lines:
+                      out.write("- `" + line.strip() + "`\n")
+              else:
+                  out.write("No SWEEP_SUMMARY records found in JUnit XML. Inspect uploaded test reports.\n")
+          for line in lines:
+              print(line)
+          if not lines:
+              print("WARNING: no SWEEP_SUMMARY records found in JUnit XML")
+          PY
       - name: Preserve JUnit and test reports
         if: always()
         uses: actions/upload-artifact@v4
