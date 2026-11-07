@@ -39,11 +39,15 @@ jobs:
       - name: Publish per-level solving statistics
         if: always()
         shell: bash
+        env:
+          EXPECTED_SIZE: ${{ matrix.size }}
+          EXPECTED_SEEDS: ${{ matrix.seed_count }}
         run: |
           python3 - <<'PY'
           import os
           import pathlib
           import re
+          import sys
           import xml.etree.ElementTree as ET
 
           root = pathlib.Path("upstream/gauguin/gauguin-human-solver/build/test-results")
@@ -55,21 +59,36 @@ jobs:
                   continue
               for element in tree.iter():
                   if element.tag in ("system-out", "system-err") and element.text:
-                      lines.extend(re.findall(r"SWEEP_(?:SUMMARY|STALL)[^\r\n]*", element.text))
+                      lines.extend(re.findall(r"SWEEP_(?:SUMMARY|STALL|CASE)[^\r\n]*", element.text))
           lines = sorted(set(lines))
+          board = os.environ["EXPECTED_SIZE"]
+          seeds = int(os.environ["EXPECTED_SEEDS"])
+          summaries = [line for line in lines if line.startswith("SWEEP_SUMMARY ")]
+          cases = [line for line in lines if line.startswith("SWEEP_CASE ")]
+          levels = set()
+          for line in summaries:
+              fields = dict(re.findall(r"(\w+)=([^ ]+)", line))
+              if fields.get("size") == board and fields.get("seeds") == str(seeds):
+                  levels.add(fields.get("level"))
+          valid_cases = [line for line in cases if f"size={board} " in line]
+          reporting_ok = len(summaries) == 2 and levels == {"VERY_EASY", "EASY"} and len(valid_cases) == 2 * seeds
           summary = pathlib.Path(os.environ["GITHUB_STEP_SUMMARY"])
           with summary.open("a", encoding="utf-8") as out:
               out.write("## Human-solving diagnostic statistics\n\n")
               if lines:
                   out.write("Each level has the configured number of seeded puzzles; completion counts are diagnostic, not pass criteria.\n\n")
                   for line in lines:
+                      if line.startswith("SWEEP_CASE "):
+                          continue
                       out.write("- `" + line.strip() + "`\n")
               else:
                   out.write("No SWEEP_SUMMARY or SWEEP_STALL records found in JUnit XML. Inspect uploaded test reports.\n")
           for line in lines:
               print(line)
-          if not lines:
-              print("WARNING: no SWEEP_SUMMARY or SWEEP_STALL records found in JUnit XML")
+          if not reporting_ok:
+              print(f"ERROR: incomplete JUnit reporting board={board} summaries={len(summaries)} levels={levels} cases={len(valid_cases)} expected_cases={2*seeds}", file=sys.stderr)
+              sys.exit(1)
+          print(f"REPORTING_VERIFIED size={board} summaries=2 cases={len(valid_cases)}")
           PY
       - name: Preserve JUnit and test reports
         if: always()
