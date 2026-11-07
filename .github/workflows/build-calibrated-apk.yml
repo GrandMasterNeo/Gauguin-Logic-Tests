@@ -34,12 +34,15 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Install Android SDK and licenses
-        uses: android-actions/setup-android@v3
-
-      - name: Install Android 37 and build-tools 37
+      - name: Install Android 37 with existing SDK command-line tools
         run: |
-          sdkmanager "platforms;android-37" "build-tools;37.0.0" "platform-tools"
+          set -e
+          SDK_ROOT="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          SDKMANAGER=$(find "$SDK_ROOT/cmdline-tools" -type f -name sdkmanager | head -1)
+          test -n "$SDKMANAGER"
+          printf "SDK: %s, manager: %s\n" "$SDK_ROOT" "$SDKMANAGER"
+          yes | "$SDKMANAGER" --licenses > /dev/null || true
+          "$SDKMANAGER" "platforms;android-37" "build-tools;37.0.0" "platform-tools"
 
       - name: Apply source patches and isolate test app
         run: |
