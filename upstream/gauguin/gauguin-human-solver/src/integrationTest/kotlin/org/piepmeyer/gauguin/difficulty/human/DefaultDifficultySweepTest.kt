@@ -91,6 +91,7 @@ class DefaultDifficultySweepTest :
 
                             if (avoidNishio) {
                                 if (solved.success) noTrialSolved++
+                                else println("SWEEP_STALL size=$size level=$level seed=$seed remaining=${working.cells.count { !it.isUserValueSet }} humanScore=${solved.difficulty}")
                                 scores.add(solved.difficulty)
                             } else {
                                 if (solved.success) withTrialSolved++
