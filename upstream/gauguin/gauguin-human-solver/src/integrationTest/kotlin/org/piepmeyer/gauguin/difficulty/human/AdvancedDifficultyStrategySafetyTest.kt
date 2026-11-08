@@ -30,6 +30,10 @@ class AdvancedDifficultyStrategySafetyTest :
     FunSpec({
         val size = System.getenv("GAUGUIN_AUDIT_SIZE")?.toIntOrNull() ?: 9
         val seedCount = System.getenv("GAUGUIN_ADVANCED_SEEDS")?.toIntOrNull() ?: 2
+        val requestedLevel = System.getenv("GAUGUIN_ADVANCED_LEVEL")?.takeIf { it.isNotBlank() }
+        val requestedSeed = System.getenv("GAUGUIN_ADVANCED_SEED")?.toIntOrNull()
+        require(requestedLevel == null || requestedLevel in setOf("MEDIUM", "HARD", "EXTREME"))
+        require(requestedSeed == null || requestedSeed >= 0)
         require(size in setOf(9, 10, 11))
         require(seedCount in 1..20)
 
@@ -45,14 +49,14 @@ class AdvancedDifficultyStrategySafetyTest :
                     DifficultySetting.MEDIUM,
                     DifficultySetting.HARD,
                     DifficultySetting.EXTREME,
-                )) {
+                ).filter { requestedLevel == null || it.name == requestedLevel }) {
                     var solvedWithoutReveal = 0
                     var unsolvedWithoutReveal = 0
                     var attempts = 0
                     var successfulSteps = 0
                     val strategyCounts = mutableMapOf<String, Int>()
 
-                    for (seed in 0 until seedCount) {
+                    for (seed in (0 until seedCount).filter { requestedSeed == null || it == requestedSeed }) {
                         val variant = GameVariant(
                             GridSize(size, size),
                             GameOptionsVariant.createClassic().copy(
