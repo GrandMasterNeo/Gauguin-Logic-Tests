@@ -37,7 +37,7 @@ jobs:
           GAUGUIN_ADVANCED_SEEDS: '2'
           GAUGUIN_ADVANCED_LEVEL: ${{ matrix.level }}
           GAUGUIN_ADVANCED_SEED: ${{ matrix.seed }}
-        run: ./gradlew :gauguin-human-solver:integrationTest --tests "*AdvancedDifficultyStrategySafetyTest" --no-daemon --stacktrace --info -Pbuildserver
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests "*AdvancedDifficultyStrategySafetyTest" --no-daemon --stacktrace --console=plain -Pbuildserver
       - name: Surface strategy phase and progress diagnostics
         if: always()
         shell: bash
