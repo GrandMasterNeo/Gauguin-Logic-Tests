@@ -64,11 +64,16 @@ class AdvancedDifficultyStrategySafetyTest :
                             ),
                         )
                         val randomizer = SeedRandomizerMock(seed)
+                        println("ADVANCED_PHASE size=$size level=$level seed=$seed phase=generation-start")
+                        System.out.flush()
+                        val generationStarted = System.nanoTime()
                         val puzzle = RandomCageGridCalculator(
                             variant,
                             randomizer,
                             RandomPossibleDigitsShuffler(randomizer.random),
                         ).calculate()
+                        println("ADVANCED_PHASE size=$size level=$level seed=$seed phase=generation-complete elapsedMs=${(System.nanoTime() - generationStarted) / 1_000_000}")
+                        System.out.flush()
 
                         withClue("generated rating size=$size level=$level seed=$seed") {
                             rater.difficulty(puzzle) shouldBe level
@@ -85,10 +90,16 @@ class AdvancedDifficultyStrategySafetyTest :
 
                         val maxSteps = grid.cells.size * 20
                         var steps = 0
+                        println("ADVANCED_PHASE size=$size level=$level seed=$seed phase=strategy-start")
+                        System.out.flush()
                         while (!grid.isSolved() && steps < maxSteps) {
                             var progress = false
                             for (strategy in HumanSolverStrategies.entries) {
                                 attempts++
+                                if (attempts == 1 || attempts % 100 == 0) {
+                                    println("ADVANCED_PROGRESS size=$size level=$level seed=$seed step=$steps invocation=$attempts strategy=${strategy.name} filled=${grid.cells.count { it.isUserValueSet }}")
+                                    System.out.flush()
+                                }
                                 val before = grid.cells.map { it.userValue to it.possibles.toSet() }
 
                                 val result = withClue(
