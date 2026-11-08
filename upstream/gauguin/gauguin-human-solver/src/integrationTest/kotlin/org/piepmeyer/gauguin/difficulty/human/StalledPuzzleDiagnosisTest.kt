@@ -44,10 +44,14 @@ class StalledPuzzleDiagnosisTest :
         )
         val requestedSize = System.getenv("GAUGUIN_STALL_SIZE")?.toIntOrNull() ?: 9
         val retries = System.getenv("GAUGUIN_STALL_RETRIES")?.toIntOrNull() ?: 2
+        val requestedLevel = System.getenv("GAUGUIN_STALL_LEVEL")?.takeIf { it.isNotBlank() }
+        val requestedSeed = System.getenv("GAUGUIN_STALL_SEED")?.toIntOrNull()
         require(requestedSize in setOf(9, 10, 11))
         require(retries in 0..4)
 
-        for (case in cases.filter { it.size == requestedSize }) {
+        for (case in cases.filter { it.size == requestedSize &&
+            (requestedLevel == null || it.level.name == requestedLevel) &&
+            (requestedSeed == null || it.seed == requestedSeed) }) {
             test("reproduce and examine ${case.size}x${case.size} ${case.level} seed ${case.seed}") {
                 startKoin {
                     modules(module {
