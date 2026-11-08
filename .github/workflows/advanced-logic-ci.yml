@@ -5,6 +5,11 @@ on:
     paths:
       - 'upstream/gauguin/gauguin-human-solver/**'
       - '.github/workflows/advanced-logic-ci.yml'
+  push:
+    branches: [logic-matrix-audit]
+    paths:
+      - '.github/workflows/advanced-logic-ci.yml'
+      - 'upstream/gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/AdvancedDifficultyStrategySafetyTest.kt'
   workflow_dispatch:
 permissions:
   contents: read
@@ -14,6 +19,8 @@ jobs:
       fail-fast: false
       matrix:
         size: [9, 10, 11]
+        level: [MEDIUM, HARD, EXTREME]
+        seed: [0, 1]
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -28,12 +35,14 @@ jobs:
         env:
           GAUGUIN_AUDIT_SIZE: ${{ matrix.size }}
           GAUGUIN_ADVANCED_SEEDS: '2'
+          GAUGUIN_ADVANCED_LEVEL: ${{ matrix.level }}
+          GAUGUIN_ADVANCED_SEED: ${{ matrix.seed }}
         run: ./gradlew :gauguin-human-solver:integrationTest --tests "*AdvancedDifficultyStrategySafetyTest" --no-daemon --stacktrace -Pbuildserver
       - name: Preserve diagnostic test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: advanced-strategy-${{ matrix.size }}
+          name: advanced-strategy-${{ matrix.size }}-${{ matrix.level }}-${{ matrix.seed }}
           path: |
             upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
             upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
