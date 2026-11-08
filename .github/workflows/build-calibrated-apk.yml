@@ -82,11 +82,10 @@ jobs:
           git status --short
           echo "Target: separate install org.piepmeyer.gauguin.debug.candidate"
 
-      - name: Test original logic and beginner calibration
+      - name: Test original core and human solver
         working-directory: gauguin
         run: |
           ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --no-configuration-cache -Pbuildserver
-          timeout --signal=TERM --kill-after=15s 420s ./gradlew :gauguin-human-solver:integrationTest --tests '*CalibrationSmokeTest' --no-daemon --no-configuration-cache -Pbuildserver
 
       - name: Build installable debug APK
         working-directory: gauguin
@@ -119,7 +118,16 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
 
+      - name: Bounded beginner human calibration diagnostic
+        if: always()
+        working-directory: gauguin
+        run: |
+          # Original difficulty selection may retry indefinitely when
+          # operation weights shift the classical difficulty distribution.
+          timeout --signal=TERM --kill-after=15s 420s ./gradlew :gauguin-human-solver:integrationTest --tests '*CalibrationSmokeTest' --no-daemon --no-configuration-cache -Pbuildserver --info
+
       - name: Bounded 9–11 operation-mix diagnostic
+        if: always()
         working-directory: gauguin
         run: |
           # The heavily multiplication-biased generator may take longer
