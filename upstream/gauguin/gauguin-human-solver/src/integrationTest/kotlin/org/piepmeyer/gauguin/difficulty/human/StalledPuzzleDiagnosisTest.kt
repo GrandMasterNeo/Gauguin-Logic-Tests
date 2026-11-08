@@ -76,11 +76,17 @@ class StalledPuzzleDiagnosisTest :
                             rater.difficulty(grid) shouldBe case.level
                         }
 
+                        println("STALL_PHASE board=${case.size} level=${case.level} seed=${case.seed} tag=$tag phase=no-trial-start")
+                        System.out.flush()
                         val noTrialGrid = grid.copyWithEmptyUserValues()
                         val noTrialSolver = HumanSolver(noTrialGrid, validate = true, avoidNishio = true)
                         noTrialSolver.prepareGrid()
                         val withoutTrial = noTrialSolver.solveAndCalculateDifficulty(avoidReveal = true)
+                        println("STALL_PHASE board=${case.size} level=${case.level} seed=${case.seed} tag=$tag phase=no-trial-complete success=${withoutTrial.success}")
+                        System.out.flush()
 
+                        println("STALL_PHASE board=${case.size} level=${case.level} seed=${case.seed} tag=$tag phase=trial-start")
+                        System.out.flush()
                         val fullGrid = grid.copyWithEmptyUserValues()
                         val solver = HumanSolver(fullGrid, validate = true)
                         solver.prepareGrid()
@@ -89,6 +95,8 @@ class StalledPuzzleDiagnosisTest :
                             withTrial = solver.solveAndCalculateDifficulty(avoidReveal = true)
                         }
                         val result = withTrial!!
+                        println("STALL_PHASE board=${case.size} level=${case.level} seed=${case.seed} tag=$tag phase=trial-complete success=${result.success} solverMs=${solverNs / 1_000_000}")
+                        System.out.flush()
 
                         for (work in listOf(noTrialGrid, fullGrid)) {
                             withClue("no incorrect placements for $tag") {
@@ -163,10 +171,14 @@ class StalledPuzzleDiagnosisTest :
                         }
                     }
 
+                    println("STALL_PHASE board=${case.size} level=${case.level} seed=${case.seed} tag=original phase=generation-start")
+                    System.out.flush()
                     var firstGrid: Grid? = null
                     val initialGenerateNs = measureNanoTime {
                         firstGrid = generator.calculate()
                     }
+                    println("STALL_PHASE board=${case.size} level=${case.level} seed=${case.seed} tag=original phase=generation-complete generateMs=${initialGenerateNs / 1_000_000}")
+                    System.out.flush()
                     val initialSolved = evaluate(firstGrid!!, "original")
                     println(
                         "STALL_GENERATION_INITIAL board=${case.size} level=${case.level} " +
