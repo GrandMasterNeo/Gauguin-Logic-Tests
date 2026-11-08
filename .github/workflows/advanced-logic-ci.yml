@@ -30,6 +30,22 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
+      - name: Start bounded JVM thread diagnostics
+        shell: bash
+        run: |
+          # A detached watcher survives the next step and captures a bounded
+          # thread snapshot before the job-level timeout. No solver code changes.
+          nohup bash -c '
+            sleep 480
+            for attempt in 1 2 3; do
+              echo "ADVANCED_THREAD_SNAPSHOT attempt=$attempt timestamp=$(date -u +%FT%TZ)"
+              for pid in $(jps -q 2>/dev/null || true); do
+                echo "ADVANCED_THREAD_PID pid=$pid"
+                timeout 12s jcmd "$pid" Thread.print -l 2>&1 | head -n 240 || true
+              done
+              sleep 300
+            done
+          ' > advanced-thread-diagnostics.log 2>&1 < /dev/null &
       - name: Trace and assert every deduction on Medium Hard Extreme
         working-directory: upstream/gauguin
         env:
@@ -75,4 +91,5 @@ jobs:
           path: |
             upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
             upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
+            advanced-thread-diagnostics.log
           if-no-files-found: warn
