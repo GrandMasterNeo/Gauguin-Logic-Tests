@@ -83,6 +83,24 @@ jobs:
               for record in records[-60:]:
                   out.write("- `" + record.replace("`", "'") + "`\n")
           PY
+      - name: Surface bounded JVM stack diagnostics
+        if: always()
+        shell: bash
+        run: |
+          if [ -s advanced-thread-diagnostics.log ]; then
+            echo "ADVANCED_THREAD_DIAGNOSTICS_BEGIN"
+            tail -n 450 advanced-thread-diagnostics.log
+            echo "ADVANCED_THREAD_DIAGNOSTICS_END"
+            {
+              echo "## JVM thread diagnostics"
+              echo
+              echo "Captured snapshots: $(grep -c '^ADVANCED_THREAD_SNAPSHOT' advanced-thread-diagnostics.log || true)"
+              echo
+              echo "See job console and uploaded artifact for bounded stack traces."
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "ADVANCED_THREAD_DIAGNOSTICS_MISSING (job may have ended before first 8-minute snapshot)"
+          fi
       - name: Preserve diagnostic test results
         if: always()
         uses: actions/upload-artifact@v4
