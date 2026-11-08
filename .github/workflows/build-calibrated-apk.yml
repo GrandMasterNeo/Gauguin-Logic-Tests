@@ -82,11 +82,11 @@ jobs:
           git status --short
           echo "Target: separate install org.piepmeyer.gauguin.debug.candidate"
 
-      - name: Test original logic and compiled calibration
+      - name: Test original logic and beginner calibration
         working-directory: gauguin
         run: |
           ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --no-configuration-cache -Pbuildserver
-          ./gradlew :gauguin-human-solver:integrationTest --tests '*CalibrationSmokeTest' --tests '*OperationBalanceIntegrationTest' --no-daemon --no-configuration-cache -Pbuildserver
+          timeout --signal=TERM --kill-after=15s 420s ./gradlew :gauguin-human-solver:integrationTest --tests '*CalibrationSmokeTest' --no-daemon --no-configuration-cache -Pbuildserver
 
       - name: Build installable debug APK
         working-directory: gauguin
@@ -110,15 +110,6 @@ jobs:
           cp "$APK" output/Gauguin_0.52.1_Candidate_Experimental_Debug.apk
           sha256sum output/Gauguin_0.52.1_Candidate_Experimental_Debug.apk > output/SHA256.txt
 
-      - name: Publish operation-mix measurements
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: Gauguin-Balanced-Operation-Audit
-          path: gauguin/gauguin-human-solver/build/operation-balance/*.csv
-          if-no-files-found: warn
-          retention-days: 30
-
       - name: Publish installable APK
         if: always()
         uses: actions/upload-artifact@v4
@@ -128,13 +119,31 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
 
+      - name: Bounded 9–11 operation-mix diagnostic
+        working-directory: gauguin
+        run: |
+          # The heavily multiplication-biased generator may take longer
+          # to find an Extreme board at the old classical score thresholds.
+          # Never allow a difficult seed to block APK publication.
+          timeout --signal=TERM --kill-after=15s 600s ./gradlew :gauguin-human-solver:integrationTest --tests '*OperationBalanceIntegrationTest' --no-daemon --no-configuration-cache -Pbuildserver --info
+
       - name: Bounded Medium/Hard human deduction diagnostic
+        if: always()
         working-directory: gauguin
         run: |
           # The first 20-board audit exhausted the 50-minute GitHub job limit.
           # A timeout provides an explicit diagnostic failure, while the APK
           # and baseline tests remain independently available.
           timeout --signal=TERM --kill-after=15s 900s ./gradlew :gauguin-human-solver:integrationTest --tests '*CandidateDistributionIntegrationTest' --no-daemon --no-configuration-cache -Pbuildserver --info
+
+      - name: Publish operation-mix measurements
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Gauguin-Balanced-Operation-Audit
+          path: gauguin/gauguin-human-solver/build/operation-balance/*.csv
+          if-no-files-found: warn
+          retention-days: 30
 
       - name: Publish test diagnostics if needed
         if: failure()
