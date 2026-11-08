@@ -40,7 +40,9 @@ jobs:
           GAUGUIN_STALL_RETRIES: '2'
           GAUGUIN_STALL_LEVEL: ${{ matrix.level }}
           GAUGUIN_STALL_SEED: ${{ matrix.seed }}
-        run: ./gradlew :gauguin-human-solver:integrationTest --tests "*StalledPuzzleDiagnosisTest" --no-daemon --stacktrace -Pbuildserver
+        run: |
+          set -o pipefail
+          ./gradlew :gauguin-human-solver:integrationTest --tests "*StalledPuzzleDiagnosisTest" --no-daemon --stacktrace --console=plain -Pbuildserver 2>&1 | tee "$GITHUB_WORKSPACE/stalled-console.log"
       - name: Publish reproducible stalled-puzzle diagnostics
         if: always()
         shell: bash
@@ -67,6 +69,9 @@ jobs:
               for element in tree.iter():
                   if element.tag in ("system-out", "system-err") and element.text:
                       records.extend(patterns.findall(element.text))
+          console = pathlib.Path("stalled-console.log")
+          if console.exists():
+              records.extend(patterns.findall(console.read_text(encoding="utf-8", errors="replace")))
           records = sorted(set(records))
           board = int(os.environ["GAUGUIN_STALL_SIZE"])
           expected = {(board, os.environ["GAUGUIN_STALL_LEVEL"], int(os.environ["GAUGUIN_STALL_SEED"]))}
@@ -88,7 +93,9 @@ jobs:
           for record in records:
               print(record)
           if not reporting_ok:
-              print(f"ERROR: missing or unexpected original STALL_REPRO records board={board} expected={sorted(expected)} seen={sorted(seen)}", file=sys.stderr)
+              phases = [record for record in records if record.startswith("STALL_PHASE ") and "tag=original " in record]
+              print(f"STALL_REPORTING_INCOMPLETE board={board} expected={sorted(expected)} seen={sorted(seen)} lastPhase={phases[-1] if phases else 'none'}", file=sys.stderr)
+              print("ERROR: incomplete diagnostic reporting; do not classify as mathematical failure", file=sys.stderr)
               sys.exit(1)
           print(f"STALL_REPORTING_VERIFIED board={board} originalCases={len(seen)}")
           PY
@@ -100,4 +107,5 @@ jobs:
           path: |
             upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
             upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
+            stalled-console.log
           if-no-files-found: warn
