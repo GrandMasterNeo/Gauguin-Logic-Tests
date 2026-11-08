@@ -61,14 +61,14 @@ jobs:
           s = app.read_text()
           old = 'applicationIdSuffix = ".debug"'
           assert s.count(old) == 1
-          s = s.replace(old, 'applicationIdSuffix = ".debug.balanced"')
+          s = s.replace(old, 'applicationIdSuffix = ".debug.candidate"')
           app.write_text(s)
 
           manifest = Path("gauguin/gauguin-app/src/main/AndroidManifest.xml")
           t = manifest.read_text()
           old_label = 'android:label="@string/app_name"'
           assert t.count(old_label) == 1
-          manifest.write_text(t.replace(old_label, 'android:label="Gauguin Balanced"'))
+          manifest.write_text(t.replace(old_label, 'android:label="Gauguin Candidate Test"'))
 
           gradle = Path("gauguin/gauguin-human-solver/build.gradle.kts")
           t = gradle.read_text()
@@ -80,13 +80,13 @@ jobs:
 
           cd gauguin
           git status --short
-          echo "Target: separate install org.piepmeyer.gauguin.debug.balanced"
+          echo "Target: separate install org.piepmeyer.gauguin.debug.candidate"
 
       - name: Test original logic and compiled calibration
         working-directory: gauguin
         run: |
           ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --no-configuration-cache -Pbuildserver
-          ./gradlew :gauguin-human-solver:integrationTest --tests '*CalibrationSmokeTest' --tests '*OperationBalanceIntegrationTest' --tests '*CandidateDistributionIntegrationTest' --no-daemon --no-configuration-cache -Pbuildserver
+          ./gradlew :gauguin-human-solver:integrationTest --tests '*CalibrationSmokeTest' --tests '*OperationBalanceIntegrationTest' --no-daemon --no-configuration-cache -Pbuildserver
 
       - name: Build installable debug APK
         working-directory: gauguin
@@ -107,8 +107,8 @@ jobs:
             "$SDK_ROOT/build-tools/37.0.0/aapt" dump badging "$APK" | grep 'package:'
           fi
           mkdir -p output
-          cp "$APK" output/Gauguin_0.52.1_Balanced_Debug.apk
-          sha256sum output/Gauguin_0.52.1_Balanced_Debug.apk > output/SHA256.txt
+          cp "$APK" output/Gauguin_0.52.1_Candidate_Experimental_Debug.apk
+          sha256sum output/Gauguin_0.52.1_Candidate_Experimental_Debug.apk > output/SHA256.txt
 
       - name: Publish operation-mix measurements
         if: always()
@@ -123,10 +123,18 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Gauguin-0.52.1-Balanced-APK
+          name: Gauguin-0.52.1-Candidate-Experimental-APK
           path: output/
           if-no-files-found: warn
           retention-days: 30
+
+      - name: Bounded Medium/Hard human deduction diagnostic
+        working-directory: gauguin
+        run: |
+          # The first 20-board audit exhausted the 50-minute GitHub job limit.
+          # A timeout provides an explicit diagnostic failure, while the APK
+          # and baseline tests remain independently available.
+          timeout --signal=TERM --kill-after=15s 900s ./gradlew :gauguin-human-solver:integrationTest --tests '*CandidateDistributionIntegrationTest' --no-daemon --no-configuration-cache -Pbuildserver --info
 
       - name: Publish test diagnostics if needed
         if: failure()
