@@ -5,6 +5,7 @@ on:
     branches: [logic-matrix-audit]
     paths:
       - '.github/workflows/build-debug-apk-ci.yml'
+      - 'upstream/gauguin/gauguin-core/src/main/kotlin/org/piepmeyer/gauguin/creation/cage/GridCageOperationDecider.kt'
 permissions:
   contents: read
 jobs:
@@ -29,7 +30,10 @@ jobs:
             ln -s android-37.0 "${ANDROID_HOME}/platforms/android-37"
           fi
           test -f "${ANDROID_HOME}/platforms/android-37/android.jar"
-      - name: Assemble debug APK from unchanged application source
+      - name: Run core unit tests for operation-selection change
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-core:test --no-daemon --stacktrace -Pbuildserver
+      - name: Assemble debug APK from audit-branch application source
         working-directory: upstream/gauguin
         run: ./gradlew :gauguin-app:assembleDebug --no-daemon --stacktrace -Pbuildserver
       - name: Verify APK output and record checksum
@@ -41,7 +45,7 @@ jobs:
           file "$apk"
           sha256sum "$apk" | tee gauguin-debug-apk.sha256
           echo "### Installable debug APK" >> "$GITHUB_STEP_SUMMARY"
-          echo "Built from commit \`$GITHUB_SHA\` (audit branch; no production changes)." >> "$GITHUB_STEP_SUMMARY"
+          echo "Built from commit \`$GITHUB_SHA\` (audit branch; experimental operation-selection change)." >> "$GITHUB_STEP_SUMMARY"
           echo "Artifact: gauguin-audit-debug-apk" >> "$GITHUB_STEP_SUMMARY"
           echo "SHA-256:" >> "$GITHUB_STEP_SUMMARY"
           cat gauguin-debug-apk.sha256 >> "$GITHUB_STEP_SUMMARY"
