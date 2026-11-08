@@ -13,7 +13,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        size: [9, 10, 11]
+        include:
+          - {size: 9, level: EXTREME, seed: 1}
+          - {size: 10, level: HARD, seed: 0}
+          - {size: 10, level: EASY, seed: 10}
+          - {size: 10, level: EASY, seed: 23}
+          - {size: 10, level: EXTREME, seed: 1}
+          - {size: 11, level: EXTREME, seed: 0}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -27,12 +33,16 @@ jobs:
         env:
           GAUGUIN_STALL_SIZE: ${{ matrix.size }}
           GAUGUIN_STALL_RETRIES: '2'
+          GAUGUIN_STALL_LEVEL: ${{ matrix.level }}
+          GAUGUIN_STALL_SEED: ${{ matrix.seed }}
         run: ./gradlew :gauguin-human-solver:integrationTest --tests "*StalledPuzzleDiagnosisTest" --no-daemon --stacktrace -Pbuildserver
       - name: Publish reproducible stalled-puzzle diagnostics
         if: always()
         shell: bash
         env:
           GAUGUIN_STALL_SIZE: ${{ matrix.size }}
+          GAUGUIN_STALL_LEVEL: ${{ matrix.level }}
+          GAUGUIN_STALL_SEED: ${{ matrix.seed }}
         run: |
           python3 - <<'PY'
           import os
@@ -54,7 +64,7 @@ jobs:
                       records.extend(patterns.findall(element.text))
           records = sorted(set(records))
           board = int(os.environ["GAUGUIN_STALL_SIZE"])
-          expected = {9: {(9, "EXTREME", 1)}, 10: {(10, "HARD", 0), (10, "EASY", 10), (10, "EASY", 23), (10, "EXTREME", 1)}, 11: {(11, "EXTREME", 0)}}[board]
+          expected = {(board, os.environ["GAUGUIN_STALL_LEVEL"], int(os.environ["GAUGUIN_STALL_SEED"]))}
           seen = set()
           for record in records:
               if not record.startswith("STALL_REPRO tag=original "):
@@ -81,7 +91,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: stalled-diagnosis-${{ matrix.size }}
+          name: stalled-diagnosis-${{ matrix.size }}-${{ matrix.level }}-${{ matrix.seed }}
           path: |
             upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
             upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
