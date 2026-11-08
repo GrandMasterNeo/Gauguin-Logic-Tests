@@ -5,6 +5,11 @@ on:
     paths:
       - 'upstream/gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/StalledPuzzleDiagnosisTest.kt'
       - '.github/workflows/stalled-puzzle-diagnosis-ci.yml'
+  push:
+    branches: [logic-matrix-audit]
+    paths:
+      - '.github/workflows/stalled-puzzle-diagnosis-ci.yml'
+      - 'upstream/gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/StalledPuzzleDiagnosisTest.kt'
   workflow_dispatch:
 permissions:
   contents: read
