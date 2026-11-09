@@ -59,7 +59,7 @@ jobs:
           import xml.etree.ElementTree as ET
 
           root = pathlib.Path("upstream/gauguin/gauguin-human-solver/build/test-results")
-          patterns = re.compile(r"(?:STALL_REPRO|STALL_GENERATION_INITIAL|STALL_GATE_TRIAL)[^\r\n]*")
+          patterns = re.compile(r"(?:STALL_REPRO|STALL_GENERATION_INITIAL|STALL_GATE_TRIAL|STALL_PHASE)[^\r\n]*")
           records = []
           for path in root.rglob("*.xml"):
               try:
