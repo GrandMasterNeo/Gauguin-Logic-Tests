@@ -72,6 +72,7 @@ jobs:
           console = pathlib.Path("stalled-console.log")
           if console.exists():
               records.extend(patterns.findall(console.read_text(encoding="utf-8", errors="replace")))
+          phase_records = [record for record in records if record.startswith("STALL_PHASE ") and "tag=original " in record]
           records = sorted(set(records))
           board = int(os.environ["GAUGUIN_STALL_SIZE"])
           expected = {(board, os.environ["GAUGUIN_STALL_LEVEL"], int(os.environ["GAUGUIN_STALL_SEED"]))}
@@ -93,8 +94,7 @@ jobs:
           for record in records:
               print(record)
           if not reporting_ok:
-              phases = [record for record in records if record.startswith("STALL_PHASE ") and "tag=original " in record]
-              print(f"STALL_REPORTING_INCOMPLETE board={board} expected={sorted(expected)} seen={sorted(seen)} lastPhase={phases[-1] if phases else 'none'}", file=sys.stderr)
+              print(f"STALL_REPORTING_INCOMPLETE board={board} expected={sorted(expected)} seen={sorted(seen)} lastPhase={phase_records[-1] if phase_records else 'none'}", file=sys.stderr)
               print("ERROR: incomplete diagnostic reporting; do not classify as mathematical failure", file=sys.stderr)
               sys.exit(1)
           print(f"STALL_REPORTING_VERIFIED board={board} originalCases={len(seen)}")
