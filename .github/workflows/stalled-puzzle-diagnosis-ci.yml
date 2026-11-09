@@ -33,6 +33,22 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
+      - name: Capture bounded generation-worker JVM snapshots
+        shell: bash
+        run: |
+          # Capture before the observed ~14-16 minute coroutine timeout.
+          # Each snapshot includes all JVMs because the Gradle test worker PID
+          # is not reliably the same as the Gradle launcher PID.
+          nohup bash -c '
+            for attempt in 1 2 3 4; do
+              sleep 180
+              echo "STALL_THREAD_SNAPSHOT attempt=$attempt timestamp=$(date -u +%FT%TZ)"
+              for pid in $(jps -q 2>/dev/null || true); do
+                echo "STALL_THREAD_PID attempt=$attempt pid=$pid"
+                timeout 15s jcmd "$pid" Thread.print -l 2>&1 | head -n 500 || true
+              done
+            done
+          ' > stalled-thread-diagnostics.log 2>&1 < /dev/null &
       - name: Reproduce stalled case using production HumanSolver and sample human-solvability gate
         working-directory: upstream/gauguin
         env:
@@ -108,4 +124,5 @@ jobs:
             upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
             upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
             stalled-console.log
+            stalled-thread-diagnostics.log
           if-no-files-found: warn
