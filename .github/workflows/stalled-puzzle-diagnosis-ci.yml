@@ -75,7 +75,7 @@ jobs:
           import xml.etree.ElementTree as ET
 
           root = pathlib.Path("upstream/gauguin/gauguin-human-solver/build/test-results")
-          patterns = re.compile(r"(?:STALL_REPRO|STALL_GENERATION_INITIAL|STALL_GATE_TRIAL|STALL_GATE_SUMMARY|STALL_GATE_OUTCOME|STALL_PHASE)[^\r\n]*")
+          patterns = re.compile(r"(?:STALL_REPRO|STALL_GENERATION_INITIAL|STALL_GATE_TRIAL|STALL_GATE_SUMMARY|STALL_GATE_OUTCOME|STALL_DEDUCTION_COMPLIANCE|STALL_PHASE)[^\r\n]*")
           records = []
           for path in root.rglob("*.xml"):
               try:
@@ -99,7 +99,14 @@ jobs:
               match = re.search(r"board=(\d+) level=(\w+) seed=(\d+)", record)
               if match:
                   seen.add((int(match.group(1)), match.group(2), int(match.group(3))))
-          reporting_ok = seen == expected
+          compliance_seen = set()
+          for record in records:
+              if not record.startswith("STALL_DEDUCTION_COMPLIANCE tag=original "):
+                  continue
+              match = re.search(r"board=(\\d+) level=(\\w+) seed=(\\d+)", record)
+              if match:
+                  compliance_seen.add((int(match.group(1)), match.group(2), int(match.group(3))))
+          reporting_ok = seen == expected and compliance_seen == expected
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:
               out.write("## Stalled-puzzle diagnostics\n\n")
               if records:
@@ -110,7 +117,7 @@ jobs:
           for record in records:
               print(record)
           if not reporting_ok:
-              print(f"STALL_REPORTING_INCOMPLETE board={board} expected={sorted(expected)} seen={sorted(seen)} lastPhase={phase_records[-1] if phase_records else 'none'}", file=sys.stderr)
+              print(f"STALL_REPORTING_INCOMPLETE board={board} expected={sorted(expected)} seen={sorted(seen)} complianceSeen={sorted(compliance_seen)} lastPhase={phase_records[-1] if phase_records else 'none'}", file=sys.stderr)
               print("ERROR: incomplete diagnostic reporting; do not classify as mathematical failure", file=sys.stderr)
               sys.exit(1)
           print(f"STALL_REPORTING_VERIFIED board={board} originalCases={len(seen)}")
