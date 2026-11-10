@@ -163,6 +163,20 @@ class StalledPuzzleDiagnosisTest :
                         withClue("no empty cell candidate sets in $tag") {
                             unsolvedCells.count { it.possibles.isEmpty() } shouldBe 0
                         }
+                        // Report the user's all-difficulties deduction-only standard separately
+                        // from the existing production generator gate. Do not make a known
+                        // Hard stall fail this diagnostic test: it is evidence to investigate.
+                        val deductionOnlyCompliant = withoutTrial.success &&
+                            noTrialGrid.cells.all { it.isUserValueSet } &&
+                            noTrialGrid.cells.none { it.userValue != it.value }
+                        println(
+                            "STALL_DEDUCTION_COMPLIANCE tag=$tag board=${case.size} level=${case.level} " +
+                                "seed=${case.seed} requiredForAllLevels=true " +
+                                "compliant=$deductionOnlyCompliant " +
+                                "solvedWithoutTrial=${withoutTrial.success} " +
+                                "filled=${noTrialGrid.cells.count { it.isUserValueSet }} " +
+                                "total=${noTrialGrid.cells.size}",
+                        )
                         // Report independent outcomes without changing gate behavior.
                         val trialFreeRequired = case.level == DifficultySetting.EASY ||
                             case.level == DifficultySetting.VERY_EASY
