@@ -103,7 +103,7 @@ jobs:
           for record in records:
               if not record.startswith("STALL_DEDUCTION_COMPLIANCE tag=original "):
                   continue
-              match = re.search(r"board=(\\d+) level=(\\w+) seed=(\\d+)", record)
+              match = re.search(r"board=(\d+) level=(\w+) seed=(\d+)", record)
               if match:
                   compliance_seen.add((int(match.group(1)), match.group(2), int(match.group(3))))
           reporting_ok = seen == expected and compliance_seen == expected
