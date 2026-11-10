@@ -163,12 +163,18 @@ class StalledPuzzleDiagnosisTest :
                         withClue("no empty cell candidate sets in $tag") {
                             unsolvedCells.count { it.possibles.isEmpty() } shouldBe 0
                         }
-                        // Beginner levels require completion without speculative trial.
-                        return if (case.level == DifficultySetting.EASY || case.level == DifficultySetting.VERY_EASY) {
-                            withoutTrial.success
-                        } else {
-                            result.success
-                        }
+                        // Report independent outcomes without changing gate behavior.
+                        val trialFreeRequired = case.level == DifficultySetting.EASY ||
+                            case.level == DifficultySetting.VERY_EASY
+                        val gateAccepted = if (trialFreeRequired) withoutTrial.success else result.success
+                        println(
+                            "STALL_GATE_OUTCOME tag=$tag board=${case.size} level=${case.level} " +
+                                "seed=${case.seed} trialFreeRequired=$trialFreeRequired " +
+                                "trialFreeSolved=${withoutTrial.success} fullSolverSolved=${result.success} " +
+                                "gateAccepted=$gateAccepted",
+                        )
+                        System.out.flush()
+                        return gateAccepted
                     }
 
                     println("STALL_PHASE board=${case.size} level=${case.level} seed=${case.seed} tag=original phase=generation-start")
