@@ -1,6 +1,10 @@
 package org.piepmeyer.gauguin.difficulty.human
 
 import io.kotest.core.spec.style.FunSpec
+import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
+import org.koin.dsl.module
+import org.piepmeyer.gauguin.difficulty.GameDifficultyRatingService
 import org.piepmeyer.gauguin.creation.GridCreator
 import org.piepmeyer.gauguin.creation.RandomPossibleDigitsShuffler
 import org.piepmeyer.gauguin.creation.SeedRandomizerMock
@@ -25,6 +29,8 @@ class HumanDifficultyCalibrationSampleTest : FunSpec({
     val budgetMs = System.getenv("GAUGUIN_CAL_BUDGET_MS")?.toLongOrNull() ?: 90000L
     require(size in 9..11 && seed >= 0 && limit in 1..3000 && budgetMs in 1000L..180000L)
     test("bounded empirical classical versus human rating size=$size seed=$seed") {
+        startKoin { modules(module { single { GameDifficultyRatingService() } }) }
+        try {
         val variant = GameVariant(GridSize(size, size), GameOptionsVariant.createClassic().copy(
             difficultiesSetting = DifficultySetting.all(),
         ))
@@ -76,5 +82,8 @@ class HumanDifficultyCalibrationSampleTest : FunSpec({
         }
         check(attempted > 0)
         check(sampled.values.sum() == attempted)
+        } finally {
+            stopKoin()
+        }
     }
 })
