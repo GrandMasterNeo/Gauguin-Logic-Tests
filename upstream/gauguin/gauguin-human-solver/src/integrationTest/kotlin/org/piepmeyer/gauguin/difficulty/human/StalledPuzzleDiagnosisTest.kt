@@ -141,6 +141,23 @@ class StalledPuzzleDiagnosisTest :
                             cell.possibles.count { it !in allowed }
                         }
                         val minCageOptions = diagnosticGrid.cages.minOfOrNull { cache.possibles(it).size } ?: 0
+                        // Distinguish solved singleton cages from actionable unresolved ones.
+                        // The global minimum can be 1 solely because a completed cage is fixed.
+                        val unresolvedCages = diagnosticGrid.cages.filter { cage ->
+                            cage.cells.any { !it.isUserValueSet }
+                        }
+                        val unresolvedCageOptions = unresolvedCages.map { cache.possibles(it).size }
+                        val minUnresolvedCageOptions = unresolvedCageOptions.minOrNull() ?: 0
+                        val singletonUnresolvedCages = unresolvedCageOptions.count { it == 1 }
+                        val constrainedUnresolvedCages = unresolvedCageOptions.count { it in 2..3 }
+                        val maxUnresolvedCageOptions = unresolvedCageOptions.maxOrNull() ?: 0
+                        println(
+                            "STALL_CAGE_FRONTIER tag=$tag board=${case.size} level=${case.level} seed=${case.seed} " +
+                                "unresolvedCages=${unresolvedCages.size} singletonUnresolvedCages=$singletonUnresolvedCages " +
+                                "twoOrThreeCombinationCages=$constrainedUnresolvedCages " +
+                                "minUnresolvedCombinations=$minUnresolvedCageOptions " +
+                                "maxUnresolvedCombinations=$maxUnresolvedCageOptions",
+                        )
 
                         println(
                             "STALL_REPRO tag=$tag board=${case.size} level=${case.level} seed=${case.seed} " +
