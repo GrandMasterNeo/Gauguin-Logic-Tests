@@ -163,7 +163,7 @@ class StalledPuzzleDiagnosisTest :
                             "STALL_REPRO tag=$tag board=${case.size} level=${case.level} seed=${case.seed} " +
                                 "solvedWithoutTrial=${withoutTrial.success} " +
                                 "filledWithoutTrial=${noTrialGrid.cells.count { it.isUserValueSet }} " +
-                                "solvedWithTrial=${result.success} filled=${diagnosticGrid.cells.count { it.isUserValueSet }} " +
+                                "solvedWithTrial=${result.success} filledWithTrial=${fullGrid.cells.count { it.isUserValueSet }} " +
                                 "usedTrial=${result.usedNishio} difficulty=${result.difficulty} " +
                                 "solverMs=${solverNs / 1_000_000} " +
                                 "candidatesTotal=${unsolvedCells.sumOf { it.possibles.size }} " +
