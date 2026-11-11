@@ -1,0 +1,37 @@
+package org.piepmeyer.gauguin.challenge
+
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.piepmeyer.gauguin.game.save.SaveGame
+import org.piepmeyer.gauguin.grid.Grid
+import java.io.File
+
+class Challenges {
+    suspend fun zenChallenge(gridSize: Int): Grid {
+        val resource = this::class.java.getResource("/org/piepmeyer/gauguin/challenge/game_${gridSize}x$gridSize-easiest.yml")!!.readText()
+
+        val tempFile =
+            withContext(Dispatchers.IO) {
+                File.createTempFile("uff", "uff")
+            }
+        tempFile.writeText(resource)
+
+        val loadedGrid = SaveGame(tempFile).loadGrid()
+
+        return loadedGrid!!.also { it.isActive = false }
+    }
+
+    suspend fun chruncherChallenge(gridSize: Int): Grid {
+        val resource = this::class.java.getResource("/org/piepmeyer/gauguin/challenge/game_${gridSize}x$gridSize-hardest.yml")!!.readText()
+
+        val tempFile =
+            withContext(Dispatchers.IO) {
+                File.createTempFile("uff", "uff")
+            }
+        tempFile.writeText(resource)
+
+        val loadedGrid = SaveGame(tempFile).loadGrid()
+
+        return loadedGrid!!.also { it.isActive = false }
+    }
+}

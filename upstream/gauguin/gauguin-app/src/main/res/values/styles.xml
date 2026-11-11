@@ -1,0 +1,161 @@
+<resources
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <fraction name="gradCageOpacity">70%</fraction>
+    <fraction name="lastModifiedOpacity">90%</fraction>
+
+    <style name="BalloonHintPopupTheme" parent="Theme.AppCompat.Light"/>
+
+    <style name="LabelChipText" parent="TextAppearance.Material3.LabelMedium.Emphasized"/>
+
+    <style name="DifficultyLevelDescriptionLabel" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">?colorOnSecondary</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+    </style>
+
+    <style name="DifficultyLevelMinimumValueLabel" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textColor">?colorOnSecondary</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+    </style>
+
+    <style name="DifficultyLevelMaximumValueLabel" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textColor">?colorOnSecondary</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+    </style>
+
+    <style name="DifficultyLevelImageViewStar">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="tint">?colorOnSecondary</item>
+    </style>
+
+    <style name="DifficultyLevelImageViewStarOutline" parent="DifficultyLevelImageViewStar">
+        <item name="srcCompat">@drawable/outline_star_20</item>
+    </style>
+
+    <style name="DifficultyLevelImageViewStarFilled" parent="DifficultyLevelImageViewStar">
+        <item name="srcCompat">@drawable/filled_star_20</item>
+    </style>
+
+    <style name="ThemeOverlay.App.KeyPadButton" parent="ThemeOverlay.Material3.Button">
+        <item name="colorContainer">?colorPrimaryContainer</item>
+        <item name="colorOnContainer">?colorOnPrimaryContainer</item>
+    </style>
+
+    <style name="KeypadRegularButton" parent="Widget.Material3.Button">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.KeyPadButton</item>
+        <item name="android:layout_width">64dp</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <style name="LabelLargeOnSecondary" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="MainFab" parent="Widget.Material3.FloatingActionButton.Secondary">
+        <item name="tint">?attr/colorMainFabForeground</item>
+        <item name="android:backgroundTint">?attr/colorMainFabBackground</item>
+        <item name="srcCompat">@drawable/baseline_question_mark_24</item>
+    </style>
+
+    <style name="NishioCheckFab" parent="Widget.Material3.ExtendedFloatingActionButton.Secondary">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">?colorMainFabForeground</item>
+        <item name="android:backgroundTint">?attr/colorMainFabBackground</item>
+        <item name="android:text">@string/game_nishio_check_button</item>
+    </style>
+
+    <style name="KeypadCompactButton" parent="KeypadRegularButton">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+
+    <style name="KeypadButton" parent="KeypadCompactButton">
+    </style>
+
+    <style name="DialogText" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    <style name="DialogText.Heading" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="DialogText.Heading.Condensed" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
+    <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+    <style name="VerticalButtonGroupButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <style name="DisplayMediumAutoSizeText" parent="TextAppearance.Material3.DisplayMedium">
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">12sp</item>
+        <item name="autoSizeMaxTextSize">45sp</item>
+        <item name="autoSizeStepGranularity">4sp</item>
+    </style>
+
+    <style name="XYPlotAndroidPlotMaterialColors" parent="APDefacto">
+        <item name="android:background">?attr/colorSurfaceContainerHigh</item>
+        <item name="backgroundColor">?attr/colorSurfaceContainerHigh</item>
+        <item name="graphBackgroundColor">?attr/colorSurfaceContainerHigh</item>
+        <item name="gridBackgroundColor">?attr/colorSurfaceContainerHigh</item>
+        <item name="domainLineColor">?attr/colorOnSurface</item>
+        <item name="rangeLineColor">?attr/colorOnSurface</item>
+        <item name="domainOriginLineColor">?attr/colorOnSurface</item>
+        <item name="rangeOriginLineColor">?attr/colorOnSurface</item>
+        <item name="lineLabelTextColorTop">?attr/colorOnSurface</item>
+        <item name="lineLabelTextColorBottom">?attr/colorOnSurface</item>
+        <item name="lineLabelTextColorLeft">?attr/colorOnSurface</item>
+        <item name="lineLabelTextColorRight">?attr/colorOnSurface</item>
+        <item name="titleTextColor">?attr/colorOnSurface</item>
+        <item name="domainTitleTextColor">?attr/colorOnSurface</item>
+        <item name="rangeTitleTextColor">?attr/colorOnSurface</item>
+        <item name="legendTextColor">?attr/colorOnSurface</item>
+    </style>
+
+</resources>

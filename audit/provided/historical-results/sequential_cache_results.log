@@ -1,0 +1,36 @@
+SEQUENTIAL results tested=240 ambiguous=9 statesAfterChanges=4560 cacheChecks=4800 stableHalts=240
+INCREMENTAL CACHE: Total strategy calls=47829 changedSteps=4560 removals=2865 placements=3047 exceptions=0 invalid=0
+ACTIVE ASinglePossibleInCell calls=1660 changes=1420 removals=141 placements=1420
+ACTIVE ARemovePossibleWithoutCombination calls=1257 changes=163 removals=163 placements=0
+ACTIVE ASinglePossibleInLine calls=1707 changes=1467 removals=64 placements=1467
+ACTIVE ARemoveImpossibleCombinationInLineBecauseOfSingleCell calls=1288 changes=33 removals=33 placements=0
+ACTIVE ANakedPair calls=1221 changes=21 removals=32 placements=0
+ACTIVE APossibleMustBeContainedInSingleCageInLine calls=1284 changes=167 removals=167 placements=0
+ACTIVE APossibleMustBeContainedInSingleCageInLineDeleteFromOtherCages calls=1300 changes=151 removals=151 placements=0
+ACTIVE ANakedTriple calls=1270 changes=135 removals=173 placements=0
+ACTIVE AHiddenPair calls=1282 changes=87 removals=121 placements=0
+ACTIVE ATwoCagesTakeAllPossiblesTwoLines calls=1225 changes=78 removals=92 placements=0
+ACTIVE ATwoCagesTakeAllPossiblesThreeLines calls=1289 changes=53 removals=75 placements=0
+ACTIVE ASingleLinePossiblesSum calls=1282 changes=25 removals=79 placements=0
+ACTIVE ATwoCellsPossiblesSumSingleLine calls=1289 changes=17 removals=42 placements=0
+ACTIVE ATwoCellsPossiblesSumTwoLines calls=1296 changes=25 removals=49 placements=0
+ACTIVE ATwoCellsPossiblesSumThreeLines calls=1285 changes=10 removals=21 placements=0
+ACTIVE AGridNumberOfCagesWithPossibleForcesPossibleInCage calls=1275 changes=4 removals=19 placements=0
+ACTIVE AMinMaxSumOneLine calls=1283 changes=25 removals=83 placements=0
+ACTIVE AOddEvenCheckSumSingle calls=1246 changes=22 removals=80 placements=0
+ACTIVE ADetectPossibleUsedInLinesByOtherCagesDualLines calls=1261 changes=145 removals=196 placements=0
+ACTIVE AGridEachCageWithPossibleMustIncludePossibleOnce calls=1309 changes=140 removals=406 placements=0
+ACTIVE ADualLinesPossiblesSum calls=1285 changes=29 removals=105 placements=0
+ACTIVE AOddEvenCheckSumDual calls=1247 changes=21 removals=69 placements=0
+ACTIVE AXWing calls=1301 changes=2 removals=4 placements=0
+ACTIVE AYWing calls=1255 changes=3 removals=3 placements=0
+ACTIVE APairOfPossiblesExhaustingTwoLines calls=1287 changes=6 removals=13 placements=0
+ACTIVE AMinMaxSumTwoLines calls=1237 changes=21 removals=81 placements=0
+ACTIVE ATripleLinesPossiblesSum calls=1276 changes=21 removals=72 placements=0
+ACTIVE AOddEvenCheckSumTriple calls=1246 changes=11 removals=27 placements=0
+ACTIVE AGridSumEnforcesCageSum calls=1250 changes=2 removals=5 placements=0
+ACTIVE AGridSumOddEvenCheck calls=1249 changes=1 removals=2 placements=0
+ACTIVE AMinMaxSumThreeLines calls=1280 changes=28 removals=81 placements=0
+ACTIVE ANishioWithPairs calls=1234 changes=160 removals=149 placements=160
+ACTIVE AAdvancedNishioWithPairs calls=1247 changes=67 removals=67 placements=0
+Activated strategies=33 / 37

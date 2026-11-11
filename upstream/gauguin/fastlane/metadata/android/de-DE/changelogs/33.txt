@@ -1,0 +1,7 @@
+Version 0.28.0
+
+— Neue Übersetzung: Traditionelles Chinesisch!
+
+— Bugfix: Die Vorschau für neue Grids wurde nicht angezeigt
+— Bugfix: nicht-quadratische
+— Bugfix: Das Egalisieren der Bestzeit wird nicht mehr als neue Bestzeit bezeichnet

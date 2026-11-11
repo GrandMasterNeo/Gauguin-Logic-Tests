@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.difficulty.human.strategy.XWingSameCageTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:52.027Z" hostname="2a9d8987d813" time="0.028">
+  <properties/>
+  <testcase name="3x4 grid with XWing in same sage gets detected" classname="org.piepmeyer.gauguin.difficulty.human.strategy.XWingSameCageTest" time="0.004"/>
+  <testcase name="3x4 grid only detects single XWing" classname="org.piepmeyer.gauguin.difficulty.human.strategy.XWingSameCageTest" time="0.008"/>
+  <system-out><![CDATA[Grid:
+|  -  - |  3  - |  4  - |
+|  -  - |  1  - |  -  - |
+|  -  - |  4  - |  -  - |
+|  4  - |  2  - |  -  - |
+
+
+?[48;5;229m    1-  0   [1,2]?[0m ?[48;5;194m    7+  1       3?[0m ?[48;5;194m        1       4?[0m 
+?[48;5;229m        0   [2,3]?[0m ?[48;5;153m     1  2       1?[0m ?[48;5;190m    1-  3   [2,3]?[0m 
+?[48;5;227m   24x  4   [1,3]?[0m ?[48;5;218m     4  5       4?[0m ?[48;5;190m        3 [1,2,3]?[0m 
+?[48;5;227m        4       4?[0m ?[48;5;227m        4       2?[0m ?[48;5;227m        4   [1,3]?[0m 
+Grid:
+|  -  - |  3  - |  4  - |
+|  -  - |  1  - |  -  - |
+|  -  - |  4  - |  -  - |
+|  4  - |  2  - |  -  - |
+
+
+?[48;5;229m    1-  0 [1,2]?[0m ?[48;5;194m    7+  1     3?[0m ?[48;5;194m        1     4?[0m 
+?[48;5;229m        0 [2,3]?[0m ?[48;5;153m     1  2     1?[0m ?[48;5;190m    1-  3 [2,3]?[0m 
+?[48;5;227m   24x  4 [1,3]?[0m ?[48;5;218m     4  5     4?[0m ?[48;5;190m        3   [2]?[0m 
+?[48;5;227m        4     4?[0m ?[48;5;227m        4     2?[0m ?[48;5;227m        4 [1,3]?[0m 
+Grid:
+|  -  - |  3  - |  4  - |
+|  -  - |  1  - |  -  - |
+|  -  - |  4  - |  -  - |
+|  4  - |  2  - |  -  - |
+
+
+?[48;5;229m    1-  0   [1,2]?[0m ?[48;5;194m    7+  1       3?[0m ?[48;5;194m        1       4?[0m 
+?[48;5;229m        0   [2,3]?[0m ?[48;5;153m     1  2       1?[0m ?[48;5;190m    1-  3   [2,3]?[0m 
+?[48;5;227m   24x  4   [1,3]?[0m ?[48;5;218m     4  5       4?[0m ?[48;5;190m        3 [1,2,3]?[0m 
+?[48;5;227m        4       4?[0m ?[48;5;227m        4       2?[0m ?[48;5;227m        4   [1,3]?[0m 
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
