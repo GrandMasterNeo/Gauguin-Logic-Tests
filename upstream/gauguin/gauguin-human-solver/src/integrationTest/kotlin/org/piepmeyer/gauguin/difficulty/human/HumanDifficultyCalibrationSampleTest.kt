@@ -53,8 +53,8 @@ class HumanDifficultyCalibrationSampleTest : FunSpec({
             attempted++
             val level = rater.difficulty(grid) ?: error("Unrated generated grid")
             sampled[level] = (sampled[level] ?: 0) + 1
-            // Cap expensive uniqueness and human-solving work independently per band.
-            if ((checked[level] ?: 0) >= 3) continue
+            // Seek up to three UNIQUE puzzles per band; nonunique attempts do not exhaust\n            // the unique-puzzle quota. Bound DLX attempts at 12 per band to avoid\n            // disproportionate cost in bands with poor uniqueness acceptance.
+            if ((unique[level] ?: 0) >= 3 || (checked[level] ?: 0) >= 12) continue
             checked[level] = (checked[level] ?: 0) + 1
             val solutions = MathDokuDLX(grid).solve(DLX.SolveType.MULTIPLE)
             if (solutions != 1) {
