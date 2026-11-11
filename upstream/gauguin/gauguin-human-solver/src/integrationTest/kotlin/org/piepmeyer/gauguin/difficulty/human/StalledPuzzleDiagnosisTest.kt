@@ -107,6 +107,21 @@ class StalledPuzzleDiagnosisTest :
                             }
                         }
 
+                        // A solver success flag is not sufficient evidence of a completed
+                        // correct puzzle. Verify both modes independently against every
+                        // stored solution value, without using that value to make deductions.
+                        for ((mode, work, outcome) in listOf(
+                            Triple("deduction-only", noTrialGrid, withoutTrial),
+                            Triple("trial-enabled", fullGrid, result),
+                        )) {
+                            val completeAndCorrect = work.cells.all {
+                                it.isUserValueSet && it.userValue == it.value
+                            }
+                            withClue("solver success must match complete correct grid: $mode $tag") {
+                                outcome.success shouldBe completeAndCorrect
+                            }
+                        }
+
                         // Diagnose the non-speculative stall, not the full solver's (often solved) grid.
                         val diagnosticGrid = noTrialGrid
                         val unsolvedCells = diagnosticGrid.cells.filter { !it.isUserValueSet }
