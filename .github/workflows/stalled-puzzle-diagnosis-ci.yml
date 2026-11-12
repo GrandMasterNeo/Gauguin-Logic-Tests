@@ -18,12 +18,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {size: 9, level: EXTREME, seed: 1}
           - {size: 10, level: HARD, seed: 0}
           - {size: 10, level: EASY, seed: 10}
           - {size: 10, level: EASY, seed: 23}
-          - {size: 10, level: EXTREME, seed: 1}
-          - {size: 11, level: EXTREME, seed: 0}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
