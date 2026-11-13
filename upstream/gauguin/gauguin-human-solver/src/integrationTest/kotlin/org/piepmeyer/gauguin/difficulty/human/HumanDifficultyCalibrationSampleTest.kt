@@ -47,25 +47,38 @@ class HumanDifficultyCalibrationSampleTest : FunSpec({
         val humanScores = mutableMapOf<DifficultySetting, MutableList<Int>>()
         val start = System.nanoTime()
         var attempted = 0
+        var generationNs = 0L
+        var uniquenessNs = 0L
+        var humanNs = 0L
+        var uniquenessChecks = 0
+        var humanChecks = 0
         println("CAL_THRESHOLDS size=$size seed=$seed easy=${thresholds.thresholdEasy} medium=${thresholds.thresholdMedium} hard=${thresholds.thresholdHard} extreme=${thresholds.thresholdExtreme}")
         while (attempted < limit && (System.nanoTime() - start) / 1_000_000 < budgetMs) {
+            val generationStart = System.nanoTime()
             val grid = creator.createRandomizedGridWithCages()
+            generationNs += System.nanoTime() - generationStart
             attempted++
             val level = rater.difficulty(grid) ?: error("Unrated generated grid")
             sampled[level] = (sampled[level] ?: 0) + 1
             // Seek up to three UNIQUE puzzles per band; nonunique attempts do not exhaust\n            // the unique-puzzle quota. Bound DLX attempts at 12 per band to avoid\n            // disproportionate cost in bands with poor uniqueness acceptance.
             if ((unique[level] ?: 0) >= 3 || (checked[level] ?: 0) >= 12) continue
             checked[level] = (checked[level] ?: 0) + 1
+            val uniquenessStart = System.nanoTime()
             val solutions = MathDokuDLX(grid).solve(DLX.SolveType.MULTIPLE)
+            uniquenessNs += System.nanoTime() - uniquenessStart
+            uniquenessChecks++
             if (solutions != 1) {
                 println("CAL_CASE size=$size seed=$seed index=$attempted classical=$level score=${grid.ensureDifficultyCalculated()} solutions=$solutions human=NOT_TESTED")
                 continue
             }
             unique[level] = (unique[level] ?: 0) + 1
+            val humanStart = System.nanoTime()
             val work = grid.copyWithEmptyUserValues()
             val solver = HumanSolver(work, validate = true, avoidNishio = true)
             solver.prepareGrid()
             val result = solver.solveAndCalculateDifficulty(avoidReveal = true)
+            humanNs += System.nanoTime() - humanStart
+            humanChecks++
             val filled = work.cells.count { it.isUserValueSet }
             val fraction = filled.toDouble() / work.cells.size
             progress.getOrPut(level) { mutableListOf() }.add(fraction)
@@ -75,6 +88,7 @@ class HumanDifficultyCalibrationSampleTest : FunSpec({
             println("CAL_CASE size=$size seed=$seed index=$attempted classical=$level score=${grid.ensureDifficultyCalculated()} solutions=1 filled=$filled total=${work.cells.size} progress=$fraction humanScore=${result.difficulty} deductionOnly=$compliant")
         }
         val elapsedMs = (System.nanoTime() - start) / 1_000_000
+        println("CAL_STAGE_TIMES size=$size seed=$seed attempted=$attempted uniquenessChecks=$uniquenessChecks humanChecks=$humanChecks generationMs=${generationNs / 1_000_000} uniquenessMs=${uniquenessNs / 1_000_000} humanMs=${humanNs / 1_000_000} totalMs=$elapsedMs")
         for (level in levels) {
             val values = progress[level].orEmpty()
             val scores = humanScores[level].orEmpty()
