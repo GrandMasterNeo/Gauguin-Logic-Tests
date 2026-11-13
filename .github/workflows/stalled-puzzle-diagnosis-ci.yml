@@ -18,6 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - {size: 10, level: MEDIUM, seed: 0}
           - {size: 10, level: HARD, seed: 0}
           - {size: 10, level: EASY, seed: 10}
           - {size: 10, level: EASY, seed: 23}
