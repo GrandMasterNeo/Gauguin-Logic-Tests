@@ -36,6 +36,7 @@ class StalledPuzzleDiagnosisTest :
         data class Case(val size: Int, val level: DifficultySetting, val seed: Int)
         val cases = listOf(
             Case(9, DifficultySetting.EXTREME, 1),
+            Case(10, DifficultySetting.MEDIUM, 0),
             Case(10, DifficultySetting.HARD, 0),
             Case(10, DifficultySetting.EASY, 10),
             Case(10, DifficultySetting.EASY, 23),
