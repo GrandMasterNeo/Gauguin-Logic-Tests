@@ -19,7 +19,7 @@ import org.piepmeyer.gauguin.options.GameVariant
 import kotlin.system.measureNanoTime
 
 /**
- * Reproduces known stalled cases and a 10x10 Medium control for comparison.
+ * Diagnoses generation and human solving across all five 10x10 difficulty levels.
  *
  * Unlike that hand-driven strategy tracer, this uses the real production
  * HumanSolver API to distinguish a genuine solver stall from a discrepancy in
