@@ -45,12 +45,12 @@ jobs:
               tree = ET.parse(path)
               for element in tree.iter():
                   if element.tag in ('system-out','system-err') and element.text:
-                      records.extend(re.findall(r'CAL_(?:THRESHOLDS|CASE|SUMMARY)[^\r\n]*', element.text))
+                      records.extend(re.findall(r'CAL_(?:THRESHOLDS|CASE|SUMMARY|STAGE_TIMES)[^\r\n]*', element.text))
           records = list(dict.fromkeys(records))
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as out:
               out.write('## Classical versus deduction-only calibration (bounded diagnostic)\n\n')
               for record in records:
-                  if record.startswith(('CAL_SUMMARY','CAL_THRESHOLDS')):
+                  if record.startswith(('CAL_SUMMARY','CAL_THRESHOLDS','CAL_STAGE_TIMES')):
                       out.write('- `' + record + '`\n')
           for record in records:
               print(record)
