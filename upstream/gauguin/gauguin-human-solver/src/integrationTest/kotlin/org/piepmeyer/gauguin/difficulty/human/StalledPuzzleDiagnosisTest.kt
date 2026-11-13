@@ -19,7 +19,7 @@ import org.piepmeyer.gauguin.options.GameVariant
 import kotlin.system.measureNanoTime
 
 /**
- * Reproduces the exact four cases reported by AdvancedDifficultyStrategySafetyTest.
+ * Reproduces known stalled cases and a 10x10 Medium control for comparison.
  *
  * Unlike that hand-driven strategy tracer, this uses the real production
  * HumanSolver API to distinguish a genuine solver stall from a discrepancy in
