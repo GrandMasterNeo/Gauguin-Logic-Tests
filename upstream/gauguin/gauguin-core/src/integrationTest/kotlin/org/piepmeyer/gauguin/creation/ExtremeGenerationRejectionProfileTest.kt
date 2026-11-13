@@ -50,6 +50,9 @@ class ExtremeGenerationRejectionProfileTest : FunSpec({
         var matches = 0
         var uniqueMatches = 0
         var nonUniqueMatches = 0
+        var relaxedProbed = 0
+        var relaxedUnique = 0
+        var relaxedNonUnique = 0
         var generationNs = 0L
         var ratingNs = 0L
         var uniquenessNs = 0L
@@ -97,6 +100,17 @@ class ExtremeGenerationRejectionProfileTest : FunSpec({
                     println("PROFILE_DLX size=$size seed=$seed candidate=$examined solutions=$solutions")
                     System.out.flush()
                 }
+                // Hypothetical 10% lower threshold: probe at most three candidates
+                // for uniqueness, without modifying production acceptance.
+                if (score >= threshold * 0.90 && score < threshold && relaxedProbed < 3) {
+                    val uniqueStart = System.nanoTime()
+                    val solutions = MathDokuDLX(grid).solve(DLX.SolveType.MULTIPLE)
+                    uniquenessNs += System.nanoTime() - uniqueStart
+                    relaxedProbed++
+                    if (solutions == 1) relaxedUnique++ else relaxedNonUnique++
+                    println("PROFILE_RELAXED_UNIQUENESS size=$size seed=$seed candidate=$examined score=$score solutions=$solutions")
+                    System.out.flush()
+                }
                 if (examined % 250 == 0) {
                     println("PROFILE_CHECKPOINT size=$size seed=$seed candidates=$examined elapsedMs=${(System.nanoTime() - started) / 1_000_000L} matches=$matches")
                     System.out.flush()
@@ -128,7 +142,8 @@ class ExtremeGenerationRejectionProfileTest : FunSpec({
                     "maxGenerationMs=${maxGenerationNs / 1_000_000L} maxRatingMs=${maxRatingNs / 1_000_000L} " +
                     "meanScore=${if (examined == 0) 0.0 else scoreSum / examined} " +
                     "maxScore=$maxScore matches=$matches uniqueMatches=$uniqueMatches " +
-                    "nonUniqueMatches=$nonUniqueMatches ratingCounts=${frequencies.toSortedMap(compareBy { it.ordinal })}",
+                    "nonUniqueMatches=$nonUniqueMatches relaxedProbed=$relaxedProbed " +
+                    "relaxedUnique=$relaxedUnique relaxedNonUnique=$relaxedNonUnique ratingCounts=${frequencies.toSortedMap(compareBy { it.ordinal })}",
             )
             System.out.flush()
         }
