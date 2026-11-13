@@ -45,6 +45,7 @@ class ExtremeGenerationRejectionProfileTest : FunSpec({
         val threshold = rater.byVariant(variant)?.thresholdExtreme
             ?: error("Missing Extreme rating threshold for $size x $size")
         val frequencies = mutableMapOf<DifficultySetting, Int>()
+        val observedScores = mutableListOf<Double>()
         var examined = 0
         var matches = 0
         var uniqueMatches = 0
@@ -78,6 +79,7 @@ class ExtremeGenerationRejectionProfileTest : FunSpec({
 
                 examined++
                 scoreSum += score
+                observedScores.add(score)
                 if (score > maxScore) maxScore = score
                 if (level != null) {
                     frequencies[level] = (frequencies[level] ?: 0) + 1
@@ -104,6 +106,20 @@ class ExtremeGenerationRejectionProfileTest : FunSpec({
             frequencies.values.sum() shouldBe examined
         } finally {
             val elapsedMs = (System.nanoTime() - started) / 1_000_000L
+            if (observedScores.isNotEmpty()) {
+                val sorted = observedScores.sorted()
+                fun percentile(p: Double): Double = sorted[((sorted.size - 1) * p).toInt()]
+                println(
+                    "PROFILE_CALIBRATION size=$size seed=$seed candidates=${sorted.size} " +
+                        "scorePerCellMean=${scoreSum / sorted.size / (size * size)} " +
+                        "p50=${percentile(0.50)} p90=${percentile(0.90)} " +
+                        "p95=${percentile(0.95)} p99=${percentile(0.99)} " +
+                        "aboveCurrent=${sorted.count { it >= threshold }} " +
+                        "aboveMinus5Percent=${sorted.count { it >= threshold * 0.95 }} " +
+                        "aboveMinus10Percent=${sorted.count { it >= threshold * 0.90 }} " +
+                        "note=classical-only-no-uniqueness-or-human-certification",
+                )
+            }
             println(
                 "PROFILE_SUMMARY size=$size seed=$seed attempted=$examined " +
                     "elapsedMs=$elapsedMs budgetMs=$budgetMs " +
