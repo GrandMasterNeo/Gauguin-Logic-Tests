@@ -42,6 +42,8 @@ class HumanDifficultyCalibrationSampleTest : FunSpec({
         val sampled = mutableMapOf<DifficultySetting, Int>()
         val checked = mutableMapOf<DifficultySetting, Int>()
         val unique = mutableMapOf<DifficultySetting, Int>()
+        val nonunique = mutableMapOf<DifficultySetting, Int>()
+        val quotaSkipped = mutableMapOf<DifficultySetting, Int>()
         val solved = mutableMapOf<DifficultySetting, Int>()
         val progress = mutableMapOf<DifficultySetting, MutableList<Double>>()
         val humanScores = mutableMapOf<DifficultySetting, MutableList<Int>>()
@@ -61,13 +63,17 @@ class HumanDifficultyCalibrationSampleTest : FunSpec({
             val level = rater.difficulty(grid) ?: error("Unrated generated grid")
             sampled[level] = (sampled[level] ?: 0) + 1
             // Seek up to three UNIQUE puzzles per band; nonunique attempts do not exhaust\n            // the unique-puzzle quota. Bound DLX attempts at 12 per band to avoid\n            // disproportionate cost in bands with poor uniqueness acceptance.
-            if ((unique[level] ?: 0) >= 3 || (checked[level] ?: 0) >= 12) continue
+            if ((unique[level] ?: 0) >= 3 || (checked[level] ?: 0) >= 12) {
+                quotaSkipped[level] = (quotaSkipped[level] ?: 0) + 1
+                continue
+            }
             checked[level] = (checked[level] ?: 0) + 1
             val uniquenessStart = System.nanoTime()
             val solutions = MathDokuDLX(grid).solve(DLX.SolveType.MULTIPLE)
             uniquenessNs += System.nanoTime() - uniquenessStart
             uniquenessChecks++
             if (solutions != 1) {
+                nonunique[level] = (nonunique[level] ?: 0) + 1
                 println("CAL_CASE size=$size seed=$seed index=$attempted classical=$level score=${grid.ensureDifficultyCalculated()} solutions=$solutions human=NOT_TESTED")
                 continue
             }
@@ -92,10 +98,12 @@ class HumanDifficultyCalibrationSampleTest : FunSpec({
         for (level in levels) {
             val values = progress[level].orEmpty()
             val scores = humanScores[level].orEmpty()
-            println("CAL_SUMMARY size=$size seed=$seed level=$level sampled=${sampled[level] ?: 0} checked=${checked[level] ?: 0} unique=${unique[level] ?: 0} deductionSolved=${solved[level] ?: 0} meanProgress=${if (values.isEmpty()) "NA" else values.average()} meanHumanScore=${if (scores.isEmpty()) "NA" else scores.average()} attempted=$attempted elapsedMs=$elapsedMs")
+            println("CAL_SUMMARY size=$size seed=$seed level=$level sampled=${sampled[level] ?: 0} checked=${checked[level] ?: 0} unique=${unique[level] ?: 0} nonunique=${nonunique[level] ?: 0} quotaSkipped=${quotaSkipped[level] ?: 0} deductionSolved=${solved[level] ?: 0} meanProgress=${if (values.isEmpty()) "NA" else values.average()} meanHumanScore=${if (scores.isEmpty()) "NA" else scores.average()} attempted=$attempted elapsedMs=$elapsedMs")
         }
         check(attempted > 0)
         check(sampled.values.sum() == attempted)
+        check(levels.all { (sampled[it] ?: 0) == (checked[it] ?: 0) + (quotaSkipped[it] ?: 0) })
+        check(levels.all { (checked[it] ?: 0) == (unique[it] ?: 0) + (nonunique[it] ?: 0) })
         } finally {
             stopKoin()
         }
