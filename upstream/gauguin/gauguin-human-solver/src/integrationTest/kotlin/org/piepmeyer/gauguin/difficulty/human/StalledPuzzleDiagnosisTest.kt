@@ -128,6 +128,39 @@ class StalledPuzzleDiagnosisTest :
 
                         // Diagnose the non-speculative stall, not the full solver's (often solved) grid.
                         val diagnosticGrid = noTrialGrid
+                        // Independently replay every registered strategy against the same
+                        // stalled state. Each strategy gets a fresh grid/cache so that
+                        // earlier probes cannot change the state seen by later probes.
+                        // This is diagnostic only; no production solver behavior changes.
+                        if (!withoutTrial.success && case.size == 10 && case.seed == 0 && case.level == DifficultySetting.HARD) {
+                            for (strategy in HumanSolverStrategies.entries) {
+                                val probe = diagnosticGrid.copyWithEmptyUserValues()
+                                for (originalCell in diagnosticGrid.cells) {
+                                    val target = probe.cells.first { it.row == originalCell.row && it.column == originalCell.column }
+                                    target.possibles = originalCell.possibles.toList()
+                                    if (originalCell.isUserValueSet) {
+                                        target.userValue = originalCell.userValue
+                                    }
+                                }
+                                val beforeFilled = probe.cells.count { it.isUserValueSet }
+                                val beforeCandidates = probe.cells.filter { !it.isUserValueSet }.sumOf { it.possibles.size }
+                                val elapsed = measureNanoTime {
+                                    strategy.solver.fillCellsWithNewCacheReturningDetails(probe)
+                                }
+                                val afterFilled = probe.cells.count { it.isUserValueSet }
+                                val afterCandidates = probe.cells.filter { !it.isUserValueSet }.sumOf { it.possibles.size }
+                                val incorrect = probe.cells.count { it.isUserValueSet && it.userValue != it.value }
+                                val trueCandidatesLost = probe.cells.count { !it.isUserValueSet && it.value !in it.possibles }
+                                println(
+                                    "STALL_STRATEGY_FRONTIER board=${case.size} level=${case.level} seed=${case.seed} " +
+                                        "strategy=${strategy.name} nishio=${strategy.isNishio} " +
+                                        "placements=${afterFilled - beforeFilled} " +
+                                        "candidateDelta=${beforeCandidates - afterCandidates} " +
+                                        "incorrect=$incorrect trueCandidatesLost=$trueCandidatesLost " +
+                                        "elapsedMs=${elapsed / 1_000_000}",
+                                )
+                            }
+                        }
                         val unsolvedCells = diagnosticGrid.cells.filter { !it.isUserValueSet }
                         val candidateHistogram = unsolvedCells
                             .groupingBy { it.possibles.size }.eachCount().toSortedMap()
