@@ -137,7 +137,7 @@ class StalledPuzzleDiagnosisTest :
                                 val probe = diagnosticGrid.copyWithEmptyUserValues()
                                 for (originalCell in diagnosticGrid.cells) {
                                     val target = probe.cells.first { it.row == originalCell.row && it.column == originalCell.column }
-                                    target.possibles = originalCell.possibles.toList()
+                                    target.possibles = originalCell.possibles.toSet()
                                     if (originalCell.isUserValueSet) {
                                         target.userValue = originalCell.userValue
                                     }
