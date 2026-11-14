@@ -142,6 +142,45 @@ jobs:
               sys.exit(1)
           print(f"STALL_REPORTING_VERIFIED board={board} originalCases={len(seen)}")
           PY
+      - name: Inventory diagnostic output sizes before archiving
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          from collections import defaultdict
+
+          roots = [
+              pathlib.Path("upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest"),
+              pathlib.Path("upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest"),
+              pathlib.Path("stalled-console.log"),
+              pathlib.Path("stalled-thread-diagnostics.log"),
+          ]
+          entries = []
+          for root in roots:
+              if root.is_file():
+                  entries.append((root.stat().st_size, str(root)))
+              elif root.is_dir():
+                  entries.extend((p.stat().st_size, str(p)) for p in root.rglob("*") if p.is_file())
+          groups = defaultdict(lambda: [0, 0])
+          for size, path in entries:
+              group = "junit" if "/test-results/" in path else "html-report" if "/reports/tests/" in path else "console-or-thread"
+              groups[group][0] += 1
+              groups[group][1] += size
+          print(f"STALL_ARTIFACT_INVENTORY files={len(entries)} rawBytes={sum(size for size, _ in entries)}")
+          for group, (count, size) in sorted(groups.items()):
+              print(f"STALL_ARTIFACT_GROUP group={group} files={count} rawBytes={size}")
+          for size, path in sorted(entries, reverse=True)[:20]:
+              print(f"STALL_ARTIFACT_FILE rawBytes={size} path={path}")
+          with open(__import__("os").environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:
+              out.write("\\n### Diagnostic output inventory (uncompressed)\\n\\n")
+              out.write(f"Files: {len(entries)}; bytes: {sum(size for size, _ in entries)}\\n\\n")
+              for group, (count, size) in sorted(groups.items()):
+                  out.write(f"- {group}: {count} files, {size} bytes\\n")
+              out.write("\\nLargest files:\\n")
+              for size, path in sorted(entries, reverse=True)[:20]:
+                  out.write(f"- {size} bytes: \`{path}\`\\n")
+          PY
       - name: Archive reports and console logs as JUnit attachments
         if: always()
         uses: actions/upload-artifact@v4
