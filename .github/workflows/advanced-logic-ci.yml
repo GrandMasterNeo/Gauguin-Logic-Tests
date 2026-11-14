@@ -1,4 +1,4 @@
-name: Advanced human strategy safety (Medium Hard Extreme)
+name: Advanced human strategy safety (Medium Hard Very Hard)
 on:
   pull_request:
     branches: [logic-safety-review]
@@ -15,6 +15,7 @@ permissions:
   contents: read
 jobs:
   strategy-soundness:
+    name: strategy-soundness (${{ matrix.size }}, ${{ matrix.level == 'EXTREME' && 'VERY_HARD' || matrix.level }}, ${{ matrix.seed }})
     strategy:
       fail-fast: false
       matrix:
@@ -46,7 +47,7 @@ jobs:
               sleep 300
             done
           ' > advanced-thread-diagnostics.log 2>&1 < /dev/null &
-      - name: Trace and assert every deduction on Medium Hard Extreme
+      - name: Trace and assert every deduction on Medium Hard Very Hard
         working-directory: upstream/gauguin
         env:
           GAUGUIN_AUDIT_SIZE: ${{ matrix.size }}
