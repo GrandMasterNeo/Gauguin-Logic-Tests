@@ -1,0 +1,113 @@
+name: Advanced human strategy safety (Medium Hard Extreme)
+on:
+  pull_request:
+    branches: [logic-safety-review]
+    paths:
+      - 'upstream/gauguin/gauguin-human-solver/**'
+      - '.github/workflows/advanced-logic-ci.yml'
+  push:
+    branches: [logic-matrix-audit]
+    paths:
+      - '.github/workflows/advanced-logic-ci.yml'
+      - 'upstream/gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/AdvancedDifficultyStrategySafetyTest.kt'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  strategy-soundness:
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [9, 10, 11]
+        level: [MEDIUM, HARD, EXTREME]
+        seed: [0, 1]
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Start bounded JVM thread diagnostics
+        shell: bash
+        run: |
+          # A detached watcher survives the next step and captures a bounded
+          # thread snapshot before the job-level timeout. No solver code changes.
+          nohup bash -c '
+            sleep 480
+            for attempt in 1 2 3; do
+              echo "ADVANCED_THREAD_SNAPSHOT attempt=$attempt timestamp=$(date -u +%FT%TZ)"
+              for pid in $(jps -q 2>/dev/null || true); do
+                echo "ADVANCED_THREAD_PID pid=$pid"
+                timeout 12s jcmd "$pid" Thread.print -l 2>&1 | head -n 240 || true
+              done
+              sleep 300
+            done
+          ' > advanced-thread-diagnostics.log 2>&1 < /dev/null &
+      - name: Trace and assert every deduction on Medium Hard Extreme
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_AUDIT_SIZE: ${{ matrix.size }}
+          GAUGUIN_ADVANCED_SEEDS: '2'
+          GAUGUIN_ADVANCED_LEVEL: ${{ matrix.level }}
+          GAUGUIN_ADVANCED_SEED: ${{ matrix.seed }}
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests "*AdvancedDifficultyStrategySafetyTest" --no-daemon --stacktrace --console=plain -Pbuildserver
+      - name: Surface strategy phase and progress diagnostics
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import re
+          import xml.etree.ElementTree as ET
+
+          root = pathlib.Path("upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest")
+          records = []
+          for path in root.rglob("*.xml"):
+              try:
+                  tree = ET.parse(path)
+              except ET.ParseError:
+                  continue
+              for element in tree.iter():
+                  if element.tag in ("system-out", "system-err") and element.text:
+                      records.extend(re.findall(r"(?:ADVANCED_PHASE|ADVANCED_PROGRESS|ADVANCED_CASE|ADVANCED_SUMMARY)[^\r\n]*", element.text))
+          records = list(dict.fromkeys(records))
+          print("ADVANCED_DIAGNOSTIC_RECORDS count=" + str(len(records)))
+          for record in records[-120:]:
+              print(record)
+          with open(__import__("os").environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:
+              out.write("## Strategy execution diagnostics\n\n")
+              out.write("Records found: " + str(len(records)) + "\n\n")
+              for record in records[-60:]:
+                  out.write("- `" + record.replace("`", "'") + "`\n")
+          PY
+      - name: Surface bounded JVM stack diagnostics
+        if: always()
+        shell: bash
+        run: |
+          if [ -s advanced-thread-diagnostics.log ]; then
+            echo "ADVANCED_THREAD_DIAGNOSTICS_BEGIN"
+            tail -n 450 advanced-thread-diagnostics.log
+            echo "ADVANCED_THREAD_DIAGNOSTICS_END"
+            {
+              echo "## JVM thread diagnostics"
+              echo
+              echo "Captured snapshots: $(grep -c '^ADVANCED_THREAD_SNAPSHOT' advanced-thread-diagnostics.log || true)"
+              echo
+              echo "See job console and uploaded artifact for bounded stack traces."
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "ADVANCED_THREAD_DIAGNOSTICS_MISSING (job may have ended before first 8-minute snapshot)"
+          fi
+      - name: Preserve diagnostic test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: advanced-strategy-${{ matrix.size }}-${{ matrix.level }}-${{ matrix.seed }}
+          path: |
+            upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
+            upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
+            advanced-thread-diagnostics.log
+          if-no-files-found: warn

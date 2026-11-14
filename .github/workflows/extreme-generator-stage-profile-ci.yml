@@ -1,0 +1,75 @@
+name: Bounded Extreme generator stage profile (diagnostic only)
+on:
+  workflow_dispatch:
+  push:
+    branches: [logic-matrix-audit]
+    paths:
+      - '.github/workflows/extreme-generator-stage-profile-ci.yml'
+      - 'upstream/gauguin/gauguin-core/src/integrationTest/kotlin/org/piepmeyer/gauguin/creation/ExtremeGenerationRejectionProfileTest.kt'
+permissions:
+  contents: read
+jobs:
+  profile:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {size: 9, seed: 2}
+          - {size: 10, seed: 2}
+          - {size: 11, seed: 2}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Profile candidate generation, difficulty rejection and uniqueness without full Extreme loop
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_PROFILE_SIZE: ${{ matrix.size }}
+          GAUGUIN_PROFILE_SEED: ${{ matrix.seed }}
+          GAUGUIN_PROFILE_MAX_CANDIDATES: '2000'
+          GAUGUIN_PROFILE_BUDGET_MS: '30000'
+        run: ./gradlew :gauguin-core:integrationTest --tests '*ExtremeGenerationRejectionProfileTest' --no-daemon --console=plain -Pbuildserver
+      - name: Publish bounded-stage summary
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import re
+          import sys
+          import xml.etree.ElementTree as ET
+
+          root = pathlib.Path('upstream/gauguin/gauguin-core/build/test-results/integrationTest')
+          found = []
+          for path in root.glob('TEST-*ExtremeGenerationRejectionProfileTest.xml'):
+              tree = ET.parse(path)
+              for element in tree.iter():
+                  if element.tag in ('system-out', 'system-err') and element.text:
+                      found += re.findall(r'PROFILE_(?:START|CHECKPOINT|EXTREME_MATCH|DLX|SUMMARY)[^\r\n]*', element.text)
+          found = list(dict.fromkeys(found))
+          with open(__import__('os').environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf8') as f:
+              f.write('## Bounded Extreme generator stage profile\n\n')
+              f.write('Diagnostics only; a capped candidate sample is not a proof of full generator success.\n\n')
+              for line in found:
+                  if line.startswith('PROFILE_SUMMARY') or line.startswith('PROFILE_EXTREME_MATCH'):
+                      f.write('- `' + line + '`\n')
+          for line in found:
+              print(line)
+          if not any(line.startswith('PROFILE_SUMMARY ') for line in found):
+              print('PROFILE_REPORTING_INCOMPLETE: no completed summary; inspect tests and artifacts', file=sys.stderr)
+              sys.exit(1)
+          PY
+      - name: Archive test output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extreme-generator-profile-${{ matrix.size }}-seed-${{ matrix.seed }}
+          path: |
+            upstream/gauguin/gauguin-core/build/test-results/integrationTest/**
+            upstream/gauguin/gauguin-core/build/reports/tests/integrationTest/**
+          if-no-files-found: warn
+          retention-days: 14

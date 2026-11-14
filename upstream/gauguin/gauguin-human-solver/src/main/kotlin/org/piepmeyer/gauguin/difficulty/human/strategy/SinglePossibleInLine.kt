@@ -22,7 +22,12 @@ class SinglePossibleInLine : HumanSolverStrategy {
                     val otherCellsInLine = line.cells() - cell
 
                     cell.possibles.forEach { possible ->
-                        if (otherCellsInLine.none { it.possibles.contains(possible) }) {
+                        // A digit already placed in this line is not a
+                        // hidden single, even if stale candidate masks still
+                        // include it in another unfilled cell.
+                        if (otherCellsInLine.none { it.userValue == possible } &&
+                            otherCellsInLine.none { it.possibles.contains(possible) }
+                        ) {
                             val changedCells = grid.setUserValueAndRemovePossibles(cell, possible)
 
                             return HumanSolverStrategyResult.Success(changedCells)

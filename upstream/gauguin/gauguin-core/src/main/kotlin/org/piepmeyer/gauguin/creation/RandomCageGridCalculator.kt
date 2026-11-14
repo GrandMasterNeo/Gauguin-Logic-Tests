@@ -15,7 +15,7 @@ private val logger = KotlinLogging.logger {}
 class RandomCageGridCalculator(
     private val variant: GameVariant,
     private val randomizer: Randomizer = RandomSingleton.instance,
-    private val shuffler: PossibleDigitsShuffler = RandomPossibleDigitsShuffler(),
+    private val shuffler: PossibleDigitsShuffler = RandomPossibleDigitsShuffler(randomizer.random()),
 ) : GridCalculator {
     override suspend fun calculate(): Grid {
         var dlxNumber: Int

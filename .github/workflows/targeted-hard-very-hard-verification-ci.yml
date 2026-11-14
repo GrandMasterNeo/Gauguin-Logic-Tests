@@ -1,0 +1,61 @@
+name: Targeted Hard and Very Hard verification
+on:
+  push:
+    branches: [logic-matrix-audit]
+    paths: ['.github/workflows/targeted-hard-very-hard-verification-ci.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  hard-human:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Test 10x10 Hard seed zero without reveals
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_AUDIT_SIZE: '10'
+          GAUGUIN_ADVANCED_LEVEL: HARD
+          GAUGUIN_ADVANCED_SEED: '0'
+          GAUGUIN_ADVANCED_SEEDS: '1'
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests '*AdvancedDifficultyStrategySafetyTest' --no-daemon --console=plain -Pbuildserver
+      - name: Save test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hard-human-seed-zero
+          path: upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
+          if-no-files-found: warn
+  very-hard-profile:
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [10, 11]
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Measure Very Hard acceptance before adjusting thresholds
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_PROFILE_SIZE: ${{ matrix.size }}
+          GAUGUIN_PROFILE_SEED: '0'
+          GAUGUIN_PROFILE_MAX_CANDIDATES: '2000'
+          GAUGUIN_PROFILE_BUDGET_MS: '30000'
+        run: ./gradlew :gauguin-core:integrationTest --tests '*ExtremeGenerationRejectionProfileTest' --no-daemon --console=plain -Pbuildserver
+      - name: Save profile evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: very-hard-profile-${{ matrix.size }}
+          path: upstream/gauguin/gauguin-core/build/test-results/integrationTest/**
+          if-no-files-found: warn
