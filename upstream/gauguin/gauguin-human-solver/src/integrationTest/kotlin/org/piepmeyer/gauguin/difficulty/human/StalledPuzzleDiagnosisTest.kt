@@ -185,7 +185,7 @@ class StalledPuzzleDiagnosisTest :
                                 val invalidTupleCount = combinations.count { tuple ->
                                     tuple.size != cage.cells.size ||
                                         tuple.any { it !in diagnosticGrid.variant.possibleDigits } ||
-                                        tuple.groupingBy { it }.eachCount().values.any { it > 2 } ||
+                                        tuple.asList().groupingBy { it }.eachCount().values.any { it > 2 } ||
                                         tuple.indices.any { index ->
                                             index < cage.cells.size &&
                                                 tuple[index] !in cage.cells[index].possibles &&
