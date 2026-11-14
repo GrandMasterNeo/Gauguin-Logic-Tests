@@ -181,14 +181,13 @@ jobs:
               for size, path in sorted(entries, reverse=True)[:20]:
                   out.write(f"- {size} bytes: \`{path}\`\\n")
           PY
-      - name: Archive reports and console logs as JUnit attachments
+      - name: Archive compact XML and console diagnostics (exclude duplicated HTML and binary reports)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: stalled-diagnosis-${{ matrix.size }}-${{ matrix.level }}-${{ matrix.seed }}
           path: |
-            upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
-            upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
+            upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/*.xml
             stalled-console.log
             stalled-thread-diagnostics.log
           if-no-files-found: warn
