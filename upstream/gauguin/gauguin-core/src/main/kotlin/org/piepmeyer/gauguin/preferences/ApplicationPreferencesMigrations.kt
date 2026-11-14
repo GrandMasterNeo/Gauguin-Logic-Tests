@@ -18,7 +18,8 @@ class ApplicationPreferencesMigrations(
          * EASY
          * MEDIUM
          * HARD
-         * EXTREME
+         * EXTREME (legacy)
+         * VERY_HARD
          */
 
         if (oldDifficultyValue != null) {
@@ -26,7 +27,7 @@ class ApplicationPreferencesMigrations(
                 if (oldDifficultyValue == "ANY") {
                     DifficultySetting.all()
                 } else {
-                    setOf(DifficultySetting.valueOf(oldDifficultyValue))
+                    setOf(DifficultySetting.valueOf(if (oldDifficultyValue == "VERY_HARD") "EXTREME" else oldDifficultyValue))
                 }
         }
     }
