@@ -161,6 +161,51 @@ class StalledPuzzleDiagnosisTest :
                                 )
                             }
                         }
+                        // Bounded, reproducible frontier evidence for the known 10x10 Hard stall.
+                        // Snapshot only; do not mutate the solver, candidate sets, or production code.
+                        if (!withoutTrial.success && case.size == 10 && case.seed == 0 &&
+                            case.level == DifficultySetting.HARD && tag == "original"
+                        ) {
+                            val snapshotCache = HumanSolverCacheImpl.createValidatedCache(diagnosticGrid)
+                            val maxTuplesPerCage = 250
+                            val maxTotalTuples = 10_000
+                            var emittedTuples = 0
+                            println("STALL_FRONTIER_SNAPSHOT_BEGIN size=10 level=HARD seed=0")
+                            for (cell in diagnosticGrid.cells.sortedWith(compareBy({ it.row }, { it.column }))) {
+                                println(
+                                    "STALL_FRONTIER_CELL row=${cell.row} col=${cell.column} " +
+                                        "filled=${cell.isUserValueSet} user=${if (cell.isUserValueSet) cell.userValue else "-"} " +
+                                        "candidates=${cell.possibles.sorted().joinToString(",")}",
+                                )
+                            }
+                            for ((cageIndex, cage) in diagnosticGrid.cages.withIndex()) {
+                                val combinations = snapshotCache.possibles(cage)
+                                val allowedCount = minOf(combinations.size, maxTuplesPerCage, maxTotalTuples - emittedTuples)
+                                val emitted = combinations.take(allowedCount)
+                                val invalidTupleCount = combinations.count { tuple ->
+                                    tuple.size != cage.cells.size ||
+                                        tuple.any { it !in diagnosticGrid.variant.possibleDigits } ||
+                                        tuple.groupingBy { it }.eachCount().values.any { it > 2 } ||
+                                        tuple.indices.any { index ->
+                                            index < cage.cells.size &&
+                                                tuple[index] !in cage.cells[index].possibles &&
+                                                !cage.cells[index].isUserValueSet
+                                        }
+                                }
+                                println(
+                                    "STALL_FRONTIER_CAGE index=$cageIndex " +
+                                        "cells=${cage.cells.joinToString(";") { "${it.row},${it.column}" }} " +
+                                        "combinations=${combinations.size} invalidTupleCount=$invalidTupleCount " +
+                                        "emitted=$allowedCount truncated=${allowedCount < combinations.size}",
+                                )
+                                emitted.forEachIndexed { tupleIndex, tuple ->
+                                    println("STALL_FRONTIER_TUPLE cage=$cageIndex index=$tupleIndex values=${tuple.joinToString(",")}")
+                                }
+                                emittedTuples += allowedCount
+                            }
+                            println("STALL_FRONTIER_SNAPSHOT_END emittedTuples=$emittedTuples maxTuples=$maxTotalTuples")
+                            System.out.flush()
+                        }
                         val unsolvedCells = diagnosticGrid.cells.filter { !it.isUserValueSet }
                         val candidateHistogram = unsolvedCells
                             .groupingBy { it.possibles.size }.eachCount().toSortedMap()
