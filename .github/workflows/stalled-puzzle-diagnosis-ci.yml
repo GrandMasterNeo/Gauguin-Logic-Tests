@@ -107,7 +107,24 @@ jobs:
               match = re.search(r"board=(\d+) level=(\w+) seed=(\d+)", record)
               if match:
                   compliance_seen.add((int(match.group(1)), match.group(2), int(match.group(3))))
-          reporting_ok = seen == expected and compliance_seen == expected
+          # Hard seed 0 is the bounded, reproducible 37-strategy frontier audit.
+          # Other matrix cases may time out before reaching a strategy frontier.
+          frontier = {}
+          for record in records:
+              if not record.startswith("STALL_STRATEGY_FRONTIER "):
+                  continue
+              match = re.search(r"board=(\\d+) level=(\\w+) seed=(\\d+).*strategy=(\\w+) nishio=(true|false)", record)
+              if match:
+                  key = (int(match.group(1)), match.group(2), int(match.group(3)))
+                  frontier.setdefault(key, {})[match.group(4)] = match.group(5)
+          audit_case = (10, "HARD", 0)
+          frontier_ok = True
+          if audit_case in expected:
+              strategies = frontier.get(audit_case, {})
+              frontier_ok = (len(strategies) == 37
+                             and sum(value == "false" for value in strategies.values()) == 35
+                             and sum(value == "true" for value in strategies.values()) == 2)
+          reporting_ok = seen == expected and compliance_seen == expected and frontier_ok
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:
               out.write("## Stalled-puzzle diagnostics\n\n")
               if records:
@@ -117,6 +134,8 @@ jobs:
                   out.write("No STALL diagnostic records found in JUnit XML; inspect uploaded reports.\n")
           for record in records:
               print(record)
+          if audit_case in expected:
+              print(f"STALL_FRONTIER_COVERAGE board=10 level=HARD seed=0 uniqueStrategies={len(frontier.get(audit_case, {}))} complete={frontier_ok}")
           if not reporting_ok:
               print(f"STALL_REPORTING_INCOMPLETE board={board} expected={sorted(expected)} seen={sorted(seen)} complianceSeen={sorted(compliance_seen)} lastPhase={phase_records[-1] if phase_records else 'none'}", file=sys.stderr)
               print("ERROR: incomplete diagnostic reporting; do not classify as mathematical failure", file=sys.stderr)
