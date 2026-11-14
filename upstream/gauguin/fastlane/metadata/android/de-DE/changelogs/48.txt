@@ -1,1 +1,0 @@
-— Bugfix: Zurückstufen einer Abhängigkeit, um Abstürze beim Laden von Spielen zu verhindern.

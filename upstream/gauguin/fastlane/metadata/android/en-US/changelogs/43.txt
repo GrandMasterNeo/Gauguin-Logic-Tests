@@ -1,1 +1,0 @@
-— Fix crash during start if the app has never been started before.

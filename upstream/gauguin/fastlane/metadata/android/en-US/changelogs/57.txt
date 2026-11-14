@@ -1,3 +1,0 @@
-— Adds support for an OLED friendly plain black background of the main screen (first iteration).
-— Activate workaround with the new edge-to-edge layout on Android 10.
-— Fix layout issues regarding edge-to-edge layout, mostly dealing with tablets.

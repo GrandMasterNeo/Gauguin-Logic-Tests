@@ -1,3 +1,0 @@
-— Die Auswahl des Themes ist nun direkt aus dem Menü möglich.
-— Bugfix: Bei Benutzung von dynamischen Farben wurde manchmal der helle bzw. dunkle Modus
-  versehentlich weiter genutzt.

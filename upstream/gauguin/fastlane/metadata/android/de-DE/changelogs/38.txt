@@ -1,2 +1,0 @@
-— Neue, moderne Statistik-Oberfläche
-— Neues Streudiagramm, das für jedes Spiel die Dauer und die Schwierigkeit visualisiert

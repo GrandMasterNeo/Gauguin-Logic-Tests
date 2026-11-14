@@ -1,2 +1,0 @@
-— Correction de l'arrière-plan noir uni combiné avec les couleurs dynamiques ou avec le thème monochrome.
-— Amélioration de la lisibilité des défis mathématiques des cages.

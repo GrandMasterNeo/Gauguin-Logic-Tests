@@ -1,2 +1,0 @@
-— Fügt eine Option hinzu, um breitere Rahmen um Gruppen zu zeichnen. Dies soll die Lesbarkeit verbessern.
-— Ändert die Darstellung von Zellen mit geändertem Inhalt um die Lesbarkeit zu verbessern.

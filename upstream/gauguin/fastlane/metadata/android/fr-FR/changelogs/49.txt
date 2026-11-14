@@ -1,2 +1,0 @@
-— Correction de bugs mineurs.
-— Optimisation des performances du nouvel aperçu de grille.

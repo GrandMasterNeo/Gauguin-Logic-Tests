@@ -1,2 +1,0 @@
-— Switching to another theme is now possible directly from the main menu.
-— Fixes switching to dynamic colors by supporting the correct light or dark mode.

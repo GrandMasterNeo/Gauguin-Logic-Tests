@@ -1,2 +1,0 @@
-— Kleinere Bugfixes.
-— Geschwindigkeitsoptimierung beim Generieren der Grid-Vorschau.

@@ -1,3 +1,0 @@
-— Unterstützt den randlosen Modus (Edge-To-Edge-Support).
-— Neue Übersetzung: Russisch.
-— Ermöglicht das Füllen einzelner Gruppen des Spiels durch lange Berührung.

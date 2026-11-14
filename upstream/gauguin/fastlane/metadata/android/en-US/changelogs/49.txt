@@ -1,2 +1,0 @@
-— Small bug fixes.
-— Performance optimization regarding new grid preview.

@@ -1,3 +1,0 @@
-— Statistics: Highlight last game in scatter plot and streaks diagram.
-— Statistics: Compress streak diagram to show one streak per column. Avoids redundant entries when
-  showing long streaks.

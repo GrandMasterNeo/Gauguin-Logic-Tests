@@ -1,1 +1,0 @@
-— Solves yet another build problems regarding F-Droid by upgrading Java from version 17 to 21.

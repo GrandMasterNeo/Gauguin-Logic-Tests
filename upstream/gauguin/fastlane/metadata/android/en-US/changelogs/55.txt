@@ -1,3 +1,0 @@
-— Adds edgo-to-edge support.
-— Adds Russian translation.
-— Enables filling single cages by long-tapping.

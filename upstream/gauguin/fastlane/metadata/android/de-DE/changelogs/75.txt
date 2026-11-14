@@ -1,1 +1,0 @@
-— Neues Feature: Man kann das Duodezimale Zahlensystem verwenden (0..9, A, B).

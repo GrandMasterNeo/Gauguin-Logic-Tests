@@ -1,1 +1,0 @@
-— Behebt einen Absturz, falls diese App noch nie vorher gestartet wurde.

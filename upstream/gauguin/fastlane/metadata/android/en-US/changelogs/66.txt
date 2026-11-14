@@ -1,1 +1,0 @@
-— Fixes manifest file to enable a working release.

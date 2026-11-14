@@ -1,2 +1,0 @@
-— When each cell got filled with a single possible value, Gauguin suggests to solve the grid with the givne values.
-— Solves a performance regression when generating new grids.

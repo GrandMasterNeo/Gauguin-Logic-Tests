@@ -1,1 +1,0 @@
-— New feature: You can now choose the duodecimal numeral system, with base twelve (digits 0..9, A, B).

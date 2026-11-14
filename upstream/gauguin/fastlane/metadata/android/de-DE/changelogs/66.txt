@@ -1,1 +1,0 @@
-— Behebt einen kritischen Fehler in der Manifest-Datei.
