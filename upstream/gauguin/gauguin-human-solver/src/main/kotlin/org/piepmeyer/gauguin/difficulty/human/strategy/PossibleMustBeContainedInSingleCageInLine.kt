@@ -1,0 +1,72 @@
+package org.piepmeyer.gauguin.difficulty.human.strategy
+
+import org.piepmeyer.gauguin.difficulty.human.HumanSolverCache
+import org.piepmeyer.gauguin.difficulty.human.HumanSolverStrategy
+import org.piepmeyer.gauguin.difficulty.human.HumanSolverStrategyResult
+import org.piepmeyer.gauguin.grid.Grid
+import org.piepmeyer.gauguin.grid.GridCage
+
+class PossibleMustBeContainedInSingleCageInLine : HumanSolverStrategy {
+    override fun fillCells(
+        grid: Grid,
+        cache: HumanSolverCache,
+    ): HumanSolverStrategyResult {
+        val lines = cache.linesWithEachPossibleValue()
+
+        lines.forEach { line ->
+            for (singlePossible in grid.variant.possibleDigits) {
+                // A line already containing this digit needs no further
+                // placement. Stale candidate masks in other cells must not
+                // force an additional copy into a cage.
+                if (line.cells().any { it.userValue == singlePossible }) {
+                    continue
+                }
+                val cagesWithPossible =
+                    line
+                        .cells()
+                        .filter { it.possibles.contains(singlePossible) }
+                        .map { it.cage!! }
+                        .toSet()
+
+                if (cagesWithPossible.size == 1) {
+                    val cage = cagesWithPossible.first()
+
+                    val validPossibles =
+                        cache
+                            .possibles(cage)
+                            .filter {
+                                it.withIndex().any { possibleWithIndex ->
+                                    possibleWithIndex.value == singlePossible &&
+                                        line.contains(cage.cells[possibleWithIndex.index])
+                                }
+                            }
+
+                    if (validPossibles.isNotEmpty() && deletePossibleInSingleCage(cage, validPossibles)) {
+                        return HumanSolverStrategyResult.Success(cage.cells)
+                    }
+                }
+            }
+        }
+
+        return HumanSolverStrategyResult.NothingChanged()
+    }
+
+    private fun deletePossibleInSingleCage(
+        cage: GridCage,
+        validPossibles: List<IntArray>,
+    ): Boolean {
+        for (cellNumber in cage.cells.indices) {
+            val differentPossibles = validPossibles.map { it[cellNumber] }.toSet()
+
+            for (possible in cage.getCell(cellNumber).possibles) {
+                if (!differentPossibles.contains(possible)) {
+                    cage.getCell(cellNumber).possibles -= possible
+
+                    return true
+                }
+            }
+        }
+
+        return false
+    }
+}

@@ -1,0 +1,7 @@
+Version 0.28.0
+
+— New translation: Traditional Chinese!
+
+— Fix missing preview of new grids
+— Fix generating non-square grids
+— Fix: equalizing the best time is no longer interpreted as a new best time

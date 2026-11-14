@@ -1,0 +1,101 @@
+name: Expanded default-generator human difficulty sweep (diagnostic)
+on:
+  push:
+    branches: [logic-matrix-audit]
+    paths:
+      - 'upstream/gauguin/gauguin-human-solver/**'
+      - '.github/workflows/expanded-human-sweep-ci.yml'
+  pull_request:
+    branches: [logic-safety-review]
+    paths:
+      - 'upstream/gauguin/gauguin-human-solver/**'
+      - '.github/workflows/expanded-human-sweep-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  default-generator-sweep:
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [9, 10, 11]
+        seed_count: [50]
+    name: default-generator-sweep (${{ matrix.size }}x${{ matrix.size }}, ${{ matrix.seed_count }} seeds per level)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Run seeded default-generator Very Easy and Easy human-solving sweep
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_AUDIT_SIZE: ${{ matrix.size }}
+          GAUGUIN_SWEEP_SEEDS: ${{ matrix.seed_count }}
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests "*DefaultDifficultySweepTest" --no-daemon --stacktrace -Pbuildserver
+      - name: Publish per-level solving statistics
+        if: always()
+        shell: bash
+        env:
+          EXPECTED_SIZE: ${{ matrix.size }}
+          EXPECTED_SEEDS: ${{ matrix.seed_count }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import pathlib
+          import re
+          import sys
+          import xml.etree.ElementTree as ET
+
+          root = pathlib.Path("upstream/gauguin/gauguin-human-solver/build/test-results")
+          lines = []
+          for path in root.rglob("*.xml"):
+              try:
+                  tree = ET.parse(path)
+              except ET.ParseError:
+                  continue
+              for element in tree.iter():
+                  if element.tag in ("system-out", "system-err") and element.text:
+                      lines.extend(re.findall(r"SWEEP_(?:SUMMARY|STALL|CASE)[^\r\n]*", element.text))
+          lines = sorted(set(lines))
+          board = os.environ["EXPECTED_SIZE"]
+          seeds = int(os.environ["EXPECTED_SEEDS"])
+          summaries = [line for line in lines if line.startswith("SWEEP_SUMMARY ")]
+          cases = [line for line in lines if line.startswith("SWEEP_CASE ")]
+          levels = set()
+          for line in summaries:
+              fields = dict(re.findall(r"(\w+)=([^ ]+)", line))
+              if fields.get("size") == board and fields.get("seeds") == str(seeds):
+                  levels.add(fields.get("level"))
+          valid_cases = [line for line in cases if f"size={board} " in line]
+          reporting_ok = len(summaries) == 2 and levels == {"VERY_EASY", "EASY"} and len(valid_cases) == 2 * seeds
+          summary = pathlib.Path(os.environ["GITHUB_STEP_SUMMARY"])
+          with summary.open("a", encoding="utf-8") as out:
+              out.write("## Human-solving diagnostic statistics\n\n")
+              if lines:
+                  out.write("Each level has the configured number of seeded puzzles; completion counts are diagnostic, not pass criteria.\n\n")
+                  for line in lines:
+                      if line.startswith("SWEEP_CASE "):
+                          continue
+                      out.write("- `" + line.strip() + "`\n")
+              else:
+                  out.write("No SWEEP_SUMMARY or SWEEP_STALL records found in JUnit XML. Inspect uploaded test reports.\n")
+          for line in lines:
+              print(line)
+          if not reporting_ok:
+              print(f"ERROR: incomplete JUnit reporting board={board} summaries={len(summaries)} levels={levels} cases={len(valid_cases)} expected_cases={2*seeds}", file=sys.stderr)
+              sys.exit(1)
+          print(f"REPORTING_VERIFIED size={board} summaries=2 cases={len(valid_cases)}")
+          PY
+      - name: Preserve JUnit and test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: expanded-human-sweep-${{ matrix.size }}
+          path: |
+            upstream/gauguin/gauguin-human-solver/build/test-results/**
+            upstream/gauguin/gauguin-human-solver/build/reports/tests/**
+          if-no-files-found: warn

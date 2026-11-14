@@ -1,0 +1,38 @@
+name: Experimental merging generator comparison
+on:
+  pull_request:
+    branches: [logic-safety-review]
+    paths:
+      - 'upstream/gauguin/gauguin-human-solver/src/integrationTest/kotlin/org/piepmeyer/gauguin/difficulty/human/MergingGeneratorComparisonTest.kt'
+      - '.github/workflows/merging-generator-comparison-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  comparison:
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [9, 11]
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Measure alternative generator and human-solving completion
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_MERGE_SIZE: ${{ matrix.size }}
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests "*MergingGeneratorComparisonTest" --no-daemon --stacktrace -Pbuildserver
+      - name: Retain reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: merging-generator-${{ matrix.size }}
+          path: |
+            upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
+            upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
+          if-no-files-found: warn

@@ -1,0 +1,418 @@
+package org.piepmeyer.gauguin.ui.grid
+
+import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Path
+import android.util.AttributeSet
+import android.view.MotionEvent
+import android.view.View
+import android.view.View.OnTouchListener
+import io.github.oshai.kotlinlogging.KotlinLogging
+import org.koin.core.component.KoinComponent
+import org.piepmeyer.gauguin.R
+import org.piepmeyer.gauguin.grid.Grid
+import org.piepmeyer.gauguin.grid.GridCell
+import org.piepmeyer.gauguin.grid.GridSize
+import org.piepmeyer.gauguin.grid.GridView
+import org.piepmeyer.gauguin.options.GameOptionsVariant
+import org.piepmeyer.gauguin.options.GameVariant
+import org.piepmeyer.gauguin.ui.ActivityUtils
+import kotlin.math.min
+import kotlin.math.sqrt
+
+private val logger = KotlinLogging.logger {}
+
+class GridUI :
+    View,
+    OnTouchListener,
+    GridView,
+    KoinComponent {
+    private val gridUiInjectionStrategy: GridUiInjectionStrategy = GridUiInjectionFactory.createStreategy(this)
+
+    private val cells = mutableListOf<GridCellUI>()
+    private val cages = mutableListOf<GridCageUI>()
+
+    enum class CellShape { Square, Rectangular }
+
+    var cellShape = CellShape.Square
+    var isSelectorShown = false
+    var cellLastTouched: GridCell? = null
+        private set
+
+    private var cellSize: Pair<Int, Int> = Pair(1, 1)
+
+    override var grid =
+        Grid(
+            GameVariant(
+                GridSize(5, 5),
+                GameOptionsVariant.createClassic(),
+            ),
+        )
+        set(value) {
+            field = value
+            rebuildCellsFromGrid()
+            updateSizing()
+        }
+
+    private var paintHolder = GridPaintHolder(this, context)
+    private lateinit var layoutDetails: GridLayoutDetails
+    var isPreviewMode = false
+    var hideCageText = false
+    private var previewStillCalculating = false
+    private var maximumCellSizeInDP = gridUiInjectionStrategy.maximumCellSizeInDP()
+
+    private var padding = Pair(0, 0)
+
+    constructor(context: Context?) : super(context) {
+        initGridView()
+    }
+
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
+        initGridView()
+    }
+
+    constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(
+        context,
+        attrs,
+        defStyle,
+    ) {
+        initGridView()
+    }
+
+    private fun initGridView() {
+        setOnTouchListener(this)
+        isFocusable = true
+        isFocusableInTouchMode = true
+    }
+
+    fun updateTheme(activityUtils: ActivityUtils) {
+        updateTheme(activityUtils.usePlainBlackBackground(context))
+    }
+
+    fun updateTheme(usePlainBlackBackground: Boolean? = false) {
+        paintHolder = GridPaintHolder(this, context, usePlainBlackBackground)
+        rebuildCellsFromGrid()
+
+        this.invalidate()
+    }
+
+    fun reCreate() {
+        if (grid.gridSize.amountOfNumbers < 2) {
+            return
+        }
+        rebuildCellsFromGrid()
+        isSelectorShown = false
+    }
+
+    fun rebuildCellsFromGrid() {
+        cells.clear()
+        for (cell in grid.cells) {
+            cells.add(GridCellUI(cell, paintHolder))
+        }
+
+        cages.clear()
+        for (cage in grid.cages) {
+            cages.add(GridCageUI(this, cage, paintHolder, gridUiInjectionStrategy.showOperators(), gridUiInjectionStrategy.numeralSystem()))
+        }
+    }
+
+    override fun onMeasure(
+        widthMeasureSpec: Int,
+        heightMeasureSpec: Int,
+    ) {
+        val measure = measureGrid(widthMeasureSpec, heightMeasureSpec, grid.gridSize)
+
+        setMeasuredDimension(
+            measure.first,
+            measure.second,
+        )
+    }
+
+    private fun measureGrid(
+        widthMeasureSpec: Int,
+        heightMeasureSpec: Int,
+        gridSize: GridSize,
+    ): Pair<Int, Int> {
+        val widthMode = MeasureSpec.getMode(widthMeasureSpec)
+        val widthSize = MeasureSpec.getSize(widthMeasureSpec)
+        val heightMode = MeasureSpec.getMode(heightMeasureSpec)
+        val heightSize = MeasureSpec.getSize(heightMeasureSpec)
+
+        val maximumWidth = (gridSize.width * maximumCellSizeInDP * resources.displayMetrics.density).toInt()
+        val maximumHeight = (gridSize.height * maximumCellSizeInDP * resources.displayMetrics.density).toInt()
+
+        val cellSize = potentialCellSize(widthSize, heightSize)
+
+        logger.info {
+            "measureGrid with $widthSize x $heightSize," +
+                "${measureModeDescription(widthMode)}," +
+                measureModeDescription(heightMode)
+        }
+        return when (widthMode) {
+            MeasureSpec.UNSPECIFIED if heightMode == MeasureSpec.UNSPECIFIED -> {
+                Pair(maximumWidth, maximumHeight)
+            }
+
+            MeasureSpec.EXACTLY if heightMode == MeasureSpec.EXACTLY -> {
+                Pair(widthSize, heightSize)
+            }
+
+            MeasureSpec.AT_MOST if heightMode == MeasureSpec.EXACTLY -> {
+                Pair(
+                    min(widthSize, cellSize.second * gridSize.width),
+                    heightSize,
+                )
+            }
+
+            MeasureSpec.UNSPECIFIED if heightMode == MeasureSpec.EXACTLY -> {
+                Pair(
+                    cellSize.second * gridSize.width,
+                    heightSize,
+                )
+            }
+
+            MeasureSpec.EXACTLY if heightMode == MeasureSpec.AT_MOST -> {
+                Pair(
+                    widthSize,
+                    min(heightSize, cellSize.first * gridSize.height),
+                )
+            }
+
+            MeasureSpec.EXACTLY if heightMode == MeasureSpec.UNSPECIFIED -> {
+                Pair(
+                    widthSize,
+                    cellSize.first * gridSize.height,
+                )
+            }
+
+            else -> {
+                Pair(
+                    min(widthSize, cellSize.first * gridSize.width),
+                    min(heightSize, cellSize.second * gridSize.height),
+                )
+            }
+        }
+    }
+
+    private fun measureModeDescription(sizeMode: Int): String =
+        when (sizeMode) {
+            MeasureSpec.UNSPECIFIED -> "unspecified"
+            MeasureSpec.AT_MOST -> "atMost"
+            MeasureSpec.EXACTLY -> "exactly"
+            else -> "unknown"
+        }
+
+    override fun onSizeChanged(
+        w: Int,
+        h: Int,
+        oldw: Int,
+        oldh: Int,
+    ) {
+        super.onSizeChanged(w, h, oldw, oldh)
+
+        logger.info { "onSizeChanged: $w x $h" }
+
+        updateSizing()
+    }
+
+    override fun onLayout(
+        changed: Boolean,
+        left: Int,
+        top: Int,
+        right: Int,
+        bottom: Int,
+    ) {
+        super.onLayout(changed, left, top, right, bottom)
+
+        logger.info { "onLayout: $left $top $right $bottom" }
+
+        updateSizing()
+    }
+
+    private fun updateSizing() {
+        cellSize = potentialCellSize(this.measuredWidth, this.measuredHeight)
+
+        padding =
+            Pair(
+                (width - (cellSize.first * grid.gridSize.width)) / 2,
+                (height - (cellSize.second * grid.gridSize.height)) / 2,
+            )
+
+        layoutDetails =
+            GridLayoutDetails(
+                cellSizeFloat(),
+                paintHolder,
+                gridUiInjectionStrategy.useBroaderCageFrames(),
+            )
+    }
+
+    override fun onDraw(canvas: Canvas) {
+        canvas.drawRoundRect(
+            padding.first.toFloat(),
+            padding.second.toFloat(),
+            padding.first.toFloat() + cellSize.first * grid.gridSize.width,
+            padding.second.toFloat() + cellSize.second * grid.gridSize.height,
+            layoutDetails.gridPaintRadius(),
+            layoutDetails.gridPaintRadius(),
+            paintHolder.backgroundPaint(),
+        )
+
+        val cellSize = cellSizeFloat()
+        val showBadMaths = gridUiInjectionStrategy.showBadMaths()
+        val fastFinishMode = gridUiInjectionStrategy.isInFastFinishingMode()
+        val numeralSystem = gridUiInjectionStrategy.numeralSystem()
+        val markDuplicatedInRowOrColumn = gridUiInjectionStrategy.markDuplicatedInRowOrColumn()
+
+        cells.forEach {
+            it.onDraw(canvas, this, cellSize, padding, layoutDetails, fastFinishMode, showBadMaths, markDuplicatedInRowOrColumn)
+        }
+
+        cages.forEach {
+            it.drawCageForeground(canvas, cellSize, padding, layoutDetails, showBadMaths)
+        }
+
+        cells.forEach {
+            it.onDrawForeground(canvas, cellSize, this, padding, layoutDetails, fastFinishMode, numeralSystem, markDuplicatedInRowOrColumn)
+        }
+
+        if (!hideCageText) {
+            cages.forEach {
+                it.drawCageText(canvas, cellSize, layoutDetails, showBadMaths, markDuplicatedInRowOrColumn, fastFinishMode)
+            }
+        }
+
+        if (isPreviewMode) {
+            drawPreviewBanner(canvas)
+        }
+    }
+
+    private fun drawPreviewBanner(canvas: Canvas) {
+        val distanceFromEdge =
+            min(
+                resources.displayMetrics.density * 60,
+                (cellSizeFloat().first * grid.gridSize.width) / 2,
+            )
+        val width = distanceFromEdge * 0.6f
+
+        val previewPath = Path()
+        previewPath.moveTo(0f, distanceFromEdge + width)
+        previewPath.lineTo(distanceFromEdge + width, 0f)
+        previewPath.lineTo(distanceFromEdge, 0f)
+        previewPath.lineTo(distanceFromEdge, 0f)
+        previewPath.lineTo(0f, distanceFromEdge)
+        val cageTextSize = (distanceFromEdge / 3).toInt()
+
+        val textPaint = paintHolder.previewBannerTextPaint()
+        textPaint.textSize = cageTextSize.toFloat()
+
+        val previewText =
+            if (previewStillCalculating) {
+                resources.getText(R.string.new_grid_preview_banner_still_calculating)
+            } else {
+                resources.getText(R.string.new_grid_preview_banner_already_calculated)
+            }.toString()
+
+        val textWidth =
+            textPaint.measureText(
+                resources
+                    .getText(R.string.new_grid_preview_banner_already_calculated)
+                    .toString(),
+            )
+
+        previewPath.offset(
+            padding.first.toFloat() + layoutDetails.offsetDistance() - layoutDetails.gridPaintStrokeWidth() / 2f,
+            padding.second.toFloat() + layoutDetails.offsetDistance() - layoutDetails.gridPaintStrokeWidth() / 2f,
+        )
+
+        canvas.drawPath(previewPath, paintHolder.previewBannerBackgroundPaint())
+        canvas.drawTextOnPath(
+            previewText,
+            previewPath,
+            ((distanceFromEdge + width) * sqrt(2f) - textWidth) / 2,
+            distanceFromEdge * -0.08f,
+            textPaint,
+        )
+    }
+
+    private fun potentialCellSize(
+        measuredWidth: Int,
+        measuredHeight: Int,
+    ): Pair<Int, Int> {
+        val cellSizeWidth = measuredWidth.toFloat() / grid.gridSize.width.toFloat()
+        val cellSizeHeight = measuredHeight.toFloat() / grid.gridSize.height.toFloat()
+        val maximumCellSize = maximumCellSizeInDP * resources.displayMetrics.density
+
+        logger.info { "cellSize: $cellSizeWidth x $cellSizeHeight" }
+
+        return when (cellShape) {
+            CellShape.Square -> {
+                val cellSizeSquare = min(cellSizeWidth, cellSizeHeight)
+
+                val size = min(cellSizeSquare, maximumCellSize).toInt()
+
+                Pair(size, size)
+            }
+
+            CellShape.Rectangular -> {
+                when {
+                    cellSizeWidth >= maximumCellSize && cellSizeHeight >= maximumCellSize -> {
+                        Pair(maximumCellSize.toInt(), maximumCellSize.toInt())
+                    }
+
+                    // cellSizeWidth < maximumCellSize && cellSizeHeight < maximumCellSize ->
+                    else -> {
+                        Pair(cellSizeWidth.toInt(), cellSizeHeight.toInt())
+                    }
+                }
+            }
+        }
+    }
+
+    private fun cellSizeFloat(): Pair<Float, Float> = Pair(cellSize.first.toFloat(), cellSize.second.toFloat())
+
+    override fun onTouch(
+        arg0: View,
+        event: MotionEvent,
+    ): Boolean {
+        if (event.action != MotionEvent.ACTION_DOWN) {
+            return false
+        }
+        if (!grid.isActive) {
+            return false
+        }
+
+        cellLastTouched = getCell(event)
+
+        cellLastTouched?.let {
+            isSelectorShown = true
+            gridUiInjectionStrategy.cellClicked(it)
+        }
+
+        return false
+    }
+
+    private fun getCell(event: MotionEvent): GridCell? {
+        val x = event.x - padding.first
+        val y = event.y - padding.second
+
+        if (x < 0 || y < 0) {
+            return null
+        }
+
+        val row = (y / cellSize.second).toInt()
+        if (row > grid.gridSize.height - 1) {
+            return null
+        }
+
+        val col = (x / cellSize.first).toInt()
+        if (col > grid.gridSize.width - 1) {
+            return null
+        }
+
+        return grid.getCellAt(row, col)
+    }
+
+    fun setPreviewStillCalculating(previewStillCalculating: Boolean) {
+        this.previewStillCalculating = previewStillCalculating
+    }
+}
