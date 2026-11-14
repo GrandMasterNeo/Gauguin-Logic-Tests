@@ -173,13 +173,13 @@ jobs:
           for size, path in sorted(entries, reverse=True)[:20]:
               print(f"STALL_ARTIFACT_FILE rawBytes={size} path={path}")
           with open(__import__("os").environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:
-              out.write("\\n### Diagnostic output inventory (uncompressed)\\n\\n")
-              out.write(f"Files: {len(entries)}; bytes: {sum(size for size, _ in entries)}\\n\\n")
+              out.write("\n### Diagnostic output inventory (uncompressed)\n\n")
+              out.write(f"Files: {len(entries)}; bytes: {sum(size for size, _ in entries)}\n\n")
               for group, (count, size) in sorted(groups.items()):
-                  out.write(f"- {group}: {count} files, {size} bytes\\n")
-              out.write("\\nLargest files:\\n")
+                  out.write(f"- {group}: {count} files, {size} bytes\n")
+              out.write("\nLargest files:\n")
               for size, path in sorted(entries, reverse=True)[:20]:
-                  out.write(f"- {size} bytes: \`{path}\`\\n")
+                  out.write(f"- {size} bytes: `{path}`\n")
           PY
       - name: Archive reports and console logs as JUnit attachments
         if: always()
