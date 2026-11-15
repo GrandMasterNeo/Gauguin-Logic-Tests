@@ -28,7 +28,7 @@ jobs:
           GAUGUIN_PROFILE_SIZE: ${{ matrix.size }}
           GAUGUIN_PROFILE_SEED: '0'
           GAUGUIN_PROFILE_MAX_CANDIDATES: '1000'
-          GAUGUIN_PROFILE_BUDGET_MS: '30000'
+          GAUGUIN_PROFILE_BUDGET_MS: '60000'
         run: ./gradlew :gauguin-core:integrationTest --tests '*ExtremeGenerationRejectionProfileTest' --no-daemon --console=plain -Pbuildserver
       - name: Print concise diagnostic summaries
         if: always()
