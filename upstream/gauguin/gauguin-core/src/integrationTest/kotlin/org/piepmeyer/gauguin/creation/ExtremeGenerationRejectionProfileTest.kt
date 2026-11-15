@@ -42,8 +42,13 @@ class ExtremeGenerationRejectionProfileTest : FunSpec({
             variant, randomizer, RandomPossibleDigitsShuffler(randomizer.random),
         )
         val rater = GameDifficultyRater()
-        val threshold = rater.byVariant(variant)?.thresholdExtreme
-            ?: error("Missing Extreme rating threshold for $size x $size")
+        val rating = rater.byVariant(variant) ?: error("Missing rating thresholds for $size x $size")
+        val threshold = rating.thresholdExtreme
+        val hardThreshold = rating.thresholdHard
+        var hardBandCount = 0
+        var hardUnique = 0
+        var hardNonUnique = 0
+        var hardProbed = 0
         val frequencies = mutableMapOf<DifficultySetting, Int>()
         val observedScores = mutableListOf<Double>()
         var examined = 0
@@ -62,7 +67,7 @@ class ExtremeGenerationRejectionProfileTest : FunSpec({
         var maxScore = Double.NEGATIVE_INFINITY
         val started = System.nanoTime()
         val budgetNs = budgetMs * 1_000_000L
-        println("PROFILE_START size=$size seed=$seed maxCandidates=$maxCandidates budgetMs=$budgetMs extremeThreshold=$threshold")
+        println("PROFILE_START size=$size seed=$seed maxCandidates=$maxCandidates budgetMs=$budgetMs extremeThreshold=$threshold hardThreshold=$hardThreshold")
         System.out.flush()
 
         try {
@@ -86,6 +91,18 @@ class ExtremeGenerationRejectionProfileTest : FunSpec({
                 if (score > maxScore) maxScore = score
                 if (level != null) {
                     frequencies[level] = (frequencies[level] ?: 0) + 1
+                }
+                if (score >= hardThreshold && score < threshold) {
+                    hardBandCount++
+                    if (hardProbed < 3) {
+                        val uniqueStart = System.nanoTime()
+                        val solutions = MathDokuDLX(grid).solve(DLX.SolveType.MULTIPLE)
+                        uniquenessNs += System.nanoTime() - uniqueStart
+                        hardProbed++
+                        if (solutions == 1) hardUnique++ else hardNonUnique++
+                        println("PROFILE_HARD_BAND size=$size seed=$seed candidate=$examined score=$score solutions=$solutions")
+                        System.out.flush()
+                    }
                 }
                 if (score >= threshold) {
                     // Unlike a simple rating match, uniqueness is necessary
@@ -128,6 +145,7 @@ class ExtremeGenerationRejectionProfileTest : FunSpec({
                         "scorePerCellMean=${scoreSum / sorted.size / (size * size)} " +
                         "p50=${percentile(0.50)} p90=${percentile(0.90)} " +
                         "p95=${percentile(0.95)} p99=${percentile(0.99)} " +
+                        "aboveHardThreshold=${sorted.count { it >= hardThreshold }} " +
                         "aboveCurrent=${sorted.count { it >= threshold }} " +
                         "aboveMinus5Percent=${sorted.count { it >= threshold * 0.95 }} " +
                         "aboveMinus10Percent=${sorted.count { it >= threshold * 0.90 }} " +
@@ -142,7 +160,8 @@ class ExtremeGenerationRejectionProfileTest : FunSpec({
                     "maxGenerationMs=${maxGenerationNs / 1_000_000L} maxRatingMs=${maxRatingNs / 1_000_000L} " +
                     "meanScore=${if (examined == 0) 0.0 else scoreSum / examined} " +
                     "maxScore=$maxScore matches=$matches uniqueMatches=$uniqueMatches " +
-                    "nonUniqueMatches=$nonUniqueMatches relaxedProbed=$relaxedProbed " +
+                    "nonUniqueMatches=$nonUniqueMatches hardBandCount=$hardBandCount " +
+                    "hardProbed=$hardProbed hardUnique=$hardUnique hardNonUnique=$hardNonUnique relaxedProbed=$relaxedProbed " +
                     "relaxedUnique=$relaxedUnique relaxedNonUnique=$relaxedNonUnique ratingCounts=${frequencies.toSortedMap(compareBy { it.ordinal })}",
             )
             System.out.flush()
