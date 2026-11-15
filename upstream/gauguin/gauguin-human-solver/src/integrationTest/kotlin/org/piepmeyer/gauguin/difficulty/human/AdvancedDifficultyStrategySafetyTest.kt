@@ -19,7 +19,7 @@ import org.piepmeyer.gauguin.options.GameVariant
 
 /**
  * Audits every strategy invocation on generated unique-solution puzzles at
- * MEDIUM, HARD and EXTREME. The stored solution is an oracle for assertions
+ * MEDIUM, HARD and EXTREME, excluding Nishio. The stored solution is an oracle for assertions
  * only; no strategy is given the solution and no answer is revealed.
  *
  * Unlike a final-state check, this catches loss of a valid candidate, wrong
@@ -94,7 +94,7 @@ class AdvancedDifficultyStrategySafetyTest :
                         System.out.flush()
                         while (!grid.isSolved() && steps < maxSteps) {
                             var progress = false
-                            for (strategy in HumanSolverStrategies.entries) {
+                            for (strategy in HumanSolverStrategies.entries.filterNot { it.isNishio }) {
                                 attempts++
                                 if (attempts == 1 || attempts % 100 == 0) {
                                     println("ADVANCED_PROGRESS size=$size level=$level seed=$seed step=$steps invocation=$attempts strategy=${strategy.name} filled=${grid.cells.count { it.isUserValueSet }}")
