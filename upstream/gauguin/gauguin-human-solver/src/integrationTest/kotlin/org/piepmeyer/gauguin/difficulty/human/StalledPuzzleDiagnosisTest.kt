@@ -132,9 +132,19 @@ class StalledPuzzleDiagnosisTest :
                         // stalled state. Each strategy gets a fresh grid/cache so that
                         // earlier probes cannot change the state seen by later probes.
                         // This is diagnostic only; no production solver behavior changes.
-                        if (!withoutTrial.success && case.size == 10 && case.seed == 0 && case.level == DifficultySetting.HARD) {
+                        if (case.size == 10 && case.seed == 0 && case.level == DifficultySetting.HARD && tag == "original") {
+                            // A successful deduction-only solve leaves no stalled frontier.
+                            // Probe the prepared initial state instead, so all 37 strategies
+                            // are reported without treating a solved puzzle as a failure.
+                            val frontierGrid = if (withoutTrial.success) {
+                                grid.copyWithEmptyUserValues().also {
+                                    HumanSolver(it, validate = true, avoidNishio = true).prepareGrid()
+                                }
+                            } else {
+                                diagnosticGrid
+                            }
                             for (strategy in HumanSolverStrategies.entries) {
-                                val probe = diagnosticGrid.copyWithEmptyUserValues()
+                                val probe = frontierGrid.copyWithEmptyUserValues()
                                 for (originalCell in diagnosticGrid.cells) {
                                     val target = probe.cells.first { it.row == originalCell.row && it.column == originalCell.column }
                                     target.possibles = originalCell.possibles.toSet()
