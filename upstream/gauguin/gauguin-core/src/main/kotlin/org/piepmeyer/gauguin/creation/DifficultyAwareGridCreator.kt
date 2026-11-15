@@ -31,7 +31,7 @@ class DifficultyAwareGridCreator(
         return newGrid
     }
 
-    private fun isWantedDifficulty(grid: Grid): Boolean {
+    internal fun isWantedDifficulty(grid: Grid): Boolean {
         if (variant.options.difficultiesSetting == DifficultySetting.all()) {
             return true
         }
