@@ -73,7 +73,7 @@ jobs:
                   continue
               for element in tree.iter():
                   if element.tag in ("system-out", "system-err") and element.text:
-                      records.extend(re.findall(r"(?:ADVANCED_PHASE|ADVANCED_PROGRESS|ADVANCED_CASE|ADVANCED_SUMMARY)[^\r\n]*", element.text))
+                      records.extend(re.findall(r"(?:ADVANCED_PHASE|ADVANCED_PROGRESS|ADVANCED_CASE|ADVANCED_SUMMARY|VERIFIED_PUZZLE|VERIFIED_CAGES|VERIFIED_SOLUTION)[^\r\n]*", element.text))
           records = list(dict.fromkeys(records))
           print("ADVANCED_DIAGNOSTIC_RECORDS count=" + str(len(records)))
           for record in records[-120:]:
