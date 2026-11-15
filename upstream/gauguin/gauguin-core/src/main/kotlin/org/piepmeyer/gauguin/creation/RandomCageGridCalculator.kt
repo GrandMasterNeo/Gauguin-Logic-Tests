@@ -23,11 +23,13 @@ class RandomCageGridCalculator(
         var sumDLXDuration: Long = 0
         var difficultyRejects = 0
         var uniquenessRejects = 0
+        val startedAt = System.nanoTime()
         val creator = GridCreator(variant, randomizer, shuffler)
         val difficultyGate = DifficultyAwareGridCreator(variant, randomizer, shuffler)
 
         var grid: Grid
 
+        try {
         do {
             currentCoroutineContext().ensureActive()
 
@@ -53,12 +55,12 @@ class RandomCageGridCalculator(
             }
         } while (dlxNumber != 1)
 
-        val averageDLX = sumDLXDuration / numAttempts
-        logger.info { "Generation summary: candidates=$numAttempts difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects dlxMs=$sumDLXDuration" }
-        logger.debug { "DLX Num Attempts = $numAttempts in $sumDLXDuration ms (average $averageDLX ms)" }
-
         grid.clearUserValues()
-
         return grid
+        } finally {
+            // Includes cancellation and timeouts; do not lose rejection evidence on failed jobs.
+            val elapsedMs = (System.nanoTime() - startedAt) / 1_000_000
+            logger.warn { "Generation summary: candidates=$numAttempts difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects dlxMs=$sumDLXDuration elapsedMs=$elapsedMs" }
+        }
     }
 }
