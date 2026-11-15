@@ -182,6 +182,20 @@ class AdvancedDifficultyStrategySafetyTest :
                         }
 
                         if (grid.isSolved()) solvedWithoutReveal++ else unsolvedWithoutReveal++
+                        // Emit one reproducible, compact puzzle for human review, only after
+                        // independent uniqueness and deduction-only completion both pass.
+                        if (size == 10 && level == DifficultySetting.HARD && seed == 0 && grid.isSolved()) {
+                            val cageLayout = puzzle.cages.sortedBy { it.id }.joinToString(";") { cage ->
+                                "${cage.id}:${cage.result}:${cage.action}:" +
+                                    cage.cells.map { it.cellNumber }.sorted().joinToString(",")
+                            }
+                            val solution = puzzle.cells.chunked(10).joinToString("/") { row ->
+                                row.joinToString(",") { it.value.toString() }
+                            }
+                            println("VERIFIED_PUZZLE size=10 level=HARD seed=0 uniqueness=1 deductionSolved=true")
+                            println("VERIFIED_CAGES $cageLayout")
+                            println("VERIFIED_SOLUTION $solution")
+                        }
                         println(
                             "ADVANCED_CASE size=$size level=$level seed=$seed " +
                                 "solved=${grid.isSolved()} steps=$steps " +
