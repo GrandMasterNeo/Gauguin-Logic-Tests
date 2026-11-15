@@ -1,0 +1,32 @@
+name: Build modernization compatibility gate
+on:
+  push:
+    branches: [experiment/build-modernization]
+    paths: ['.github/workflows/build-modernization-gate.yml', 'upstream/gauguin/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  core-and-human:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Show toolchain versions
+        working-directory: upstream/gauguin
+        run: ./gradlew --version --no-daemon
+      - name: Compile and test core and human solver
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --console=plain -Pbuildserver
+      - name: Bounded generator and solver integration regression
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_CAL_SIZE: '10'
+          GAUGUIN_CAL_SEED: '0'
+          GAUGUIN_CAL_LIMIT: '600'
+          GAUGUIN_CAL_BUDGET_MS: '60000'
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests '*HumanDifficultyCalibrationSampleTest' --no-daemon --console=plain -Pbuildserver
