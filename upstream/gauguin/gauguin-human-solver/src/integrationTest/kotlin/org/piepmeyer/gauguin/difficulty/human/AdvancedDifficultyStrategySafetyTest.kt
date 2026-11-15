@@ -35,7 +35,7 @@ class AdvancedDifficultyStrategySafetyTest :
         val requestedLevel = System.getenv("GAUGUIN_ADVANCED_LEVEL")?.takeIf { it.isNotBlank() }
         val requestedSeed = System.getenv("GAUGUIN_ADVANCED_SEED")?.toIntOrNull()
         require(requestedLevel == null || requestedLevel in setOf("MEDIUM", "HARD", "EXTREME"))
-        require(requestedSeed == null || requestedSeed >= 0)
+        require(requestedSeed == null || requestedSeed in 0 until seedCount) { "Requested seed must be within configured seed range" }
         require(size in setOf(9, 10, 11))
         require(seedCount in 1..20)
         // Audit all 37 registered strategies elsewhere, but prohibit Nishio in this deduction-only gate.
@@ -88,6 +88,7 @@ class AdvancedDifficultyStrategySafetyTest :
                         withClue("unique solution size=$size level=$level seed=$seed") {
                             MathDokuDLX(puzzle).solve(DLX.SolveType.MULTIPLE) shouldBe 1
                         }
+                        println("ADVANCED_UNIQUENESS size=$size level=$level seed=$seed solutions=1")
                         val grid: Grid = puzzle.copyWithEmptyUserValues()
                         grid.cells.forEach {
                             it.possibles = variant.possibleDigits
