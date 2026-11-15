@@ -37,6 +37,8 @@ class RandomCageGridCalculator(
             numAttempts++
             if (!difficultyGate.isWantedDifficulty(grid)) {
                 difficultyRejects++
+                // Never reuse a previous candidate's successful DLX result.
+                dlxNumber = 0
                 continue
             }
             val dlxMillis = System.currentTimeMillis()
