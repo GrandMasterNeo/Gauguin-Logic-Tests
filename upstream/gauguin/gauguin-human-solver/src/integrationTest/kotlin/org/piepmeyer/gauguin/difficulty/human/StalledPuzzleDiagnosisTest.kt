@@ -145,7 +145,7 @@ class StalledPuzzleDiagnosisTest :
                             }
                             for (strategy in HumanSolverStrategies.entries) {
                                 val probe = frontierGrid.copyWithEmptyUserValues()
-                                for (originalCell in diagnosticGrid.cells) {
+                                for (originalCell in frontierGrid.cells) {
                                     val target = probe.cells.first { it.row == originalCell.row && it.column == originalCell.column }
                                     target.possibles = originalCell.possibles.toSet()
                                     if (originalCell.isUserValueSet) {
