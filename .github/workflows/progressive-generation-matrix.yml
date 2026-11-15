@@ -1,0 +1,59 @@
+name: Progressive Gauguin generation matrix
+on:
+  workflow_dispatch:
+    inputs:
+      size:
+        description: 'Grid size to test (3 through 11); run one size at a time'
+        required: true
+        default: '3'
+        type: choice
+        options: ['3', '4', '5', '6', '7', '8', '9', '10', '11']
+      difficulty:
+        description: 'Difficulty (legacy EXTREME means Very Hard)'
+        required: true
+        default: 'VERY_EASY'
+        type: choice
+        options: ['VERY_EASY', 'EASY', 'MEDIUM', 'HARD', 'EXTREME']
+      seed:
+        description: 'Reproducible seed'
+        required: true
+        default: '0'
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: progressive-generation-${{ github.ref }}-${{ inputs.size }}-${{ inputs.difficulty }}
+  cancel-in-progress: false
+jobs:
+  one-cell:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Run one bounded matrix cell
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_MATRIX_SIZE: ${{ inputs.size }}
+          GAUGUIN_MATRIX_DIFFICULTY: ${{ inputs.difficulty }}
+          GAUGUIN_MATRIX_SEED: ${{ inputs.seed }}
+          GAUGUIN_MATRIX_MAX_CANDIDATES: '1000'
+          GAUGUIN_MATRIX_BUDGET_MS: '60000'
+        run: ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --quiet
+      - name: Print concise matrix result
+        if: always()
+        working-directory: upstream/gauguin
+        run: |
+          python3 - <<'PY'
+          import glob, xml.etree.ElementTree as ET
+          for path in glob.glob('gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml'):
+              try: root = ET.parse(path).getroot()
+              except ET.ParseError: continue
+              for node in root.iter('system-out'):
+                  for line in (node.text or '').splitlines():
+                      if line.startswith(('MATRIX_START ', 'MATRIX_RESULT ')):
+                          print(line)
+          PY
