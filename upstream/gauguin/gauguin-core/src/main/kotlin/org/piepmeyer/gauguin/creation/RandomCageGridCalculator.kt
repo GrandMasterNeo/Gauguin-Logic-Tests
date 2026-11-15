@@ -27,11 +27,19 @@ class RandomCageGridCalculator(
         val creator = GridCreator(variant, randomizer, shuffler)
         val difficultyGate = DifficultyAwareGridCreator(variant, randomizer, shuffler)
 
+        // A failed search must terminate explicitly instead of looping indefinitely.
+        // Override in bounded diagnostic tests without changing puzzle acceptance rules.
+        val maxAttempts = Integer.getInteger("gauguin.generation.maxAttempts", 100_000).coerceAtLeast(1)
+        val maxMillis = java.lang.Long.getLong("gauguin.generation.maxMillis", 300_000L).coerceAtLeast(1L)
         var grid: Grid
 
         try {
         do {
             currentCoroutineContext().ensureActive()
+            val elapsedMs = (System.nanoTime() - startedAt) / 1_000_000
+            if (numAttempts >= maxAttempts || elapsedMs >= maxMillis) {
+                error("Generation budget exhausted: attempts=$numAttempts difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects dlxMs=$sumDLXDuration elapsedMs=$elapsedMs maxAttempts=$maxAttempts maxMillis=$maxMillis")
+            }
 
             grid = creator.createRandomizedGridWithCages()
             numAttempts++
