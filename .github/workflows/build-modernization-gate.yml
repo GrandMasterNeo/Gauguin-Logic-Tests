@@ -22,6 +22,18 @@ jobs:
       - name: Compile and test core and human solver
         working-directory: upstream/gauguin
         run: ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --console=plain -Pbuildserver
+      - name: Install configured Android SDK components
+        shell: bash
+        run: |
+          set -euo pipefail
+          "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --channel=3 "platforms;android-37.0" "build-tools;37.0.0"
+          test -f "${ANDROID_HOME}/platforms/android-37.0/android.jar"
+          if [ ! -e "${ANDROID_HOME}/platforms/android-37" ]; then
+            ln -s android-37.0 "${ANDROID_HOME}/platforms/android-37"
+          fi
+      - name: Verify modernized Android application compiles
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-app:assembleDebug --no-daemon --console=plain -Pbuildserver
       - name: Bounded generator and solver integration regression
         working-directory: upstream/gauguin
         env:
