@@ -9,6 +9,8 @@ import org.koin.dsl.module
 import org.piepmeyer.gauguin.creation.RandomCageGridCalculator
 import org.piepmeyer.gauguin.creation.RandomPossibleDigitsShuffler
 import org.piepmeyer.gauguin.creation.SeedRandomizerMock
+import org.piepmeyer.gauguin.creation.dlx.DLX
+import org.piepmeyer.gauguin.creation.dlx.MathDokuDLX
 import org.piepmeyer.gauguin.difficulty.GameDifficultyRater
 import org.piepmeyer.gauguin.difficulty.GameDifficultyRatingService
 import org.piepmeyer.gauguin.grid.Grid
@@ -81,6 +83,10 @@ class AdvancedDifficultyStrategySafetyTest :
 
                         withClue("generated rating size=$size level=$level seed=$seed") {
                             rater.difficulty(puzzle) shouldBe level
+                        }
+                        // Independent exact-cover check: human solving alone cannot prove uniqueness.
+                        withClue("unique solution size=$size level=$level seed=$seed") {
+                            MathDokuDLX(puzzle).solve(DLX.SolveType.MULTIPLE) shouldBe 1
                         }
                         val grid: Grid = puzzle.copyWithEmptyUserValues()
                         grid.cells.forEach {
