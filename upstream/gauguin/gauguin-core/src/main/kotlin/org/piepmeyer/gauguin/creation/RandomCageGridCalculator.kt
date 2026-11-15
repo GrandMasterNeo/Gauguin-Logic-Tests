@@ -18,17 +18,25 @@ class RandomCageGridCalculator(
     private val shuffler: PossibleDigitsShuffler = RandomPossibleDigitsShuffler(randomizer.random()),
 ) : GridCalculator {
     override suspend fun calculate(): Grid {
-        var dlxNumber: Int
+        var dlxNumber = 0
         var numAttempts = 0
         var sumDLXDuration: Long = 0
+        var difficultyRejects = 0
+        var uniquenessRejects = 0
+        val creator = GridCreator(variant, randomizer, shuffler)
+        val difficultyGate = DifficultyAwareGridCreator(variant, randomizer, shuffler)
 
         var grid: Grid
 
         do {
             currentCoroutineContext().ensureActive()
 
-            grid = DifficultyAwareGridCreator(variant, randomizer, shuffler).createRandomizedGridWithCages()
+            grid = creator.createRandomizedGridWithCages()
             numAttempts++
+            if (!difficultyGate.isWantedDifficulty(grid)) {
+                difficultyRejects++
+                continue
+            }
             val dlxMillis = System.currentTimeMillis()
             val mdd = MathDokuDLX(grid)
 
@@ -39,12 +47,14 @@ class RandomCageGridCalculator(
             sumDLXDuration += dlxDuration
             logger.debug { "DLX Num Solns = $dlxNumber in $dlxDuration ms" }
 
+            if (dlxNumber != 1) uniquenessRejects++
             if (dlxNumber == 0) {
                 logger.debug { grid.toString() }
             }
         } while (dlxNumber != 1)
 
         val averageDLX = sumDLXDuration / numAttempts
+        logger.info { "Generation summary: candidates=$numAttempts difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects dlxMs=$sumDLXDuration" }
         logger.debug { "DLX Num Attempts = $numAttempts in $sumDLXDuration ms (average $averageDLX ms)" }
 
         grid.clearUserValues()
