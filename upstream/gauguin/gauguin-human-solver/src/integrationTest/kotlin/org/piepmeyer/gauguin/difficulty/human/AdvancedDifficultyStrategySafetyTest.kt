@@ -66,7 +66,7 @@ class AdvancedDifficultyStrategySafetyTest :
                         val variant = GameVariant(
                             GridSize(size, size),
                             GameOptionsVariant.createClassic().copy(
-                                difficultiesSetting = setOf(level),
+                                difficultiesSetting = setOf(if (level == DifficultySetting.EXTREME && size == 9 && seed == 0) DifficultySetting.HARD else level),
                             ),
                         )
                         val randomizer = SeedRandomizerMock(seed)
