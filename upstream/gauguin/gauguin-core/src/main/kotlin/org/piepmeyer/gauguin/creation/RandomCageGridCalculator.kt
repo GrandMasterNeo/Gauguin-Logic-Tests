@@ -60,7 +60,10 @@ class RandomCageGridCalculator(
         } finally {
             // Includes cancellation and timeouts; do not lose rejection evidence on failed jobs.
             val elapsedMs = (System.nanoTime() - startedAt) / 1_000_000
-            logger.warn { "Generation summary: candidates=$numAttempts difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects dlxMs=$sumDLXDuration elapsedMs=$elapsedMs" }
+            val summary = "GENERATION_SUMMARY candidates=$numAttempts difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects dlxMs=$sumDLXDuration elapsedMs=$elapsedMs"
+            logger.warn { summary }
+            println(summary)
+            System.out.flush()
         }
     }
 }
