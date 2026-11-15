@@ -1,0 +1,46 @@
+name: Isolated generator versus threshold diagnostic
+on:
+  push:
+    branches: [experiment/very-hard-threshold-isolation]
+    paths:
+      - '.github/workflows/isolated-threshold-diagnostic.yml'
+      - 'upstream/gauguin/gauguin-core/src/integrationTest/kotlin/org/piepmeyer/gauguin/creation/ExtremeGenerationRejectionProfileTest.kt'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [9, 10, 11]
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Same-seed threshold comparison, test only
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_PROFILE_SIZE: ${{ matrix.size }}
+          GAUGUIN_PROFILE_SEED: '0'
+          GAUGUIN_PROFILE_MAX_CANDIDATES: '1000'
+          GAUGUIN_PROFILE_BUDGET_MS: '30000'
+        run: ./gradlew :gauguin-core:integrationTest --tests '*ExtremeGenerationRejectionProfileTest' --no-daemon --console=plain -Pbuildserver
+      - name: Print concise diagnostic summaries
+        if: always()
+        working-directory: upstream/gauguin
+        run: |
+          python3 - <<'PY'
+          import glob, xml.etree.ElementTree as ET
+          for f in glob.glob('gauguin-core/build/test-results/integrationTest/TEST-*.xml'):
+              try: root=ET.parse(f).getroot()
+              except ET.ParseError: continue
+              for node in root.iter('system-out'):
+                  for line in (node.text or '').splitlines():
+                      if line.startswith(('PROFILE_START ', 'PROFILE_CALIBRATION ', 'PROFILE_SUMMARY ', 'PROFILE_HARD_BAND ', 'PROFILE_DLX ')):
+                          print(line)
+          PY
