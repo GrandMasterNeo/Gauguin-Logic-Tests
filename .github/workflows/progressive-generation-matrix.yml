@@ -40,7 +40,7 @@ jobs:
           GAUGUIN_MATRIX_SIZE: ${{ inputs.size }}
           GAUGUIN_MATRIX_DIFFICULTY: ${{ inputs.difficulty }}
           GAUGUIN_MATRIX_SEED: ${{ inputs.seed }}
-          GAUGUIN_MATRIX_MAX_CANDIDATES: '1000'
+          GAUGUIN_MATRIX_MAX_CANDIDATES: '100'
           GAUGUIN_MATRIX_BUDGET_MS: '60000'
         run: ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --quiet
       - name: Print concise matrix result
