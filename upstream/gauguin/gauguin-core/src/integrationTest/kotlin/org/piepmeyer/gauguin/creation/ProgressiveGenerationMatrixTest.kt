@@ -61,7 +61,7 @@ class ProgressiveGenerationMatrixTest : FunSpec({
             println("MATRIX_RESULT size=$size difficulty=$difficulty seed=$seed examined=$examined ratingMatches=$ratingMatches uniqueMatches=$uniqueMatches nonUniqueMatches=$nonUniqueMatches elapsedMs=$elapsedMs generationMs=$generationMs ratingMs=$ratingMs uniquenessMs=$uniquenessMs humanCertified=false")
             System.out.flush()
         }
-        // A diagnostic can succeed at collecting evidence even if no valid candidate was found.
-        (examined > 0) shouldBe true
+        // A green test must find a uniquely solvable rating match; otherwise fail explicitly.
+        (uniqueMatches > 0) shouldBe true
     }
 })
