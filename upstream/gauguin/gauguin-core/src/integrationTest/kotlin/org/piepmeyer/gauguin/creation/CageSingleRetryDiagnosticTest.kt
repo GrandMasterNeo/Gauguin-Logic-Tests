@@ -1,6 +1,5 @@
 package org.piepmeyer.gauguin.creation
 
-import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import org.piepmeyer.gauguin.Randomizer
@@ -11,23 +10,20 @@ import org.piepmeyer.gauguin.options.SingleCageUsage
 import kotlin.random.Random
 
 /**
- * Diagnostic only: deliberately always selects the same cell for FIXED_NUMBER
- * singles. A watchdog exception prevents a hung CI worker and measures retries.
- * This is NOT a generator acceptance or puzzle-correctness test.
+ * Regression: fixed singles must terminate even when the randomizer always
+ * chooses index zero. This does not certify puzzle uniqueness or difficulty.
  */
 class CageSingleRetryDiagnosticTest : FunSpec({
-    test("fixed singles repeatedly select an occupied cell under adversarial RNG") {
+    test("fixed singles select distinct eligible cells under adversarial RNG") {
         val randomizer = RepeatingCellDiagnosticRandomizer()
         val variant = GameVariant(
             GridSize(4, 4),
             GameOptionsVariant.createClassic().copy(singleCageUsage = SingleCageUsage.FIXED_NUMBER),
         )
-        val exception = shouldThrow<IllegalStateException> {
-            GridCreator(variant, randomizer, ShufflerStub()).createRandomizedGridWithCages()
-        }
-        exception.message shouldBe "DIAGNOSTIC_SINGLE_RETRY_LIMIT"
-        randomizer.cellSelections shouldBe 65
-        println("CAGE_DIAGNOSTIC fixedSingles=2 repeatedCellSelections=${randomizer.cellSelections} outcome=watchdog_exhausted")
+        val grid = GridCreator(variant, randomizer, ShufflerStub()).createRandomizedGridWithCages()
+        grid.cages.count { it.cells.size == 1 } shouldBe 2
+        randomizer.cellSelections shouldBe 2
+        println("CAGE_REGRESSION fixedSingles=2 selections=${randomizer.cellSelections} outcome=terminated")
     }
 })
 
