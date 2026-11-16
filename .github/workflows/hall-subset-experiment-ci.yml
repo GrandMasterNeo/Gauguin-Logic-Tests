@@ -1,0 +1,32 @@
+name: Experimental Hall subset soundness (unregistered)
+on:
+  push:
+    branches: [logic-matrix-audit]
+    paths:
+      - 'upstream/gauguin/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/strategy/GeneralizedNakedSubset.kt'
+      - 'upstream/gauguin/gauguin-human-solver/src/test/kotlin/org/piepmeyer/gauguin/difficulty/human/strategy/GeneralizedNakedSubsetTest.kt'
+      - '.github/workflows/hall-subset-experiment-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  hall-subset-soundness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Test unregistered Hall subsets against directed and Latin-square masks
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-human-solver:test --tests "*GeneralizedNakedSubsetTest" --no-daemon --console=plain -Pbuildserver
+      - name: Preserve JUnit result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: experimental-hall-subset-soundness
+          path: |
+            upstream/gauguin/gauguin-human-solver/build/test-results/test/*.xml
+          if-no-files-found: warn
