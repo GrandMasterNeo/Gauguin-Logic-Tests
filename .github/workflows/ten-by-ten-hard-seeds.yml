@@ -1,0 +1,64 @@
+name: Gauguin 10x10 Hard four-seed diagnostic
+on:
+  push:
+    branches: [logic-matrix-audit]
+    paths: ['.github/workflows/ten-by-ten-hard-seeds.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: gauguin-10x10-hard-seed-batch
+  cancel-in-progress: false
+jobs:
+  seed-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        seed: [0, 1, 10, 23]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Run bounded seed diagnostic
+        working-directory: upstream/gauguin
+        shell: bash
+        env:
+          GAUGUIN_MATRIX_SIZE: '10'
+          GAUGUIN_MATRIX_DIFFICULTY: HARD
+          GAUGUIN_MATRIX_SEED: ${{ matrix.seed }}
+          GAUGUIN_MATRIX_MAX_CANDIDATES: '100'
+          GAUGUIN_MATRIX_BUDGET_MS: '60000'
+        run: |
+          set -uo pipefail
+          rm -rf gauguin-core/build/test-results/integrationTest gauguin-core/build/reports/tests/integrationTest
+          set +e
+          timeout --signal=TERM --kill-after=5s 120s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --rerun-tasks --no-daemon --console=plain -Pbuildserver --quiet > "$RUNNER_TEMP/seed.log" 2>&1
+          rc=$?
+          set -e
+          result=$(grep -m1 'MATRIX_RESULT ' "$RUNNER_TEMP/seed.log" || true)
+          if [ -z "$result" ]; then
+            result=$(grep -oh 'MATRIX_RESULT [^<]*' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -1 || true)
+          fi
+          status=INCONCLUSIVE
+          if [ "$rc" -eq 124 ] || [ "$rc" -eq 137 ]; then
+            status=TIMEOUT
+          elif [ -n "$result" ] && [[ "$result" == *"size=10 "* ]] && [[ "$result" == *"difficulty=HARD "* ]] && [[ "$result" == *"seed=$GAUGUIN_MATRIX_SEED "* ]]; then
+            if [ "$rc" -eq 0 ]; then status=PASS_DIAGNOSTIC_ONLY; else status=FAIL; fi
+          fi
+          field() { printf '%s\n' "$result" | grep -oE "$1=[^ ]+" | head -1 | cut -d= -f2 || true; }
+          echo 'size,difficulty,seed,status,examined,ratingMatches,uniqueMatches,nonUniqueMatches,elapsedMs,humanCertified' > seed-summary.csv
+          echo "10,HARD,$GAUGUIN_MATRIX_SEED,$status,$(field examined),$(field ratingMatches),$(field uniqueMatches),$(field nonUniqueMatches),$(field elapsedMs),false" >> seed-summary.csv
+          cat seed-summary.csv
+          if [ -z "$result" ]; then tail -n 30 "$RUNNER_TEMP/seed.log" | cut -c1-250; fi
+      - name: Upload per-seed summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gauguin-hard-seed-${{ matrix.seed }}
+          path: upstream/gauguin/seed-summary.csv
+          if-no-files-found: warn
+          retention-days: 7
