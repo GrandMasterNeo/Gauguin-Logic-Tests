@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.difficulty.human.strategy.nishio.NishioFixtureDiagnostic" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:37:59.986Z" hostname="2a9d8987d813" time="0.256">
+  <properties/>
+  <testcase name="inspect upstream fixture before and after single-cage value metadata repair" classname="org.piepmeyer.gauguin.difficulty.human.strategy.nishio.NishioFixtureDiagnostic" time="0.128"/>
+  <system-out><![CDATA[cage=0 result=1 cells=[0:value=2147483647,user=null, 1:value=2147483647,user=null] correct=true
+cage=1 result=9 cells=[2:value=2147483647,user=4, 3:value=2147483647,user=null, 7:value=2147483647,user=null] correct=true
+cage=2 result=1 cells=[4:value=2147483647,user=null, 8:value=2147483647,user=3] correct=true
+cage=3 result=8 cells=[5:value=2147483647,user=1, 9:value=2147483647,user=null, 10:value=2147483647,user=null, 11:value=2147483647,user=null] correct=true
+cage=4 result=3 cells=[6:value=2147483647,user=3] correct=false
+kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory
+original trial=Contradictions
+metadata-repaired trial=Solved
+metadata-repaired strategy=Success placed=[0, 2, 5, 6, 8]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

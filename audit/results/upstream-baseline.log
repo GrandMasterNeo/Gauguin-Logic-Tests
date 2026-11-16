@@ -1,0 +1,287 @@
+test	Set up job	﻿2026-11-05T15:06:46.3302112Z Current runner version: '2.338.2'
+test	Set up job	2026-11-05T15:06:46.3331351Z ##[group]Runner Image Provisioner
+test	Set up job	2026-11-05T15:06:46.3332322Z Hosted Compute Agent
+test	Set up job	2026-11-05T15:06:46.3333228Z Version: 20261028.624
+test	Set up job	2026-11-05T15:06:46.3333880Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+test	Set up job	2026-11-05T15:06:46.3334654Z Build Date: 2026-10-28T21:51:42Z
+test	Set up job	2026-11-05T15:06:46.3335469Z Worker ID: {ad8de028-e1af-4c37-aa94-76b730698d6f}
+test	Set up job	2026-11-05T15:06:46.3336231Z Region: westcentralus
+test	Set up job	2026-11-05T15:06:46.3336871Z Cloud: Azure
+test	Set up job	2026-11-05T15:06:46.3337520Z ##[endgroup]
+test	Set up job	2026-11-05T15:06:46.3338909Z ##[group]Operating System
+test	Set up job	2026-11-05T15:06:46.3339628Z Ubuntu
+test	Set up job	2026-11-05T15:06:46.3340211Z 26.04.1
+test	Set up job	2026-11-05T15:06:46.3340818Z LTS
+test	Set up job	2026-11-05T15:06:46.3341372Z ##[endgroup]
+test	Set up job	2026-11-05T15:06:46.3341947Z ##[group]Runner Image
+test	Set up job	2026-11-05T15:06:46.3342660Z Image: ubuntu-26.04
+test	Set up job	2026-11-05T15:06:46.3343656Z Version: 20261101.186.1
+test	Set up job	2026-11-05T15:06:46.3344752Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261101.186/images/ubuntu/Ubuntu2604-Readme.md
+test	Set up job	2026-11-05T15:06:46.3346730Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261101.186
+test	Set up job	2026-11-05T15:06:46.3347812Z ##[endgroup]
+test	Set up job	2026-11-05T15:06:46.3348962Z ##[group]GITHUB_TOKEN Permissions
+test	Set up job	2026-11-05T15:06:46.3351310Z Contents: read
+test	Set up job	2026-11-05T15:06:46.3351949Z Metadata: read
+test	Set up job	2026-11-05T15:06:46.3352515Z ##[endgroup]
+test	Set up job	2026-11-05T15:06:46.3355144Z Secret source: Actions
+test	Set up job	2026-11-05T15:06:46.3356180Z Cache mode: write
+test	Set up job	2026-11-05T15:06:46.3357025Z Prepare workflow directory
+test	Set up job	2026-11-05T15:06:46.3749992Z Prepare all required actions
+test	Set up job	2026-11-05T15:06:46.3799917Z Getting action download info
+test	Set up job	2026-11-05T15:06:46.6541357Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+test	Set up job	2026-11-05T15:06:46.8368940Z Download action repository 'actions/setup-java@v4' (SHA:cf277c60eb25467037889841efdb72551f06f6c3)
+test	Set up job	2026-11-05T15:06:47.6402446Z Complete job name: test
+test	Run actions/checkout@v4	﻿2026-11-05T15:06:47.7331281Z ##[group]Run actions/checkout@v4
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7332275Z with:
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7333058Z   repository: meikpiep/gauguin
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7333628Z   ref: v0.52.1
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7337633Z   token: ***
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7338134Z   ssh-strict: true
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7338646Z   ssh-user: git
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7339147Z   persist-credentials: true
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7339698Z   clean: true
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7340200Z   sparse-checkout-cone-mode: true
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7340779Z   fetch-depth: 1
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7341272Z   fetch-tags: false
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7341764Z   show-progress: true
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7342268Z   lfs: false
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7342993Z   submodules: false
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7343795Z   set-safe-directory: true
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7344697Z   allow-unsafe-pr-checkout: false
+test	Run actions/checkout@v4	2026-11-05T15:06:47.7345643Z ##[endgroup]
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2539506Z Syncing repository: meikpiep/gauguin
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2543128Z ##[group]Getting Git version info
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2544742Z Working directory is '/home/runner/work/Gauguin-Logic-Tests/Gauguin-Logic-Tests'
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2546936Z [command]/usr/bin/git version
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2558621Z git version 2.56.0
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2580396Z ##[endgroup]
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2597434Z Temporarily overriding HOME='/home/runner/work/_temp/7fc7481c-2bb0-4651-b9ad-3e07cc77929e' before making global git config changes
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2600538Z Adding repository directory to the temporary git global config as a safe directory
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2603901Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Gauguin-Logic-Tests/Gauguin-Logic-Tests
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2676084Z Deleting the contents of '/home/runner/work/Gauguin-Logic-Tests/Gauguin-Logic-Tests'
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2680033Z ##[group]Initializing the repository
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2685912Z [command]/usr/bin/git init /home/runner/work/Gauguin-Logic-Tests/Gauguin-Logic-Tests
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2804799Z hint: Using 'master' as the name for the initial branch. This default branch name
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2808054Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2810388Z hint: to use in all of your new repositories, which will suppress this warning,
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2812350Z hint: call:
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2813906Z hint:
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2815515Z hint: 	git config --global init.defaultBranch <name>
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2817523Z hint:
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2819402Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2822214Z hint: 'development'. The just-created branch can be renamed via this command:
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2825049Z hint:
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2826549Z hint: 	git branch -m <name>
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2828309Z hint:
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2830251Z hint: Disable this message with "git config set advice.defaultBranchName false"
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2834691Z Initialized empty Git repository in /home/runner/work/Gauguin-Logic-Tests/Gauguin-Logic-Tests/.git/
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2842469Z [command]/usr/bin/git remote add origin https://github.com/meikpiep/gauguin
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2906575Z ##[endgroup]
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2908793Z ##[group]Disabling automatic garbage collection
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2910898Z [command]/usr/bin/git config --local gc.auto 0
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2951720Z ##[endgroup]
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2954146Z ##[group]Setting up auth
+test	Run actions/checkout@v4	2026-11-05T15:06:48.2959004Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Run actions/checkout@v4	2026-11-05T15:06:48.3025337Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Run actions/checkout@v4	2026-11-05T15:06:48.3571093Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Run actions/checkout@v4	2026-11-05T15:06:48.3618214Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Run actions/checkout@v4	2026-11-05T15:06:48.3955173Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Run actions/checkout@v4	2026-11-05T15:06:48.4006051Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Run actions/checkout@v4	2026-11-05T15:06:48.4344460Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+test	Run actions/checkout@v4	2026-11-05T15:06:48.4389811Z ##[endgroup]
+test	Run actions/checkout@v4	2026-11-05T15:06:48.4391800Z ##[group]Fetching the repository
+test	Run actions/checkout@v4	2026-11-05T15:06:48.4401090Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/v0.52.1*:refs/remotes/origin/v0.52.1* +refs/tags/v0.52.1*:refs/tags/v0.52.1*
+test	Run actions/checkout@v4	2026-11-05T15:06:51.7301387Z From https://github.com/meikpiep/gauguin
+test	Run actions/checkout@v4	2026-11-05T15:06:51.7308477Z  * [new tag]         v0.52.1    -> v0.52.1
+test	Run actions/checkout@v4	2026-11-05T15:06:51.7310852Z ##[endgroup]
+test	Run actions/checkout@v4	2026-11-05T15:06:51.7311632Z ##[group]Determining the checkout info
+test	Run actions/checkout@v4	2026-11-05T15:06:51.7317617Z [command]/usr/bin/git branch --list --remote origin/v0.52.1
+test	Run actions/checkout@v4	2026-11-05T15:06:51.7359969Z [command]/usr/bin/git tag --list v0.52.1
+test	Run actions/checkout@v4	2026-11-05T15:06:51.7392584Z v0.52.1
+test	Run actions/checkout@v4	2026-11-05T15:06:51.7397469Z ##[endgroup]
+test	Run actions/checkout@v4	2026-11-05T15:06:51.7404486Z [command]/usr/bin/git sparse-checkout disable
+test	Run actions/checkout@v4	2026-11-05T15:06:51.7461742Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+test	Run actions/checkout@v4	2026-11-05T15:06:51.7496243Z ##[group]Checking out the ref
+test	Run actions/checkout@v4	2026-11-05T15:06:51.7500277Z [command]/usr/bin/git checkout --progress --force refs/tags/v0.52.1
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0890413Z Note: switching to 'refs/tags/v0.52.1'.
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0891257Z 
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0891609Z You are in 'detached HEAD' state. You can look around, make experimental
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0892374Z changes and commit them, and you can discard any commits you make in this
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0893365Z state without impacting any branches by switching back to a branch.
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0893836Z 
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0894503Z If you want to create a new branch to retain commits you create, you may
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0895275Z do so (now or later) by using -c with the switch command. Example:
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0895746Z 
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0895925Z   git switch -c <new-branch-name>
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0896242Z 
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0896422Z Or undo this operation with:
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0896671Z 
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0896820Z   git switch -
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0897010Z 
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0897379Z Turn off this advice by setting config variable advice.detachedHead to false
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0897914Z 
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0898213Z HEAD is now at e7e9763 prepare release of version 0.52.1
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0913383Z ##[endgroup]
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0964852Z [command]/usr/bin/git log -1 --format=%H
+test	Run actions/checkout@v4	2026-11-05T15:06:52.0997315Z e7e9763d1cbd627e18e692b8fc9b623cdebedeaf
+test	Run actions/setup-java@v4	﻿2026-11-05T15:06:52.1299124Z ##[group]Run actions/setup-java@v4
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.1299458Z with:
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.1299683Z   distribution: temurin
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.1299941Z   java-version: 21
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.1300205Z   java-package: jdk
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.1300428Z   check-latest: false
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.1300652Z   server-id: github
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.1300874Z   server-username: GITHUB_ACTOR
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.1301142Z   server-password: GITHUB_TOKEN
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.1301395Z   overwrite-settings: true
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.1301635Z   job-status: success
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.1304232Z   token: ***
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.1304455Z ##[endgroup]
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3118739Z ##[warning]setup-java v4 is deprecated and will no longer receive updates. Please migrate to actions/setup-java@v5.
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3127523Z ##[group]Installed distributions
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3165272Z Resolved Java 21.0.13+9 from tool-cache
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3165780Z Setting Java 21.0.13+9 as the default
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3174791Z (node:2458) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3175588Z (Use `node --trace-deprecation ...` to show where the warning was created)
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3178769Z Creating toolchains.xml for JDK version 21 from temurin
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3246785Z Writing to /home/runner/.m2/toolchains.xml
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3247182Z 
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3247317Z Java configuration:
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3247668Z   Distribution: temurin
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3248038Z   Version: 21.0.13+9
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3361670Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3362344Z 
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3373608Z ##[endgroup]
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3392578Z Creating settings.xml with server-id: github
+test	Run actions/setup-java@v4	2026-11-05T15:06:52.3393416Z Writing to /home/runner/.m2/settings.xml
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	﻿2026-11-05T15:06:52.3486127Z ##[group]Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:06:52.3487002Z [36;1m./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver[0m
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:06:52.3568010Z shell: /usr/bin/bash -e {0}
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:06:52.3568530Z env:
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:06:52.3569053Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:06:52.3569857Z   JAVA_HOME_21_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/21.0.13-9/x64
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:06:52.3570476Z ##[endgroup]
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:06:55.7110437Z Fetching distribution.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:06:55.7111066Z Downloading https://services.gradle.org/distributions/gradle-9.7.0-bin.zip
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:06:59.5401002Z ..............10%..............20%...............30%..............40%..............50%...............60%..............70%..............80%...............90%..............100%
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:01.6472679Z 
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:01.6474050Z Welcome to Gradle 9.7.0!
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:01.6490575Z 
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:01.6491301Z Here are the highlights of this release:
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:01.6501891Z  - Isolated Projects graduates to incubating
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:01.6503010Z  - Broader Configuration Cache compatibility
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:01.6504332Z  - More source locations in problem reports
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:01.6504890Z 
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:01.6505411Z For more details see https://docs.gradle.org/9.7.0/release-notes.html
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:01.6506059Z 
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:01.8470088Z To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:03.5467799Z Daemon will be stopped at the end of the build 
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:05.1476221Z Calculating task graph as no cached configuration is available for tasks: :gauguin-core:test :gauguin-human-solver:test
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:57.9474240Z 
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:57.9514465Z > Configure project :gauguin-app
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:57.9533985Z WARNING: The option setting 'android.newDsl=false' is deprecated.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:57.9534747Z The current default is 'true'.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:57.9535499Z It will be removed in version 10.0 of the Android Gradle plugin.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:57.9536660Z Add android.sync.suppressAgpWarnings=UNSUPPORTED_PROJECT_OPTION_USE to the gradle.properties file to suppress this warning.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:57.9537892Z WARNING: The option setting 'android.r8.optimizedResourceShrinking=false' is deprecated.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:57.9538650Z The current default is 'true'.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:57.9539220Z It will be removed in version 10.0 of the Android Gradle plugin.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:07:57.9540249Z Add android.sync.suppressAgpWarnings=UNSUPPORTED_PROJECT_OPTION_USE to the gradle.properties file to suppress this warning.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:00.1468562Z w: file:///home/runner/work/Gauguin-Logic-Tests/Gauguin-Logic-Tests/gauguin-app/build.gradle.kts:23:1: 'fun Project.android(configure: Action<BaseAppModuleExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.ApplicationExtension.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:00.1470252Z This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:00.2474181Z WARNING: API 'applicationVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:00.2495402Z It will be removed in version 10.0 of the Android Gradle plugin.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:00.2524257Z The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:00.2542231Z     android.newDsl=false
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:00.2543428Z to this project's gradle.properties file.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:00.2544311Z For more information, see http://developer.android.com/build/r/new-dsl.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:00.2544973Z 
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:00.2546076Z To determine what is calling applicationVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:00.2549283Z Add android.sync.suppressAgpWarnings=DEPRECATED_DSL to the gradle.properties file to suppress this warning.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8466434Z 
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8473956Z > Configure project :micro-benchmark
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8475121Z WARNING: API 'libraryVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8476114Z It will be removed in version 10.0 of the Android Gradle plugin.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8477017Z The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8477805Z     android.newDsl=false
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8478287Z to this project's gradle.properties file.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8479025Z For more information, see http://developer.android.com/build/r/new-dsl.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8479594Z 
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8480397Z To determine what is calling libraryVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8481686Z Add android.sync.suppressAgpWarnings=DEPRECATED_DSL to the gradle.properties file to suppress this warning.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8483784Z w: file:///home/runner/work/Gauguin-Logic-Tests/Gauguin-Logic-Tests/micro-benchmark/build.gradle.kts:7:1: 'fun Project.android(configure: Action<LibraryExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.LibraryExtension.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8485985Z This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8486713Z WARNING: BuildType 'debug' is both debuggable and has 'isMinifyEnabled' set to true.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8487237Z All code optimizations and obfuscation are disabled for debuggable builds.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:08.8487909Z Add android.sync.suppressAgpWarnings=DEBUGGABLE_AND_MINIFIED_ENABLED to the gradle.properties file to suppress this warning.
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:25.3480990Z 
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:25.3503987Z > Task :gauguin-human-solver:checkKotlinGradlePluginConfigurationErrors SKIPPED
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:25.3505151Z > Task :gauguin-grid-creation-via-merge:checkKotlinGradlePluginConfigurationErrors SKIPPED
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:25.3506189Z > Task :gauguin-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:25.3507033Z > Task :gauguin-core:kspKotlin SKIPPED
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:25.4466406Z > Task :gauguin-core:processResources
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:47.1466784Z > Task :gauguin-core:compileKotlin
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:47.1467772Z > Task :gauguin-core:compileJava NO-SOURCE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:47.1468429Z > Task :gauguin-core:classes
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:47.2474161Z > Task :gauguin-core:jar
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:47.2474725Z > Task :gauguin-core:kspTestFixturesKotlin SKIPPED
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:47.2475338Z > Task :gauguin-grid-creation-via-merge:kspKotlin SKIPPED
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:47.2475949Z > Task :gauguin-core:processTestFixturesResources NO-SOURCE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:47.2476405Z > Task :gauguin-grid-creation-via-merge:processResources NO-SOURCE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:48.5474486Z > Task :gauguin-core:compileTestFixturesKotlin
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:48.5475541Z > Task :gauguin-core:compileTestFixturesJava NO-SOURCE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:48.5476359Z > Task :gauguin-core:testFixturesClasses UP-TO-DATE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:48.5503476Z > Task :gauguin-core:kspTestKotlin SKIPPED
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:48.5533643Z > Task :gauguin-core:testFixturesJar
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:48.5534324Z > Task :gauguin-core:processTestResources
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:49.2473806Z > Task :gauguin-grid-creation-via-merge:compileKotlin
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:49.2533993Z > Task :gauguin-grid-creation-via-merge:compileJava NO-SOURCE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:49.2545076Z > Task :gauguin-grid-creation-via-merge:classes UP-TO-DATE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:49.2545766Z > Task :gauguin-grid-creation-via-merge:jar
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:49.2546304Z > Task :gauguin-human-solver:kspKotlin SKIPPED
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:49.4473941Z > Task :gauguin-human-solver:processResources NO-SOURCE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:55.5493941Z > Task :gauguin-human-solver:compileKotlin
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:55.5495543Z > Task :gauguin-human-solver:compileJava NO-SOURCE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:55.5496337Z > Task :gauguin-human-solver:classes UP-TO-DATE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:55.6482280Z > Task :gauguin-human-solver:jar
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:55.6495195Z > Task :gauguin-human-solver:kspTestFixturesKotlin SKIPPED
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:55.6543767Z > Task :gauguin-human-solver:processTestFixturesResources NO-SOURCE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:55.6603825Z > Task :gauguin-human-solver:compileTestFixturesKotlin NO-SOURCE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:55.6643655Z > Task :gauguin-human-solver:compileTestFixturesJava NO-SOURCE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:55.6673552Z > Task :gauguin-human-solver:testFixturesClasses UP-TO-DATE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:55.6703631Z > Task :gauguin-human-solver:kspTestKotlin SKIPPED
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:55.6725154Z > Task :gauguin-human-solver:processTestResources NO-SOURCE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:55.6738442Z > Task :gauguin-human-solver:testFixturesJar
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:56.4484217Z > Task :gauguin-core:compileTestKotlin
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:56.5503976Z > Task :gauguin-core:compileTestJava NO-SOURCE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:08:56.5533715Z > Task :gauguin-core:testClasses
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:09:01.2534288Z > Task :gauguin-human-solver:compileTestKotlin
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:09:01.2539118Z > Task :gauguin-human-solver:compileTestJava NO-SOURCE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:09:01.2614993Z > Task :gauguin-human-solver:testClasses UP-TO-DATE
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:09:06.2504656Z OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:09:08.1474043Z > Task :gauguin-human-solver:test
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:09:12.8466766Z > Task :gauguin-core:test
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:09:12.8467140Z 
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:09:12.8467775Z BUILD SUCCESSFUL in 2m 17s
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:09:12.8473652Z 15 actionable tasks: 15 executed
+test	Run ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --stacktrace -Pbuildserver	2026-11-05T15:09:12.8474003Z Configuration cache entry stored.
+test	Post Run actions/setup-java@v4	﻿2026-11-05T15:09:13.2089567Z Post job cleanup.
+test	Post Run actions/setup-java@v4	2026-11-05T15:09:13.3607978Z (node:3032) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+test	Post Run actions/setup-java@v4	2026-11-05T15:09:13.3609195Z (Use `node --trace-deprecation ...` to show where the warning was created)
+test	Post Run actions/checkout@v4	﻿2026-11-05T15:09:13.3824046Z Post job cleanup.
+test	Post Run actions/checkout@v4	2026-11-05T15:09:13.4760322Z [command]/usr/bin/git version
+test	Post Run actions/checkout@v4	2026-11-05T15:09:13.4810157Z git version 2.56.0
+test	Post Run actions/checkout@v4	2026-11-05T15:09:13.4853466Z Temporarily overriding HOME='/home/runner/work/_temp/7117d2ef-ab8b-4cab-ac02-931cd9125db1' before making global git config changes
+test	Post Run actions/checkout@v4	2026-11-05T15:09:13.4854713Z Adding repository directory to the temporary git global config as a safe directory
+test	Post Run actions/checkout@v4	2026-11-05T15:09:13.4860024Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Gauguin-Logic-Tests/Gauguin-Logic-Tests
+test	Post Run actions/checkout@v4	2026-11-05T15:09:13.4912286Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+test	Post Run actions/checkout@v4	2026-11-05T15:09:13.4963011Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+test	Post Run actions/checkout@v4	2026-11-05T15:09:13.5350219Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+test	Post Run actions/checkout@v4	2026-11-05T15:09:13.5386326Z http.https://github.com/.extraheader
+test	Post Run actions/checkout@v4	2026-11-05T15:09:13.5433895Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+test	Post Run actions/checkout@v4	2026-11-05T15:09:13.5472595Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+test	Post Run actions/checkout@v4	2026-11-05T15:09:13.5826702Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+test	Post Run actions/checkout@v4	2026-11-05T15:09:13.5868637Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+test	Complete job	﻿2026-11-05T15:09:13.6341049Z Cleaning up orphan processes
+test	Complete job	2026-11-05T15:09:13.6715791Z Terminate orphan process: pid (2765) (java)
+test	Complete job	2026-11-05T15:09:13.6804732Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-java@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

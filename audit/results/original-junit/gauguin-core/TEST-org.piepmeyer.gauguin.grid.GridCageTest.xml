@@ -1,0 +1,1189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.grid.GridCageTest" tests="34" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:56.182Z" hostname="2a9d8987d813" time="0.274">
+  <properties/>
+  <testcase name="0" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="1" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="3" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="4" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="reversed order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="original order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="reversed order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="original order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="reversed order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="original order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="reversed order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.001"/>
+  <testcase name="original order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="reversed order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="original order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.001"/>
+  <testcase name="reversed order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="original order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="reversed order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="original order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="reversed order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="original order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="reversed order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="original order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="reversed order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="original order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="reversed order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="original order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="reversed order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="original order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="reversed order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="original order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="reversed order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="original order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="reversed order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <testcase name="original order" classname="org.piepmeyer.gauguin.grid.GridCageTest" time="0.0"/>
+  <system-out><![CDATA[15:36:56.214 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#162
+15:36:56.214 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.214 [Test worker @spec-scope-2060143185#99] TRACE i.m.p.j.t.JvmInlineInstrumentation -- Retransforming classes org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.248 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.248 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.248 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.249 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#163
+15:36:56.249 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.249 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.249 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.249 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.251 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#164
+15:36:56.252 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.252 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.252 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.252 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.252 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#165
+15:36:56.252 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.252 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.252 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.252 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.252 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#166
+15:36:56.252 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.252 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.252 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.252 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.252 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.253 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.253 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.253 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#166).getUserValue())
+15:36:56.253 [Test worker @spec-scope-2060143185#99] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#166).userValue
+15:36:56.253 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.255 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#167
+15:36:56.255 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.255 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.255 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.255 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.255 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#168
+15:36:56.255 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.255 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.255 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.255 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.255 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#169
+15:36:56.255 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.255 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.255 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.255 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.255 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.256 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.256 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.256 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#169).getUserValue())
+15:36:56.256 [Test worker @spec-scope-2060143185#99] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#169).userValue
+15:36:56.256 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.256 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#170
+15:36:56.256 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.256 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.256 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.256 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.256 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.257 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.257 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.257 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#170).getUserValue())
+15:36:56.257 [Test worker @spec-scope-2060143185#99] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#170).userValue
+15:36:56.257 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.257 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#171
+15:36:56.257 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.257 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.257 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.257 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.257 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.257 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.257 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.257 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#171).getUserValue())
+15:36:56.257 [Test worker @spec-scope-2060143185#99] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#171).userValue
+15:36:56.258 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.259 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#172
+15:36:56.259 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.259 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.259 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.259 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.259 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#173
+15:36:56.259 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.259 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.259 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.259 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.259 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#174
+15:36:56.260 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.260 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.260 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.260 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.260 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.260 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.260 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.260 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#174).getUserValue())
+15:36:56.260 [Test worker @spec-scope-2060143185#99] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#174).userValue
+15:36:56.260 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.260 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#175
+15:36:56.260 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.260 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.260 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.260 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.260 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.261 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.261 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.261 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#175).getUserValue())
+15:36:56.261 [Test worker @spec-scope-2060143185#99] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#175).userValue
+15:36:56.261 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.261 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#176
+15:36:56.261 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.261 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.261 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.261 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.261 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.261 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.261 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.261 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#176).getUserValue())
+15:36:56.262 [Test worker @spec-scope-2060143185#99] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#176).userValue
+15:36:56.262 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.262 [Test worker @spec-scope-2060143185#99] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#177
+15:36:56.262 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.262 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.262 [Test worker @spec-scope-2060143185#99] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.262 [Test worker @spec-scope-2060143185#99] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.262 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.262 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.262 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.262 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#177).getUserValue())
+15:36:56.262 [Test worker @spec-scope-2060143185#99] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#177).userValue
+15:36:56.262 [Test worker @spec-scope-2060143185#99] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.271 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#178
+15:36:56.271 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.271 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.271 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.271 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.271 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#179
+15:36:56.271 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.271 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.271 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.271 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.271 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#180
+15:36:56.271 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.271 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.271 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.271 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.271 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.272 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.272 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.272 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#180).getUserValue())
+15:36:56.272 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#180).userValue
+15:36:56.272 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.272 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#181
+15:36:56.272 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.272 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.272 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.272 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.273 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.273 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.273 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.273 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#181).getUserValue())
+15:36:56.273 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#181).userValue
+15:36:56.273 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.273 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 1 on GridCell(#180).getUserValue()
+15:36:56.273 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 7 on GridCell(#181).getUserValue()
+15:36:56.275 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#182
+15:36:56.275 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.275 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.275 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.275 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.275 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#183
+15:36:56.275 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.275 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.275 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.275 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.275 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#184
+15:36:56.275 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.275 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.275 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.275 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.275 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.275 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.276 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.276 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#184).getUserValue())
+15:36:56.276 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#184).userValue
+15:36:56.276 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.276 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#185
+15:36:56.276 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.276 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.276 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.276 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.276 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.276 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.276 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.276 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#185).getUserValue())
+15:36:56.276 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#185).userValue
+15:36:56.276 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.277 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 7 on GridCell(#184).getUserValue()
+15:36:56.277 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 1 on GridCell(#185).getUserValue()
+15:36:56.279 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#186
+15:36:56.279 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.279 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.279 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.279 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.279 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#187
+15:36:56.279 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.279 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.279 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.279 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.280 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#188
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#188).getUserValue())
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#188).userValue
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.280 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#189
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.280 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.281 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.281 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#189).getUserValue())
+15:36:56.281 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#189).userValue
+15:36:56.281 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.281 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 1 on GridCell(#188).getUserValue()
+15:36:56.281 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 6 on GridCell(#189).getUserValue()
+15:36:56.282 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#190
+15:36:56.282 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.282 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.282 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.282 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.282 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#191
+15:36:56.283 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.307 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.307 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.307 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.307 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#192
+15:36:56.307 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.307 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.307 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.307 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.307 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.308 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.308 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.308 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#192).getUserValue())
+15:36:56.308 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#192).userValue
+15:36:56.308 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.308 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#193
+15:36:56.308 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.308 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.308 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.308 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.308 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.308 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.308 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.309 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#193).getUserValue())
+15:36:56.309 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#193).userValue
+15:36:56.309 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.309 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 6 on GridCell(#192).getUserValue()
+15:36:56.309 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 1 on GridCell(#193).getUserValue()
+15:36:56.312 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#194
+15:36:56.312 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.312 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.312 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.312 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.312 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#195
+15:36:56.312 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.312 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.312 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.312 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.312 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#196
+15:36:56.312 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.312 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.312 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.312 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.312 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.312 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.313 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.313 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#196).getUserValue())
+15:36:56.313 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#196).userValue
+15:36:56.313 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.313 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#197
+15:36:56.313 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.313 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.313 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.313 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.313 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.313 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.313 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.313 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#197).getUserValue())
+15:36:56.313 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#197).userValue
+15:36:56.314 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.314 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 1 on GridCell(#196).getUserValue()
+15:36:56.314 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 8 on GridCell(#197).getUserValue()
+15:36:56.315 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#198
+15:36:56.315 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.315 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.315 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.315 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.315 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#199
+15:36:56.315 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.315 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.315 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.315 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.315 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#200
+15:36:56.315 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.315 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.315 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.315 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.316 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.316 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.316 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.316 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#200).getUserValue())
+15:36:56.316 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#200).userValue
+15:36:56.316 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.316 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#201
+15:36:56.316 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.316 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.316 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.316 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.316 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.316 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.317 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.317 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#201).getUserValue())
+15:36:56.317 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#201).userValue
+15:36:56.317 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.317 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 8 on GridCell(#200).getUserValue()
+15:36:56.317 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 1 on GridCell(#201).getUserValue()
+15:36:56.319 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#202
+15:36:56.319 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.319 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.319 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.319 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.320 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#203
+15:36:56.320 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.320 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.320 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.320 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.320 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#204
+15:36:56.320 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.320 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.320 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.320 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.320 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.320 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.320 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.320 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#204).getUserValue())
+15:36:56.320 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#204).userValue
+15:36:56.320 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.321 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#205
+15:36:56.321 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.321 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.321 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.321 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.321 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.321 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.321 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.321 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#205).getUserValue())
+15:36:56.321 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#205).userValue
+15:36:56.321 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.321 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 0 on GridCell(#204).getUserValue()
+15:36:56.321 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 7 on GridCell(#205).getUserValue()
+15:36:56.322 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#206
+15:36:56.323 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.323 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.323 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.323 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.323 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#207
+15:36:56.323 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.323 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.323 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.323 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.323 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#208
+15:36:56.323 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.323 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.323 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.323 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.323 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.324 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.324 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.324 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#208).getUserValue())
+15:36:56.324 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#208).userValue
+15:36:56.324 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.324 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#209
+15:36:56.324 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.324 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.324 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.324 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.324 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.324 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.324 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.325 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#209).getUserValue())
+15:36:56.325 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#209).userValue
+15:36:56.325 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.325 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 7 on GridCell(#208).getUserValue()
+15:36:56.325 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 0 on GridCell(#209).getUserValue()
+15:36:56.327 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#210
+15:36:56.327 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.327 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.327 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.327 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.327 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#211
+15:36:56.327 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.327 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.327 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.327 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.327 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#212
+15:36:56.327 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.327 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.327 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.327 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.327 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.328 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.328 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.328 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#212).getUserValue())
+15:36:56.328 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#212).userValue
+15:36:56.328 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.328 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#213
+15:36:56.328 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.328 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.328 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.328 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.328 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.328 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.328 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.329 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#213).getUserValue())
+15:36:56.329 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#213).userValue
+15:36:56.329 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.329 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 2 on GridCell(#212).getUserValue()
+15:36:56.329 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 7 on GridCell(#213).getUserValue()
+15:36:56.330 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#214
+15:36:56.330 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.330 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.330 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.330 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.330 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#215
+15:36:56.330 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.330 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.330 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.330 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.331 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#216
+15:36:56.331 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.331 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.331 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.331 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.331 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.331 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.331 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.331 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#216).getUserValue())
+15:36:56.331 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#216).userValue
+15:36:56.331 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.331 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#217
+15:36:56.331 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.331 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.331 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.331 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.332 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.332 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.332 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.332 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#217).getUserValue())
+15:36:56.332 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#217).userValue
+15:36:56.332 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.332 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 7 on GridCell(#216).getUserValue()
+15:36:56.332 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 2 on GridCell(#217).getUserValue()
+15:36:56.340 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#218
+15:36:56.340 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.340 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.340 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.340 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.340 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#219
+15:36:56.340 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.340 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.340 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.340 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.340 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#220
+15:36:56.340 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.340 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.340 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.340 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.340 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.341 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.343 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.343 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#220).getUserValue())
+15:36:56.343 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#220).userValue
+15:36:56.343 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.343 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#221
+15:36:56.343 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.343 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.343 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.343 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.343 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.344 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.344 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.344 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#221).getUserValue())
+15:36:56.344 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#221).userValue
+15:36:56.344 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.344 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 7 on GridCell(#220).getUserValue()
+15:36:56.344 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 7 on GridCell(#221).getUserValue()
+15:36:56.346 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#222
+15:36:56.346 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.351 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.351 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.351 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.351 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#223
+15:36:56.351 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.351 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.351 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.351 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.351 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#224
+15:36:56.351 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.351 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.351 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.351 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.351 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.352 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.352 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.352 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#224).getUserValue())
+15:36:56.352 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#224).userValue
+15:36:56.352 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.352 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#225
+15:36:56.352 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.352 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.352 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.352 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.352 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.352 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.352 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.352 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#225).getUserValue())
+15:36:56.352 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#225).userValue
+15:36:56.352 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.359 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 7 on GridCell(#224).getUserValue()
+15:36:56.359 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 7 on GridCell(#225).getUserValue()
+15:36:56.362 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#226
+15:36:56.362 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.362 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.362 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.362 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.362 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#227
+15:36:56.362 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.362 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.362 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.362 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.362 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#228
+15:36:56.362 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.362 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.362 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.362 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.362 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.363 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.363 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.363 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#228).getUserValue())
+15:36:56.363 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#228).userValue
+15:36:56.363 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.363 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#229
+15:36:56.363 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.363 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.363 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.363 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.363 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.364 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.364 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.364 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#229).getUserValue())
+15:36:56.364 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#229).userValue
+15:36:56.364 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.364 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 1 on GridCell(#228).getUserValue()
+15:36:56.364 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 3 on GridCell(#229).getUserValue()
+15:36:56.365 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#230
+15:36:56.365 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.365 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.365 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.365 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.365 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#231
+15:36:56.365 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.366 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#232
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#232).getUserValue())
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#232).userValue
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.366 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#233
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.366 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.367 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.367 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.367 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#233).getUserValue())
+15:36:56.367 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#233).userValue
+15:36:56.367 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.367 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 3 on GridCell(#232).getUserValue()
+15:36:56.367 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 1 on GridCell(#233).getUserValue()
+15:36:56.369 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#234
+15:36:56.369 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.369 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.370 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#235
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.370 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#236
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#236).getUserValue())
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#236).userValue
+15:36:56.370 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.370 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#237
+15:36:56.371 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.371 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.371 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.371 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.371 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.371 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.371 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.371 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#237).getUserValue())
+15:36:56.371 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#237).userValue
+15:36:56.371 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.371 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 2 on GridCell(#236).getUserValue()
+15:36:56.371 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 6 on GridCell(#237).getUserValue()
+15:36:56.372 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#238
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.373 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#239
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.373 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#240
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.373 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#240).getUserValue())
+15:36:56.374 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#240).userValue
+15:36:56.374 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.374 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#241
+15:36:56.374 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.374 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.374 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.374 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.374 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.374 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.374 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.374 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#241).getUserValue())
+15:36:56.374 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#241).userValue
+15:36:56.374 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.374 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 6 on GridCell(#240).getUserValue()
+15:36:56.375 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 2 on GridCell(#241).getUserValue()
+15:36:56.377 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#242
+15:36:56.377 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.377 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.377 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.377 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.377 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#243
+15:36:56.377 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.377 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.377 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.377 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.377 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#244
+15:36:56.377 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.377 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.377 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.377 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.377 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.377 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.377 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.378 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#244).getUserValue())
+15:36:56.378 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#244).userValue
+15:36:56.378 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.378 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#245
+15:36:56.378 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.378 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.378 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.378 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.378 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.378 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.378 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.378 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#245).getUserValue())
+15:36:56.378 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#245).userValue
+15:36:56.378 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.379 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 3 on GridCell(#244).getUserValue()
+15:36:56.407 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 9 on GridCell(#245).getUserValue()
+15:36:56.409 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#246
+15:36:56.409 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.409 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.409 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.409 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.409 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#247
+15:36:56.409 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.409 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.409 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.409 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.409 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#248
+15:36:56.409 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.409 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.409 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.409 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.409 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.410 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.410 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.410 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#248).getUserValue())
+15:36:56.410 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#248).userValue
+15:36:56.410 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.410 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#249
+15:36:56.410 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.410 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.410 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.410 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.410 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.410 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.410 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.410 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#249).getUserValue())
+15:36:56.411 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#249).userValue
+15:36:56.411 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.411 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 9 on GridCell(#248).getUserValue()
+15:36:56.411 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 3 on GridCell(#249).getUserValue()
+15:36:56.413 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#250
+15:36:56.413 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.413 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.414 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#251
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.414 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#252
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#252).getUserValue())
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#252).userValue
+15:36:56.414 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.415 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#253
+15:36:56.415 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.415 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.415 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.415 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.415 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.415 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.415 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.415 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#253).getUserValue())
+15:36:56.415 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#253).userValue
+15:36:56.415 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.415 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 1 on GridCell(#252).getUserValue()
+15:36:56.415 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 9 on GridCell(#253).getUserValue()
+15:36:56.417 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#254
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.417 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#255
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.417 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#256
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.417 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#256).getUserValue())
+15:36:56.418 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#256).userValue
+15:36:56.418 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.418 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#257
+15:36:56.418 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.418 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.418 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.418 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.418 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.418 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.418 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.418 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#257).getUserValue())
+15:36:56.418 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#257).userValue
+15:36:56.418 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.418 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 9 on GridCell(#256).getUserValue()
+15:36:56.418 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 1 on GridCell(#257).getUserValue()
+15:36:56.421 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#258
+15:36:56.421 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.421 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.421 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.421 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.421 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#259
+15:36:56.421 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.421 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.421 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.421 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.421 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#260
+15:36:56.421 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.421 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.421 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.421 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.421 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.422 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.422 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.422 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#260).getUserValue())
+15:36:56.422 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#260).userValue
+15:36:56.422 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.422 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#261
+15:36:56.422 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.422 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.422 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.422 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.422 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.422 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.422 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.422 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#261).getUserValue())
+15:36:56.422 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#261).userValue
+15:36:56.422 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.423 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 1 on GridCell(#260).getUserValue()
+15:36:56.423 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 6 on GridCell(#261).getUserValue()
+15:36:56.424 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#262
+15:36:56.424 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.424 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.424 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.424 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.424 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#263
+15:36:56.424 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.424 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.424 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.424 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.425 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#264
+15:36:56.425 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.425 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.425 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.425 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.425 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.425 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.425 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.425 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#264).getUserValue())
+15:36:56.425 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#264).userValue
+15:36:56.425 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.425 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#265
+15:36:56.425 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.425 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.425 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.425 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.425 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.426 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.426 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.426 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#265).getUserValue())
+15:36:56.426 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#265).userValue
+15:36:56.426 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.426 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 6 on GridCell(#264).getUserValue()
+15:36:56.426 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 1 on GridCell(#265).getUserValue()
+15:36:56.428 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#266
+15:36:56.428 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.428 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.429 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.429 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.429 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#267
+15:36:56.429 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.429 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.429 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.429 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.429 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#268
+15:36:56.429 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.429 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.429 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.429 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.429 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.429 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.429 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.429 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#268).getUserValue())
+15:36:56.430 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#268).userValue
+15:36:56.430 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.430 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#269
+15:36:56.430 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.430 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.430 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.430 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.430 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.430 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.430 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.430 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#269).getUserValue())
+15:36:56.430 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#269).userValue
+15:36:56.430 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.430 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 6 on GridCell(#268).getUserValue()
+15:36:56.431 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 9 on GridCell(#269).getUserValue()
+15:36:56.432 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#270
+15:36:56.432 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.432 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.432 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.432 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.432 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#271
+15:36:56.432 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.432 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.432 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.432 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.432 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#272
+15:36:56.432 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.432 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.432 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.432 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.432 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.433 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.433 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.433 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#272).getUserValue())
+15:36:56.433 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#272).userValue
+15:36:56.433 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.433 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#273
+15:36:56.433 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.433 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.433 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.433 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.433 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.433 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.433 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.433 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#273).getUserValue())
+15:36:56.433 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#273).userValue
+15:36:56.433 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.434 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 9 on GridCell(#272).getUserValue()
+15:36:56.434 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 6 on GridCell(#273).getUserValue()
+15:36:56.436 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#274
+15:36:56.436 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.436 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.436 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.436 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.436 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#275
+15:36:56.436 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.436 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.436 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.436 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.436 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#276
+15:36:56.436 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.436 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.436 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.436 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.436 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.437 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.437 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.437 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#276).getUserValue())
+15:36:56.437 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#276).userValue
+15:36:56.437 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.437 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#277
+15:36:56.437 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.437 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.437 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.437 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.437 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.437 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.437 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.437 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#277).getUserValue())
+15:36:56.437 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#277).userValue
+15:36:56.438 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.438 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 0 on GridCell(#276).getUserValue()
+15:36:56.438 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 0 on GridCell(#277).getUserValue()
+15:36:56.439 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#278
+15:36:56.439 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.439 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.439 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.439 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.439 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#279
+15:36:56.439 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.439 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.439 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.439 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.439 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#280
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#280).getUserValue())
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#280).userValue
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.440 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#281
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.440 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.441 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.441 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#281).getUserValue())
+15:36:56.441 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#281).userValue
+15:36:56.441 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.441 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 0 on GridCell(#280).getUserValue()
+15:36:56.441 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 0 on GridCell(#281).getUserValue()
+15:36:56.443 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#282
+15:36:56.443 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.443 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.443 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.443 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.443 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#283
+15:36:56.443 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.443 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.443 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.443 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.443 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#284
+15:36:56.443 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.443 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.443 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.443 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.444 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.444 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.444 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.444 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#284).getUserValue())
+15:36:56.444 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#284).userValue
+15:36:56.444 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.444 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#285
+15:36:56.444 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.444 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.444 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.444 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.444 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.444 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.444 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.445 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#285).getUserValue())
+15:36:56.445 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#285).userValue
+15:36:56.445 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.445 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 0 on GridCell(#284).getUserValue()
+15:36:56.445 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 1 on GridCell(#285).getUserValue()
+15:36:56.446 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#286
+15:36:56.446 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.446 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.446 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.446 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.446 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#287
+15:36:56.446 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.446 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.446 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.446 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.446 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#288
+15:36:56.446 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.447 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.447 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.447 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.447 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.447 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.447 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.447 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#288).getUserValue())
+15:36:56.447 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#288).userValue
+15:36:56.447 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.447 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#289
+15:36:56.447 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.447 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.447 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.447 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.447 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.448 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.448 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.448 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#289).getUserValue())
+15:36:56.448 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#289).userValue
+15:36:56.448 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.448 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 1 on GridCell(#288).getUserValue()
+15:36:56.448 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 0 on GridCell(#289).getUserValue()
+15:36:56.451 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#290
+15:36:56.451 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.451 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.451 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.451 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.451 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#291
+15:36:56.451 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.451 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.451 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.451 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.451 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#292
+15:36:56.451 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.451 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.451 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.451 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.451 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.452 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.452 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.452 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#292).getUserValue())
+15:36:56.452 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#292).userValue
+15:36:56.452 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.452 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#293
+15:36:56.452 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.452 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.452 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.452 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.452 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.452 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.452 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.452 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#293).getUserValue())
+15:36:56.452 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#293).userValue
+15:36:56.452 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.453 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 0 on GridCell(#292).getUserValue()
+15:36:56.453 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 2 on GridCell(#293).getUserValue()
+15:36:56.454 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageAction name=#294
+15:36:56.454 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageAction hashcode=c17ef34
+15:36:56.454 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCageAction itself because it is final.
+15:36:56.454 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCageAction via instantiator
+15:36:56.454 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCageAction
+15:36:56.454 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=#295
+15:36:56.454 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=a703934
+15:36:56.454 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:56.454 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:56.454 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:56.454 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#296
+15:36:56.454 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.454 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.454 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.455 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.455 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.455 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.455 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.455 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#296).getUserValue())
+15:36:56.455 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#296).userValue
+15:36:56.455 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.455 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCell name=#297
+15:36:56.455 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCell hashcode=6354a50a
+15:36:56.455 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCell itself because it is final.
+15:36:56.455 [Test worker @spec-scope-2060143185#100] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCell via instantiator
+15:36:56.455 [Test worker @spec-scope-2060143185#100] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCell
+15:36:56.455 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.455 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.455 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUserValue()
+15:36:56.456 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCell(#297).getUserValue())
+15:36:56.456 [Test worker @spec-scope-2060143185#100] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCell(#297).userValue
+15:36:56.456 [Test worker @spec-scope-2060143185#100] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.456 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 2 on GridCell(#296).getUserValue()
+15:36:56.456 [Test worker @spec-scope-2060143185#100] DEBUG i.m.i.r.states.AnsweringState -- Answering 0 on GridCell(#297).getUserValue()
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

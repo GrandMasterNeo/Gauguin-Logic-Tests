@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.game.GameLifecycleTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:55.047Z" hostname="2a9d8987d813" time="0.825">
+  <properties/>
+  <testcase name="new grid gets pencils filled if option is enabled" classname="org.piepmeyer.gauguin.game.GameLifecycleTest" time="0.774"/>
+  <testcase name="new grid gets empty pencils if option is disabled" classname="org.piepmeyer.gauguin.game.GameLifecycleTest" time="0.015"/>
+  <testcase name="new grid gets all empty cages filled if option is enabled" classname="org.piepmeyer.gauguin.game.GameLifecycleTest" time="0.011"/>
+  <testcase name="new grid gets no empty cages filled if option is disabled" classname="org.piepmeyer.gauguin.game.GameLifecycleTest" time="0.012"/>
+  <system-out><![CDATA[15:36:55.057 [Test worker @spec-scope-1250623474#87] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#108
+15:36:55.057 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:55.059 [Test worker @spec-scope-1250623474#87] TRACE i.m.p.j.t.JvmInlineInstrumentation -- Retransforming classes org.piepmeyer.gauguin.preferences.ApplicationPreferences
+15:36:55.091 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:55.139 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:55.140 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:55.140 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:55.141 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.151 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.151 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: addPencilsAtStart()
+15:36:55.151 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#108).addPencilsAtStart())
+15:36:55.151 [Test worker @spec-scope-1250623474#87] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#108).addPencilsAtStart()
+15:36:55.151 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.151 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.152 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.152 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: fillSingleCagesAtStart()
+15:36:55.152 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#108).fillSingleCagesAtStart())
+15:36:55.152 [Test worker @spec-scope-1250623474#87] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#108).fillSingleCagesAtStart()
+15:36:55.152 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.153 [Test worker @spec-scope-1250623474#87] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Game name=#109
+15:36:55.153 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Game hashcode=3a7243e1
+15:36:55.155 [Test worker @spec-scope-1250623474#87] TRACE i.m.p.j.t.JvmInlineInstrumentation -- Retransforming classes org.piepmeyer.gauguin.game.Game
+15:36:55.260 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.game.Game itself because it is final.
+15:36:55.261 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.game.Game via instantiator
+15:36:55.261 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.game.Game
+15:36:55.263 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.265 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.instantiation.JvmInstantiator -- Building empty instance GameSolvedListener
+15:36:55.265 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Instantiating interface org.piepmeyer.gauguin.game.GameSolvedListener via subclass proxy
+15:36:55.269 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.game.GameSolvedListener$Subclass3
+15:36:55.287 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=11efc5da
+15:36:55.288 [Test worker @spec-scope-1250623474#87] TRACE i.m.p.j.t.JvmInlineInstrumentation -- Retransforming classes kotlin.Unit
+15:36:55.332 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.332 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.332 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.335 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {[Ref(GameSolvedListener$Subclass3@6a3044cb)]=any<GameSolvedListener>()}
+15:36:55.335 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: addGameVipSolvedHandler(GameSolvedListener)
+15:36:55.335 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of addGameVipSolvedHandler(GameSolvedListener): [Ref(GameSolvedListener$Subclass3@6a3044cb)]
+15:36:55.335 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Game(#109).addGameVipSolvedHandler(any<GameSolvedListener>()))
+15:36:55.335 [Test worker @spec-scope-1250623474#87] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Game(#109).addGameVipSolvedHandler(any<GameSolvedListener>()))
+15:36:55.335 [Test worker @spec-scope-1250623474#87] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Unit name=child of #109#110
+15:36:55.335 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=11efc5da
+15:36:55.335 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.335 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.335 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.336 [Test worker @spec-scope-1250623474#87] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: Game(#109).addGameVipSolvedHandler(any<GameSolvedListener>())
+15:36:55.336 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.336 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.383 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Grid hashcode=25618246
+15:36:55.384 [Test worker @spec-scope-1250623474#87] TRACE i.m.p.j.t.JvmInlineInstrumentation -- Retransforming classes org.piepmeyer.gauguin.grid.Grid
+15:36:55.484 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.Grid itself because it is final.
+15:36:55.484 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.Grid via instantiator
+15:36:55.484 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.Grid
+15:36:55.517 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=160b010e
+15:36:55.517 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.517 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.517 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.518 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.519 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getGrid()
+15:36:55.519 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Game(#109).getGrid())
+15:36:55.519 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #1: addPossiblesAtNewGame()
+15:36:55.519 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Grid(temporary mock).addPossiblesAtNewGame())
+15:36:55.519 [Test worker @spec-scope-1250623474#87] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Game(#109).getGrid())
+15:36:55.519 [Test worker @spec-scope-1250623474#87] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Grid name=child of #109#111
+15:36:55.519 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Grid hashcode=25618246
+15:36:55.519 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.Grid itself because it is final.
+15:36:55.519 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.Grid via instantiator
+15:36:55.519 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.Grid
+15:36:55.519 [Test worker @spec-scope-1250623474#87] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Grid(child of #109#111).addPossiblesAtNewGame())
+15:36:55.519 [Test worker @spec-scope-1250623474#87] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Unit name=child^2 of #109#111#112
+15:36:55.519 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=160b010e
+15:36:55.520 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.520 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.520 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.520 [Test worker @spec-scope-1250623474#87] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: Game(#109).grid.addPossiblesAtNewGame()
+15:36:55.520 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.521 [Test worker @spec-scope-1250623474#87] WARN  i.mockk.impl.restrict.MockkValidator -- File should not be mocked! Consider refactoring your test.
+15:36:55.521 [Test worker @spec-scope-1250623474#87] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for File name=#113
+15:36:55.521 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for File hashcode=4c046a12
+15:36:55.522 [Test worker @spec-scope-1250623474#87] TRACE i.m.p.j.t.JvmInlineInstrumentation -- Retransforming classes java.io.File
+15:36:55.631 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class java.io.File itself because it is not abstract and no additional interfaces specified.
+15:36:55.631 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class java.io.File via instantiator
+15:36:55.631 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class java.io.File because class is not abstract.
+15:36:55.631 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class java.io.File
+15:36:55.632 [Test worker @spec-scope-1250623474#87] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for CoroutineScope name=#114
+15:36:55.632 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for CoroutineScope hashcode=555b43ba
+15:36:55.633 [Test worker @spec-scope-1250623474#87] TRACE i.m.p.j.t.JvmInlineInstrumentation -- Retransforming classes kotlinx.coroutines.CoroutineScope
+15:36:55.675 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlinx.coroutines.CoroutineScope with additional interfaces []
+15:36:55.686 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlinx.coroutines.CoroutineScope via instantiator
+15:36:55.687 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlinx.coroutines.CoroutineScope$Subclass4 because class is not abstract.
+15:36:55.687 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlinx.coroutines.CoroutineScope$Subclass4
+15:36:55.690 [Test worker @spec-scope-1250623474#87] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCalculationService name=#115
+15:36:55.690 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCalculationService hashcode=4591a080
+15:36:55.692 [Test worker @spec-scope-1250623474#87] TRACE i.m.p.j.t.JvmInlineInstrumentation -- Retransforming classes org.piepmeyer.gauguin.calculation.GridCalculationService, org.koin.core.component.KoinComponent
+15:36:55.763 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.calculation.GridCalculationService itself because it is final.
+15:36:55.763 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.calculation.GridCalculationService via instantiator
+15:36:55.763 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.calculation.GridCalculationService
+15:36:55.764 [Test worker @spec-scope-1250623474#87] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for StatisticsManagerWriting name=#116
+15:36:55.764 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for StatisticsManagerWriting hashcode=c421318
+15:36:55.765 [Test worker @spec-scope-1250623474#87] TRACE i.m.p.j.t.JvmInlineInstrumentation -- Retransforming classes org.piepmeyer.gauguin.preferences.StatisticsManagerWriting
+15:36:55.792 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.StatisticsManagerWriting with additional interfaces []
+15:36:55.807 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.StatisticsManagerWriting via instantiator
+15:36:55.807 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.StatisticsManagerWriting$Subclass5 because class is not abstract.
+15:36:55.807 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.StatisticsManagerWriting$Subclass5
+15:36:55.812 [Test worker @spec-scope-1250623474#87] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on Game(#109).addGameVipSolvedHandler(org.piepmeyer.gauguin.game.GameLifecycle$$Lambda/0x00007f3fb453adb8@4f13e602)
+15:36:55.812 [Test worker @spec-scope-1250623474#87] DEBUG i.m.i.r.states.AnsweringState -- Answering true on ApplicationPreferences(#108).addPencilsAtStart()
+15:36:55.812 [Test worker @spec-scope-1250623474#87] DEBUG i.m.i.r.states.AnsweringState -- Answering Grid(child of #109#111) on Game(#109).getGrid()
+15:36:55.813 [Test worker @spec-scope-1250623474#87] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on Grid(child of #109#111).addPossiblesAtNewGame()
+15:36:55.813 [Test worker @spec-scope-1250623474#87] DEBUG i.m.i.r.states.AnsweringState -- Answering false on ApplicationPreferences(#108).fillSingleCagesAtStart()
+15:36:55.817 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.CommonCallRecorder -- Starting verification
+15:36:55.818 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Grid hashcode=25618246
+15:36:55.818 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.Grid itself because it is final.
+15:36:55.818 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.Grid via instantiator
+15:36:55.818 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.Grid
+15:36:55.819 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=160b010e
+15:36:55.819 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.819 [Test worker @spec-scope-1250623474#87] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.819 [Test worker @spec-scope-1250623474#87] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.819 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.819 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getGrid()
+15:36:55.819 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Game(#109).getGrid())
+15:36:55.819 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #1: addPossiblesAtNewGame()
+15:36:55.819 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Grid(temporary mock).addPossiblesAtNewGame())
+15:36:55.819 [Test worker @spec-scope-1250623474#87] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Game(#109).getGrid())
+15:36:55.820 [Test worker @spec-scope-1250623474#87] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Grid(child of #109#111).addPossiblesAtNewGame())
+15:36:55.820 [Test worker @spec-scope-1250623474#87] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: Game(#109).grid.addPossiblesAtNewGame()
+15:36:55.829 [Test worker @spec-scope-1250623474#87] TRACE i.m.i.r.states.RecordingState -- Done verification. Outcome: OK(verifiedCalls=[Game(#109).getGrid(), Grid(child of #109#111).addPossiblesAtNewGame()])
+15:36:55.832 [Test worker @spec-scope-1250623474#88] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#117
+15:36:55.832 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:55.832 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:55.832 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:55.832 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:55.833 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:55.833 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.833 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.833 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: addPencilsAtStart()
+15:36:55.833 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#117).addPencilsAtStart())
+15:36:55.834 [Test worker @spec-scope-1250623474#88] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#117).addPencilsAtStart()
+15:36:55.834 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.834 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.834 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.835 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: fillSingleCagesAtStart()
+15:36:55.835 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#117).fillSingleCagesAtStart())
+15:36:55.835 [Test worker @spec-scope-1250623474#88] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#117).fillSingleCagesAtStart()
+15:36:55.835 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.835 [Test worker @spec-scope-1250623474#88] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Game name=#118
+15:36:55.835 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Game hashcode=3a7243e1
+15:36:55.835 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.game.Game itself because it is final.
+15:36:55.835 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.game.Game via instantiator
+15:36:55.835 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.game.Game
+15:36:55.835 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.836 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.instantiation.JvmInstantiator -- Building empty instance GameSolvedListener
+15:36:55.836 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Instantiating interface org.piepmeyer.gauguin.game.GameSolvedListener via subclass proxy
+15:36:55.836 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.game.GameSolvedListener$Subclass3
+15:36:55.836 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=11efc5da
+15:36:55.836 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.836 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.836 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.836 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {[Ref(GameSolvedListener$Subclass3@7862e409)]=any<GameSolvedListener>()}
+15:36:55.836 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: addGameVipSolvedHandler(GameSolvedListener)
+15:36:55.836 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of addGameVipSolvedHandler(GameSolvedListener): [Ref(GameSolvedListener$Subclass3@7862e409)]
+15:36:55.837 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Game(#118).addGameVipSolvedHandler(any<GameSolvedListener>()))
+15:36:55.837 [Test worker @spec-scope-1250623474#88] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Game(#118).addGameVipSolvedHandler(any<GameSolvedListener>()))
+15:36:55.837 [Test worker @spec-scope-1250623474#88] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Unit name=child of #118#119
+15:36:55.837 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=11efc5da
+15:36:55.837 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.837 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.837 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.837 [Test worker @spec-scope-1250623474#88] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: Game(#118).addGameVipSolvedHandler(any<GameSolvedListener>())
+15:36:55.837 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.838 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.838 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Grid hashcode=25618246
+15:36:55.838 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.Grid itself because it is final.
+15:36:55.838 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.Grid via instantiator
+15:36:55.838 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.Grid
+15:36:55.838 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=160b010e
+15:36:55.839 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.839 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.839 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.839 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.839 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getGrid()
+15:36:55.839 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Game(#118).getGrid())
+15:36:55.839 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #1: addPossiblesAtNewGame()
+15:36:55.839 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Grid(temporary mock).addPossiblesAtNewGame())
+15:36:55.839 [Test worker @spec-scope-1250623474#88] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Game(#118).getGrid())
+15:36:55.839 [Test worker @spec-scope-1250623474#88] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Grid name=child of #118#120
+15:36:55.840 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Grid hashcode=25618246
+15:36:55.840 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.Grid itself because it is final.
+15:36:55.840 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.Grid via instantiator
+15:36:55.840 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.Grid
+15:36:55.840 [Test worker @spec-scope-1250623474#88] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Grid(child of #118#120).addPossiblesAtNewGame())
+15:36:55.840 [Test worker @spec-scope-1250623474#88] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Unit name=child^2 of #118#120#121
+15:36:55.840 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=160b010e
+15:36:55.840 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.840 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.840 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.840 [Test worker @spec-scope-1250623474#88] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: Game(#118).grid.addPossiblesAtNewGame()
+15:36:55.841 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.841 [Test worker @spec-scope-1250623474#88] WARN  i.mockk.impl.restrict.MockkValidator -- File should not be mocked! Consider refactoring your test.
+15:36:55.841 [Test worker @spec-scope-1250623474#88] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for File name=#122
+15:36:55.841 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for File hashcode=4c046a12
+15:36:55.841 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class java.io.File itself because it is not abstract and no additional interfaces specified.
+15:36:55.841 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class java.io.File via instantiator
+15:36:55.841 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class java.io.File because class is not abstract.
+15:36:55.841 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class java.io.File
+15:36:55.841 [Test worker @spec-scope-1250623474#88] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for CoroutineScope name=#123
+15:36:55.841 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for CoroutineScope hashcode=555b43ba
+15:36:55.841 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlinx.coroutines.CoroutineScope with additional interfaces []
+15:36:55.842 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlinx.coroutines.CoroutineScope via instantiator
+15:36:55.842 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlinx.coroutines.CoroutineScope$Subclass4 because class is not abstract.
+15:36:55.842 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlinx.coroutines.CoroutineScope$Subclass4
+15:36:55.842 [Test worker @spec-scope-1250623474#88] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCalculationService name=#124
+15:36:55.842 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCalculationService hashcode=4591a080
+15:36:55.842 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.calculation.GridCalculationService itself because it is final.
+15:36:55.842 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.calculation.GridCalculationService via instantiator
+15:36:55.842 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.calculation.GridCalculationService
+15:36:55.842 [Test worker @spec-scope-1250623474#88] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for StatisticsManagerWriting name=#125
+15:36:55.842 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for StatisticsManagerWriting hashcode=c421318
+15:36:55.842 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.StatisticsManagerWriting with additional interfaces []
+15:36:55.842 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.StatisticsManagerWriting via instantiator
+15:36:55.842 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.StatisticsManagerWriting$Subclass5 because class is not abstract.
+15:36:55.842 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.StatisticsManagerWriting$Subclass5
+15:36:55.843 [Test worker @spec-scope-1250623474#88] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on Game(#118).addGameVipSolvedHandler(org.piepmeyer.gauguin.game.GameLifecycle$$Lambda/0x00007f3fb453adb8@319b7537)
+15:36:55.843 [Test worker @spec-scope-1250623474#88] DEBUG i.m.i.r.states.AnsweringState -- Answering false on ApplicationPreferences(#117).addPencilsAtStart()
+15:36:55.843 [Test worker @spec-scope-1250623474#88] DEBUG i.m.i.r.states.AnsweringState -- Answering false on ApplicationPreferences(#117).fillSingleCagesAtStart()
+15:36:55.843 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.CommonCallRecorder -- Starting verification
+15:36:55.844 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Grid hashcode=25618246
+15:36:55.844 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.Grid itself because it is final.
+15:36:55.844 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.Grid via instantiator
+15:36:55.844 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.Grid
+15:36:55.844 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=160b010e
+15:36:55.844 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.844 [Test worker @spec-scope-1250623474#88] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.844 [Test worker @spec-scope-1250623474#88] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.845 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.845 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getGrid()
+15:36:55.845 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Game(#118).getGrid())
+15:36:55.845 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #1: addPossiblesAtNewGame()
+15:36:55.845 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Grid(temporary mock).addPossiblesAtNewGame())
+15:36:55.845 [Test worker @spec-scope-1250623474#88] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Game(#118).getGrid())
+15:36:55.845 [Test worker @spec-scope-1250623474#88] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Grid(child of #118#120).addPossiblesAtNewGame())
+15:36:55.846 [Test worker @spec-scope-1250623474#88] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: Game(#118).grid.addPossiblesAtNewGame()
+15:36:55.846 [Test worker @spec-scope-1250623474#88] TRACE i.m.i.r.states.RecordingState -- Done verification. Outcome: OK(verifiedCalls=[])
+15:36:55.849 [Test worker @spec-scope-1250623474#89] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#126
+15:36:55.849 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:55.849 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:55.849 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:55.849 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:55.849 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:55.849 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.850 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.850 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: addPencilsAtStart()
+15:36:55.850 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#126).addPencilsAtStart())
+15:36:55.850 [Test worker @spec-scope-1250623474#89] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#126).addPencilsAtStart()
+15:36:55.850 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.850 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.850 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.850 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: fillSingleCagesAtStart()
+15:36:55.851 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#126).fillSingleCagesAtStart())
+15:36:55.851 [Test worker @spec-scope-1250623474#89] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#126).fillSingleCagesAtStart()
+15:36:55.851 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.851 [Test worker @spec-scope-1250623474#89] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Game name=#127
+15:36:55.851 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Game hashcode=3a7243e1
+15:36:55.851 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.game.Game itself because it is final.
+15:36:55.851 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.game.Game via instantiator
+15:36:55.851 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.game.Game
+15:36:55.851 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.852 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.instantiation.JvmInstantiator -- Building empty instance GameSolvedListener
+15:36:55.852 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Instantiating interface org.piepmeyer.gauguin.game.GameSolvedListener via subclass proxy
+15:36:55.852 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.game.GameSolvedListener$Subclass3
+15:36:55.852 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=11efc5da
+15:36:55.852 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.852 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.852 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.852 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {[Ref(GameSolvedListener$Subclass3@10bcceb5)]=any<GameSolvedListener>()}
+15:36:55.852 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: addGameVipSolvedHandler(GameSolvedListener)
+15:36:55.852 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of addGameVipSolvedHandler(GameSolvedListener): [Ref(GameSolvedListener$Subclass3@10bcceb5)]
+15:36:55.852 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Game(#127).addGameVipSolvedHandler(any<GameSolvedListener>()))
+15:36:55.853 [Test worker @spec-scope-1250623474#89] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Game(#127).addGameVipSolvedHandler(any<GameSolvedListener>()))
+15:36:55.853 [Test worker @spec-scope-1250623474#89] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Unit name=child of #127#128
+15:36:55.853 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=11efc5da
+15:36:55.853 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.853 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.853 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.853 [Test worker @spec-scope-1250623474#89] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: Game(#127).addGameVipSolvedHandler(any<GameSolvedListener>())
+15:36:55.853 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.853 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.854 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=13e3f9a9
+15:36:55.854 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.854 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.854 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.854 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.854 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: fillSingleCagesInNewGrid()
+15:36:55.854 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Game(#127).fillSingleCagesInNewGrid())
+15:36:55.854 [Test worker @spec-scope-1250623474#89] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Game(#127).fillSingleCagesInNewGrid())
+15:36:55.854 [Test worker @spec-scope-1250623474#89] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Unit name=child of #127#129
+15:36:55.854 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=13e3f9a9
+15:36:55.855 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.855 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.855 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.855 [Test worker @spec-scope-1250623474#89] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: Game(#127).fillSingleCagesInNewGrid()
+15:36:55.855 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.855 [Test worker @spec-scope-1250623474#89] WARN  i.mockk.impl.restrict.MockkValidator -- File should not be mocked! Consider refactoring your test.
+15:36:55.855 [Test worker @spec-scope-1250623474#89] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for File name=#130
+15:36:55.855 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for File hashcode=4c046a12
+15:36:55.855 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class java.io.File itself because it is not abstract and no additional interfaces specified.
+15:36:55.855 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class java.io.File via instantiator
+15:36:55.855 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class java.io.File because class is not abstract.
+15:36:55.855 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class java.io.File
+15:36:55.855 [Test worker @spec-scope-1250623474#89] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for CoroutineScope name=#131
+15:36:55.855 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for CoroutineScope hashcode=555b43ba
+15:36:55.856 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlinx.coroutines.CoroutineScope with additional interfaces []
+15:36:55.856 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlinx.coroutines.CoroutineScope via instantiator
+15:36:55.856 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlinx.coroutines.CoroutineScope$Subclass4 because class is not abstract.
+15:36:55.856 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlinx.coroutines.CoroutineScope$Subclass4
+15:36:55.856 [Test worker @spec-scope-1250623474#89] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCalculationService name=#132
+15:36:55.856 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCalculationService hashcode=4591a080
+15:36:55.856 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.calculation.GridCalculationService itself because it is final.
+15:36:55.856 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.calculation.GridCalculationService via instantiator
+15:36:55.856 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.calculation.GridCalculationService
+15:36:55.856 [Test worker @spec-scope-1250623474#89] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for StatisticsManagerWriting name=#133
+15:36:55.856 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for StatisticsManagerWriting hashcode=c421318
+15:36:55.856 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.StatisticsManagerWriting with additional interfaces []
+15:36:55.856 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.StatisticsManagerWriting via instantiator
+15:36:55.856 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.StatisticsManagerWriting$Subclass5 because class is not abstract.
+15:36:55.856 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.StatisticsManagerWriting$Subclass5
+15:36:55.857 [Test worker @spec-scope-1250623474#89] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on Game(#127).addGameVipSolvedHandler(org.piepmeyer.gauguin.game.GameLifecycle$$Lambda/0x00007f3fb453adb8@2ce01617)
+15:36:55.857 [Test worker @spec-scope-1250623474#89] DEBUG i.m.i.r.states.AnsweringState -- Answering false on ApplicationPreferences(#126).addPencilsAtStart()
+15:36:55.857 [Test worker @spec-scope-1250623474#89] DEBUG i.m.i.r.states.AnsweringState -- Answering true on ApplicationPreferences(#126).fillSingleCagesAtStart()
+15:36:55.857 [Test worker @spec-scope-1250623474#89] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on Game(#127).fillSingleCagesInNewGrid()
+15:36:55.857 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.CommonCallRecorder -- Starting verification
+15:36:55.858 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=13e3f9a9
+15:36:55.858 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.858 [Test worker @spec-scope-1250623474#89] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.858 [Test worker @spec-scope-1250623474#89] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.858 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.858 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: fillSingleCagesInNewGrid()
+15:36:55.858 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Game(#127).fillSingleCagesInNewGrid())
+15:36:55.858 [Test worker @spec-scope-1250623474#89] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Game(#127).fillSingleCagesInNewGrid())
+15:36:55.858 [Test worker @spec-scope-1250623474#89] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: Game(#127).fillSingleCagesInNewGrid()
+15:36:55.859 [Test worker @spec-scope-1250623474#89] TRACE i.m.i.r.states.RecordingState -- Done verification. Outcome: OK(verifiedCalls=[Game(#127).fillSingleCagesInNewGrid()])
+15:36:55.861 [Test worker @spec-scope-1250623474#90] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#134
+15:36:55.861 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:55.861 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:55.861 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:55.861 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:55.861 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:55.862 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.862 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.862 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: addPencilsAtStart()
+15:36:55.862 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#134).addPencilsAtStart())
+15:36:55.862 [Test worker @spec-scope-1250623474#90] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#134).addPencilsAtStart()
+15:36:55.862 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.862 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.863 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.863 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: fillSingleCagesAtStart()
+15:36:55.863 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#134).fillSingleCagesAtStart())
+15:36:55.863 [Test worker @spec-scope-1250623474#90] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#134).fillSingleCagesAtStart()
+15:36:55.863 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.863 [Test worker @spec-scope-1250623474#90] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Game name=#135
+15:36:55.863 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Game hashcode=3a7243e1
+15:36:55.863 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.game.Game itself because it is final.
+15:36:55.863 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.game.Game via instantiator
+15:36:55.863 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.game.Game
+15:36:55.863 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.864 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.instantiation.JvmInstantiator -- Building empty instance GameSolvedListener
+15:36:55.864 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Instantiating interface org.piepmeyer.gauguin.game.GameSolvedListener via subclass proxy
+15:36:55.864 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.game.GameSolvedListener$Subclass3
+15:36:55.864 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=11efc5da
+15:36:55.864 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.864 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.864 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.864 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {[Ref(GameSolvedListener$Subclass3@3868468e)]=any<GameSolvedListener>()}
+15:36:55.865 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: addGameVipSolvedHandler(GameSolvedListener)
+15:36:55.865 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of addGameVipSolvedHandler(GameSolvedListener): [Ref(GameSolvedListener$Subclass3@3868468e)]
+15:36:55.865 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Game(#135).addGameVipSolvedHandler(any<GameSolvedListener>()))
+15:36:55.865 [Test worker @spec-scope-1250623474#90] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Game(#135).addGameVipSolvedHandler(any<GameSolvedListener>()))
+15:36:55.865 [Test worker @spec-scope-1250623474#90] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Unit name=child of #135#136
+15:36:55.865 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=11efc5da
+15:36:55.865 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.865 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.865 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.866 [Test worker @spec-scope-1250623474#90] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: Game(#135).addGameVipSolvedHandler(any<GameSolvedListener>())
+15:36:55.866 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.866 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.866 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=13e3f9a9
+15:36:55.866 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.866 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.866 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.867 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.867 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: fillSingleCagesInNewGrid()
+15:36:55.867 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Game(#135).fillSingleCagesInNewGrid())
+15:36:55.867 [Test worker @spec-scope-1250623474#90] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Game(#135).fillSingleCagesInNewGrid())
+15:36:55.867 [Test worker @spec-scope-1250623474#90] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Unit name=child of #135#137
+15:36:55.867 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=13e3f9a9
+15:36:55.867 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.867 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.867 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.867 [Test worker @spec-scope-1250623474#90] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: Game(#135).fillSingleCagesInNewGrid()
+15:36:55.868 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.868 [Test worker @spec-scope-1250623474#90] WARN  i.mockk.impl.restrict.MockkValidator -- File should not be mocked! Consider refactoring your test.
+15:36:55.868 [Test worker @spec-scope-1250623474#90] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for File name=#138
+15:36:55.868 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for File hashcode=4c046a12
+15:36:55.868 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class java.io.File itself because it is not abstract and no additional interfaces specified.
+15:36:55.868 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class java.io.File via instantiator
+15:36:55.868 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class java.io.File because class is not abstract.
+15:36:55.868 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class java.io.File
+15:36:55.868 [Test worker @spec-scope-1250623474#90] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for CoroutineScope name=#139
+15:36:55.868 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for CoroutineScope hashcode=555b43ba
+15:36:55.868 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlinx.coroutines.CoroutineScope with additional interfaces []
+15:36:55.868 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlinx.coroutines.CoroutineScope via instantiator
+15:36:55.868 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlinx.coroutines.CoroutineScope$Subclass4 because class is not abstract.
+15:36:55.868 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlinx.coroutines.CoroutineScope$Subclass4
+15:36:55.869 [Test worker @spec-scope-1250623474#90] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCalculationService name=#140
+15:36:55.869 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCalculationService hashcode=4591a080
+15:36:55.869 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.calculation.GridCalculationService itself because it is final.
+15:36:55.869 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.calculation.GridCalculationService via instantiator
+15:36:55.869 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.calculation.GridCalculationService
+15:36:55.869 [Test worker @spec-scope-1250623474#90] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for StatisticsManagerWriting name=#141
+15:36:55.869 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for StatisticsManagerWriting hashcode=c421318
+15:36:55.869 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.StatisticsManagerWriting with additional interfaces []
+15:36:55.869 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.StatisticsManagerWriting via instantiator
+15:36:55.869 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.StatisticsManagerWriting$Subclass5 because class is not abstract.
+15:36:55.869 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.StatisticsManagerWriting$Subclass5
+15:36:55.870 [Test worker @spec-scope-1250623474#90] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on Game(#135).addGameVipSolvedHandler(org.piepmeyer.gauguin.game.GameLifecycle$$Lambda/0x00007f3fb453adb8@586ab812)
+15:36:55.870 [Test worker @spec-scope-1250623474#90] DEBUG i.m.i.r.states.AnsweringState -- Answering false on ApplicationPreferences(#134).addPencilsAtStart()
+15:36:55.870 [Test worker @spec-scope-1250623474#90] DEBUG i.m.i.r.states.AnsweringState -- Answering false on ApplicationPreferences(#134).fillSingleCagesAtStart()
+15:36:55.870 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.CommonCallRecorder -- Starting verification
+15:36:55.870 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Unit hashcode=13e3f9a9
+15:36:55.871 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class kotlin.Unit itself because it is final.
+15:36:55.871 [Test worker @spec-scope-1250623474#90] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class kotlin.Unit via instantiator
+15:36:55.871 [Test worker @spec-scope-1250623474#90] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.Unit
+15:36:55.871 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.871 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: fillSingleCagesInNewGrid()
+15:36:55.871 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Game(#135).fillSingleCagesInNewGrid())
+15:36:55.871 [Test worker @spec-scope-1250623474#90] TRACE i.m.impl.recording.PermanentMocker -- Child search key: Game(#135).fillSingleCagesInNewGrid())
+15:36:55.871 [Test worker @spec-scope-1250623474#90] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: Game(#135).fillSingleCagesInNewGrid()
+15:36:55.871 [Test worker @spec-scope-1250623474#90] TRACE i.m.i.r.states.RecordingState -- Done verification. Outcome: OK(verifiedCalls=[])
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

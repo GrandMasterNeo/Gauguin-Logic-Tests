@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.difficulty.DisplayableGameDifficultyTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:54.927Z" hostname="2a9d8987d813" time="0.118">
+  <properties/>
+  <testcase name="without rating" classname="org.piepmeyer.gauguin.difficulty.DisplayableGameDifficultyTest" time="0.002"/>
+  <testcase name="with small rating" classname="org.piepmeyer.gauguin.difficulty.DisplayableGameDifficultyTest" time="0.103"/>
+  <testcase name="with large rating" classname="org.piepmeyer.gauguin.difficulty.DisplayableGameDifficultyTest" time="0.005"/>
+  <system-out><![CDATA[15:36:54.936 [Test worker @spec-scope-2088265867#85] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GameDifficultyRating name=#106
+15:36:54.936 [Test worker @spec-scope-2088265867#85] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GameDifficultyRating hashcode=7e452d2b
+15:36:54.938 [Test worker @spec-scope-2088265867#85] TRACE i.m.p.j.t.JvmInlineInstrumentation -- Retransforming classes org.piepmeyer.gauguin.difficulty.GameDifficultyRating
+15:36:54.984 [Test worker @spec-scope-2088265867#85] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.difficulty.GameDifficultyRating itself because it is final.
+15:36:54.984 [Test worker @spec-scope-2088265867#85] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.difficulty.GameDifficultyRating via instantiator
+15:36:54.984 [Test worker @spec-scope-2088265867#85] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.difficulty.GameDifficultyRating
+15:36:54.985 [Test worker @spec-scope-2088265867#85] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.032 [Test worker @spec-scope-2088265867#85] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.032 [Test worker @spec-scope-2088265867#85] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getThresholdExtreme()
+15:36:55.032 [Test worker @spec-scope-2088265867#85] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GameDifficultyRating(#106).getThresholdExtreme())
+15:36:55.032 [Test worker @spec-scope-2088265867#85] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GameDifficultyRating(#106).thresholdExtreme
+15:36:55.032 [Test worker @spec-scope-2088265867#85] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.034 [Test worker @spec-scope-2088265867#85] DEBUG i.m.i.r.states.AnsweringState -- Answering 19.9 on GameDifficultyRating(#106).getThresholdExtreme()
+15:36:55.035 [Test worker @spec-scope-2088265867#85] DEBUG i.m.i.r.states.AnsweringState -- Answering 19.9 on GameDifficultyRating(#106).getThresholdExtreme()
+15:36:55.035 [Test worker @spec-scope-2088265867#85] DEBUG i.m.i.r.states.AnsweringState -- Answering 19.9 on GameDifficultyRating(#106).getThresholdExtreme()
+15:36:55.035 [Test worker @spec-scope-2088265867#85] DEBUG i.m.i.r.states.AnsweringState -- Answering 19.9 on GameDifficultyRating(#106).getThresholdExtreme()
+15:36:55.036 [Test worker @spec-scope-2088265867#85] DEBUG i.m.i.r.states.AnsweringState -- Answering 19.9 on GameDifficultyRating(#106).getThresholdExtreme()
+15:36:55.036 [Test worker @spec-scope-2088265867#85] DEBUG i.m.i.r.states.AnsweringState -- Answering 19.9 on GameDifficultyRating(#106).getThresholdExtreme()
+15:36:55.036 [Test worker @spec-scope-2088265867#85] DEBUG i.m.i.r.states.AnsweringState -- Answering 19.9 on GameDifficultyRating(#106).getThresholdExtreme()
+15:36:55.037 [Test worker @spec-scope-2088265867#85] DEBUG i.m.i.r.states.AnsweringState -- Answering 19.9 on GameDifficultyRating(#106).getThresholdExtreme()
+15:36:55.037 [Test worker @spec-scope-2088265867#85] DEBUG i.m.i.r.states.AnsweringState -- Answering 19.9 on GameDifficultyRating(#106).getThresholdExtreme()
+15:36:55.041 [Test worker @spec-scope-2088265867#86] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GameDifficultyRating name=#107
+15:36:55.041 [Test worker @spec-scope-2088265867#86] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GameDifficultyRating hashcode=7e452d2b
+15:36:55.041 [Test worker @spec-scope-2088265867#86] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.difficulty.GameDifficultyRating itself because it is final.
+15:36:55.041 [Test worker @spec-scope-2088265867#86] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.difficulty.GameDifficultyRating via instantiator
+15:36:55.041 [Test worker @spec-scope-2088265867#86] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.difficulty.GameDifficultyRating
+15:36:55.042 [Test worker @spec-scope-2088265867#86] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:55.042 [Test worker @spec-scope-2088265867#86] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:55.042 [Test worker @spec-scope-2088265867#86] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getThresholdExtreme()
+15:36:55.042 [Test worker @spec-scope-2088265867#86] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GameDifficultyRating(#107).getThresholdExtreme())
+15:36:55.042 [Test worker @spec-scope-2088265867#86] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GameDifficultyRating(#107).thresholdExtreme
+15:36:55.042 [Test worker @spec-scope-2088265867#86] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:55.042 [Test worker @spec-scope-2088265867#86] DEBUG i.m.i.r.states.AnsweringState -- Answering 20.0 on GameDifficultyRating(#107).getThresholdExtreme()
+15:36:55.042 [Test worker @spec-scope-2088265867#86] DEBUG i.m.i.r.states.AnsweringState -- Answering 20.0 on GameDifficultyRating(#107).getThresholdExtreme()
+15:36:55.043 [Test worker @spec-scope-2088265867#86] DEBUG i.m.i.r.states.AnsweringState -- Answering 20.0 on GameDifficultyRating(#107).getThresholdExtreme()
+15:36:55.043 [Test worker @spec-scope-2088265867#86] DEBUG i.m.i.r.states.AnsweringState -- Answering 20.0 on GameDifficultyRating(#107).getThresholdExtreme()
+15:36:55.043 [Test worker @spec-scope-2088265867#86] DEBUG i.m.i.r.states.AnsweringState -- Answering 20.0 on GameDifficultyRating(#107).getThresholdExtreme()
+15:36:55.043 [Test worker @spec-scope-2088265867#86] DEBUG i.m.i.r.states.AnsweringState -- Answering 20.0 on GameDifficultyRating(#107).getThresholdExtreme()
+15:36:55.043 [Test worker @spec-scope-2088265867#86] DEBUG i.m.i.r.states.AnsweringState -- Answering 20.0 on GameDifficultyRating(#107).getThresholdExtreme()
+15:36:55.045 [Test worker @spec-scope-2088265867#86] DEBUG i.m.i.r.states.AnsweringState -- Answering 20.0 on GameDifficultyRating(#107).getThresholdExtreme()
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

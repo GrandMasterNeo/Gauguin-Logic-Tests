@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.difficulty.human.strategy.PossibleMustBeContainedInSingleCageInLineTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:51.910Z" hostname="2a9d8987d813" time="0.02">
+  <properties/>
+  <testcase name="solver matches 1x5 grid and 5x1 grid with same data" classname="org.piepmeyer.gauguin.difficulty.human.strategy.PossibleMustBeContainedInSingleCageInLineTest" time="0.01"/>
+  <testcase name="solver does nothing if there are no possibles to remove" classname="org.piepmeyer.gauguin.difficulty.human.strategy.PossibleMustBeContainedInSingleCageInLineTest" time="0.004"/>
+  <system-out><![CDATA[Grid:
+|  -  - |
+|  -  - |
+|  5  - |
+|  -  - |
+|  -  - |
+
+
+?[48;5;229m     2  0   [3,4]?[0m 
+?[48;5;194m   10+  1 [2,3,4]?[0m 
+?[48;5;194m        1       5?[0m 
+?[48;5;194m        1 [1,2,3]?[0m 
+?[48;5;153m     2  2   [1,4]?[0m 
+Grid:
+|  -  - |  -  - |  5  - |  -  - |  -  - |
+
+
+?[48;5;229m     2  0   [3,4]?[0m ?[48;5;194m   10+  1 [2,3,4]?[0m ?[48;5;194m        1       5?[0m ?[48;5;194m        1 [1,2,3]?[0m ?[48;5;153m     2  2   [1,4]?[0m 
+Grid:
+|  -  - |
+|  -  - |
+|  5  - |
+|  -  - |
+|  -  - |
+
+
+?[48;5;229m     2  0 [3,4]?[0m 
+?[48;5;194m   10+  1 [2,3]?[0m 
+?[48;5;194m        1     5?[0m 
+?[48;5;194m        1 [2,3]?[0m 
+?[48;5;153m     2  2 [1,4]?[0m 
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

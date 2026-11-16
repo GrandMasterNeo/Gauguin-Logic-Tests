@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.difficulty.human.FillSingleCagesTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:50.945Z" hostname="2a9d8987d813" time="0.314">
+  <properties/>
+  <testcase name="3x3 grid singles get filled" classname="org.piepmeyer.gauguin.difficulty.human.FillSingleCagesTest" time="0.102"/>
+  <testcase name="3x3 grid second run fills no cells" classname="org.piepmeyer.gauguin.difficulty.human.FillSingleCagesTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

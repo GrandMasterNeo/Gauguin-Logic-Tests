@@ -1,0 +1,22 @@
+{
+  "gauguin-core": {
+    "reports": 23,
+    "status": "reported",
+    "tests": 263,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "added_regression_tests": 0,
+    "failure_details": []
+  },
+  "gauguin-human-solver": {
+    "reports": 21,
+    "status": "reported",
+    "tests": 36,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "added_regression_tests": 3,
+    "failure_details": []
+  }
+}

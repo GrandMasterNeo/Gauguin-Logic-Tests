@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.grid.GridTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:56.552Z" hostname="2a9d8987d813" time="0.013">
+  <properties/>
+  <testcase name="same number in row leads to duplicate number" classname="org.piepmeyer.gauguin.grid.GridTest" time="0.001"/>
+  <testcase name="same number in column leads to duplicate number" classname="org.piepmeyer.gauguin.grid.GridTest" time="0.001"/>
+  <testcase name="same number in row which gets cleared leads to no duplicate number" classname="org.piepmeyer.gauguin.grid.GridTest" time="0.001"/>
+  <testcase name="correct and incorrect values in one row should lead to exactly 1 mistake" classname="org.piepmeyer.gauguin.grid.GridTest" time="0.003"/>
+  <system-out><![CDATA[15:36:56.563 [Test worker @spec-scope-358960790#119] DEBUG org.piepmeyer.gauguin.grid.GridTest -- Grid:
+|  2  2 |  2  1 |
+|  -  1 |  -  2 |
+
+
+?[48;5;229m    2x  0  2?[0m ?[48;5;229m        0  2?[0m 
+?[48;5;229m        0 []?[0m ?[48;5;194m     2  1 []?[0m 
+15:36:56.564 [Test worker @spec-scope-358960790#119] TRACE org.piepmeyer.gauguin.grid.Grid -- Calculating number of mistakes of:
+15:36:56.564 [Test worker @spec-scope-358960790#119] TRACE org.piepmeyer.gauguin.grid.Grid -- org.piepmeyer.gauguin.grid.Grid@6eeb6ef7 - Grid:
+|  2  2 |  2  1 |
+|  -  1 |  -  2 |
+
+
+?[48;5;229m    2x  0  2?[0m ?[48;5;229m        0  2?[0m 
+?[48;5;229m        0 []?[0m ?[48;5;194m     2  1 []?[0m 
+15:36:56.565 [Test worker @spec-scope-358960790#119] WARN  org.piepmeyer.gauguin.grid.Grid -- Counted mistakes: 1
+15:36:56.565 [Test worker @spec-scope-358960790#119] WARN  org.piepmeyer.gauguin.grid.Grid -- org.piepmeyer.gauguin.grid.Grid@6eeb6ef7 - Grid:
+|  2  2 |  2  1 |
+|  -  1 |  -  2 |
+
+
+?[48;5;229m    2x  0  2?[0m ?[48;5;229m        0  2?[0m 
+?[48;5;229m        0 []?[0m ?[48;5;194m     2  1 []?[0m 
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

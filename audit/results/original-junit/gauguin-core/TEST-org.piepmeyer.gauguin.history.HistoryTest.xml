@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.history.HistoryTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:56.573Z" hostname="2a9d8987d813" time="0.049">
+  <properties/>
+  <testcase name="empty history" classname="org.piepmeyer.gauguin.history.HistoryTest" time="0.035"/>
+  <testcase name="single solved grid" classname="org.piepmeyer.gauguin.history.HistoryTest" time="0.004"/>
+  <testcase name="two solved grids" classname="org.piepmeyer.gauguin.history.HistoryTest" time="0.001"/>
+  <testcase name="single unsolved grid" classname="org.piepmeyer.gauguin.history.HistoryTest" time="0.0"/>
+  <testcase name="streaks solved solved unsolved solved" classname="org.piepmeyer.gauguin.history.HistoryTest" time="0.0"/>
+  <testcase name="filter to grid size returns single grid" classname="org.piepmeyer.gauguin.history.HistoryTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

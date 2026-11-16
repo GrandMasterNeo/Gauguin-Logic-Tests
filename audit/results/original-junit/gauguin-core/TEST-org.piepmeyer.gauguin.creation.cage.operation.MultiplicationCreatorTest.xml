@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.creation.cage.operation.MultiplicationCreatorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:54.380Z" hostname="2a9d8987d813" time="0.481">
+  <properties/>
+  <testcase name="non-zero, 6x6, result 6, constraints matched" classname="org.piepmeyer.gauguin.creation.cage.operation.MultiplicationCreatorTest" time="0.326"/>
+  <testcase name="non-zero, 6x6, result 6, constraints matched sometimes" classname="org.piepmeyer.gauguin.creation.cage.operation.MultiplicationCreatorTest" time="0.012"/>
+  <testcase name="non-zero, 8x8, result 24, constraints matched" classname="org.piepmeyer.gauguin.creation.cage.operation.MultiplicationCreatorTest" time="0.076"/>
+  <testcase name="zero two cells, all constraints matching" classname="org.piepmeyer.gauguin.creation.cage.operation.MultiplicationCreatorTest" time="0.018"/>
+  <testcase name="zero two cells, some constraints not matching" classname="org.piepmeyer.gauguin.creation.cage.operation.MultiplicationCreatorTest" time="0.013"/>
+  <system-out><![CDATA[15:36:54.413 [Test worker @spec-scope-1939764966#74] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCage name=#81
+15:36:54.414 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCage hashcode=27153ba2
+15:36:54.414 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCage itself because it is final.
+15:36:54.414 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCage via instantiator
+15:36:54.414 [Test worker @spec-scope-1939764966#74] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCage
+15:36:54.414 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:54.431 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=6dd8dfe5
+15:36:54.431 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:54.431 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:54.431 [Test worker @spec-scope-1939764966#74] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:54.431 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Function1 hashcode=4a244aa3
+15:36:54.432 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlin.jvm.functions.Function1 with additional interfaces []
+15:36:54.432 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlin.jvm.functions.Function1 via instantiator
+15:36:54.432 [Test worker @spec-scope-1939764966#74] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlin.jvm.functions.Function1$Subclass0 because class is not abstract.
+15:36:54.432 [Test worker @spec-scope-1939764966#74] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.jvm.functions.Function1$Subclass0
+15:36:54.432 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Any hashcode=65bd41d8
+15:36:54.432 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class java.lang.Object itself because it is not abstract and no additional interfaces specified.
+15:36:54.432 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class java.lang.Object via instantiator
+15:36:54.432 [Test worker @spec-scope-1939764966#74] TRACE i.mockk.impl.recording.JvmAutoHinter -- Auto hint for 3-th call: class kotlin.Boolean
+15:36:54.433 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=6dd8dfe5
+15:36:54.433 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:54.433 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:54.433 [Test worker @spec-scope-1939764966#74] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:54.433 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Function1 hashcode=4a244aa3
+15:36:54.433 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlin.jvm.functions.Function1 with additional interfaces []
+15:36:54.433 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlin.jvm.functions.Function1 via instantiator
+15:36:54.433 [Test worker @spec-scope-1939764966#74] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlin.jvm.functions.Function1$Subclass0 because class is not abstract.
+15:36:54.433 [Test worker @spec-scope-1939764966#74] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.jvm.functions.Function1$Subclass0
+15:36:54.433 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {[Ref(IntArray@591ae3dd)]=any<IntArray>()}
+15:36:54.433 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getCageType()
+15:36:54.434 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCage(#81).getCageType())
+15:36:54.434 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #1: getSatisfiesConstraints()
+15:36:54.434 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCageType(temporary mock).getSatisfiesConstraints())
+15:36:54.434 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #2: invoke(Any)
+15:36:54.434 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of invoke(Any): [Ref(IntArray@591ae3dd)]
+15:36:54.434 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Function1(temporary mock).invoke(any<IntArray>()))
+15:36:54.434 [Test worker @spec-scope-1939764966#74] TRACE i.m.impl.recording.PermanentMocker -- Child search key: GridCage(#81).getCageType())
+15:36:54.434 [Test worker @spec-scope-1939764966#74] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=child of #81#82
+15:36:54.434 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=6dd8dfe5
+15:36:54.434 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:54.434 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:54.434 [Test worker @spec-scope-1939764966#74] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:54.435 [Test worker @spec-scope-1939764966#74] TRACE i.m.impl.recording.PermanentMocker -- Child search key: GridCageType(child of #81#82).getSatisfiesConstraints())
+15:36:54.435 [Test worker @spec-scope-1939764966#74] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Function1 name=child^2 of #81#82#83
+15:36:54.435 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Function1 hashcode=4a244aa3
+15:36:54.435 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlin.jvm.functions.Function1 with additional interfaces []
+15:36:54.435 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlin.jvm.functions.Function1 via instantiator
+15:36:54.435 [Test worker @spec-scope-1939764966#74] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlin.jvm.functions.Function1$Subclass0 because class is not abstract.
+15:36:54.435 [Test worker @spec-scope-1939764966#74] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.jvm.functions.Function1$Subclass0
+15:36:54.436 [Test worker @spec-scope-1939764966#74] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCage(#81).cageType.satisfiesConstraints.invoke(any<IntArray>())
+15:36:54.436 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:54.437 [Test worker @spec-scope-1939764966#74] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GameVariant name=#84
+15:36:54.437 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GameVariant hashcode=58a0b88e
+15:36:54.438 [Test worker @spec-scope-1939764966#74] TRACE i.m.p.j.t.JvmInlineInstrumentation -- Retransforming classes org.piepmeyer.gauguin.options.GameVariant
+15:36:54.476 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.options.GameVariant itself because it is final.
+15:36:54.477 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.options.GameVariant via instantiator
+15:36:54.477 [Test worker @spec-scope-1939764966#74] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.options.GameVariant
+15:36:54.477 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:54.521 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=5d708ef6
+15:36:54.522 [Test worker @spec-scope-1939764966#74] TRACE i.m.p.j.t.JvmInlineInstrumentation -- Retransforming classes java.util.Set, java.util.Collection, java.lang.Iterable
+15:36:54.578 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:54.728 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:54.728 [Test worker @spec-scope-1939764966#74] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:54.728 [Test worker @spec-scope-1939764966#74] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:54.730 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:54.730 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getPossibleNonZeroDigits()
+15:36:54.730 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GameVariant(#84).getPossibleNonZeroDigits())
+15:36:54.730 [Test worker @spec-scope-1939764966#74] TRACE i.m.impl.recording.PermanentMocker -- Child search key: GameVariant(#84).getPossibleNonZeroDigits())
+15:36:54.731 [Test worker @spec-scope-1939764966#74] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Set name=child of #84#85
+15:36:54.731 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=5d708ef6
+15:36:54.731 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:54.731 [Test worker @spec-scope-1939764966#74] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:54.731 [Test worker @spec-scope-1939764966#74] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:54.731 [Test worker @spec-scope-1939764966#74] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:54.731 [Test worker @spec-scope-1939764966#74] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GameVariant(#84).possibleNonZeroDigits
+15:36:54.731 [Test worker @spec-scope-1939764966#74] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:54.734 [Test worker @spec-scope-1939764966#74] DEBUG i.m.i.r.states.AnsweringState -- Answering GridCageType(child of #81#82) on GridCage(#81).getCageType()
+15:36:54.734 [Test worker @spec-scope-1939764966#74] DEBUG i.m.i.r.states.AnsweringState -- Answering [1, 2, 3, 4, 5, 6] on GameVariant(#84).getPossibleNonZeroDigits()
+15:36:54.735 [Test worker @spec-scope-1939764966#74] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #81#82).getSatisfiesConstraints()
+15:36:54.735 [Test worker @spec-scope-1939764966#74] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #81#82#83).invoke([6, 1])
+15:36:54.736 [Test worker @spec-scope-1939764966#74] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #81#82).getSatisfiesConstraints()
+15:36:54.736 [Test worker @spec-scope-1939764966#74] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #81#82#83).invoke([3, 2])
+15:36:54.736 [Test worker @spec-scope-1939764966#74] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #81#82).getSatisfiesConstraints()
+15:36:54.736 [Test worker @spec-scope-1939764966#74] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #81#82#83).invoke([2, 3])
+15:36:54.737 [Test worker @spec-scope-1939764966#74] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #81#82).getSatisfiesConstraints()
+15:36:54.737 [Test worker @spec-scope-1939764966#74] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #81#82#83).invoke([1, 6])
+15:36:54.740 [Test worker @spec-scope-1939764966#75] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCage name=#86
+15:36:54.741 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCage hashcode=27153ba2
+15:36:54.741 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCage itself because it is final.
+15:36:54.741 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCage via instantiator
+15:36:54.741 [Test worker @spec-scope-1939764966#75] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCage
+15:36:54.741 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:54.741 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=6dd8dfe5
+15:36:54.741 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:54.741 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:54.741 [Test worker @spec-scope-1939764966#75] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:54.742 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Function1 hashcode=4a244aa3
+15:36:54.742 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlin.jvm.functions.Function1 with additional interfaces []
+15:36:54.742 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlin.jvm.functions.Function1 via instantiator
+15:36:54.742 [Test worker @spec-scope-1939764966#75] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlin.jvm.functions.Function1$Subclass0 because class is not abstract.
+15:36:54.742 [Test worker @spec-scope-1939764966#75] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.jvm.functions.Function1$Subclass0
+15:36:54.742 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Any hashcode=65bd41d8
+15:36:54.742 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class java.lang.Object itself because it is not abstract and no additional interfaces specified.
+15:36:54.742 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class java.lang.Object via instantiator
+15:36:54.742 [Test worker @spec-scope-1939764966#75] TRACE i.mockk.impl.recording.JvmAutoHinter -- Auto hint for 3-th call: class kotlin.Boolean
+15:36:54.742 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=6dd8dfe5
+15:36:54.742 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:54.743 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:54.743 [Test worker @spec-scope-1939764966#75] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:54.743 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Function1 hashcode=4a244aa3
+15:36:54.743 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlin.jvm.functions.Function1 with additional interfaces []
+15:36:54.743 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlin.jvm.functions.Function1 via instantiator
+15:36:54.743 [Test worker @spec-scope-1939764966#75] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlin.jvm.functions.Function1$Subclass0 because class is not abstract.
+15:36:54.743 [Test worker @spec-scope-1939764966#75] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.jvm.functions.Function1$Subclass0
+15:36:54.743 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {[Ref(IntArray@61dcf21f)]=any<IntArray>()}
+15:36:54.743 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getCageType()
+15:36:54.744 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCage(#86).getCageType())
+15:36:54.744 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #1: getSatisfiesConstraints()
+15:36:54.744 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCageType(temporary mock).getSatisfiesConstraints())
+15:36:54.744 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #2: invoke(Any)
+15:36:54.744 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of invoke(Any): [Ref(IntArray@61dcf21f)]
+15:36:54.744 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Function1(temporary mock).invoke(any<IntArray>()))
+15:36:54.744 [Test worker @spec-scope-1939764966#75] TRACE i.m.impl.recording.PermanentMocker -- Child search key: GridCage(#86).getCageType())
+15:36:54.744 [Test worker @spec-scope-1939764966#75] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=child of #86#87
+15:36:54.744 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=6dd8dfe5
+15:36:54.744 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:54.744 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:54.744 [Test worker @spec-scope-1939764966#75] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:54.745 [Test worker @spec-scope-1939764966#75] TRACE i.m.impl.recording.PermanentMocker -- Child search key: GridCageType(child of #86#87).getSatisfiesConstraints())
+15:36:54.745 [Test worker @spec-scope-1939764966#75] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Function1 name=child^2 of #86#87#88
+15:36:54.745 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Function1 hashcode=4a244aa3
+15:36:54.745 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlin.jvm.functions.Function1 with additional interfaces []
+15:36:54.745 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlin.jvm.functions.Function1 via instantiator
+15:36:54.745 [Test worker @spec-scope-1939764966#75] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlin.jvm.functions.Function1$Subclass0 because class is not abstract.
+15:36:54.745 [Test worker @spec-scope-1939764966#75] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.jvm.functions.Function1$Subclass0
+15:36:54.745 [Test worker @spec-scope-1939764966#75] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCage(#86).cageType.satisfiesConstraints.invoke(any<IntArray>())
+15:36:54.745 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:54.746 [Test worker @spec-scope-1939764966#75] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GameVariant name=#89
+15:36:54.746 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GameVariant hashcode=58a0b88e
+15:36:54.746 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.options.GameVariant itself because it is final.
+15:36:54.746 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.options.GameVariant via instantiator
+15:36:54.746 [Test worker @spec-scope-1939764966#75] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.options.GameVariant
+15:36:54.746 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:54.747 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=5d708ef6
+15:36:54.747 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:54.747 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:54.747 [Test worker @spec-scope-1939764966#75] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:54.747 [Test worker @spec-scope-1939764966#75] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:54.747 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:54.747 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getPossibleNonZeroDigits()
+15:36:54.747 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GameVariant(#89).getPossibleNonZeroDigits())
+15:36:54.747 [Test worker @spec-scope-1939764966#75] TRACE i.m.impl.recording.PermanentMocker -- Child search key: GameVariant(#89).getPossibleNonZeroDigits())
+15:36:54.747 [Test worker @spec-scope-1939764966#75] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Set name=child of #89#90
+15:36:54.747 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=5d708ef6
+15:36:54.748 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:54.748 [Test worker @spec-scope-1939764966#75] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:54.748 [Test worker @spec-scope-1939764966#75] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:54.748 [Test worker @spec-scope-1939764966#75] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:54.748 [Test worker @spec-scope-1939764966#75] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GameVariant(#89).possibleNonZeroDigits
+15:36:54.748 [Test worker @spec-scope-1939764966#75] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:54.748 [Test worker @spec-scope-1939764966#75] DEBUG i.m.i.r.states.AnsweringState -- Answering GridCageType(child of #86#87) on GridCage(#86).getCageType()
+15:36:54.749 [Test worker @spec-scope-1939764966#75] DEBUG i.m.i.r.states.AnsweringState -- Answering [1, 2, 3, 4, 5, 6] on GameVariant(#89).getPossibleNonZeroDigits()
+15:36:54.749 [Test worker @spec-scope-1939764966#75] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #86#87).getSatisfiesConstraints()
+15:36:54.749 [Test worker @spec-scope-1939764966#75] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #86#87#88).invoke([6, 1])
+15:36:54.749 [Test worker @spec-scope-1939764966#75] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #86#87).getSatisfiesConstraints()
+15:36:54.749 [Test worker @spec-scope-1939764966#75] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #86#87#88).invoke([3, 2])
+15:36:54.750 [Test worker @spec-scope-1939764966#75] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #86#87).getSatisfiesConstraints()
+15:36:54.750 [Test worker @spec-scope-1939764966#75] DEBUG i.m.i.r.states.AnsweringState -- Answering false on Function1(child^2 of #86#87#88).invoke([2, 3])
+15:36:54.750 [Test worker @spec-scope-1939764966#75] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #86#87).getSatisfiesConstraints()
+15:36:54.750 [Test worker @spec-scope-1939764966#75] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #86#87#88).invoke([1, 6])
+15:36:54.753 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCage name=#91
+15:36:54.753 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCage hashcode=27153ba2
+15:36:54.753 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCage itself because it is final.
+15:36:54.753 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCage via instantiator
+15:36:54.753 [Test worker @spec-scope-1939764966#76] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCage
+15:36:54.753 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:54.754 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=6dd8dfe5
+15:36:54.754 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:54.754 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:54.754 [Test worker @spec-scope-1939764966#76] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:54.754 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Function1 hashcode=4a244aa3
+15:36:54.754 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlin.jvm.functions.Function1 with additional interfaces []
+15:36:54.754 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlin.jvm.functions.Function1 via instantiator
+15:36:54.754 [Test worker @spec-scope-1939764966#76] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlin.jvm.functions.Function1$Subclass0 because class is not abstract.
+15:36:54.754 [Test worker @spec-scope-1939764966#76] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.jvm.functions.Function1$Subclass0
+15:36:54.754 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Any hashcode=65bd41d8
+15:36:54.754 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class java.lang.Object itself because it is not abstract and no additional interfaces specified.
+15:36:54.754 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class java.lang.Object via instantiator
+15:36:54.755 [Test worker @spec-scope-1939764966#76] TRACE i.mockk.impl.recording.JvmAutoHinter -- Auto hint for 3-th call: class kotlin.Boolean
+15:36:54.755 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=6dd8dfe5
+15:36:54.755 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:54.755 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:54.755 [Test worker @spec-scope-1939764966#76] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:54.755 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Function1 hashcode=4a244aa3
+15:36:54.755 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlin.jvm.functions.Function1 with additional interfaces []
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlin.jvm.functions.Function1 via instantiator
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlin.jvm.functions.Function1$Subclass0 because class is not abstract.
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.jvm.functions.Function1$Subclass0
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {[Ref(IntArray@6a151f1a)]=any<IntArray>()}
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getCageType()
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCage(#91).getCageType())
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #1: getSatisfiesConstraints()
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCageType(temporary mock).getSatisfiesConstraints())
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #2: invoke(Any)
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of invoke(Any): [Ref(IntArray@6a151f1a)]
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Function1(temporary mock).invoke(any<IntArray>()))
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE i.m.impl.recording.PermanentMocker -- Child search key: GridCage(#91).getCageType())
+15:36:54.756 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=child of #91#92
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=6dd8dfe5
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:54.756 [Test worker @spec-scope-1939764966#76] TRACE i.m.impl.recording.PermanentMocker -- Child search key: GridCageType(child of #91#92).getSatisfiesConstraints())
+15:36:54.757 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Function1 name=child^2 of #91#92#93
+15:36:54.757 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Function1 hashcode=4a244aa3
+15:36:54.757 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlin.jvm.functions.Function1 with additional interfaces []
+15:36:54.757 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlin.jvm.functions.Function1 via instantiator
+15:36:54.757 [Test worker @spec-scope-1939764966#76] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlin.jvm.functions.Function1$Subclass0 because class is not abstract.
+15:36:54.757 [Test worker @spec-scope-1939764966#76] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.jvm.functions.Function1$Subclass0
+15:36:54.757 [Test worker @spec-scope-1939764966#76] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCage(#91).cageType.satisfiesConstraints.invoke(any<IntArray>())
+15:36:54.757 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:54.757 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GameVariant name=#94
+15:36:54.757 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GameVariant hashcode=58a0b88e
+15:36:54.757 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.options.GameVariant itself because it is final.
+15:36:54.757 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.options.GameVariant via instantiator
+15:36:54.757 [Test worker @spec-scope-1939764966#76] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.options.GameVariant
+15:36:54.757 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=5d708ef6
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getPossibleNonZeroDigits()
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GameVariant(#94).getPossibleNonZeroDigits())
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE i.m.impl.recording.PermanentMocker -- Child search key: GameVariant(#94).getPossibleNonZeroDigits())
+15:36:54.758 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Set name=child of #94#95
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=5d708ef6
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GameVariant(#94).possibleNonZeroDigits
+15:36:54.758 [Test worker @spec-scope-1939764966#76] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:54.759 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering GridCageType(child of #91#92) on GridCage(#91).getCageType()
+15:36:54.759 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering [1, 2, 3, 4, 5, 6, 7, 8] on GameVariant(#94).getPossibleNonZeroDigits()
+15:36:54.759 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.759 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([8, 3, 1])
+15:36:54.759 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.759 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([6, 4, 1])
+15:36:54.760 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.760 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([4, 6, 1])
+15:36:54.760 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.760 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([3, 8, 1])
+15:36:54.760 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.760 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([6, 2, 2])
+15:36:54.760 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.761 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([4, 3, 2])
+15:36:54.761 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.761 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([3, 4, 2])
+15:36:54.761 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.761 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([2, 6, 2])
+15:36:54.761 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.761 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([8, 1, 3])
+15:36:54.762 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.762 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([4, 2, 3])
+15:36:54.762 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.762 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([2, 4, 3])
+15:36:54.762 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.763 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([1, 8, 3])
+15:36:54.763 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.763 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([6, 1, 4])
+15:36:54.763 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.763 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([3, 2, 4])
+15:36:54.763 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.764 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([2, 3, 4])
+15:36:54.764 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.764 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([1, 6, 4])
+15:36:54.764 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.764 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([4, 1, 6])
+15:36:54.764 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.764 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([2, 2, 6])
+15:36:54.765 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.765 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([1, 4, 6])
+15:36:54.765 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.765 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([3, 1, 8])
+15:36:54.765 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #91#92).getSatisfiesConstraints()
+15:36:54.765 [Test worker @spec-scope-1939764966#76] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #91#92#93).invoke([1, 3, 8])
+15:36:54.831 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCage name=#96
+15:36:54.831 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCage hashcode=27153ba2
+15:36:54.831 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCage itself because it is final.
+15:36:54.831 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCage via instantiator
+15:36:54.831 [Test worker @spec-scope-1939764966#77] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCage
+15:36:54.831 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:54.832 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=6dd8dfe5
+15:36:54.832 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:54.832 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:54.832 [Test worker @spec-scope-1939764966#77] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:54.832 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Function1 hashcode=4a244aa3
+15:36:54.832 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlin.jvm.functions.Function1 with additional interfaces []
+15:36:54.832 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlin.jvm.functions.Function1 via instantiator
+15:36:54.832 [Test worker @spec-scope-1939764966#77] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlin.jvm.functions.Function1$Subclass0 because class is not abstract.
+15:36:54.832 [Test worker @spec-scope-1939764966#77] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.jvm.functions.Function1$Subclass0
+15:36:54.835 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Any hashcode=65bd41d8
+15:36:54.835 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class java.lang.Object itself because it is not abstract and no additional interfaces specified.
+15:36:54.835 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class java.lang.Object via instantiator
+15:36:54.836 [Test worker @spec-scope-1939764966#77] TRACE i.mockk.impl.recording.JvmAutoHinter -- Auto hint for 3-th call: class kotlin.Boolean
+15:36:54.836 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=6dd8dfe5
+15:36:54.836 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:54.836 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:54.836 [Test worker @spec-scope-1939764966#77] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:54.836 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Function1 hashcode=4a244aa3
+15:36:54.836 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlin.jvm.functions.Function1 with additional interfaces []
+15:36:54.836 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlin.jvm.functions.Function1 via instantiator
+15:36:54.836 [Test worker @spec-scope-1939764966#77] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlin.jvm.functions.Function1$Subclass0 because class is not abstract.
+15:36:54.836 [Test worker @spec-scope-1939764966#77] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.jvm.functions.Function1$Subclass0
+15:36:54.837 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {[Ref(IntArray@477aa172)]=any<IntArray>()}
+15:36:54.837 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getCageType()
+15:36:54.837 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCage(#96).getCageType())
+15:36:54.837 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #1: getSatisfiesConstraints()
+15:36:54.837 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCageType(temporary mock).getSatisfiesConstraints())
+15:36:54.837 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #2: invoke(Any)
+15:36:54.837 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of invoke(Any): [Ref(IntArray@477aa172)]
+15:36:54.837 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Function1(temporary mock).invoke(any<IntArray>()))
+15:36:54.837 [Test worker @spec-scope-1939764966#77] TRACE i.m.impl.recording.PermanentMocker -- Child search key: GridCage(#96).getCageType())
+15:36:54.837 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=child of #96#97
+15:36:54.837 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=6dd8dfe5
+15:36:54.837 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:54.837 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:54.837 [Test worker @spec-scope-1939764966#77] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:54.838 [Test worker @spec-scope-1939764966#77] TRACE i.m.impl.recording.PermanentMocker -- Child search key: GridCageType(child of #96#97).getSatisfiesConstraints())
+15:36:54.838 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Function1 name=child^2 of #96#97#98
+15:36:54.838 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Function1 hashcode=4a244aa3
+15:36:54.838 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlin.jvm.functions.Function1 with additional interfaces []
+15:36:54.838 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlin.jvm.functions.Function1 via instantiator
+15:36:54.838 [Test worker @spec-scope-1939764966#77] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlin.jvm.functions.Function1$Subclass0 because class is not abstract.
+15:36:54.838 [Test worker @spec-scope-1939764966#77] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.jvm.functions.Function1$Subclass0
+15:36:54.838 [Test worker @spec-scope-1939764966#77] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCage(#96).cageType.satisfiesConstraints.invoke(any<IntArray>())
+15:36:54.838 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:54.838 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GameVariant name=#99
+15:36:54.838 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GameVariant hashcode=58a0b88e
+15:36:54.839 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.options.GameVariant itself because it is final.
+15:36:54.839 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.options.GameVariant via instantiator
+15:36:54.839 [Test worker @spec-scope-1939764966#77] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.options.GameVariant
+15:36:54.839 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:54.839 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=54ba7366
+15:36:54.839 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:54.839 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:54.840 [Test worker @spec-scope-1939764966#77] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:54.840 [Test worker @spec-scope-1939764966#77] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:54.840 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:54.840 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getPossibleDigits()
+15:36:54.840 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GameVariant(#99).getPossibleDigits())
+15:36:54.840 [Test worker @spec-scope-1939764966#77] TRACE i.m.impl.recording.PermanentMocker -- Child search key: GameVariant(#99).getPossibleDigits())
+15:36:54.840 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Set name=child of #99#100
+15:36:54.840 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=54ba7366
+15:36:54.840 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:54.840 [Test worker @spec-scope-1939764966#77] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:54.840 [Test worker @spec-scope-1939764966#77] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:54.840 [Test worker @spec-scope-1939764966#77] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:54.840 [Test worker @spec-scope-1939764966#77] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GameVariant(#99).possibleDigits
+15:36:54.840 [Test worker @spec-scope-1939764966#77] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:54.842 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering GridCageType(child of #96#97) on GridCage(#96).getCageType()
+15:36:54.842 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering [0, 1, 2, 3] on GameVariant(#99).getPossibleDigits()
+15:36:54.842 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #96#97).getSatisfiesConstraints()
+15:36:54.842 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #96#97#98).invoke([0, 0])
+15:36:54.842 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #96#97).getSatisfiesConstraints()
+15:36:54.843 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #96#97#98).invoke([1, 0])
+15:36:54.843 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #96#97).getSatisfiesConstraints()
+15:36:54.843 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #96#97#98).invoke([2, 0])
+15:36:54.843 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #96#97).getSatisfiesConstraints()
+15:36:54.843 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #96#97#98).invoke([3, 0])
+15:36:54.843 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #96#97).getSatisfiesConstraints()
+15:36:54.844 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #96#97#98).invoke([0, 1])
+15:36:54.844 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #96#97).getSatisfiesConstraints()
+15:36:54.844 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #96#97#98).invoke([0, 2])
+15:36:54.844 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #96#97).getSatisfiesConstraints()
+15:36:54.844 [Test worker @spec-scope-1939764966#77] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #96#97#98).invoke([0, 3])
+15:36:54.849 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCage name=#101
+15:36:54.849 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCage hashcode=27153ba2
+15:36:54.850 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.grid.GridCage itself because it is final.
+15:36:54.850 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.grid.GridCage via instantiator
+15:36:54.850 [Test worker @spec-scope-1939764966#78] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridCage
+15:36:54.850 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:54.850 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=6dd8dfe5
+15:36:54.850 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:54.850 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:54.850 [Test worker @spec-scope-1939764966#78] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:54.851 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Function1 hashcode=4a244aa3
+15:36:54.851 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlin.jvm.functions.Function1 with additional interfaces []
+15:36:54.851 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlin.jvm.functions.Function1 via instantiator
+15:36:54.851 [Test worker @spec-scope-1939764966#78] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlin.jvm.functions.Function1$Subclass0 because class is not abstract.
+15:36:54.851 [Test worker @spec-scope-1939764966#78] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.jvm.functions.Function1$Subclass0
+15:36:54.851 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Any hashcode=65bd41d8
+15:36:54.851 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class java.lang.Object itself because it is not abstract and no additional interfaces specified.
+15:36:54.851 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class java.lang.Object via instantiator
+15:36:54.852 [Test worker @spec-scope-1939764966#78] TRACE i.mockk.impl.recording.JvmAutoHinter -- Auto hint for 3-th call: class kotlin.Boolean
+15:36:54.852 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=6dd8dfe5
+15:36:54.852 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:54.852 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:54.852 [Test worker @spec-scope-1939764966#78] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:54.852 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Function1 hashcode=4a244aa3
+15:36:54.852 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlin.jvm.functions.Function1 with additional interfaces []
+15:36:54.852 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlin.jvm.functions.Function1 via instantiator
+15:36:54.852 [Test worker @spec-scope-1939764966#78] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlin.jvm.functions.Function1$Subclass0 because class is not abstract.
+15:36:54.852 [Test worker @spec-scope-1939764966#78] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.jvm.functions.Function1$Subclass0
+15:36:54.853 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {[Ref(IntArray@1e3da033)]=any<IntArray>()}
+15:36:54.853 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getCageType()
+15:36:54.853 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCage(#101).getCageType())
+15:36:54.853 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #1: getSatisfiesConstraints()
+15:36:54.853 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GridCageType(temporary mock).getSatisfiesConstraints())
+15:36:54.853 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #2: invoke(Any)
+15:36:54.853 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.recording.ChainedCallDetector -- Signature for 0 argument of invoke(Any): [Ref(IntArray@1e3da033)]
+15:36:54.853 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: Function1(temporary mock).invoke(any<IntArray>()))
+15:36:54.853 [Test worker @spec-scope-1939764966#78] TRACE i.m.impl.recording.PermanentMocker -- Child search key: GridCage(#101).getCageType())
+15:36:54.853 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridCageType name=child of #101#102
+15:36:54.853 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridCageType hashcode=6dd8dfe5
+15:36:54.853 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.creation.cage.GridCageType itself because it is final.
+15:36:54.853 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.creation.cage.GridCageType via instantiator
+15:36:54.853 [Test worker @spec-scope-1939764966#78] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.creation.cage.GridCageType
+15:36:54.853 [Test worker @spec-scope-1939764966#78] TRACE i.m.impl.recording.PermanentMocker -- Child search key: GridCageType(child of #101#102).getSatisfiesConstraints())
+15:36:54.853 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Function1 name=child^2 of #101#102#103
+15:36:54.853 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Function1 hashcode=4a244aa3
+15:36:54.854 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface kotlin.jvm.functions.Function1 with additional interfaces []
+15:36:54.854 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface kotlin.jvm.functions.Function1 via instantiator
+15:36:54.854 [Test worker @spec-scope-1939764966#78] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class kotlin.jvm.functions.Function1$Subclass0 because class is not abstract.
+15:36:54.854 [Test worker @spec-scope-1939764966#78] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class kotlin.jvm.functions.Function1$Subclass0
+15:36:54.854 [Test worker @spec-scope-1939764966#78] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GridCage(#101).cageType.satisfiesConstraints.invoke(any<IntArray>())
+15:36:54.854 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:54.854 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GameVariant name=#104
+15:36:54.855 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GameVariant hashcode=58a0b88e
+15:36:54.855 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Taking instance of class org.piepmeyer.gauguin.options.GameVariant itself because it is final.
+15:36:54.855 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for class org.piepmeyer.gauguin.options.GameVariant via instantiator
+15:36:54.855 [Test worker @spec-scope-1939764966#78] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.options.GameVariant
+15:36:54.855 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:54.855 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=54ba7366
+15:36:54.855 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:54.855 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:54.855 [Test worker @spec-scope-1939764966#78] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:54.855 [Test worker @spec-scope-1939764966#78] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:54.855 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:54.855 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getPossibleDigits()
+15:36:54.855 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: GameVariant(#104).getPossibleDigits())
+15:36:54.856 [Test worker @spec-scope-1939764966#78] TRACE i.m.impl.recording.PermanentMocker -- Child search key: GameVariant(#104).getPossibleDigits())
+15:36:54.856 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for Set name=child of #104#105
+15:36:54.856 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for Set hashcode=54ba7366
+15:36:54.856 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface java.util.Set with additional interfaces []
+15:36:54.856 [Test worker @spec-scope-1939764966#78] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface java.util.Set via instantiator
+15:36:54.856 [Test worker @spec-scope-1939764966#78] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class io.mockk.renamed.java.util.Set$Subclass1 because class is not abstract.
+15:36:54.856 [Test worker @spec-scope-1939764966#78] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class io.mockk.renamed.java.util.Set$Subclass1
+15:36:54.856 [Test worker @spec-scope-1939764966#78] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: GameVariant(#104).possibleDigits
+15:36:54.856 [Test worker @spec-scope-1939764966#78] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:54.857 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering GridCageType(child of #101#102) on GridCage(#101).getCageType()
+15:36:54.857 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering [0, 1, 2, 3] on GameVariant(#104).getPossibleDigits()
+15:36:54.857 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #101#102).getSatisfiesConstraints()
+15:36:54.857 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #101#102#103).invoke([0, 0])
+15:36:54.858 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #101#102).getSatisfiesConstraints()
+15:36:54.858 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #101#102#103).invoke([1, 0])
+15:36:54.858 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #101#102).getSatisfiesConstraints()
+15:36:54.858 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering false on Function1(child^2 of #101#102#103).invoke([2, 0])
+15:36:54.858 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #101#102).getSatisfiesConstraints()
+15:36:54.859 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #101#102#103).invoke([3, 0])
+15:36:54.859 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #101#102).getSatisfiesConstraints()
+15:36:54.859 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering false on Function1(child^2 of #101#102#103).invoke([0, 1])
+15:36:54.859 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #101#102).getSatisfiesConstraints()
+15:36:54.859 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #101#102#103).invoke([0, 2])
+15:36:54.860 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering lambda {} on GridCageType(child of #101#102).getSatisfiesConstraints()
+15:36:54.860 [Test worker @spec-scope-1939764966#78] DEBUG i.m.i.r.states.AnsweringState -- Answering true on Function1(child^2 of #101#102#103).invoke([0, 3])
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

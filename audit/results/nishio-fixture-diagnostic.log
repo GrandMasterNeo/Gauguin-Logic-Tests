@@ -1,0 +1,83 @@
+Picked up JAVA_TOOL_OPTIONS: -Dhttps.proxyHost=proxy -Dhttps.proxyPort=8080 -Dhttp.proxyHost=proxy -Dhttp.proxyPort=8080 -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Calculating task graph as no cached configuration is available for tasks: :gauguin-human-solver:test --tests *NishioFixtureDiagnostic
+
+> Configure project :gauguin-app
+WARNING: The option setting 'android.newDsl=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+Add android.sync.suppressAgpWarnings=UNSUPPORTED_PROJECT_OPTION_USE to the gradle.properties file to suppress this warning.
+WARNING: The option setting 'android.r8.optimizedResourceShrinking=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+Add android.sync.suppressAgpWarnings=UNSUPPORTED_PROJECT_OPTION_USE to the gradle.properties file to suppress this warning.
+WARNING: API 'applicationVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling applicationVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+Add android.sync.suppressAgpWarnings=DEPRECATED_DSL to the gradle.properties file to suppress this warning.
+
+> Configure project :micro-benchmark
+WARNING: API 'libraryVariants' is obsolete and has been replaced with 'AndroidComponentsExtension'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+The legacy variant API is disabled by default in AGP 9.0, but can be re-enabled by adding 
+    android.newDsl=false
+to this project's gradle.properties file.
+For more information, see http://developer.android.com/build/r/new-dsl.
+
+To determine what is calling libraryVariants, use -Pandroid.debug.obsoleteApi=true on the command line to display more information.
+Add android.sync.suppressAgpWarnings=DEPRECATED_DSL to the gradle.properties file to suppress this warning.
+WARNING: BuildType 'debug' is both debuggable and has 'isMinifyEnabled' set to true.
+All code optimizations and obfuscation are disabled for debuggable builds.
+Add android.sync.suppressAgpWarnings=DEBUGGABLE_AND_MINIFIED_ENABLED to the gradle.properties file to suppress this warning.
+
+> Task :gauguin-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gauguin-core:kspKotlin SKIPPED
+> Task :gauguin-core:processResources UP-TO-DATE
+> Task :gauguin-grid-creation-via-merge:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gauguin-human-solver:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gauguin-core:compileKotlin UP-TO-DATE
+> Task :gauguin-core:compileJava NO-SOURCE
+> Task :gauguin-core:classes UP-TO-DATE
+> Task :gauguin-core:jar UP-TO-DATE
+> Task :gauguin-grid-creation-via-merge:kspKotlin SKIPPED
+> Task :gauguin-grid-creation-via-merge:processResources NO-SOURCE
+> Task :gauguin-core:kspTestFixturesKotlin SKIPPED
+> Task :gauguin-grid-creation-via-merge:compileKotlin UP-TO-DATE
+> Task :gauguin-grid-creation-via-merge:compileJava NO-SOURCE
+> Task :gauguin-grid-creation-via-merge:classes UP-TO-DATE
+> Task :gauguin-grid-creation-via-merge:jar UP-TO-DATE
+> Task :gauguin-human-solver:kspKotlin SKIPPED
+> Task :gauguin-core:compileTestFixturesKotlin UP-TO-DATE
+> Task :gauguin-human-solver:processResources NO-SOURCE
+> Task :gauguin-core:compileTestFixturesJava NO-SOURCE
+> Task :gauguin-core:processTestFixturesResources NO-SOURCE
+> Task :gauguin-core:testFixturesClasses UP-TO-DATE
+> Task :gauguin-human-solver:compileKotlin UP-TO-DATE
+> Task :gauguin-human-solver:compileJava NO-SOURCE
+> Task :gauguin-human-solver:classes UP-TO-DATE
+> Task :gauguin-core:testFixturesJar UP-TO-DATE
+> Task :gauguin-human-solver:jar UP-TO-DATE
+> Task :gauguin-human-solver:kspTestFixturesKotlin SKIPPED
+> Task :gauguin-human-solver:compileTestFixturesKotlin NO-SOURCE
+> Task :gauguin-human-solver:processTestFixturesResources NO-SOURCE
+> Task :gauguin-human-solver:compileTestFixturesJava NO-SOURCE
+> Task :gauguin-human-solver:kspTestKotlin SKIPPED
+> Task :gauguin-human-solver:testFixturesClasses UP-TO-DATE
+> Task :gauguin-human-solver:processTestResources NO-SOURCE
+> Task :gauguin-human-solver:testFixturesJar UP-TO-DATE
+> Task :gauguin-human-solver:compileTestKotlin
+> Task :gauguin-human-solver:compileTestJava NO-SOURCE
+> Task :gauguin-human-solver:testClasses UP-TO-DATE
+
+> Task :gauguin-human-solver:test
+Picked up JAVA_TOOL_OPTIONS: -Dhttps.proxyHost=proxy -Dhttps.proxyPort=8080 -Dhttp.proxyHost=proxy -Dhttp.proxyPort=8080 -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts
+
+BUILD SUCCESSFUL in 18s
+12 actionable tasks: 2 executed, 10 up-to-date
+Configuration cache entry stored.

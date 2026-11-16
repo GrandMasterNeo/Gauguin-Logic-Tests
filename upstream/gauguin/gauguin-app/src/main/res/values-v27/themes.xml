@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme.Overlay" parent="ThemeOverlay.Material3.DynamicColors.DayNight">
+        <item name="colorMainTopPanelForeground">?colorOnTertiary</item>
+        <item name="colorMainTopPanelBackground">?colorTertiary</item>
+        <item name="colorMainHintPopupSuccessForeground">?colorOnPrimary</item>
+        <item name="colorMainHintPopupSuccessBackground">?colorPrimary</item>
+        <item name="colorMainHintPopupErrorsForeground">?colorOnTertiary</item>
+        <item name="colorMainHintPopupErrorsBackground">?colorTertiary</item>
+        <item name="colorMainFabForeground">?colorOnSecondary</item>
+        <item name="colorMainFabBackground">?colorSecondary</item>
+        <item name="colorGridValue">?colorOnBackground</item>
+        <item name="colorGridCageText">?colorPrimary</item>
+        <item name="colorGridWarningText">?colorError</item>
+    </style>
+</resources>

@@ -1,0 +1,5 @@
+<resources>
+
+    <style name="LabelChipText" parent="TextAppearance.Material3.LabelLarge"/>
+
+</resources>

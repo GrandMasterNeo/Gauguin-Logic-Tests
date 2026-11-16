@@ -1,0 +1,74 @@
+package org.piepmeyer.gauguin.game.save
+
+import io.github.oshai.kotlinlogging.KotlinLogging
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.koin.core.component.KoinComponent
+import org.piepmeyer.gauguin.grid.Grid
+import java.io.File
+
+private val logger = KotlinLogging.logger {}
+
+class SavedGamesService(
+    private val filesDir: File,
+) : KoinComponent {
+    private var listeners = mutableListOf<SavedGamesListener>()
+
+    fun savedGameFiles(): List<File> =
+        filesDir
+            .listFiles { _: File?, name: String ->
+                name.startsWith(SaveGame.SAVEGAME_NAME_PREFIX) &&
+                    name.endsWith(SaveGame.SAVEGAME_NAME_SUFFIX)
+            }?.toList()
+            ?.filterNotNull() ?: emptyList()
+
+    fun saveGrid(
+        grid: Grid,
+        fileName: String,
+    ) {
+        SaveGame(File(filesDir, fileName)).save(grid)
+    }
+
+    suspend fun loadGrid(fileName: String): Grid? = SaveGame(File(filesDir, fileName)).loadGrid()
+
+    fun deleteGame(fileName: String) {
+        val gameFile = File(filesDir, fileName)
+
+        if (gameFile.exists()) {
+            val deleted = gameFile.delete()
+
+            if (!deleted) {
+                logger.warn { "The save game file $fileName could not be deleted." }
+            }
+        }
+    }
+
+    fun countOfSavedGames(): Int = savedGameFiles().count()
+
+    fun informSavedGamesChanged() {
+        listeners.forEach { it.savedGamesChanged() }
+    }
+
+    fun addSavedGamesListener(listener: SavedGamesListener) {
+        listeners += listener
+    }
+
+    companion object {
+        suspend fun migrateOldSavedGameFilesBeforeKoinStartup(filesDir: File) {
+            logger.info { "Checking migration of saved games." }
+
+            withContext(Dispatchers.IO) {
+                val service = SavedGamesService(filesDir)
+
+                val gameFiles = service.savedGameFiles()
+
+                gameFiles.forEachIndexed { index, file ->
+                    logger.info { "Checking file $index of ${gameFiles.size}" }
+                    SaveGame(file).migrateOldSavedGridVersion()
+                }
+            }
+
+            logger.info { "Finished checking migration of saved games." }
+        }
+    }
+}

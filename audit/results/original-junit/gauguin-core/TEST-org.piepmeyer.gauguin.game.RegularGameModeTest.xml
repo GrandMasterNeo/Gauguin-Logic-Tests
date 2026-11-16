@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.game.RegularGameModeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:56.049Z" hostname="2a9d8987d813" time="0.08">
+  <properties/>
+  <testcase name="long pressing single cage cells counts toward fast finish mode trigger" classname="org.piepmeyer.gauguin.game.RegularGameModeTest" time="0.077"/>
+  <system-out><![CDATA[15:36:56.053 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for ApplicationPreferences name=#159
+15:36:56.053 [Test worker @spec-scope-592018526#96] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for ApplicationPreferences hashcode=3dfc8814
+15:36:56.053 [Test worker @spec-scope-592018526#96] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences with additional interfaces []
+15:36:56.053 [Test worker @spec-scope-592018526#96] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.ApplicationPreferences via instantiator
+15:36:56.053 [Test worker @spec-scope-592018526#96] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2 because class is not abstract.
+15:36:56.054 [Test worker @spec-scope-592018526#96] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.ApplicationPreferences$Subclass2
+15:36:56.054 [Test worker @spec-scope-592018526#96] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.123 [Test worker @spec-scope-592018526#96] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.123 [Test worker @spec-scope-592018526#96] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: getUseFastFinishingMode()
+15:36:56.123 [Test worker @spec-scope-592018526#96] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#159).getUseFastFinishingMode())
+15:36:56.123 [Test worker @spec-scope-592018526#96] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#159).useFastFinishingMode
+15:36:56.123 [Test worker @spec-scope-592018526#96] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.124 [Test worker @spec-scope-592018526#96] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.124 [Test worker @spec-scope-592018526#96] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.124 [Test worker @spec-scope-592018526#96] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: removePencils()
+15:36:56.124 [Test worker @spec-scope-592018526#96] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#159).removePencils())
+15:36:56.124 [Test worker @spec-scope-592018526#96] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#159).removePencils()
+15:36:56.124 [Test worker @spec-scope-592018526#96] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.124 [Test worker @spec-scope-592018526#96] TRACE i.m.i.recording.CommonCallRecorder -- Starting stubbing
+15:36:56.125 [Test worker @spec-scope-592018526#96] TRACE i.m.i.r.SignatureMatcherDetector -- Matcher map: {}
+15:36:56.125 [Test worker @spec-scope-592018526#96] TRACE i.m.i.recording.ChainedCallDetector -- Processing call #0: showDupedDigits()
+15:36:56.125 [Test worker @spec-scope-592018526#96] TRACE i.m.i.recording.ChainedCallDetector -- Built matcher: ApplicationPreferences(#159).showDupedDigits())
+15:36:56.125 [Test worker @spec-scope-592018526#96] TRACE i.m.impl.recording.PermanentMocker -- Mocked permanently: ApplicationPreferences(#159).showDupedDigits()
+15:36:56.125 [Test worker @spec-scope-592018526#96] TRACE i.m.i.r.s.StubbingAwaitingAnswerState -- Done stubbing. Still accepting additional answers
+15:36:56.125 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for GridView name=#160
+15:36:56.125 [Test worker @spec-scope-592018526#96] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for GridView hashcode=3243b967
+15:36:56.125 [Test worker @spec-scope-592018526#96] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.grid.GridView with additional interfaces []
+15:36:56.125 [Test worker @spec-scope-592018526#96] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.grid.GridView via instantiator
+15:36:56.125 [Test worker @spec-scope-592018526#96] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.grid.GridView$Subclass6 because class is not abstract.
+15:36:56.125 [Test worker @spec-scope-592018526#96] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.grid.GridView$Subclass6
+15:36:56.126 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.i.AbstractMockFactory -- Creating mockk for StatisticsManagerWriting name=#161
+15:36:56.126 [Test worker @spec-scope-592018526#96] TRACE i.m.i.i.AbstractMockFactory -- Building proxy for StatisticsManagerWriting hashcode=c421318
+15:36:56.126 [Test worker @spec-scope-592018526#96] TRACE io.mockk.proxy.jvm.ProxyMaker -- Building subclass proxy for interface org.piepmeyer.gauguin.preferences.StatisticsManagerWriting with additional interfaces []
+15:36:56.126 [Test worker @spec-scope-592018526#96] TRACE io.mockk.proxy.jvm.ProxyMaker -- Instantiating proxy for interface org.piepmeyer.gauguin.preferences.StatisticsManagerWriting via instantiator
+15:36:56.126 [Test worker @spec-scope-592018526#96] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Skipping instantiation subsclassing class org.piepmeyer.gauguin.preferences.StatisticsManagerWriting$Subclass5 because class is not abstract.
+15:36:56.126 [Test worker @spec-scope-592018526#96] TRACE i.m.proxy.jvm.ObjenesisInstantiator -- Creating new empty instance of class org.piepmeyer.gauguin.preferences.StatisticsManagerWriting$Subclass5
+15:36:56.126 [Test worker @spec-scope-592018526#96] INFO  org.piepmeyer.gauguin.game.Game -- Possible solution state: NotApplicable
+15:36:56.126 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on StatisticsManagerWriting(#161).puzzleStartedToBePlayed()
+15:36:56.126 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on GridView(#160).invalidate()
+15:36:56.126 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering false on ApplicationPreferences(#159).removePencils()
+15:36:56.126 [Test worker @spec-scope-592018526#96] INFO  org.piepmeyer.gauguin.game.Game -- Possible solution state: SolutionMayBeChecked
+15:36:56.126 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering false on GridView(#160).requestFocus()
+15:36:56.126 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on GridView(#160).invalidate()
+15:36:56.127 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering true on ApplicationPreferences(#159).getUseFastFinishingMode()
+15:36:56.127 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on GridView(#160).invalidate()
+15:36:56.127 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering false on ApplicationPreferences(#159).removePencils()
+15:36:56.127 [Test worker @spec-scope-592018526#96] INFO  org.piepmeyer.gauguin.game.Game -- Possible solution state: SolutionMayBeChecked
+15:36:56.127 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering false on GridView(#160).requestFocus()
+15:36:56.127 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on GridView(#160).invalidate()
+15:36:56.127 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering true on ApplicationPreferences(#159).getUseFastFinishingMode()
+15:36:56.127 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on GridView(#160).invalidate()
+15:36:56.127 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering false on ApplicationPreferences(#159).removePencils()
+15:36:56.127 [Test worker @spec-scope-592018526#96] INFO  org.piepmeyer.gauguin.game.Game -- Possible solution state: NishioMayBeChecked
+15:36:56.127 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering false on GridView(#160).requestFocus()
+15:36:56.127 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on GridView(#160).invalidate()
+15:36:56.128 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering true on ApplicationPreferences(#159).getUseFastFinishingMode()
+15:36:56.129 [Test worker @spec-scope-592018526#96] DEBUG i.m.i.r.states.AnsweringState -- Answering kotlin.Unit on GridView(#160).invalidate()
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

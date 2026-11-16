@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.difficulty.human.LogicSafetyRegressionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:39:04.011Z" hostname="2a9d8987d813" time="0.11">
+  <properties/>
+  <testcase name="empty combinations preserve candidates" classname="org.piepmeyer.gauguin.difficulty.human.LogicSafetyRegressionTest" time="0.002"/>
+  <testcase name="human solver rejects incompatible cage candidates without erasing them" classname="org.piepmeyer.gauguin.difficulty.human.LogicSafetyRegressionTest" time="0.097"/>
+  <testcase name="Nishio does not commit a speculative solution of an ambiguous puzzle" classname="org.piepmeyer.gauguin.difficulty.human.LogicSafetyRegressionTest" time="0.006"/>
+  <system-out><![CDATA[kotlin-logging: initializing... active logger factory: Slf4jLoggerFactory
+15:39:04.111 [Test worker @spec-scope-1144702392#27] INFO org.piepmeyer.gauguin.difficulty.human.HumanSolver -- Starting human solver...
+15:39:04.113 [Test worker @spec-scope-1144702392#27] WARN org.piepmeyer.gauguin.difficulty.human.HumanSolver -- Human solver stopped: contradictory candidates or cage combinations.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

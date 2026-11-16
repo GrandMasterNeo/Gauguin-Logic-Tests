@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.piepmeyer.gauguin.creation.cage.operation.DivideCreatorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-05T15:36:54.368Z" hostname="2a9d8987d813" time="0.01">
+  <properties/>
+  <testcase name="allDivideResultsWithoutZero" classname="org.piepmeyer.gauguin.creation.cage.operation.DivideCreatorTest" time="0.002"/>
+  <testcase name="allDivideResultsWithZero" classname="org.piepmeyer.gauguin.creation.cage.operation.DivideCreatorTest" time="0.001"/>
+  <testcase name="not all combinations in possibles" classname="org.piepmeyer.gauguin.creation.cage.operation.DivideCreatorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
