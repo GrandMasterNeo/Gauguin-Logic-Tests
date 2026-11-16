@@ -1,5 +1,10 @@
 name: Progressive Gauguin generation matrix
 on:
+  push:
+    branches: [logic-matrix-audit]
+    paths:
+      - '.github/workflows/progressive-generation-matrix.yml'
+      - 'upstream/gauguin/gauguin-core/src/integrationTest/kotlin/org/piepmeyer/gauguin/creation/ProgressiveGenerationMatrixTest.kt'
   workflow_dispatch:
     inputs:
       size:
@@ -37,9 +42,9 @@ jobs:
       - name: Run one bounded matrix cell
         working-directory: upstream/gauguin
         env:
-          GAUGUIN_MATRIX_SIZE: ${{ inputs.size }}
-          GAUGUIN_MATRIX_DIFFICULTY: ${{ inputs.difficulty }}
-          GAUGUIN_MATRIX_SEED: ${{ inputs.seed }}
+          GAUGUIN_MATRIX_SIZE: ${{ inputs.size || '3' }}
+          GAUGUIN_MATRIX_DIFFICULTY: ${{ inputs.difficulty || 'VERY_EASY' }}
+          GAUGUIN_MATRIX_SEED: ${{ inputs.seed || '0' }}
           GAUGUIN_MATRIX_MAX_CANDIDATES: '100'
           GAUGUIN_MATRIX_BUDGET_MS: '60000'
         run: ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --quiet
