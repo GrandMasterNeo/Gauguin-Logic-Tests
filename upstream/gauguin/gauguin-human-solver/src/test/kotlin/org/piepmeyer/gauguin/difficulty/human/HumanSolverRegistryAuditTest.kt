@@ -9,11 +9,11 @@ import io.kotest.matchers.shouldBe
  */
 class HumanSolverRegistryAuditTest :
     FunSpec({
-        test("all 37 strategies remain registered exactly once") {
+        test("all registered strategies remain registered exactly once") {
             val strategies = HumanSolverStrategies.entries
 
-            strategies.size shouldBe 37
-            strategies.map { it.solver.javaClass }.toSet().size shouldBe 37
+            strategies.size shouldBe 38
+            strategies.map { it.solver.javaClass }.toSet().size shouldBe strategies.size
             strategies.all { it.difficulty > 0 } shouldBe true
         }
 
