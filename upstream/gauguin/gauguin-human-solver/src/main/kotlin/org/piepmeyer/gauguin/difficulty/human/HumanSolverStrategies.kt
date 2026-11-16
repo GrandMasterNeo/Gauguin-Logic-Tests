@@ -1,5 +1,6 @@
 package org.piepmeyer.gauguin.difficulty.human
 
+import org.piepmeyer.gauguin.difficulty.human.strategy.CrossCageCombinationSupport
 import org.piepmeyer.gauguin.difficulty.human.strategy.DetectPossibleUsedInLinesByOtherCagesDualLines
 import org.piepmeyer.gauguin.difficulty.human.strategy.DetectPossiblesBreakingOtherCagesPossiblesDualLines
 import org.piepmeyer.gauguin.difficulty.human.strategy.GridEachCageWithPossibleMustIncludePossibleOnce
@@ -89,6 +90,8 @@ enum class HumanSolverStrategies(
     AGridSumEnforcesCageSum(160, GridSumEnforcesCageSum()),
     AGridSumOddEvenCheck(200, OddEvenCheckGridSum()),
     AMinMaxSumThreeLines(210, MinMaxSumThreeLines()),
+
+    ACrossCageCombinationSupport(220, CrossCageCombinationSupport()),
 
     ANishioWithPairs(250, NishioWithPairs(), true),
     AAdvancedNishioWithPairs(350, AdvancedNishioWithPairs(), true),
