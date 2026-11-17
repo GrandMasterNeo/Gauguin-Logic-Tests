@@ -1,7 +1,7 @@
 name: Classical threshold sensitivity (diagnostic)
 on:
   push:
-    branches: [logic-matrix-audit]
+    branches: [logic-matrix-audit, experiment/original-difficulty-calibration]
     paths: ['.github/workflows/classical-threshold-sensitivity-ci.yml']
   workflow_dispatch:
 permissions:
