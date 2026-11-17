@@ -46,6 +46,13 @@ class CrossCageSupportRegressionTest : FunSpec({
             )
             result.usedNishio shouldBe false
             println("HUMAN_CERTIFICATION size=10 level=HARD seed=0 complete=${result.success && working.cells.all { it.isUserValueSet }} wrong=${working.cells.count { it.isUserValueSet && it.userValue != it.value }}")
+            val nishioGrid = grid.copyWithEmptyUserValues()
+            val nishioSolver = HumanSolver(nishioGrid, validate = true, avoidNishio = false)
+            nishioSolver.prepareGrid()
+            val nishioStarted = System.nanoTime()
+            val nishioResult = nishioSolver.solveAndCalculateDifficulty(avoidReveal = true)
+            val nishioMs = (System.nanoTime() - nishioStarted) / 1_000_000
+            println("NISHIO_BASELINE size=10 level=HARD seed=0 complete=${nishioResult.success && nishioGrid.cells.all { it.isUserValueSet }} filled=${nishioGrid.cells.count { it.isUserValueSet }}/100 usedNishio=${nishioResult.usedNishio} wrong=${nishioGrid.cells.count { it.isUserValueSet && it.userValue != it.value }} elapsedMs=$nishioMs")
         } finally {
             stopKoin()
             if (previousAttempts == null) System.clearProperty("gauguin.generation.maxAttempts") else System.setProperty("gauguin.generation.maxAttempts", previousAttempts)
