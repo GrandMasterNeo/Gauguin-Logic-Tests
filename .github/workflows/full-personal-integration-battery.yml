@@ -1,0 +1,57 @@
+name: Full 3x3-11x11 five-difficulty integration battery
+on:
+  push:
+    branches: [experiment/personal-logic-integration]
+    paths: ['.github/workflows/full-personal-integration-battery.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  matrix:
+    name: ${{ matrix.size }}x${{ matrix.size }} full difficulty sweep
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [3, 4, 5, 6, 7, 8, 9, 10, 11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Run all five difficulty levels with independent bounded cells
+        shell: bash
+        working-directory: upstream/gauguin
+        run: |
+          set -uo pipefail
+          echo 'size,difficulty,seed,status,uniqueMatches,humanCertified' > matrix-results.csv
+          failures=0
+          for difficulty in VERY_EASY EASY MEDIUM HARD EXTREME; do
+            export GAUGUIN_MATRIX_SIZE="${{ matrix.size }}" GAUGUIN_MATRIX_DIFFICULTY="$difficulty" GAUGUIN_MATRIX_SEED=0
+            export GAUGUIN_MATRIX_MAX_CANDIDATES=100 GAUGUIN_MATRIX_BUDGET_MS=60000
+            rm -rf gauguin-core/build/test-results/integrationTest
+            timeout --signal=TERM --kill-after=5s 120s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --rerun-tasks --no-daemon --console=plain -Pbuildserver --quiet > cell.log 2>&1
+            rc=$?
+            result=$(grep -oh 'MATRIX_RESULT [^<]*' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -1 || true)
+            [ -n "$result" ] || result=$(grep -m1 'MATRIX_RESULT ' cell.log || true)
+            unique=$(printf '%s' "$result" | grep -oE 'uniqueMatches=[0-9]+' | head -1 | cut -d= -f2 || true)
+            status=PASS_DIAGNOSTIC_ONLY
+            if [ "$rc" -ne 0 ] || [ -z "$result" ] || [ "${unique:-0}" -lt 1 ]; then
+              status=FAIL
+              [ "$rc" -eq 124 ] && status=TIMEOUT
+              failures=$((failures+1))
+            fi
+            echo "${{ matrix.size }},$difficulty,0,$status,${unique:-0},false" >> matrix-results.csv
+            echo "CELL ${{ matrix.size }} $difficulty $status $result"
+            tail -n 12 cell.log
+          done
+          cat matrix-results.csv
+          exit "$((failures > 0))"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: integration-matrix-${{ matrix.size }}x${{ matrix.size }}
+          path: upstream/gauguin/matrix-results.csv
+          if-no-files-found: warn
