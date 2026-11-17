@@ -23,6 +23,9 @@ class RandomCageGridCalculator(
         var sumDLXDuration: Long = 0
         var difficultyRejects = 0
         var uniquenessRejects = 0
+        val cageShapeCounts = mutableMapOf<String, Int>()
+        val cageOperationCounts = mutableMapOf<String, Int>()
+        var invalidCageTargets = 0
         val startedAt = System.nanoTime()
         val creator = GridCreator(variant, randomizer, shuffler)
         val difficultyGate = DifficultyAwareGridCreator(variant, randomizer, shuffler)
@@ -43,6 +46,27 @@ class RandomCageGridCalculator(
 
             grid = creator.createRandomizedGridWithCages()
             numAttempts++
+            // Record the actual construction distribution before difficulty filtering.
+            // No gameplay, acceptance, or randomization behavior is changed.
+            for (cage in grid.cages) {
+                val shape = cage.cageType.name
+                val operation = cage.action.name
+                cageShapeCounts[shape] = (cageShapeCounts[shape] ?: 0) + 1
+                cageOperationCounts[operation] = (cageOperationCounts[operation] ?: 0) + 1
+                if (cage.cells.size > 1) {
+                    val values = cage.cells.map { it.value }
+                    val expected = when (cage.action) {
+                        org.piepmeyer.gauguin.grid.GridCageAction.ACTION_ADD -> values.sum()
+                        org.piepmeyer.gauguin.grid.GridCageAction.ACTION_MULTIPLY -> values.fold(1) { acc, value -> acc * value }
+                        org.piepmeyer.gauguin.grid.GridCageAction.ACTION_SUBTRACT -> kotlin.math.abs(values[0] - values[1])
+                        org.piepmeyer.gauguin.grid.GridCageAction.ACTION_DIVIDE -> if (values.minOrNull() == 0) 0 else values.maxOrNull()!! / values.minOrNull()!!
+                        else -> null
+                    }
+                    if (expected != cage.result) invalidCageTargets++
+                } else if (cage.cells.single().value != cage.result) {
+                    invalidCageTargets++
+                }
+            }
             if (!difficultyGate.isWantedDifficulty(grid)) {
                 difficultyRejects++
                 // Never reuse a previous candidate's successful DLX result.
@@ -73,6 +97,7 @@ class RandomCageGridCalculator(
             val summary = "GENERATION_SUMMARY candidates=$numAttempts difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects dlxMs=$sumDLXDuration elapsedMs=$elapsedMs"
             logger.warn { summary }
             println(summary)
+            println("CAGE_CONSTRUCTION_DIAGNOSTIC invalidTargets=$invalidCageTargets shapes=${cageShapeCounts.toSortedMap()} operations=${cageOperationCounts.toSortedMap()}")
             System.out.flush()
         }
     }
