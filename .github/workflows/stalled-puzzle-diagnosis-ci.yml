@@ -107,7 +107,7 @@ jobs:
               match = re.search(r"board=(\d+) level=(\w+) seed=(\d+)", record)
               if match:
                   compliance_seen.add((int(match.group(1)), match.group(2), int(match.group(3))))
-          # Hard seed 0 is the bounded, reproducible 37-strategy frontier audit.
+          # Hard seed 0 is the bounded, reproducible 38-strategy frontier audit.
           # Other matrix cases may time out before reaching a strategy frontier.
           frontier = {}
           for record in records:
@@ -121,8 +121,8 @@ jobs:
           frontier_ok = True
           if audit_case in expected:
               strategies = frontier.get(audit_case, {})
-              frontier_ok = (len(strategies) == 37
-                             and sum(value == "false" for value in strategies.values()) == 35
+              frontier_ok = (len(strategies) == 38
+                             and sum(value == "false" for value in strategies.values()) == 36
                              and sum(value == "true" for value in strategies.values()) == 2)
           reporting_ok = seen == expected and compliance_seen == expected and frontier_ok
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:
