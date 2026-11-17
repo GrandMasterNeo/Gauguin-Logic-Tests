@@ -38,9 +38,9 @@ class AdvancedDifficultyStrategySafetyTest :
         require(requestedSeed == null || requestedSeed in 0 until seedCount) { "Requested seed must be within configured seed range" }
         require(size in setOf(9, 10, 11))
         require(seedCount in 1..20)
-        // Audit all 37 registered strategies elsewhere, but prohibit Nishio in this deduction-only gate.
-        require(HumanSolverStrategies.entries.size == 37)
-        require(HumanSolverStrategies.entries.count { !it.isNishio } == 35)
+        // Audit the expanded strategy registry, but prohibit Nishio in this deduction-only gate.
+        require(HumanSolverStrategies.entries.size == 38)
+        require(HumanSolverStrategies.entries.count { !it.isNishio } == 36)
         require(HumanSolverStrategies.entries.count { it.isNishio } == 2)
 
         test("soundness after each strategy at Medium Hard and Extreme on ${size}x$size") {
