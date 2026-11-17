@@ -1,0 +1,60 @@
+name: Build installable Gauguin debug APK (audit)
+on:
+  workflow_dispatch:
+  push:
+    branches: [logic-matrix-audit]
+    paths:
+      - '.github/workflows/build-debug-apk-ci.yml'
+      - 'upstream/gauguin/gauguin-core/src/main/kotlin/org/piepmeyer/gauguin/creation/cage/GridCageOperationDecider.kt'
+permissions:
+  contents: read
+jobs:
+  build-debug-apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Install Android 37 SDK components
+        shell: bash
+        run: |
+          set -euo pipefail
+          yes | "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null || true
+          "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --channel=3 "platforms;android-37.0" "build-tools;37.0.0"
+          test -f "${ANDROID_HOME}/platforms/android-37.0/android.jar"
+          # Existing application configuration requests android-37; the published SDK is android-37.0.
+          if [ ! -e "${ANDROID_HOME}/platforms/android-37" ]; then
+            ln -s android-37.0 "${ANDROID_HOME}/platforms/android-37"
+          fi
+          test -f "${ANDROID_HOME}/platforms/android-37/android.jar"
+      - name: Run core unit tests for operation-selection change
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-core:test --no-daemon --stacktrace -Pbuildserver
+      - name: Assemble debug APK from audit-branch application source
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-app:assembleDebug --no-daemon --stacktrace -Pbuildserver
+      - name: Verify APK output and record checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk="upstream/gauguin/gauguin-app/build/outputs/apk/debug/gauguin-app-debug.apk"
+          test -s "$apk"
+          file "$apk"
+          sha256sum "$apk" | tee gauguin-debug-apk.sha256
+          echo "### Installable debug APK" >> "$GITHUB_STEP_SUMMARY"
+          echo "Built from commit \`$GITHUB_SHA\` (audit branch; experimental operation-selection change)." >> "$GITHUB_STEP_SUMMARY"
+          echo "Artifact: gauguin-audit-debug-apk" >> "$GITHUB_STEP_SUMMARY"
+          echo "SHA-256:" >> "$GITHUB_STEP_SUMMARY"
+          cat gauguin-debug-apk.sha256 >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload APK and checksum
+        uses: actions/upload-artifact@v4
+        with:
+          name: gauguin-audit-debug-apk
+          path: |
+            upstream/gauguin/gauguin-app/build/outputs/apk/debug/gauguin-app-debug.apk
+            gauguin-debug-apk.sha256
+          if-no-files-found: error
+          retention-days: 14

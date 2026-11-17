@@ -88,6 +88,7 @@ class ApplicationPreferencesMigrationsTest :
         withData(
             DifficultyMigrationTestData("EASY", setOf(DifficultySetting.EASY)),
             DifficultyMigrationTestData("EXTREME", setOf(DifficultySetting.EXTREME)),
+            DifficultyMigrationTestData("VERY_HARD", setOf(DifficultySetting.EXTREME)),
             DifficultyMigrationTestData("ANY", DifficultySetting.all()),
         ) { testData ->
             val preferences =

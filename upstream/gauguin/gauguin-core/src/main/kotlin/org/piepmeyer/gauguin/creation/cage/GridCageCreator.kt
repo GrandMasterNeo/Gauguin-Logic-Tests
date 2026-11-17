@@ -83,16 +83,21 @@ class GridCageCreator(
         val valUsed = BooleanArray(grid.gridSize.amountOfNumbers)
 
         for (cageId in 0 until singles) {
-            var cell: GridCell
-            var cellIndex: Int
-
-            do {
-                cell =
-                    grid.getCell(
-                        randomizer.nextInt(grid.gridSize.surfaceArea),
-                    )
-                cellIndex = grid.options.digitSetting.indexOf(cell.value)
-            } while (rowUsed[cell.row] || colUsed[cell.column] || valUsed[cellIndex])
+            // Select from eligible cells rather than retrying indefinitely when
+            // a randomizer repeatedly chooses an occupied row/column/value.
+            val eligible = grid.cells.filter { cell ->
+                val digitIndex = grid.options.digitSetting.indexOf(cell.value)
+                digitIndex >= 0 &&
+                    !rowUsed[cell.row] &&
+                    !colUsed[cell.column] &&
+                    !valUsed[digitIndex] &&
+                    !cell.cellInAnyCage()
+            }
+            check(eligible.isNotEmpty()) {
+                "No eligible cell for fixed single cage $cageId of $singles"
+            }
+            val cell = eligible[randomizer.nextInt(eligible.size)]
+            val cellIndex = grid.options.digitSetting.indexOf(cell.value)
 
             colUsed[cell.column] = true
             rowUsed[cell.row] = true

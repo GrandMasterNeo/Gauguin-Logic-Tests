@@ -15,23 +15,37 @@ private val logger = KotlinLogging.logger {}
 class DifficultyAwareGridCreator(
     private val variant: GameVariant,
     private val randomizer: Randomizer = RandomSingleton.instance,
-    private val shuffler: PossibleDigitsShuffler = RandomPossibleDigitsShuffler(),
+    private val shuffler: PossibleDigitsShuffler = RandomPossibleDigitsShuffler(randomizer.random()),
 ) : KoinComponent {
     private val difficultyService: GameDifficultyRatingService by inject()
 
     fun createRandomizedGridWithCages(): Grid {
         val coreCreator = GridCreator(variant, randomizer, shuffler)
 
-        var newGrid: Grid
-        do {
-            newGrid = coreCreator.createRandomizedGridWithCages()
-        } while (!isWantedDifficulty(newGrid))
+        // This entry point can be called independently of RandomCageGridCalculator.
+        // Its difficulty-rejection loop must therefore have its own finite budget.
+        val maxAttempts = Integer.getInteger("gauguin.generation.maxAttempts", 100_000).coerceAtLeast(1)
+        val maxMillis = java.lang.Long.getLong("gauguin.generation.maxMillis", 300_000L).coerceAtLeast(1L)
+        val startedAt = System.nanoTime()
+        var attempts = 0
+        var difficultyRejected = 0
 
-        logger.debug { "Created randomized grid." }
-        return newGrid
+        while (true) {
+            val elapsedMs = (System.nanoTime() - startedAt) / 1_000_000
+            if (attempts >= maxAttempts || elapsedMs >= maxMillis) {
+                error("Difficulty generation budget exhausted: attempts=$attempts difficultyRejected=$difficultyRejected elapsedMs=$elapsedMs maxAttempts=$maxAttempts maxMillis=$maxMillis")
+            }
+            val newGrid = coreCreator.createRandomizedGridWithCages()
+            attempts++
+            if (isWantedDifficulty(newGrid)) {
+                logger.debug { "Created randomized grid after $attempts attempts." }
+                return newGrid
+            }
+            difficultyRejected++
+        }
     }
 
-    private fun isWantedDifficulty(grid: Grid): Boolean {
+    internal fun isWantedDifficulty(grid: Grid): Boolean {
         if (variant.options.difficultiesSetting == DifficultySetting.all()) {
             return true
         }

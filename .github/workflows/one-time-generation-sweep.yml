@@ -1,0 +1,72 @@
+name: Gauguin targeted regression verification (42 unverified cells)
+on:
+  push:
+    branches: [logic-matrix-audit]
+    paths: ['.github/workflows/one-time-generation-sweep.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: gauguin-targeted-42-verification
+  cancel-in-progress: false
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Run each size and difficulty once, sequentially
+        working-directory: upstream/gauguin
+        shell: bash
+        run: |
+          set -uo pipefail
+          echo 'size,difficulty,seed,status,examined,ratingMatches,uniqueMatches,nonUniqueMatches,elapsedMs,humanCertified' > "$RUNNER_TEMP/gauguin-sweep.csv"
+          for size in 3 4 5 6 7 8 9 10 11; do
+            for difficulty in VERY_EASY EASY MEDIUM HARD EXTREME; do
+              # Original 3x3 VE timed out, EASY failed, MEDIUM passed; investigate separately.
+              if [ "$size" -eq 3 ] && [ "$difficulty" != HARD ] && [ "$difficulty" != EXTREME ]; then continue; fi
+              export GAUGUIN_MATRIX_SIZE="$size" GAUGUIN_MATRIX_DIFFICULTY="$difficulty" GAUGUIN_MATRIX_SEED=0
+              export GAUGUIN_MATRIX_MAX_CANDIDATES=100 GAUGUIN_MATRIX_BUDGET_MS=60000
+              log="$RUNNER_TEMP/gauguin-cell.log"
+              # Remove prior cell results and force the integration test to execute afresh.
+              rm -rf gauguin-core/build/test-results/integrationTest gauguin-core/build/reports/tests/integrationTest
+              set +e
+              timeout --signal=TERM --kill-after=5s 100s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --rerun-tasks --no-daemon --console=plain -Pbuildserver --quiet >"$log" 2>&1
+              rc=$?
+              set -e
+              result=$(grep -m1 'MATRIX_RESULT ' "$log" || true)
+              # Gradle/Kotest may place println in JUnit XML instead of console output.
+              if [ -z "$result" ]; then
+                result=$(grep -oh 'MATRIX_RESULT [^<]*' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -1 || true)
+              fi
+              if [ -n "$result" ] && { [[ "$result" != *"size=$size "* ]] || [[ "$result" != *"difficulty=$difficulty "* ]] || [[ "$result" != *"seed=0 "* ]]; }; then
+                echo "MISMATCH requested size=$size difficulty=$difficulty result=$result"
+                result=""
+                status=INCONCLUSIVE
+              elif [ "$rc" -eq 124 ] || [ "$rc" -eq 137 ]; then status=TIMEOUT
+              elif [ "$rc" -ne 0 ]; then status=FAIL
+              elif [ -z "$result" ]; then status=INCONCLUSIVE
+              elif [[ "$result" != *"uniqueMatches="* ]] || [ "$(printf "%s" "$result" | grep -oE "uniqueMatches=[0-9]+" | cut -d= -f2)" -lt 1 ]; then status=INCONCLUSIVE
+              else status=PASS_DIAGNOSTIC_ONLY
+              fi
+              field() { printf '%s\n' "$result" | grep -oE "$1=[^ ]+" | head -1 | cut -d= -f2 || true; }
+              echo "$size,$difficulty,0,$status,$(field examined),$(field ratingMatches),$(field uniqueMatches),$(field nonUniqueMatches),$(field elapsedMs),false" >> "$RUNNER_TEMP/gauguin-sweep.csv"
+              echo "CELL size=$size difficulty=$difficulty status=$status $(printf '%s' "$result" | cut -c1-240)"
+              rm -f "$log"
+            done
+          done
+          echo '--- SUMMARY ---'
+          cat "$RUNNER_TEMP/gauguin-sweep.csv"
+          cp "$RUNNER_TEMP/gauguin-sweep.csv" ./gauguin-sweep.csv
+      - name: Upload compact summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gauguin-42-cell-verified-diagnostic
+          path: upstream/gauguin/gauguin-sweep.csv
+          if-no-files-found: warn
+          retention-days: 7

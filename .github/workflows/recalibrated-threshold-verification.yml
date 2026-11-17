@@ -1,0 +1,54 @@
+name: Recalibrated threshold verification
+on:
+  push:
+    branches: [logic-matrix-audit]
+    paths: ['.github/workflows/recalibrated-threshold-verification.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  generation:
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [10, 11]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Profile adjusted Very Hard thresholds
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_PROFILE_SIZE: ${{ matrix.size }}
+          GAUGUIN_PROFILE_SEED: '2'
+          GAUGUIN_PROFILE_MAX_CANDIDATES: '2000'
+          GAUGUIN_PROFILE_BUDGET_MS: '30000'
+        run: ./gradlew :gauguin-core:integrationTest --tests '*ExtremeGenerationRejectionProfileTest' --no-daemon --console=plain -Pbuildserver
+      - name: Preserve results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: recalibrated-generation-${{ matrix.size }}
+          path: upstream/gauguin/gauguin-core/build/test-results/integrationTest/**
+          if-no-files-found: warn
+  human-hard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Verify Hard 10x10 strategy soundness
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_AUDIT_SIZE: '10'
+          GAUGUIN_ADVANCED_LEVEL: HARD
+          GAUGUIN_ADVANCED_SEED: '0'
+          GAUGUIN_ADVANCED_SEEDS: '1'
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests '*AdvancedDifficultyStrategySafetyTest' --no-daemon --console=plain -Pbuildserver

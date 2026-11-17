@@ -74,6 +74,7 @@ testing {
                 implementation(project(":gauguin-grid-creation-via-merge"))
                 implementation(testFixtures(project(":gauguin-core")))
 
+                implementation.bundle(libs.bundles.koin)
                 implementation.bundle(libs.bundles.logging)
                 implementation(libs.logging.logback.kotlin)
 

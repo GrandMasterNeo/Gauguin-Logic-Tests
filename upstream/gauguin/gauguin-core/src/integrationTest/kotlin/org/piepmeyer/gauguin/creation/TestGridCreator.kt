@@ -45,6 +45,16 @@ class TestGridCreator :
             grid.getValidCellAt(2, 2).value shouldBe 2
         }
 
+        test("seeded generator defaults share deterministic random stream") {
+            val variant = GameVariant(
+                GridSize(10, 10),
+                GameOptionsVariant.createClassic(),
+            )
+            val first = RandomCageGridCalculator(variant, SeedRandomizerMock(0)).calculate()
+            val second = RandomCageGridCalculator(variant, SeedRandomizerMock(0)).calculate()
+            first.toString() shouldBe second.toString()
+        }
+
         test("deterministic random number generator leads to deterministic grids") {
             val variant =
                 GameVariant(

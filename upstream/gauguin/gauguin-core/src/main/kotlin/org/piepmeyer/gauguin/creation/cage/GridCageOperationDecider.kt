@@ -19,12 +19,38 @@ class GridCageOperationDecider(
         if (operationSet == GridCageOperation.OPERATIONS_MULT) {
             return GridCageAction.ACTION_MULTIPLY
         }
+        if (operationSet == GridCageOperation.OPERATIONS_ALL) {
+            return decideWeightedAllOperations()
+        }
         return when (getCalculationDecision()) {
             CageCalculationDecision.ADDITION_AND_SUBTRACTION ->
                 decideBetweenAdditionAndSubtraction()
             CageCalculationDecision.MULTIPLICATION_AND_DIVISION ->
                 decideBetweenMultiplicationAndDivision()
         }
+    }
+
+    // Target weights are conditional on cage feasibility, not guaranteed grid-wide ratios.
+    // Subtraction and division are only defined for two-cell cages.
+    private fun decideWeightedAllOperations(): GridCageAction {
+        val options = mutableListOf(
+            GridCageAction.ACTION_MULTIPLY to 65.0,
+            GridCageAction.ACTION_ADD to 16.0,
+        )
+        if (cells.size == 2) {
+            options += GridCageAction.ACTION_SUBTRACT to 8.0
+            if (canHandleDivide()) {
+                options += GridCageAction.ACTION_DIVIDE to 11.0
+            }
+        }
+        val totalWeight = options.sumOf { it.second }
+        val draw = randomizer.nextDouble() * totalWeight
+        var cumulative = 0.0
+        for ((action, weight) in options) {
+            cumulative += weight
+            if (draw < cumulative) return action
+        }
+        return options.last().first
     }
 
     private fun decideBetweenAdditionAndSubtraction(): GridCageAction {

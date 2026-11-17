@@ -1,0 +1,33 @@
+name: Seeded generation feedback test
+on:
+  push:
+    branches: [logic-matrix-audit]
+    paths:
+      - '.github/workflows/seeded-generation-feedback-ci.yml'
+      - 'upstream/gauguin/gauguin-core/src/main/kotlin/org/piepmeyer/gauguin/creation/**'
+      - 'upstream/gauguin/gauguin-core/src/integrationTest/kotlin/org/piepmeyer/gauguin/creation/TestGridCreator.kt'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  seeded-generation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Generate 10x10 puzzles and verify seed reproducibility
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-core:integrationTest --tests '*TestGridCreator' --no-daemon --console=plain --stacktrace -Pbuildserver
+      - name: Archive test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seeded-generation-feedback-results
+          path: |
+            upstream/gauguin/gauguin-core/build/test-results/integrationTest/**
+            upstream/gauguin/gauguin-core/build/reports/tests/integrationTest/**
+          if-no-files-found: warn

@@ -1,0 +1,29 @@
+name: Cage single-placement retry diagnostic
+on:
+  push:
+    branches: [logic-matrix-audit]
+    paths:
+      - 'upstream/gauguin/gauguin-core/src/integrationTest/kotlin/org/piepmeyer/gauguin/creation/CageSingleRetryDiagnosticTest.kt'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cage-single-retry-diagnostic
+  cancel-in-progress: false
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: One bounded deterministic diagnostic
+        working-directory: upstream/gauguin
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 240s ./gradlew :gauguin-core:integrationTest --tests '*CageSingleRetryDiagnosticTest' --no-daemon --console=plain -Pbuildserver --quiet > "$RUNNER_TEMP/cage-diagnostic.log" 2>&1 || { tail -n 60 "$RUNNER_TEMP/cage-diagnostic.log"; exit 1; }
+          tail -n 20 "$RUNNER_TEMP/cage-diagnostic.log"

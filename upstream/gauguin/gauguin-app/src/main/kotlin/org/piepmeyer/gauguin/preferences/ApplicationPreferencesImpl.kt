@@ -151,7 +151,7 @@ class ApplicationPreferencesImpl(
     override var difficultiesSetting: Set<DifficultySetting>
         get() {
             val difficulties = preferences.getStringSet("difficulties", setOf(DifficultySetting.EASY.name))!!
-            return difficulties.map { enumValueOf<DifficultySetting>(it) }.toSet()
+            return difficulties.map { DifficultySetting.valueOf(if (it == "VERY_HARD") "EXTREME" else it) }.toSet()
         }
         set(difficultiesSetting) {
             preferences.edit {

@@ -538,7 +538,7 @@
             "digitSetting": "FIRST_DIGIT_ZERO",
             "singleCageUsage": "FIXED_NUMBER"
         },
-        "thresholdEasy": 3.0,
+        "thresholdEasy": 3,
         "thresholdMedium": 3.18,
         "thresholdHard": 4.79,
         "thresholdExtreme": 4.85
@@ -2074,7 +2074,7 @@
             "digitSetting": "FIRST_DIGIT_MINUS_TWO",
             "singleCageUsage": "FIXED_NUMBER"
         },
-        "thresholdEasy": 3.0,
+        "thresholdEasy": 3,
         "thresholdMedium": 3.18,
         "thresholdHard": 4.56,
         "thresholdExtreme": 4.85
@@ -2716,7 +2716,7 @@
         },
         "thresholdEasy": 5.95,
         "thresholdMedium": 7.9,
-        "thresholdHard": 9.0,
+        "thresholdHard": 9,
         "thresholdExtreme": 10.63
     },
     {
@@ -2861,7 +2861,7 @@
         "thresholdEasy": 4.16,
         "thresholdMedium": 5.95,
         "thresholdHard": 7.45,
-        "thresholdExtreme": 9.0
+        "thresholdExtreme": 9
     },
     {
         "variant": {
@@ -2877,7 +2877,7 @@
         "thresholdEasy": 4.16,
         "thresholdMedium": 5.95,
         "thresholdHard": 7.45,
-        "thresholdExtreme": 9.0
+        "thresholdExtreme": 9
     },
     {
         "variant": {
@@ -3115,7 +3115,7 @@
             "singleCageUsage": "DYNAMIC"
         },
         "thresholdEasy": 6.76,
-        "thresholdMedium": 9.0,
+        "thresholdMedium": 9,
         "thresholdHard": 10.35,
         "thresholdExtreme": 11.89
     },
@@ -3147,7 +3147,7 @@
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
         "thresholdEasy": 7.05,
-        "thresholdMedium": 9.0,
+        "thresholdMedium": 9,
         "thresholdHard": 10.23,
         "thresholdExtreme": 11.33
     },
@@ -3323,7 +3323,7 @@
             "singleCageUsage": "FIXED_NUMBER"
         },
         "thresholdEasy": 6.92,
-        "thresholdMedium": 9.0,
+        "thresholdMedium": 9,
         "thresholdHard": 10.09,
         "thresholdExtreme": 11.33
     },
@@ -3517,7 +3517,7 @@
         "thresholdEasy": 5.26,
         "thresholdMedium": 7.05,
         "thresholdHard": 7.86,
-        "thresholdExtreme": 9.0
+        "thresholdExtreme": 9
     },
     {
         "variant": {
@@ -3532,7 +3532,7 @@
         },
         "thresholdEasy": 5.95,
         "thresholdMedium": 7.76,
-        "thresholdHard": 9.0,
+        "thresholdHard": 9,
         "thresholdExtreme": 10.23
     },
     {
@@ -3581,7 +3581,7 @@
         "thresholdEasy": 4.28,
         "thresholdMedium": 6.24,
         "thresholdHard": 7.34,
-        "thresholdExtreme": 9.0
+        "thresholdExtreme": 9
     },
     {
         "variant": {
@@ -3788,7 +3788,7 @@
         },
         "thresholdEasy": 5.66,
         "thresholdMedium": 7.74,
-        "thresholdHard": 9.0,
+        "thresholdHard": 9,
         "thresholdExtreme": 10.63
     },
     {
@@ -3901,7 +3901,7 @@
         "thresholdEasy": 5.26,
         "thresholdMedium": 7.05,
         "thresholdHard": 7.9,
-        "thresholdExtreme": 9.0
+        "thresholdExtreme": 9
     },
     {
         "variant": {
@@ -3965,7 +3965,7 @@
         "thresholdEasy": 4.28,
         "thresholdMedium": 6.36,
         "thresholdHard": 7.61,
-        "thresholdExtreme": 9.0
+        "thresholdExtreme": 9
     },
     {
         "variant": {
@@ -4172,7 +4172,7 @@
         },
         "thresholdEasy": 5.41,
         "thresholdMedium": 7.74,
-        "thresholdHard": 9.0,
+        "thresholdHard": 9,
         "thresholdExtreme": 10.63
     },
     {
@@ -4299,7 +4299,7 @@
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
         "thresholdEasy": 7.05,
-        "thresholdMedium": 9.0,
+        "thresholdMedium": 9,
         "thresholdHard": 10.23,
         "thresholdExtreme": 11.33
     },
@@ -4397,7 +4397,7 @@
         "thresholdEasy": 4.85,
         "thresholdMedium": 6.36,
         "thresholdHard": 7.34,
-        "thresholdExtreme": 9.0
+        "thresholdExtreme": 9
     },
     {
         "variant": {
@@ -4572,7 +4572,7 @@
         },
         "thresholdEasy": 5.41,
         "thresholdMedium": 7.74,
-        "thresholdHard": 9.0,
+        "thresholdHard": 9,
         "thresholdExtreme": 10.25
     },
     {
@@ -4810,7 +4810,7 @@
             "digitSetting": "FIRST_DIGIT_MINUS_TWO",
             "singleCageUsage": "FIXED_NUMBER"
         },
-        "thresholdEasy": 9.0,
+        "thresholdEasy": 9,
         "thresholdMedium": 10.65,
         "thresholdHard": 11.79,
         "thresholdExtreme": 13.13
@@ -4906,7 +4906,7 @@
             "digitSetting": "FIRST_DIGIT_MINUS_TWO",
             "singleCageUsage": "FIXED_NUMBER"
         },
-        "thresholdEasy": 9.0,
+        "thresholdEasy": 9,
         "thresholdMedium": 10.9,
         "thresholdHard": 12.07,
         "thresholdExtreme": 13.42
@@ -5067,7 +5067,7 @@
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
         "thresholdEasy": 6.8,
-        "thresholdMedium": 9.0,
+        "thresholdMedium": 9,
         "thresholdHard": 10.13,
         "thresholdExtreme": 11.33
     },
@@ -5629,7 +5629,7 @@
         "thresholdEasy": 16.87,
         "thresholdMedium": 19.33,
         "thresholdHard": 20.65,
-        "thresholdExtreme": 22.0
+        "thresholdExtreme": 22
     },
     {
         "variant": {
@@ -5693,7 +5693,7 @@
         "thresholdEasy": 14.48,
         "thresholdMedium": 16.99,
         "thresholdHard": 18.86,
-        "thresholdExtreme": 21.0
+        "thresholdExtreme": 21
     },
     {
         "variant": {
@@ -6139,7 +6139,7 @@
             "singleCageUsage": "DYNAMIC"
         },
         "thresholdEasy": 17.8,
-        "thresholdMedium": 20.0,
+        "thresholdMedium": 20,
         "thresholdHard": 21.53,
         "thresholdExtreme": 23.53
     },
@@ -6171,7 +6171,7 @@
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
         "thresholdEasy": 10.4,
-        "thresholdMedium": 13.0,
+        "thresholdMedium": 13,
         "thresholdHard": 14.5,
         "thresholdExtreme": 16.7
     },
@@ -6203,7 +6203,7 @@
             "singleCageUsage": "FIXED_NUMBER"
         },
         "thresholdEasy": 11.9,
-        "thresholdMedium": 14.0,
+        "thresholdMedium": 14,
         "thresholdHard": 15.37,
         "thresholdExtreme": 17.14
     },
@@ -6250,7 +6250,7 @@
             "digitSetting": "PRIME_NUMBERS",
             "singleCageUsage": "FIXED_NUMBER"
         },
-        "thresholdEasy": 9.0,
+        "thresholdEasy": 9,
         "thresholdMedium": 11.21,
         "thresholdHard": 12.71,
         "thresholdExtreme": 14.91
@@ -6427,7 +6427,7 @@
             "singleCageUsage": "DYNAMIC"
         },
         "thresholdEasy": 14.62,
-        "thresholdMedium": 17.0,
+        "thresholdMedium": 17,
         "thresholdHard": 18.53,
         "thresholdExtreme": 20.36
     },
@@ -6570,7 +6570,7 @@
             "digitSetting": "FIBONACCI_SEQUENCE",
             "singleCageUsage": "DYNAMIC"
         },
-        "thresholdEasy": 9.0,
+        "thresholdEasy": 9,
         "thresholdMedium": 11.48,
         "thresholdHard": 13.27,
         "thresholdExtreme": 15.37
@@ -6652,7 +6652,7 @@
         },
         "thresholdEasy": 9.13,
         "thresholdMedium": 11.48,
-        "thresholdHard": 13.0,
+        "thresholdHard": 13,
         "thresholdExtreme": 15.1
     },
     {
@@ -6666,7 +6666,7 @@
             "digitSetting": "FIBONACCI_SEQUENCE",
             "singleCageUsage": "DYNAMIC"
         },
-        "thresholdEasy": 9.0,
+        "thresholdEasy": 9,
         "thresholdMedium": 11.19,
         "thresholdHard": 12.87,
         "thresholdExtreme": 14.91
@@ -6779,7 +6779,7 @@
             "singleCageUsage": "FIXED_NUMBER"
         },
         "thresholdEasy": 13.98,
-        "thresholdMedium": 16.0,
+        "thresholdMedium": 16,
         "thresholdHard": 17.14,
         "thresholdExtreme": 18.53
     },
@@ -7437,7 +7437,7 @@
         "thresholdEasy": 15.35,
         "thresholdMedium": 18.12,
         "thresholdHard": 19.76,
-        "thresholdExtreme": 22.0
+        "thresholdExtreme": 22
     },
     {
         "variant": {
@@ -10269,7 +10269,7 @@
         "thresholdEasy": 31.34,
         "thresholdMedium": 34.57,
         "thresholdHard": 36.47,
-        "thresholdExtreme": 39.0
+        "thresholdExtreme": 39
     },
     {
         "variant": {
@@ -10394,7 +10394,7 @@
             "digitSetting": "FIRST_DIGIT_MINUS_FIVE",
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
-        "thresholdEasy": 26.0,
+        "thresholdEasy": 26,
         "thresholdMedium": 30.25,
         "thresholdHard": 32.95,
         "thresholdExtreme": 36.23
@@ -10717,7 +10717,7 @@
         "thresholdEasy": 26.51,
         "thresholdMedium": 29.93,
         "thresholdHard": 32.06,
-        "thresholdExtreme": 35.0
+        "thresholdExtreme": 35
     },
     {
         "variant": {
@@ -11949,7 +11949,7 @@
         "thresholdEasy": 23.21,
         "thresholdMedium": 26.79,
         "thresholdHard": 29.06,
-        "thresholdExtreme": 32.0
+        "thresholdExtreme": 32
     },
     {
         "variant": {
@@ -12170,7 +12170,7 @@
             "digitSetting": "FIBONACCI_SEQUENCE",
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
-        "thresholdEasy": 34.0,
+        "thresholdEasy": 34,
         "thresholdMedium": 36.62,
         "thresholdHard": 38.57,
         "thresholdExtreme": 41.15
@@ -12490,7 +12490,7 @@
             "digitSetting": "PADOVAN_SEQUENCE",
             "singleCageUsage": "FIXED_NUMBER"
         },
-        "thresholdEasy": 34.0,
+        "thresholdEasy": 34,
         "thresholdMedium": 38.13,
         "thresholdHard": 40.85,
         "thresholdExtreme": 45.05
@@ -12765,7 +12765,7 @@
         "thresholdEasy": 43.12,
         "thresholdMedium": 46.94,
         "thresholdHard": 49.25,
-        "thresholdExtreme": 52.0
+        "thresholdExtreme": 52
     },
     {
         "variant": {
@@ -12938,7 +12938,7 @@
             "digitSetting": "FIRST_DIGIT_MINUS_TWO",
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
-        "thresholdEasy": 51.0,
+        "thresholdEasy": 51,
         "thresholdMedium": 54.49,
         "thresholdHard": 56.25,
         "thresholdExtreme": 58.5
@@ -13051,7 +13051,7 @@
             "singleCageUsage": "DYNAMIC"
         },
         "thresholdEasy": 47.32,
-        "thresholdMedium": 51.0,
+        "thresholdMedium": 51,
         "thresholdHard": 53.33,
         "thresholdExtreme": 56.22
     },
@@ -13180,7 +13180,7 @@
         },
         "thresholdEasy": 38.92,
         "thresholdMedium": 43.94,
-        "thresholdHard": 47.0,
+        "thresholdHard": 47,
         "thresholdExtreme": 50.98
     },
     {
@@ -13754,7 +13754,7 @@
             "digitSetting": "FIRST_DIGIT_ONE",
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
-        "thresholdEasy": 55.0,
+        "thresholdEasy": 55,
         "thresholdMedium": 60.5,
         "thresholdHard": 63.79,
         "thresholdExtreme": 68.49
@@ -14141,7 +14141,7 @@
         "thresholdEasy": 63.02,
         "thresholdMedium": 68.53,
         "thresholdHard": 71.96,
-        "thresholdExtreme": 76.0
+        "thresholdExtreme": 76
     },
     {
         "variant": {
@@ -14218,7 +14218,7 @@
             "digitSetting": "PRIME_NUMBERS",
             "singleCageUsage": "FIXED_NUMBER"
         },
-        "thresholdEasy": 36.0,
+        "thresholdEasy": 36,
         "thresholdMedium": 40.38,
         "thresholdHard": 43.45,
         "thresholdExtreme": 47.58
@@ -14379,7 +14379,7 @@
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
         "thresholdEasy": 29.13,
-        "thresholdMedium": 33.0,
+        "thresholdMedium": 33,
         "thresholdHard": 35.08,
         "thresholdExtreme": 38.66
     },
@@ -14651,7 +14651,7 @@
             "singleCageUsage": "FIXED_NUMBER"
         },
         "thresholdEasy": 35.98,
-        "thresholdMedium": 39.0,
+        "thresholdMedium": 39,
         "thresholdHard": 41.07,
         "thresholdExtreme": 44.14
     },
@@ -14763,7 +14763,7 @@
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
         "thresholdEasy": 29.13,
-        "thresholdMedium": 33.0,
+        "thresholdMedium": 33,
         "thresholdHard": 35.08,
         "thresholdExtreme": 38.66
     },
@@ -15181,7 +15181,7 @@
         "thresholdEasy": 49.1,
         "thresholdMedium": 53.63,
         "thresholdHard": 57.08,
-        "thresholdExtreme": 61.0
+        "thresholdExtreme": 61
     },
     {
         "variant": {
@@ -15484,7 +15484,7 @@
         },
         "thresholdEasy": 58.31,
         "thresholdMedium": 64.22,
-        "thresholdHard": 68.0,
+        "thresholdHard": 68,
         "thresholdExtreme": 73.06
     },
     {
@@ -15804,7 +15804,7 @@
         },
         "thresholdEasy": 61.76,
         "thresholdMedium": 65.65,
-        "thresholdHard": 68.0,
+        "thresholdHard": 68,
         "thresholdExtreme": 70.83
     },
     {
@@ -16028,7 +16028,7 @@
         },
         "thresholdEasy": 69.72,
         "thresholdMedium": 73.51,
-        "thresholdHard": 76.0,
+        "thresholdHard": 76,
         "thresholdExtreme": 78.98
     },
     {
@@ -16283,7 +16283,7 @@
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
         "thresholdEasy": 51.44,
-        "thresholdMedium": 56.0,
+        "thresholdMedium": 56,
         "thresholdHard": 58.98,
         "thresholdExtreme": 63.54
     },
@@ -16797,7 +16797,7 @@
         "thresholdEasy": 78.41,
         "thresholdMedium": 84.45,
         "thresholdHard": 88.18,
-        "thresholdExtreme": 93.0
+        "thresholdExtreme": 93
     },
     {
         "variant": {
@@ -16957,7 +16957,7 @@
         "thresholdEasy": 36.17,
         "thresholdMedium": 40.05,
         "thresholdHard": 42.77,
-        "thresholdExtreme": 46.0
+        "thresholdExtreme": 46
     },
     {
         "variant": {
@@ -17387,7 +17387,7 @@
             "singleCageUsage": "FIXED_NUMBER"
         },
         "thresholdEasy": 48.64,
-        "thresholdMedium": 53.0,
+        "thresholdMedium": 53,
         "thresholdHard": 55.99,
         "thresholdExtreme": 59.43
     },
@@ -17642,7 +17642,7 @@
             "digitSetting": "PADOVAN_SEQUENCE",
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
-        "thresholdEasy": 76.0,
+        "thresholdEasy": 76,
         "thresholdMedium": 80.36,
         "thresholdHard": 83.04,
         "thresholdExtreme": 86.81
@@ -18122,7 +18122,7 @@
             "digitSetting": "FIRST_DIGIT_MINUS_TWO",
             "singleCageUsage": "DYNAMIC"
         },
-        "thresholdEasy": 75.0,
+        "thresholdEasy": 75,
         "thresholdMedium": 80.73,
         "thresholdHard": 84.97,
         "thresholdExtreme": 89.99
@@ -18140,7 +18140,7 @@
         },
         "thresholdEasy": 88.95,
         "thresholdMedium": 95.07,
-        "thresholdHard": 99.0,
+        "thresholdHard": 99,
         "thresholdExtreme": 103.64
     },
     {
@@ -18538,10 +18538,10 @@
             "digitSetting": "FIRST_DIGIT_ONE",
             "singleCageUsage": "FIXED_NUMBER"
         },
-        "thresholdEasy": 87.98,
-        "thresholdMedium": 94.71,
-        "thresholdHard": 100.0,
-        "thresholdExtreme": 107.28
+        "thresholdEasy": 82,
+        "thresholdMedium": 89,
+        "thresholdHard": 94,
+        "thresholdExtreme": 98
     },
     {
         "variant": {
@@ -19101,7 +19101,7 @@
         "thresholdEasy": 94.34,
         "thresholdMedium": 99.38,
         "thresholdHard": 102.75,
-        "thresholdExtreme": 107.0
+        "thresholdExtreme": 107
     },
     {
         "variant": {
@@ -19131,7 +19131,7 @@
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
         "thresholdEasy": 68.02,
-        "thresholdMedium": 75.0,
+        "thresholdMedium": 75,
         "thresholdHard": 79.99,
         "thresholdExtreme": 86.94
     },
@@ -19532,7 +19532,7 @@
         },
         "thresholdEasy": 53.87,
         "thresholdMedium": 58.69,
-        "thresholdHard": 62.0,
+        "thresholdHard": 62,
         "thresholdExtreme": 66.62
     },
     {
@@ -19546,7 +19546,7 @@
             "digitSetting": "FIBONACCI_SEQUENCE",
             "singleCageUsage": "FIXED_NUMBER"
         },
-        "thresholdEasy": 46.0,
+        "thresholdEasy": 46,
         "thresholdMedium": 50.51,
         "thresholdHard": 53.16,
         "thresholdExtreme": 56.75
@@ -19994,7 +19994,7 @@
             "digitSetting": "PADOVAN_SEQUENCE",
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
-        "thresholdEasy": 92.0,
+        "thresholdEasy": 92,
         "thresholdMedium": 97.49,
         "thresholdHard": 101.15,
         "thresholdExtreme": 106.49
@@ -20428,7 +20428,7 @@
         },
         "thresholdEasy": 115.34,
         "thresholdMedium": 120.57,
-        "thresholdHard": 124.0,
+        "thresholdHard": 124,
         "thresholdExtreme": 128.3
     },
     {
@@ -20442,10 +20442,10 @@
             "digitSetting": "FIRST_DIGIT_ONE",
             "singleCageUsage": "FIXED_NUMBER"
         },
-        "thresholdEasy": 109.6,
-        "thresholdMedium": 118.8,
-        "thresholdHard": 124.51,
-        "thresholdExtreme": 132.4
+        "thresholdEasy": 99,
+        "thresholdMedium": 108,
+        "thresholdHard": 114,
+        "thresholdExtreme": 119
     },
     {
         "variant": {
@@ -20970,7 +20970,7 @@
             "digitSetting": "PRIME_NUMBERS",
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
-        "thresholdEasy": 98.0,
+        "thresholdEasy": 98,
         "thresholdMedium": 105.7,
         "thresholdHard": 111.69,
         "thresholdExtreme": 119.04
@@ -21181,7 +21181,7 @@
         "thresholdEasy": 74.19,
         "thresholdMedium": 78.78,
         "thresholdHard": 82.02,
-        "thresholdExtreme": 87.0
+        "thresholdExtreme": 87
     },
     {
         "variant": {
@@ -21228,7 +21228,7 @@
         },
         "thresholdEasy": 64.58,
         "thresholdMedium": 69.42,
-        "thresholdHard": 73.0,
+        "thresholdHard": 73,
         "thresholdExtreme": 77.62
     },
     {
@@ -21452,7 +21452,7 @@
         },
         "thresholdEasy": 75.65,
         "thresholdMedium": 80.86,
-        "thresholdHard": 84.0,
+        "thresholdHard": 84,
         "thresholdExtreme": 89.31
     },
     {
@@ -21594,7 +21594,7 @@
             "digitSetting": "PADOVAN_SEQUENCE",
             "singleCageUsage": "DYNAMIC"
         },
-        "thresholdEasy": 117.0,
+        "thresholdEasy": 117,
         "thresholdMedium": 122.05,
         "thresholdHard": 125.99,
         "thresholdExtreme": 131.14
@@ -21883,7 +21883,7 @@
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
         "thresholdEasy": 118.73,
-        "thresholdMedium": 126.0,
+        "thresholdMedium": 126,
         "thresholdHard": 130.65,
         "thresholdExtreme": 137.94
     },
@@ -22045,7 +22045,7 @@
         "thresholdEasy": 115.08,
         "thresholdMedium": 119.6,
         "thresholdHard": 122.9,
-        "thresholdExtreme": 127.0
+        "thresholdExtreme": 127
     },
     {
         "variant": {
@@ -22122,7 +22122,7 @@
             "digitSetting": "FIRST_DIGIT_ZERO",
             "singleCageUsage": "DYNAMIC"
         },
-        "thresholdEasy": 127.0,
+        "thresholdEasy": 127,
         "thresholdMedium": 136.82,
         "thresholdHard": 143.04,
         "thresholdExtreme": 152.33
@@ -22586,7 +22586,7 @@
             "digitSetting": "FIRST_DIGIT_ONE",
             "singleCageUsage": "NO_SINGLE_CAGES"
         },
-        "thresholdEasy": 126.0,
+        "thresholdEasy": 126,
         "thresholdMedium": 134.87,
         "thresholdHard": 141.53,
         "thresholdExtreme": 150.51

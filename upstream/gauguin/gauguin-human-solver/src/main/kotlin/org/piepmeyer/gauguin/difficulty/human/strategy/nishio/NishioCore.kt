@@ -33,6 +33,13 @@ class NishioCore(
                 }
 
                 if (!detectPossibles(tryGrid)) {
+                    // A branch can be impossible even when no individual cell
+                    // is empty and no cage has yet been completely filled.
+                    // Check these global/local constraints only at a dead end
+                    // to avoid slowing every speculative propagation step.
+                    if (hasUnfillableRequiredDigit(tryGrid) || hasUnfillableCage(tryGrid)) {
+                        return NishioResult.Contradictions()
+                    }
                     return NishioResult.NothingFound()
                 }
             } else {
@@ -147,6 +154,41 @@ class NishioCore(
         }
         return deletedPossibles
     }
+
+    /**
+     * A row/column containing all digits must leave a place for each digit.
+     * A missing placement is a contradiction even if every remaining cell
+     * still has two or more candidate digits.
+     */
+    private fun hasUnfillableRequiredDigit(tryGrid: Grid): Boolean =
+        GridLinesProvider(tryGrid).linesWithEachPossibleValue().any { line ->
+            val cells = line.cells()
+            tryGrid.variant.possibleDigits.any { digit ->
+                cells.none { cell ->
+                    cell.userValue == digit ||
+                        (!cell.isUserValueSet && digit in cell.possibles)
+                }
+            }
+        }
+
+    /**
+     * The original cage cache contains every combination compatible with
+     * the parent state. A speculative branch must retain at least one such
+     * combination in each cage, including cages not yet completely filled.
+     * This uses clue arithmetic, never the puzzle's stored hidden answer.
+     */
+    private fun hasUnfillableCage(tryGrid: Grid): Boolean =
+        tryGrid.cages.any { cage ->
+            possiblesCache.possibles(cage.id).none { combination ->
+                cage.cells.withIndex().all { (index, cell) ->
+                    if (cell.isUserValueSet) {
+                        cell.userValue == combination[index]
+                    } else {
+                        combination[index] in cell.possibles
+                    }
+                }
+            }
+        }
 
     private fun isConsistentTrial(tryGrid: Grid): Boolean {
         if (tryGrid.cells.any { !it.isUserValueSet && it.possibles.isEmpty() }) return false
