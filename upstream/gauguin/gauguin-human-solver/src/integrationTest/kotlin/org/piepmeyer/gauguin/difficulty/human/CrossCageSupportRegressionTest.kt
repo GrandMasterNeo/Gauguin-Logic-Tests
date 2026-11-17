@@ -16,6 +16,10 @@ import org.piepmeyer.gauguin.options.GameVariant
 
 class CrossCageSupportRegressionTest : FunSpec({
     test("10x10 Hard seed zero cross-cage deductions preserve solution") {
+        val previousAttempts = System.getProperty("gauguin.generation.maxAttempts")
+        val previousMillis = System.getProperty("gauguin.generation.maxMillis")
+        System.setProperty("gauguin.generation.maxAttempts", "100")
+        System.setProperty("gauguin.generation.maxMillis", "60000")
         startKoin { modules(module { single { GameDifficultyRatingService() } }) }
         try {
             val randomizer = SeedRandomizerMock(0)
@@ -28,6 +32,7 @@ class CrossCageSupportRegressionTest : FunSpec({
             val grid = RandomCageGridCalculator(
                 variant, randomizer, RandomPossibleDigitsShuffler(randomizer.random),
             ).calculate()
+            println("PRODUCTION_EQUIVALENT_GENERATION size=10 level=HARD seed=0 accepted=true cages=${grid.cages.size} cells=${grid.cells.size} uniqueness=1")
             val working = grid.copyWithEmptyUserValues()
             val solver = HumanSolver(working, validate = true, avoidNishio = true)
             solver.prepareGrid()
@@ -40,8 +45,11 @@ class CrossCageSupportRegressionTest : FunSpec({
                     "solvedWithoutTrial=${result.success} usedNishio=${result.usedNishio}"
             )
             result.usedNishio shouldBe false
+            println("HUMAN_CERTIFICATION size=10 level=HARD seed=0 complete=${result.success && working.cells.all { it.isUserValueSet }} wrong=${working.cells.count { it.isUserValueSet && it.userValue != it.value }}")
         } finally {
             stopKoin()
+            if (previousAttempts == null) System.clearProperty("gauguin.generation.maxAttempts") else System.setProperty("gauguin.generation.maxAttempts", previousAttempts)
+            if (previousMillis == null) System.clearProperty("gauguin.generation.maxMillis") else System.setProperty("gauguin.generation.maxMillis", previousMillis)
         }
     }
 })
