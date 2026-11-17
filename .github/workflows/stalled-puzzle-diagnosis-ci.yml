@@ -107,23 +107,33 @@ jobs:
               match = re.search(r"board=(\d+) level=(\w+) seed=(\d+)", record)
               if match:
                   compliance_seen.add((int(match.group(1)), match.group(2), int(match.group(3))))
-          # Hard seed 0 is the bounded, reproducible 38-strategy frontier audit.
+          # Hard seed 0 is checked against the current registered strategy inventory.
           # Other matrix cases may time out before reaching a strategy frontier.
           frontier = {}
+          duplicate_frontier = set()
           for record in records:
               if not record.startswith("STALL_STRATEGY_FRONTIER "):
                   continue
               match = re.search(r"board=(\d+) level=(\w+) seed=(\d+).*strategy=(\w+) nishio=(true|false)", record)
               if match:
                   key = (int(match.group(1)), match.group(2), int(match.group(3)))
-                  frontier.setdefault(key, {})[match.group(4)] = match.group(5)
+                  strategy_name = match.group(4)
+                  case_frontier = frontier.setdefault(key, {})
+                  if strategy_name in case_frontier and case_frontier[strategy_name] != match.group(5):
+                      duplicate_frontier.add((key, strategy_name))
+                  case_frontier[strategy_name] = match.group(5)
+          registry_path = pathlib.Path("upstream/gauguin/gauguin-human-solver/src/main/kotlin/org/piepmeyer/gauguin/difficulty/human/HumanSolverStrategies.kt")
+          registry_source = registry_path.read_text(encoding="utf-8")
+          registered = re.findall(r"^\s*(A\w+)\(", registry_source, flags=re.MULTILINE)
+          expected_registry = {name: ("true" if "Nishio" in name else "false") for name in registered}
+          if len(registered) != len(expected_registry) or len(registered) < 37 or sum(v == "true" for v in expected_registry.values()) != 2:
+              print("ERROR: invalid or incomplete strategy registry inventory", file=sys.stderr)
+              sys.exit(1)
           audit_case = (10, "HARD", 0)
           frontier_ok = True
           if audit_case in expected:
               strategies = frontier.get(audit_case, {})
-              frontier_ok = (len(strategies) == 38
-                             and sum(value == "false" for value in strategies.values()) == 36
-                             and sum(value == "true" for value in strategies.values()) == 2)
+              frontier_ok = strategies == expected_registry and not duplicate_frontier
           reporting_ok = seen == expected and compliance_seen == expected and frontier_ok
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as out:
               out.write("## Stalled-puzzle diagnostics\n\n")
