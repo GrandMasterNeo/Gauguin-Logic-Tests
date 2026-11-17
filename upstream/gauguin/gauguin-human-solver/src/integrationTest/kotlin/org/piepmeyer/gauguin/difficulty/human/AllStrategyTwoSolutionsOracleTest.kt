@@ -13,7 +13,7 @@ import org.piepmeyer.gauguin.options.GameVariant
 import kotlin.random.Random
 
 /**
- * Mathematical soundness stress test for the entire 37-strategy registry.
+ * Mathematical soundness stress test for the entire extensible-strategy registry.
  *
  * Every input is a 4x4 board partitioned into four horizontal addition cages
  * (sum 10 each). All 4x4 Latin squares satisfy every cage. We construct two
@@ -65,7 +65,7 @@ class AllStrategyTwoSolutionsOracleTest :
         }
 
         test("all registered strategies preserve TWO distinct legal solutions") {
-            HumanSolverStrategies.entries.size shouldBe 37
+            HumanSolverStrategies.entries.size shouldBe 38
 
             val triggered = mutableMapOf<String, Int>()
             var checks = 0
