@@ -40,15 +40,20 @@ jobs:
             status=PASS_DIAGNOSTIC_ONLY
             if [ "$rc" -ne 0 ] || [ -z "$result" ] || [ "${unique:-0}" -lt 1 ]; then
               status=FAIL
-              [ "$rc" -eq 124 ] && status=TIMEOUT
+              if [ "$rc" -eq 124 ] || [ "$rc" -eq 137 ]; then status=TIMEOUT; fi
               failures=$((failures+1))
             fi
             echo "${{ matrix.size }},$difficulty,0,$status,${unique:-0},false" >> matrix-results.csv
-            echo "CELL ${{ matrix.size }} $difficulty $status $result"
+            echo "CELL ${{ matrix.size }} $difficulty $status exit=$rc $result"
+            if [ "$status" != "PASS_DIAGNOSTIC_ONLY" ]; then
+              echo "::group::Failure diagnostics ${{ matrix.size }}x${{ matrix.size }} $difficulty"
+              tail -n 100 cell.log
+              echo "::endgroup::"
+            fi
             tail -n 12 cell.log
           done
           cat matrix-results.csv
-          exit "$((failures > 0))"
+          if [ "$failures" -gt 0 ]; then exit 1; fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
