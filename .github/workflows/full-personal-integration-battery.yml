@@ -44,6 +44,8 @@ jobs:
               assert f'GridCageAction.ACTION_{action} to {weight}' in code, action
           print('Experimental calibration preserved: 10x10, 11x11 thresholds and 65/16/8/11 operation weights')
           PY
+      # Probe up to 1000 candidates to distinguish low-yield generation from hard failures.
+      # This is still a diagnostic, not human-solver certification.
       - name: Run all five difficulty levels with independent bounded cells
         shell: bash
         working-directory: upstream/gauguin
@@ -53,7 +55,7 @@ jobs:
           failures=0
           for difficulty in VERY_EASY EASY MEDIUM HARD EXTREME; do
             export GAUGUIN_MATRIX_SIZE="${{ matrix.size }}" GAUGUIN_MATRIX_DIFFICULTY="$difficulty" GAUGUIN_MATRIX_SEED=0
-            export GAUGUIN_MATRIX_MAX_CANDIDATES=100 GAUGUIN_MATRIX_BUDGET_MS=60000
+            export GAUGUIN_MATRIX_MAX_CANDIDATES=1000 GAUGUIN_MATRIX_BUDGET_MS=60000
             rm -rf gauguin-core/build/test-results/integrationTest
             set +e
             timeout --signal=TERM --kill-after=5s 120s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --rerun-tasks --no-daemon --console=plain -Pbuildserver --quiet > cell.log 2>&1
