@@ -72,8 +72,9 @@ jobs:
             fi
             echo "${{ matrix.size }},$difficulty,0,$status,${solutions:-0},false" >> matrix-results.csv
             echo "CELL ${{ matrix.size }} $difficulty $status exit=$rc $result"
-            if [ "$status" != "PASS_DIAGNOSTIC_ONLY" ]; then
+            if [ "$status" != "PASS_PRODUCTION_UNIQUENESS" ]; then
               echo "::group::Failure diagnostics ${{ matrix.size }}x${{ matrix.size }} $difficulty"
+              grep -A 18 -B 2 '<failure' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -n 80 || true
               tail -n 100 cell.log
               echo "::endgroup::"
             fi
