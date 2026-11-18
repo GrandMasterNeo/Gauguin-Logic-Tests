@@ -21,6 +21,29 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
+      - name: Verify preserved experimental difficulty thresholds and arithmetic weights
+        working-directory: upstream/gauguin
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          ratings = json.loads(Path('gauguin-core/src/main/resources/org/piepmeyer/gauguin/difficulty/difficulty-ratings.yml').read_text())
+          expected = {10: (82, 89, 94, 98), 11: (99, 108, 114, 119)}
+          for size, values in expected.items():
+              matches = [entry for entry in ratings if entry['variant']['gridSize'] == {'width': size, 'height': size}
+                         and entry['variant']['showOperators']
+                         and entry['variant']['cageOperation'] == 'OPERATIONS_ALL'
+                         and entry['variant']['digitSetting'] == 'FIRST_DIGIT_ONE'
+                         and entry['variant']['singleCageUsage'] == 'FIXED_NUMBER']
+              assert len(matches) == 1, (size, len(matches))
+              actual = tuple(matches[0]['threshold' + label] for label in ('Easy', 'Medium', 'Hard', 'Extreme'))
+              assert actual == values, (size, actual, values)
+          code = Path('gauguin-core/src/main/kotlin/org/piepmeyer/gauguin/creation/cage/GridCageOperationDecider.kt').read_text()
+          for action, weight in (('MULTIPLY', '65.0'), ('ADD', '16.0'), ('SUBTRACT', '8.0'), ('DIVIDE', '11.0')):
+              assert f'GridCageAction.ACTION_{action} to {weight}' in code, action
+          print('Experimental calibration preserved: 10x10, 11x11 thresholds and 65/16/8/11 operation weights')
+          PY
       - name: Run all five difficulty levels with independent bounded cells
         shell: bash
         working-directory: upstream/gauguin
