@@ -2,17 +2,22 @@ package org.piepmeyer.gauguin.creation
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
+import kotlinx.coroutines.runBlocking
+import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
+import org.koin.dsl.module
 import org.piepmeyer.gauguin.creation.dlx.DLX
 import org.piepmeyer.gauguin.creation.dlx.MathDokuDLX
 import org.piepmeyer.gauguin.difficulty.GameDifficultyRater
+import org.piepmeyer.gauguin.difficulty.GameDifficultyRatingService
 import org.piepmeyer.gauguin.grid.GridSize
 import org.piepmeyer.gauguin.options.DifficultySetting
 import org.piepmeyer.gauguin.options.GameOptionsVariant
 import org.piepmeyer.gauguin.options.GameVariant
 
 /**
- * One bounded diagnostic cell, not a certificate of human deduction-only solvability.
- * A rating match is never treated as an accepted puzzle unless DLX uniqueness passes.
+ * Exercise the production calculator, including its difficulty and uniqueness
+ * rejection gates. A passing result is NOT human deduction-only certification.
  */
 class ProgressiveGenerationMatrixTest : FunSpec({
     val size = System.getenv("GAUGUIN_MATRIX_SIZE")?.toIntOrNull() ?: 3
@@ -20,48 +25,37 @@ class ProgressiveGenerationMatrixTest : FunSpec({
     val seed = System.getenv("GAUGUIN_MATRIX_SEED")?.toIntOrNull() ?: 0
     val maxCandidates = System.getenv("GAUGUIN_MATRIX_MAX_CANDIDATES")?.toIntOrNull() ?: 1000
     val budgetMs = System.getenv("GAUGUIN_MATRIX_BUDGET_MS")?.toLongOrNull() ?: 60000L
-    require(size in 3..11 && seed >= 0 && maxCandidates in 1..1000 && budgetMs in 1000L..60000L)
+    require(size in 3..11 && seed >= 0 && maxCandidates in 1..100000 && budgetMs in 1000L..60000L)
 
-    test("bounded generation size=$size difficulty=$difficulty seed=$seed") {
+    test("production generation size=$size difficulty=$difficulty seed=$seed") {
         val variant = GameVariant(
             GridSize(size, size),
             GameOptionsVariant.createClassic().copy(difficultiesSetting = setOf(difficulty)),
         )
-        val randomizer = SeedRandomizerMock(seed)
-        val creator = GridCreator(variant, randomizer, RandomPossibleDigitsShuffler(randomizer.random))
-        val rater = GameDifficultyRater()
-        var examined = 0
-        var ratingMatches = 0
-        var uniqueMatches = 0
-        var nonUniqueMatches = 0
-        var ratingMs = 0L
-        var generationMs = 0L
-        var uniquenessMs = 0L
+        // Properties are read by the production calculator when calculate() starts.
+        System.setProperty("gauguin.generation.maxAttempts", maxCandidates.toString())
+        System.setProperty("gauguin.generation.maxMillis", budgetMs.toString())
+        startKoin { modules(module { single { GameDifficultyRatingService() } }) }
         val started = System.nanoTime()
-        println("MATRIX_START size=$size difficulty=$difficulty seed=$seed budgetMs=$budgetMs maxCandidates=$maxCandidates")
+        println("MATRIX_START size=$size difficulty=$difficulty seed=$seed production=true budgetMs=$budgetMs maxCandidates=$maxCandidates")
         try {
-            while (examined < maxCandidates && (System.nanoTime() - started) / 1_000_000 < budgetMs && uniqueMatches == 0) {
-                val makeStart = System.nanoTime()
-                val grid = creator.createRandomizedGridWithCages()
-                generationMs += (System.nanoTime() - makeStart) / 1_000_000
-                examined++
-                val rateStart = System.nanoTime()
-                val actual = rater.difficulty(grid)
-                ratingMs += (System.nanoTime() - rateStart) / 1_000_000
-                if (actual == difficulty) {
-                    ratingMatches++
-                    val dlxStart = System.nanoTime()
-                    val solutions = MathDokuDLX(grid).solve(DLX.SolveType.MULTIPLE)
-                    uniquenessMs += (System.nanoTime() - dlxStart) / 1_000_000
-                    if (solutions == 1) uniqueMatches++ else nonUniqueMatches++
-                }
+            val randomizer = SeedRandomizerMock(seed)
+            val grid = runBlocking {
+                RandomCageGridCalculator(
+                    variant, randomizer, RandomPossibleDigitsShuffler(randomizer.random),
+                ).calculate()
             }
-        } finally {
+            val actual = GameDifficultyRater().difficulty(grid)
+            val solutions = MathDokuDLX(grid).solve(DLX.SolveType.MULTIPLE)
             val elapsedMs = (System.nanoTime() - started) / 1_000_000
-            println("MATRIX_RESULT size=$size difficulty=$difficulty seed=$seed examined=$examined ratingMatches=$ratingMatches uniqueMatches=$uniqueMatches nonUniqueMatches=$nonUniqueMatches elapsedMs=$elapsedMs generationMs=$generationMs ratingMs=$ratingMs uniquenessMs=$uniquenessMs humanCertified=false")
+            println("MATRIX_RESULT size=$size difficulty=$difficulty seed=$seed production=true actual=$actual solutions=$solutions elapsedMs=$elapsedMs humanCertified=false")
             System.out.flush()
+            actual shouldBe difficulty
+            solutions shouldBe 1
+        } finally {
+            stopKoin()
+            System.clearProperty("gauguin.generation.maxAttempts")
+            System.clearProperty("gauguin.generation.maxMillis")
         }
-        // A green test must find a uniquely solvable rating match; otherwise fail explicitly.
-        (uniqueMatches > 0) shouldBe true
     }
 })
