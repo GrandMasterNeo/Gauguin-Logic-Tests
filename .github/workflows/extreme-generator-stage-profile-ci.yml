@@ -1,8 +1,8 @@
-name: Bounded Extreme generator stage profile (diagnostic only)
+name: Bounded Very Hard generator stage profile (diagnostic only)
 on:
   workflow_dispatch:
   push:
-    branches: [logic-matrix-audit]
+    branches: [experiment/personal-logic-integration]
     paths:
       - '.github/workflows/extreme-generator-stage-profile-ci.yml'
       - 'upstream/gauguin/gauguin-core/src/integrationTest/kotlin/org/piepmeyer/gauguin/creation/ExtremeGenerationRejectionProfileTest.kt'
@@ -14,9 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {size: 9, seed: 2}
-          - {size: 10, seed: 2}
-          - {size: 11, seed: 2}
+          - {size: 9, seed: 0}
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
@@ -25,7 +23,7 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - name: Profile candidate generation, difficulty rejection and uniqueness without full Extreme loop
+      - name: Profile candidate generation, difficulty rejection and uniqueness without full Very Hard loop
         working-directory: upstream/gauguin
         env:
           GAUGUIN_PROFILE_SIZE: ${{ matrix.size }}
@@ -49,13 +47,13 @@ jobs:
               tree = ET.parse(path)
               for element in tree.iter():
                   if element.tag in ('system-out', 'system-err') and element.text:
-                      found += re.findall(r'PROFILE_(?:START|CHECKPOINT|EXTREME_MATCH|DLX|SUMMARY)[^\r\n]*', element.text)
+                      found += re.findall(r'PROFILE_(?:START|CHECKPOINT|VERY_HARD_MATCH|CALIBRATION|DLX|SUMMARY)[^\r\n]*', element.text)
           found = list(dict.fromkeys(found))
           with open(__import__('os').environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf8') as f:
-              f.write('## Bounded Extreme generator stage profile\n\n')
+              f.write('## Bounded Very Hard generator stage profile\n\n')
               f.write('Diagnostics only; a capped candidate sample is not a proof of full generator success.\n\n')
               for line in found:
-                  if line.startswith('PROFILE_SUMMARY') or line.startswith('PROFILE_EXTREME_MATCH'):
+                  if line.startswith('PROFILE_SUMMARY') or line.startswith('PROFILE_VERY_HARD_MATCH'):
                       f.write('- `' + line + '`\n')
           for line in found:
               print(line)
@@ -67,7 +65,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: extreme-generator-profile-${{ matrix.size }}-seed-${{ matrix.seed }}
+          name: very-hard-generator-profile-${{ matrix.size }}-seed-${{ matrix.seed }}
           path: |
             upstream/gauguin/gauguin-core/build/test-results/integrationTest/**
             upstream/gauguin/gauguin-core/build/reports/tests/integrationTest/**

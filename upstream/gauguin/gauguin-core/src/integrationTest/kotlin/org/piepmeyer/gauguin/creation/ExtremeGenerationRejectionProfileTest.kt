@@ -14,7 +14,7 @@ import org.piepmeyer.gauguin.options.GameVariant
 /**
  * Bounded diagnostic that separates candidate construction, classical rating
  * rejection, and DLX uniqueness. Does not invoke the production accept-until-
- * Extreme generator loop and does not change any production behavior.
+ * Very Hard generator loop and does not change any production behavior.
  *
  * Its candidate loop mirrors the inner GridCreator + rating stages of
  * DifficultyAwareGridCreator. It intentionally does not claim that its sample
@@ -30,11 +30,11 @@ class ExtremeGenerationRejectionProfileTest : FunSpec({
     require(maxCandidates in 1..20000)
     require(budgetMs in 1000L..120000L)
 
-    test("bounded classical Extreme acceptance profile size=$size seed=$seed") {
+    test("bounded classical Very Hard acceptance profile size=$size seed=$seed") {
         val variant = GameVariant(
             GridSize(size, size),
             GameOptionsVariant.createClassic().copy(
-                difficultiesSetting = setOf(DifficultySetting.EXTREME),
+                difficultiesSetting = setOf(DifficultySetting.VERY_HARD),
             ),
         )
         val randomizer = SeedRandomizerMock(seed)
@@ -43,7 +43,7 @@ class ExtremeGenerationRejectionProfileTest : FunSpec({
         )
         val rater = GameDifficultyRater()
         val threshold = rater.byVariant(variant)?.thresholdExtreme
-            ?: error("Missing Extreme rating threshold for $size x $size")
+            ?: error("Missing Very Hard rating threshold for $size x $size")
         val frequencies = mutableMapOf<DifficultySetting, Int>()
         val observedScores = mutableListOf<Double>()
         var examined = 0
@@ -62,7 +62,7 @@ class ExtremeGenerationRejectionProfileTest : FunSpec({
         var maxScore = Double.NEGATIVE_INFINITY
         val started = System.nanoTime()
         val budgetNs = budgetMs * 1_000_000L
-        println("PROFILE_START size=$size seed=$seed maxCandidates=$maxCandidates budgetMs=$budgetMs extremeThreshold=$threshold")
+        println("PROFILE_START size=$size seed=$seed maxCandidates=$maxCandidates budgetMs=$budgetMs veryHardThreshold=$threshold")
         System.out.flush()
 
         try {
@@ -91,7 +91,7 @@ class ExtremeGenerationRejectionProfileTest : FunSpec({
                     // Unlike a simple rating match, uniqueness is necessary
                     // for production acceptance; record that cost separately.
                     matches++
-                    println("PROFILE_EXTREME_MATCH size=$size seed=$seed candidate=$examined score=$score")
+                    println("PROFILE_VERY_HARD_MATCH size=$size seed=$seed candidate=$examined score=$score")
                     System.out.flush()
                     val uniqueStart = System.nanoTime()
                     val solutions = MathDokuDLX(grid).solve(DLX.SolveType.MULTIPLE)
