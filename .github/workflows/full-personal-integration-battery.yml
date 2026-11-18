@@ -32,8 +32,10 @@ jobs:
             export GAUGUIN_MATRIX_SIZE="${{ matrix.size }}" GAUGUIN_MATRIX_DIFFICULTY="$difficulty" GAUGUIN_MATRIX_SEED=0
             export GAUGUIN_MATRIX_MAX_CANDIDATES=100 GAUGUIN_MATRIX_BUDGET_MS=60000
             rm -rf gauguin-core/build/test-results/integrationTest
+            set +e
             timeout --signal=TERM --kill-after=5s 120s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --rerun-tasks --no-daemon --console=plain -Pbuildserver --quiet > cell.log 2>&1
             rc=$?
+            set -e
             result=$(grep -oh 'MATRIX_RESULT [^<]*' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -1 || true)
             [ -n "$result" ] || result=$(grep -m1 'MATRIX_RESULT ' cell.log || true)
             unique=$(printf '%s' "$result" | grep -oE 'uniqueMatches=[0-9]+' | head -1 | cut -d= -f2 || true)
@@ -50,7 +52,7 @@ jobs:
               tail -n 100 cell.log
               echo "::endgroup::"
             fi
-            tail -n 12 cell.log
+            tail -n 12 cell.log || true
           done
           cat matrix-results.csv
           if [ "$failures" -gt 0 ]; then exit 1; fi
