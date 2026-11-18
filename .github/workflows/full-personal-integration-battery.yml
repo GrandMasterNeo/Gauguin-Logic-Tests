@@ -45,6 +45,7 @@ jobs:
           print('Experimental calibration preserved: 10x10, 11x11 thresholds and 65/16/8/11 operation weights')
           PY
       # Exercise the production calculator and its full acceptance gates.
+      # Integration test suite explicitly includes Koin on its compile classpath.
       - name: Run all five difficulty levels with independent bounded cells
         shell: bash
         working-directory: upstream/gauguin
