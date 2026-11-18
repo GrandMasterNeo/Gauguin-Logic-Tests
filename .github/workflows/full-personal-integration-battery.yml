@@ -2,7 +2,7 @@ name: Full 3x3-11x11 five-difficulty integration battery
 on:
   push:
     branches: [experiment/personal-logic-integration]
-    paths: ['.github/workflows/full-personal-integration-battery.yml', 'upstream/gauguin/gauguin-core/src/integrationTest/kotlin/org/piepmeyer/gauguin/creation/ProgressiveGenerationMatrixTest.kt']
+    paths: ['.github/workflows/full-personal-integration-battery.yml', 'upstream/gauguin/gauguin-core/src/integrationTest/kotlin/org/piepmeyer/gauguin/creation/ProgressiveGenerationMatrixTest.kt', 'upstream/gauguin/gauguin-core/build.gradle.kts']
   workflow_dispatch:
 permissions:
   contents: read
