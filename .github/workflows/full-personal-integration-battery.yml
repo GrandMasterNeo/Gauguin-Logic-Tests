@@ -2,7 +2,7 @@ name: Full 3x3-11x11 five-difficulty integration battery
 on:
   push:
     branches: [experiment/personal-logic-integration]
-    paths: ['.github/workflows/full-personal-integration-battery.yml']
+    paths: ['.github/workflows/full-personal-integration-battery.yml', 'upstream/gauguin/gauguin-core/src/integrationTest/kotlin/org/piepmeyer/gauguin/creation/ProgressiveGenerationMatrixTest.kt']
   workflow_dispatch:
 permissions:
   contents: read
@@ -44,18 +44,17 @@ jobs:
               assert f'GridCageAction.ACTION_{action} to {weight}' in code, action
           print('Experimental calibration preserved: 10x10, 11x11 thresholds and 65/16/8/11 operation weights')
           PY
-      # Probe up to 1000 candidates to distinguish low-yield generation from hard failures.
-      # This is still a diagnostic, not human-solver certification.
+      # Exercise the production calculator and its full acceptance gates.
       - name: Run all five difficulty levels with independent bounded cells
         shell: bash
         working-directory: upstream/gauguin
         run: |
           set -uo pipefail
-          echo 'size,difficulty,seed,status,uniqueMatches,humanCertified' > matrix-results.csv
+          echo 'size,difficulty,seed,status,solutions,humanCertified' > matrix-results.csv
           failures=0
           for difficulty in VERY_EASY EASY MEDIUM HARD EXTREME; do
             export GAUGUIN_MATRIX_SIZE="${{ matrix.size }}" GAUGUIN_MATRIX_DIFFICULTY="$difficulty" GAUGUIN_MATRIX_SEED=0
-            export GAUGUIN_MATRIX_MAX_CANDIDATES=1000 GAUGUIN_MATRIX_BUDGET_MS=60000
+            export GAUGUIN_MATRIX_MAX_CANDIDATES=100000 GAUGUIN_MATRIX_BUDGET_MS=60000
             rm -rf gauguin-core/build/test-results/integrationTest
             set +e
             timeout --signal=TERM --kill-after=5s 120s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --rerun-tasks --no-daemon --console=plain -Pbuildserver --quiet > cell.log 2>&1
@@ -63,14 +62,14 @@ jobs:
             set -e
             result=$(grep -oh 'MATRIX_RESULT [^<]*' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -1 || true)
             [ -n "$result" ] || result=$(grep -m1 'MATRIX_RESULT ' cell.log || true)
-            unique=$(printf '%s' "$result" | grep -oE 'uniqueMatches=[0-9]+' | head -1 | cut -d= -f2 || true)
-            status=PASS_DIAGNOSTIC_ONLY
-            if [ "$rc" -ne 0 ] || [ -z "$result" ] || [ "${unique:-0}" -lt 1 ]; then
+            solutions=$(printf '%s' "$result" | grep -oE 'solutions=[0-9]+' | head -1 | cut -d= -f2 || true)
+            status=PASS_PRODUCTION_UNIQUENESS
+            if [ "$rc" -ne 0 ] || [ -z "$result" ] || [ "${solutions:-0}" -ne 1 ]; then
               status=FAIL
               if [ "$rc" -eq 124 ] || [ "$rc" -eq 137 ]; then status=TIMEOUT; fi
               failures=$((failures+1))
             fi
-            echo "${{ matrix.size }},$difficulty,0,$status,${unique:-0},false" >> matrix-results.csv
+            echo "${{ matrix.size }},$difficulty,0,$status,${solutions:-0},false" >> matrix-results.csv
             echo "CELL ${{ matrix.size }} $difficulty $status exit=$rc $result"
             if [ "$status" != "PASS_DIAGNOSTIC_ONLY" ]; then
               echo "::group::Failure diagnostics ${{ matrix.size }}x${{ matrix.size }} $difficulty"
