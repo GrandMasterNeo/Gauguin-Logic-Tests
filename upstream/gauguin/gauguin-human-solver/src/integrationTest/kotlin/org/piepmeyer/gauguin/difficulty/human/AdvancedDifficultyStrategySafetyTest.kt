@@ -34,7 +34,7 @@ class AdvancedDifficultyStrategySafetyTest :
         val seedCount = System.getenv("GAUGUIN_ADVANCED_SEEDS")?.toIntOrNull() ?: 2
         val requestedLevel = System.getenv("GAUGUIN_ADVANCED_LEVEL")?.takeIf { it.isNotBlank() }
         val requestedSeed = System.getenv("GAUGUIN_ADVANCED_SEED")?.toIntOrNull()
-        require(requestedLevel == null || requestedLevel in setOf("MEDIUM", "HARD", "EXTREME"))
+        require(requestedLevel == null || requestedLevel in setOf("MEDIUM", "HARD", "VERY_HARD"))
         require(requestedSeed == null || requestedSeed in 0 until seedCount) { "Requested seed must be within configured seed range" }
         require(size in setOf(9, 10, 11))
         require(seedCount in 1..20)
@@ -54,7 +54,7 @@ class AdvancedDifficultyStrategySafetyTest :
                 for (level in listOf(
                     DifficultySetting.MEDIUM,
                     DifficultySetting.HARD,
-                    DifficultySetting.EXTREME,
+                    DifficultySetting.VERY_HARD,
                 ).filter { requestedLevel == null || it.name == requestedLevel }) {
                     var solvedWithoutReveal = 0
                     var unsolvedWithoutReveal = 0

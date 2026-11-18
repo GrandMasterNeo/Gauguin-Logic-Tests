@@ -217,7 +217,7 @@ class GridCellOptionsFragment :
                 binding.chipDifficultyEasy.id to setOf(DifficultySetting.EASY),
                 binding.chipDifficultyMedium.id to setOf(DifficultySetting.MEDIUM),
                 binding.chipDifficultyHard.id to setOf(DifficultySetting.HARD),
-                binding.chipDifficultyVeryHard.id to setOf(DifficultySetting.EXTREME),
+                binding.chipDifficultyVeryHard.id to setOf(DifficultySetting.VERY_HARD),
             )
 
         binding.difficultyChipGroup.setOnCheckedStateChangeListener(difficultyChangelistener())
@@ -255,7 +255,7 @@ class GridCellOptionsFragment :
             binding.chipDifficultyEasy.isChecked = DifficultySetting.EASY in applicationPreferences.difficultiesSetting
             binding.chipDifficultyMedium.isChecked = DifficultySetting.MEDIUM in applicationPreferences.difficultiesSetting
             binding.chipDifficultyHard.isChecked = DifficultySetting.HARD in applicationPreferences.difficultiesSetting
-            binding.chipDifficultyVeryHard.isChecked = DifficultySetting.EXTREME in applicationPreferences.difficultiesSetting
+            binding.chipDifficultyVeryHard.isChecked = DifficultySetting.VERY_HARD in applicationPreferences.difficultiesSetting
         } else {
             val chipId =
                 singleDifficultyIdMap

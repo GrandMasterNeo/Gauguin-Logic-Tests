@@ -2,7 +2,7 @@ name: Full 3x3-11x11 five-difficulty integration battery
 on:
   push:
     branches: [experiment/personal-logic-integration]
-    paths: ['.github/workflows/full-personal-integration-battery.yml', 'upstream/gauguin/gauguin-core/src/integrationTest/kotlin/org/piepmeyer/gauguin/creation/ProgressiveGenerationMatrixTest.kt', 'upstream/gauguin/gauguin-core/build.gradle.kts']
+    paths: ['.github/workflows/full-personal-integration-battery.yml', 'upstream/gauguin/gauguin-core/**', 'upstream/gauguin/gauguin-human-solver/**', 'upstream/gauguin/gauguin-app/**']
   workflow_dispatch:
 permissions:
   contents: read
@@ -53,7 +53,7 @@ jobs:
           set -uo pipefail
           echo 'size,difficulty,seed,status,solutions,humanCertified' > matrix-results.csv
           failures=0
-          for difficulty in VERY_EASY EASY MEDIUM HARD EXTREME; do
+          for difficulty in VERY_EASY EASY MEDIUM HARD VERY_HARD; do
             export GAUGUIN_MATRIX_SIZE="${{ matrix.size }}" GAUGUIN_MATRIX_DIFFICULTY="$difficulty" GAUGUIN_MATRIX_SEED=0
             export GAUGUIN_MATRIX_MAX_CANDIDATES=100000 GAUGUIN_MATRIX_BUDGET_MS=60000
             rm -rf gauguin-core/build/test-results/integrationTest

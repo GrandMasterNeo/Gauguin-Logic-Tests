@@ -86,8 +86,8 @@ class MainGameDifficultyLevelFragment(
         binding.mediumMinimumValue.text = formatDifficulty(uiRating.thresholdText(DifficultySetting.MEDIUM))
         binding.mediumMaximumValue.text = formatDifficulty(uiRating.thresholdText(DifficultySetting.HARD))
         binding.hardMinimumValue.text = formatDifficulty(uiRating.thresholdText(DifficultySetting.HARD))
-        binding.hardMaximumValue.text = formatDifficulty(uiRating.thresholdText(DifficultySetting.EXTREME))
-        binding.extremeMinimumValue.text = formatDifficulty(uiRating.thresholdText(DifficultySetting.EXTREME))
+        binding.hardMaximumValue.text = formatDifficulty(uiRating.thresholdText(DifficultySetting.VERY_HARD))
+        binding.extremeMinimumValue.text = formatDifficulty(uiRating.thresholdText(DifficultySetting.VERY_HARD))
     }
 
     private fun layoutWithDifficulty(
@@ -100,7 +100,7 @@ class MainGameDifficultyLevelFragment(
                 DifficultySetting.EASY -> R.id.easy
                 DifficultySetting.MEDIUM -> R.id.medium
                 DifficultySetting.HARD -> R.id.hard
-                DifficultySetting.EXTREME -> R.id.extreme
+                DifficultySetting.VERY_HARD -> R.id.extreme
             }
 
         setHighlighterConstraintsToMatch(difficulty, referenceId, parent)
@@ -156,7 +156,7 @@ class MainGameDifficultyLevelFragment(
             DifficultySetting.EASY -> listOf(binding.easy, binding.easyMinimumValue, binding.easyMaximumValue)
             DifficultySetting.MEDIUM -> listOf(binding.medium, binding.mediumMinimumValue, binding.mediumMaximumValue)
             DifficultySetting.HARD -> listOf(binding.hard, binding.hardMinimumValue, binding.hardMaximumValue)
-            DifficultySetting.EXTREME -> listOf(binding.extreme, binding.extremeMinimumValue, binding.extremeMaximumValue)
+            DifficultySetting.VERY_HARD -> listOf(binding.extreme, binding.extremeMinimumValue, binding.extremeMaximumValue)
         }
 
     private fun hightlightedImageViews(difficulty: DifficultySetting): List<ImageView> =
@@ -197,7 +197,7 @@ class MainGameDifficultyLevelFragment(
                 )
             }
 
-            DifficultySetting.EXTREME -> {
+            DifficultySetting.VERY_HARD -> {
                 listOf(
                     binding.ratingStarExtremeOne,
                     binding.ratingStarExtremeTwo,

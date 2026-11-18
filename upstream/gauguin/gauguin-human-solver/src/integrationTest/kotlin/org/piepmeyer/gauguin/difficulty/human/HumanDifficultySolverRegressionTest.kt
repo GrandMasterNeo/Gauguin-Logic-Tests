@@ -35,7 +35,7 @@ class HumanDifficultySolverRegressionTest :
                 4,
                 GameOptionsVariant.createClassic().copy(
                     difficultiesSetting =
-                        setOf(DifficultySetting.EXTREME),
+                        setOf(DifficultySetting.VERY_HARD),
                     digitSetting = DigitSetting.FIRST_DIGIT_ZERO,
                 ),
             ) shouldBe
@@ -70,7 +70,7 @@ class HumanDifficultySolverRegressionTest :
             options: GameOptionsVariant =
                 GameOptionsVariant.createClassic().copy(
                     difficultiesSetting =
-                        setOf(DifficultySetting.EXTREME),
+                        setOf(DifficultySetting.VERY_HARD),
                 ),
         ): Pair<Int, Int> {
             var unsolved = 0
