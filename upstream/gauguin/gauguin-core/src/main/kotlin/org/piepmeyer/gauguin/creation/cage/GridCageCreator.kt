@@ -63,6 +63,22 @@ class GridCageCreator(
         cagesToTry += GridCageType.classicCageTypes()
         cagesToTry -= GridCageType.SINGLE
 
+        // Experimental 9x9 Very Hard geometry bias: favor larger cages to
+        // counter the observed surplus of low-scoring, high-cage-count grids.
+        // Every chosen shape must still satisfy the original geometry checks.
+        // All other sizes and difficulty settings retain their prior selection.
+        val preferLarge = grid.gridSize.width == 9 &&
+            grid.gridSize.height == 9 &&
+            grid.options.difficultiesSetting ==
+                setOf(org.piepmeyer.gauguin.options.DifficultySetting.VERY_HARD)
+        if (preferLarge && randomizer.nextInt(4) != 0) {
+            val larger = cagesToTry.filter { it.coordinates.size == 4 }
+                .filter { isValidCageType(it, cell, grid) }
+            if (larger.isNotEmpty()) {
+                return larger.random(randomizer.random())
+            }
+        }
+
         while (cagesToTry.isNotEmpty()) {
             val cageType = cagesToTry.random(randomizer.random())
 
