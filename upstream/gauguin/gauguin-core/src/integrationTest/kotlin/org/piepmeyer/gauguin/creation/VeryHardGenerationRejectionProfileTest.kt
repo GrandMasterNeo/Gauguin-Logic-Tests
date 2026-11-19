@@ -60,6 +60,8 @@ class VeryHardGenerationRejectionProfileTest : FunSpec({
         var maxRatingNs = 0L
         var scoreSum = 0.0
         var maxScore = Double.NEGATIVE_INFINITY
+        var bestCandidateCages = "none"
+        val scoreByCageCount = mutableMapOf<Int, MutableList<Double>>()
         val started = System.nanoTime()
         val budgetNs = budgetMs * 1_000_000L
         println("PROFILE_START size=$size seed=$seed maxCandidates=$maxCandidates budgetMs=$budgetMs veryHardThreshold=$threshold")
@@ -83,7 +85,12 @@ class VeryHardGenerationRejectionProfileTest : FunSpec({
                 examined++
                 scoreSum += score
                 observedScores.add(score)
-                if (score > maxScore) maxScore = score
+                if (score > maxScore) {
+                    maxScore = score
+                    bestCandidateCages = "shapes=${grid.cages.groupingBy { it.cageType.name }.eachCount().toSortedMap()} " +
+                        "operations=${grid.cages.groupingBy { it.action.name }.eachCount().toSortedMap()}"
+                }
+                scoreByCageCount.getOrPut(grid.cages.size) { mutableListOf() }.add(score)
                 if (level != null) {
                     frequencies[level] = (frequencies[level] ?: 0) + 1
                 }
@@ -134,6 +141,11 @@ class VeryHardGenerationRejectionProfileTest : FunSpec({
                         "note=classical-only-no-uniqueness-or-human-certification",
                 )
             }
+            println("PROFILE_BEST_CAGES size=$size seed=$seed score=$maxScore $bestCandidateCages")
+            println("PROFILE_CAGE_COUNT_SCORES size=$size seed=$seed groups=" +
+                scoreByCageCount.toSortedMap().mapValues { (_, values) ->
+                    "count=${values.size},mean=${values.average()},max=${values.maxOrNull()}"
+                })
             println(
                 "PROFILE_SUMMARY size=$size seed=$seed attempted=$examined " +
                     "elapsedMs=$elapsedMs budgetMs=$budgetMs " +
