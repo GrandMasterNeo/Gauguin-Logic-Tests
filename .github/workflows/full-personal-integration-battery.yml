@@ -2,7 +2,7 @@ name: Full 3x3-11x11 five-difficulty integration battery
 on:
   push:
     branches: [experiment/personal-logic-integration]
-    paths: ['.github/workflows/full-personal-integration-battery.yml', 'upstream/gauguin/gauguin-core/**', 'upstream/gauguin/gauguin-human-solver/**', 'upstream/gauguin/gauguin-app/**']
+    paths: ['.github/workflows/full-personal-integration-battery.yml', 'upstream/gauguin/gauguin-core/**', 'upstream/gauguin/gauguin-human-solver/**', 'upstream/gauguin/gauguin-app/**', 'upstream/gauguin/gauguin-grid-creation-via-merge/**']
   workflow_dispatch:
 permissions:
   contents: read

@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/human-strategy-registry-oracle-ci.yml'
       - 'upstream/gauguin/gauguin-human-solver/**'
+      - 'upstream/gauguin/gauguin-grid-creation-via-merge/**'
   workflow_dispatch:
 permissions:
   contents: read

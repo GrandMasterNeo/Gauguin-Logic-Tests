@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/human-production-compatibility-ci.yml'
       - 'upstream/gauguin/gauguin-human-solver/**'
+      - 'upstream/gauguin/gauguin-grid-creation-via-merge/**'
       - 'upstream/gauguin/gauguin-core/**'
   workflow_dispatch:
 permissions:
