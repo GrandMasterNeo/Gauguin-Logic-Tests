@@ -1,0 +1,39 @@
+name: Human strategy registry and two-solution oracle
+on:
+  push:
+    branches: [experiment/personal-logic-integration]
+    paths:
+      - '.github/workflows/human-strategy-registry-oracle-ci.yml'
+      - 'upstream/gauguin/gauguin-human-solver/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  strategy-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [HumanStrategyRegistryInvariantTest, AllStrategyTwoSolutionsOracleTest]
+    name: ${{ matrix.suite }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Verify registry or independent two-solution soundness
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_TWO_SOLUTIONS_VARIATIONS: '12'
+        run: ./gradlew :gauguin-human-solver:integrationTest --tests "*${{ matrix.suite }}" --no-daemon --stacktrace -Pbuildserver
+      - name: Save evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: human-strategy-${{ matrix.suite }}
+          path: |
+            upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
+            upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
+          if-no-files-found: warn
