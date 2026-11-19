@@ -47,13 +47,13 @@ jobs:
               tree = ET.parse(path)
               for element in tree.iter():
                   if element.tag in ('system-out', 'system-err') and element.text:
-                      found += re.findall(r'PROFILE_(?:START|CHECKPOINT|VERY_HARD_MATCH|CALIBRATION|DLX|SUMMARY)[^\r\n]*', element.text)
+                      found += re.findall(r'PROFILE_(?:START|CHECKPOINT|VERY_HARD_MATCH|CALIBRATION|DLX|BEST_CAGES|CAGE_COUNT_SCORES|SUMMARY)[^\r\n]*', element.text)
           found = list(dict.fromkeys(found))
           with open(__import__('os').environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf8') as f:
               f.write('## Bounded Very Hard generator stage profile\n\n')
               f.write('Diagnostics only; a capped candidate sample is not a proof of full generator success.\n\n')
               for line in found:
-                  if line.startswith('PROFILE_SUMMARY') or line.startswith('PROFILE_VERY_HARD_MATCH'):
+                  if line.startswith('PROFILE_SUMMARY') or line.startswith('PROFILE_VERY_HARD_MATCH') or line.startswith('PROFILE_BEST_CAGES') or line.startswith('PROFILE_CAGE_COUNT_SCORES'):
                       f.write('- `' + line + '`\n')
           for line in found:
               print(line)
