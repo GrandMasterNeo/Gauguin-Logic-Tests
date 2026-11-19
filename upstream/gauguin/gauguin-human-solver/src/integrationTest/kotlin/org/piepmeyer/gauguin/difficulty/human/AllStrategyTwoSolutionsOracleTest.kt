@@ -65,7 +65,7 @@ class AllStrategyTwoSolutionsOracleTest :
         }
 
         test("all registered strategies preserve TWO distinct legal solutions") {
-            HumanSolverStrategies.entries.size shouldBe 37
+            HumanSolverStrategies.entries.size shouldBe 38
 
             val triggered = mutableMapOf<String, Int>()
             var checks = 0
