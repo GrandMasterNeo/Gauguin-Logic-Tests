@@ -1,0 +1,54 @@
+name: Number variant staged production verification
+on:
+  push:
+    branches: [experiment/personal-logic-integration]
+    paths:
+      - '.github/workflows/number-variant-staged-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  zero-based-smoke:
+    name: Zero-based 3x3 five difficulties
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Prepare Gradle once outside per-cell time limits
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-core:compileIntegrationTestKotlin --no-daemon -Pbuildserver --console=plain
+      - name: Verify zero-based 3x3 all difficulties
+        working-directory: upstream/gauguin
+        shell: bash
+        run: |
+          set -uo pipefail
+          export GAUGUIN_MATRIX_SIZE=3 GAUGUIN_MATRIX_SEED=0 GAUGUIN_MATRIX_DIGIT_SETTING=FIRST_DIGIT_ZERO
+          export GAUGUIN_MATRIX_MAX_CANDIDATES=100000 GAUGUIN_MATRIX_BUDGET_MS=60000
+          for difficulty in VERY_EASY EASY MEDIUM HARD VERY_HARD; do
+            export GAUGUIN_MATRIX_DIFFICULTY="$difficulty"
+            rm -rf gauguin-core/build/test-results/integrationTest
+            set +e
+            timeout --signal=TERM --kill-after=5s 120s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --quiet > cell.log 2>&1
+            rc=$?
+            set -e
+            result=$(grep -oh 'MATRIX_RESULT [^<]*' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -1 || true)
+            [ -n "$result" ] || result=$(grep -m1 'MATRIX_RESULT ' cell.log || true)
+            echo "VARIANT_CELL 3 FIRST_DIGIT_ZERO $difficulty exit=$rc $result"
+            if [ "$rc" -ne 0 ] || ! printf '%s' "$result" | grep -q 'solutions=1'; then
+              echo "::group::Variant failure diagnostics"
+              tail -n 120 cell.log
+              grep -A 18 -B 2 '<failure' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -n 80 || true
+              echo "::endgroup::"
+              exit 1
+            fi
+          done
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: zero-based-smoke-diagnostics
+          path: upstream/gauguin/cell.log
+          if-no-files-found: warn
