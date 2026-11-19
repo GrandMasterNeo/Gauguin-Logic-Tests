@@ -15,6 +15,8 @@ import org.piepmeyer.gauguin.options.DigitSetting
 import org.piepmeyer.gauguin.options.DifficultySetting
 import org.piepmeyer.gauguin.options.GameOptionsVariant
 import org.piepmeyer.gauguin.options.GameVariant
+import org.piepmeyer.gauguin.options.NumeralSystem
+import org.piepmeyer.gauguin.options.SingleCageUsage
 
 /**
  * Exercise the production calculator, including its difficulty and uniqueness
@@ -24,6 +26,8 @@ class ProgressiveGenerationMatrixTest : FunSpec({
     val size = System.getenv("GAUGUIN_MATRIX_SIZE")?.toIntOrNull() ?: 3
     val difficulty = DifficultySetting.valueOf(System.getenv("GAUGUIN_MATRIX_DIFFICULTY") ?: "VERY_EASY")
     val digitSetting = DigitSetting.valueOf(System.getenv("GAUGUIN_MATRIX_DIGIT_SETTING") ?: "FIRST_DIGIT_ONE")
+    val numeralSystem = NumeralSystem.valueOf(System.getenv("GAUGUIN_MATRIX_NUMERAL_SYSTEM") ?: "Decimal")
+    val singleCageUsage = SingleCageUsage.valueOf(System.getenv("GAUGUIN_MATRIX_SINGLE_CAGE") ?: "FIXED_NUMBER")
     val seed = System.getenv("GAUGUIN_MATRIX_SEED")?.toIntOrNull() ?: 0
     val maxCandidates = System.getenv("GAUGUIN_MATRIX_MAX_CANDIDATES")?.toIntOrNull() ?: 1000
     val budgetMs = System.getenv("GAUGUIN_MATRIX_BUDGET_MS")?.toLongOrNull() ?: 60000L
@@ -32,14 +36,18 @@ class ProgressiveGenerationMatrixTest : FunSpec({
     test("production generation size=$size difficulty=$difficulty seed=$seed") {
         val variant = GameVariant(
             GridSize(size, size),
-            GameOptionsVariant.createClassic(digitSetting).copy(difficultiesSetting = setOf(difficulty)),
+            GameOptionsVariant.createClassic(digitSetting).copy(
+                difficultiesSetting = setOf(difficulty),
+                numeralSystem = numeralSystem,
+                singleCageUsage = singleCageUsage,
+            ),
         )
         // Properties are read by the production calculator when calculate() starts.
         System.setProperty("gauguin.generation.maxAttempts", maxCandidates.toString())
         System.setProperty("gauguin.generation.maxMillis", budgetMs.toString())
         startKoin { modules(module { single { GameDifficultyRatingService() } }) }
         val started = System.nanoTime()
-        println("MATRIX_START size=$size difficulty=$difficulty seed=$seed production=true digitSetting=$digitSetting budgetMs=$budgetMs maxCandidates=$maxCandidates")
+        println("MATRIX_START size=$size difficulty=$difficulty seed=$seed production=true digitSetting=$digitSetting numeralSystem=$numeralSystem singleCage=$singleCageUsage budgetMs=$budgetMs maxCandidates=$maxCandidates")
         try {
             val randomizer = SeedRandomizerMock(seed)
             val grid = runBlocking {
@@ -50,7 +58,7 @@ class ProgressiveGenerationMatrixTest : FunSpec({
             val actual = GameDifficultyRater().difficulty(grid)
             val solutions = MathDokuDLX(grid).solve(DLX.SolveType.MULTIPLE)
             val elapsedMs = (System.nanoTime() - started) / 1_000_000
-            println("MATRIX_RESULT size=$size difficulty=$difficulty seed=$seed production=true digitSetting=$digitSetting actual=$actual solutions=$solutions elapsedMs=$elapsedMs humanCertified=false")
+            println("MATRIX_RESULT size=$size difficulty=$difficulty seed=$seed production=true digitSetting=$digitSetting numeralSystem=$numeralSystem singleCage=$singleCageUsage actual=$actual solutions=$solutions elapsedMs=$elapsedMs humanCertified=false")
             System.out.flush()
             actual shouldBe difficulty
             solutions shouldBe 1
