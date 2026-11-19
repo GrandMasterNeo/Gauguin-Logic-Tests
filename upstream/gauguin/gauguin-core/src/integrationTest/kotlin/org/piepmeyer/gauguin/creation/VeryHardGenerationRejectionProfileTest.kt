@@ -20,7 +20,7 @@ import org.piepmeyer.gauguin.options.GameVariant
  * DifficultyAwareGridCreator. It intentionally does not claim that its sample
  * is a full end-to-end production generation time benchmark.
  */
-class ExtremeGenerationRejectionProfileTest : FunSpec({
+class VeryHardGenerationRejectionProfileTest : FunSpec({
     val size = System.getenv("GAUGUIN_PROFILE_SIZE")?.toIntOrNull() ?: 10
     val seed = System.getenv("GAUGUIN_PROFILE_SEED")?.toIntOrNull() ?: 2
     val maxCandidates = System.getenv("GAUGUIN_PROFILE_MAX_CANDIDATES")?.toIntOrNull() ?: 2000

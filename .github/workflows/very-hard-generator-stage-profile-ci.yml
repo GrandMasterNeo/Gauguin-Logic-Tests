@@ -4,8 +4,8 @@ on:
   push:
     branches: [experiment/personal-logic-integration]
     paths:
-      - '.github/workflows/extreme-generator-stage-profile-ci.yml'
-      - 'upstream/gauguin/gauguin-core/src/integrationTest/kotlin/org/piepmeyer/gauguin/creation/ExtremeGenerationRejectionProfileTest.kt'
+      - '.github/workflows/very-hard-generator-stage-profile-ci.yml'
+      - 'upstream/gauguin/gauguin-core/src/integrationTest/kotlin/org/piepmeyer/gauguin/creation/VeryHardGenerationRejectionProfileTest.kt'
 permissions:
   contents: read
 jobs:
@@ -30,7 +30,7 @@ jobs:
           GAUGUIN_PROFILE_SEED: ${{ matrix.seed }}
           GAUGUIN_PROFILE_MAX_CANDIDATES: '2000'
           GAUGUIN_PROFILE_BUDGET_MS: '30000'
-        run: ./gradlew :gauguin-core:integrationTest --tests '*ExtremeGenerationRejectionProfileTest' --no-daemon --console=plain -Pbuildserver
+        run: ./gradlew :gauguin-core:integrationTest --tests '*VeryHardGenerationRejectionProfileTest' --no-daemon --console=plain -Pbuildserver
       - name: Publish bounded-stage summary
         if: always()
         shell: bash
@@ -43,7 +43,7 @@ jobs:
 
           root = pathlib.Path('upstream/gauguin/gauguin-core/build/test-results/integrationTest')
           found = []
-          for path in root.glob('TEST-*ExtremeGenerationRejectionProfileTest.xml'):
+          for path in root.glob('TEST-*VeryHardGenerationRejectionProfileTest.xml'):
               tree = ET.parse(path)
               for element in tree.iter():
                   if element.tag in ('system-out', 'system-err') and element.text:
