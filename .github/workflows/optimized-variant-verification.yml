@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/optimized-variant-verification.yml'
       - '.github/actions/variant-cell/action.yml'
+      - 'upstream/gauguin/gauguin-core/src/main/kotlin/org/piepmeyer/gauguin/creation/RandomCageGridCalculator.kt'
   workflow_dispatch:
 permissions:
   contents: read
