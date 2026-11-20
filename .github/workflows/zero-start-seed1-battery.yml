@@ -38,13 +38,13 @@ jobs:
             export GAUGUIN_MATRIX_SEED=1
             export GAUGUIN_MATRIX_MAX_CANDIDATES=100000 GAUGUIN_MATRIX_BUDGET_MS=60000
             rm -rf gauguin-core/build/test-results/integrationTest
-            timeout --signal=TERM --kill-after=5s 120s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --quiet > cell.log 2>&1
+            timeout --signal=TERM --kill-after=5s 120s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --quiet --rerun-tasks > cell.log 2>&1
             rc=$?
             result=$(grep -oh 'MATRIX_RESULT [^<]*' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -1 || true)
             [ -n "$result" ] || result=$(grep -m1 'MATRIX_RESULT ' cell.log || true)
             solutions=$(printf '%s' "$result" | grep -oE 'solutions=[0-9]+' | head -1 | cut -d= -f2 || true)
             status=PASS_UNIQUENESS
-            if [ "$rc" -ne 0 ] || [ -z "$result" ] || [ "${solutions:-0}" -ne 1 ]; then
+            if [ "$rc" -ne 0 ] || [ -z "$result" ] || [ "${solutions:-0}" -ne 1 ] || [[ "$result" != *"difficulty=$difficulty "* ]] || [[ "$result" != *"seed=1 "* ]] || [[ "$result" != *"size=$size "* && "$result" != *"size=11 "* ]]; then
               status=FAIL
               if [ "$rc" -eq 124 ] || [ "$rc" -eq 137 ]; then status=TIMEOUT; fi
               failures=$((failures+1))
