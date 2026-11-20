@@ -39,6 +39,12 @@ class RandomCageGridCalculator(
         // Override in bounded diagnostic tests without changing puzzle acceptance rules.
         val maxAttempts = Integer.getInteger("gauguin.generation.maxAttempts", 100_000).coerceAtLeast(1)
         val maxMillis = java.lang.Long.getLong("gauguin.generation.maxMillis", 300_000L).coerceAtLeast(1L)
+        // Checkpoints are observational only; never change puzzle acceptance.
+        val diagnosticStartMs = java.lang.Long.getLong("gauguin.generation.diagnosticStartMs", 30_000L)
+        val deepStartMs = java.lang.Long.getLong("gauguin.generation.deepStartMs", 50_000L)
+        val diagnosticRejectThreshold = Integer.getInteger("gauguin.generation.diagnosticRejectThreshold", 5_000)
+        var diagnosticReported = false
+        var deepReported = false
         var grid: Grid
 
         try {
@@ -49,6 +55,16 @@ class RandomCageGridCalculator(
                 error("Generation budget exhausted: attempts=$numAttempts difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects dlxMs=$sumDLXDuration elapsedMs=$elapsedMs maxAttempts=$maxAttempts maxMillis=$maxMillis")
             }
 
+            if (!diagnosticReported && (elapsedMs >= diagnosticStartMs || difficultyRejects >= diagnosticRejectThreshold)) {
+                diagnosticReported = true
+                println("GENERATION_CHECKPOINT level=diagnostic candidates=$numAttempts elapsedMs=$elapsedMs difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects")
+                System.out.flush()
+            }
+            if (!deepReported && elapsedMs >= deepStartMs) {
+                deepReported = true
+                println("GENERATION_CHECKPOINT level=deep candidates=$numAttempts elapsedMs=$elapsedMs difficultyRatings=${rejectedDifficultyCounts.toSortedMap()} dlxSolutionCounts=${uniquenessSolutionCounts.toSortedMap()} maxSingleDlxMs=$maxSingleDlxMs")
+                System.out.flush()
+            }
             grid = creator.createRandomizedGridWithCages()
             numAttempts++
             // Record the actual construction distribution before difficulty filtering.
