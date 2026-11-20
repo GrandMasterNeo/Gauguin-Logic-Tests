@@ -1,0 +1,113 @@
+name: Exhaustive configuration certification (bounded shard)
+on:
+  workflow_dispatch:
+    inputs:
+      start_index:
+        description: Zero-based first configuration index
+        required: true
+        default: '0'
+      count:
+        description: Number of configurations in this shard (1-20)
+        required: true
+        default: '10'
+permissions:
+  contents: read
+concurrency:
+  group: exhaustive-config-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  exhaustive-shard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Require staged gates green on this exact commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import json,os,subprocess,sys
+          data=json.loads(subprocess.check_output(['gh','api',f"repos/{os.environ['REPO']}/actions/runs?head_sha={os.environ['SHA']}&per_page=100"]))
+          required={'Optimized staged variant verification','Full 3x3-11x11 five-difficulty integration battery','Human production compatibility 3x3-11x11 (45 isolated cells)','9x9 Very Hard multiseed production verification'}
+          for name in sorted(required):
+              runs=[r for r in data['workflow_runs'] if r['name']==name and r['head_sha']==os.environ['SHA']]
+              if not runs or runs[0]['conclusion']!='success':
+                  print(f"BLOCKED: {name} is not green on pinned SHA {os.environ['SHA']}")
+                  sys.exit(1)
+          print('All four prerequisite workflows green on pinned SHA')
+          PY
+      - name: Build test fixture
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-core:compileIntegrationTestKotlin --no-daemon --console=plain -Pbuildserver
+      - name: Enumerate and execute bounded configuration shard
+        working-directory: upstream/gauguin
+        env:
+          START_INDEX: ${{ inputs.start_index }}
+          COUNT: ${{ inputs.count }}
+        shell: bash
+        run: |
+          set -uo pipefail
+          python3 - <<'PY'
+          import itertools,os,csv
+          sizes=range(3,12)
+          digits=['FIRST_DIGIT_ONE','FIRST_DIGIT_ZERO','PRIME_NUMBERS','FIBONACCI_SEQUENCE','PADOVAN_SEQUENCE','FIRST_DIGIT_MINUS_TWO','FIRST_DIGIT_MINUS_FIVE']
+          difficulties=['VERY_EASY','EASY','MEDIUM','HARD','VERY_HARD']
+          numerals=['Binary','Decimal','DuoDecimal','Hexadecimal','Quaternary','Octal']
+          singles=['FIXED_NUMBER','NO_SINGLE_CAGES','DYNAMIC']
+          operations=['OPERATIONS_ALL','OPERATIONS_ADD_SUB','OPERATIONS_ADD_MULT','OPERATIONS_MULT']
+          visibility=['true','false']
+          all_cases=itertools.product(sizes,digits,difficulties,numerals,singles,operations,visibility)
+          start=int(os.environ['START_INDEX']);count=int(os.environ['COUNT'])
+          assert start>=0 and 1<=count<=20, 'Shard must contain 1..20 cases'
+          from itertools import islice
+          selected=list(islice(all_cases,start,start+count))
+          assert selected, 'Shard begins past end of manifest'
+          with open('exhaustive-cases.tsv','w') as f:
+              for index,case in enumerate(selected,start):
+                  f.write(str(index)+'\t'+'\t'.join(map(str,case))+'\n')
+          print('SHARD',start,len(selected),'of 45360 possible Cartesian combinations; unsupported configurations must be separately classified')
+          PY
+          echo 'index,size,digits,difficulty,numeral,singles,operation,showOperators,exit,status' > exhaustive-results.csv
+          failures=0
+          while IFS=$'\t' read -r idx size digits difficulty numeral singles operation show; do
+            export GAUGUIN_MATRIX_SIZE="$size" GAUGUIN_MATRIX_DIGIT_SETTING="$digits" GAUGUIN_MATRIX_DIFFICULTY="$difficulty"
+            export GAUGUIN_MATRIX_NUMERAL_SYSTEM="$numeral" GAUGUIN_MATRIX_SINGLE_CAGE="$singles"
+            export GAUGUIN_MATRIX_CAGE_OPERATION="$operation" GAUGUIN_MATRIX_SHOW_OPERATORS="$show"
+            export GAUGUIN_MATRIX_SEED=0 GAUGUIN_MATRIX_MAX_CANDIDATES=100000 GAUGUIN_MATRIX_BUDGET_MS=60000
+            export GAUGUIN_DEBUG_START_MS=30000 GAUGUIN_DEBUG_DEEP_MS=50000 GAUGUIN_DEBUG_REJECTIONS=5000
+            rm -rf gauguin-core/build/test-results/integrationTest
+            timeout --signal=TERM --kill-after=5s 120s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --quiet > cell.log 2>&1
+            rc=$?
+            result=$(grep -oh 'MATRIX_RESULT [^<]*' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -1 || true)
+            if [ "$rc" -eq 0 ] && printf '%s' "$result" | grep -q 'solutions=1'; then
+              status=PASS
+            else
+              status=FAIL
+              failures=$((failures+1))
+              cp cell.log "exhaustive-failure-$idx.log"
+              echo "::warning::Configuration $idx failed exit=$rc"
+              tail -n 30 cell.log
+              timeout --signal=TERM --kill-after=5s 120s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --info --stacktrace --rerun-tasks > "exhaustive-debug-$idx.log" 2>&1
+              echo "DEBUG_RETRY idx=$idx exit=$?"
+            fi
+            echo "$idx,$size,$digits,$difficulty,$numeral,$singles,$operation,$show,$rc,$status" >> exhaustive-results.csv
+            echo "CONFIG_RESULT idx=$idx status=$status exit=$rc $result"
+          done < exhaustive-cases.tsv
+          if [ "$failures" -gt 0 ]; then exit 1; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: exhaustive-shard-${{ inputs.start_index }}-${{ github.run_id }}
+          path: |
+            upstream/gauguin/exhaustive-cases.tsv
+            upstream/gauguin/exhaustive-results.csv
+            upstream/gauguin/exhaustive-failure-*.log
+            upstream/gauguin/exhaustive-debug-*.log
+          if-no-files-found: warn
+          retention-days: 14
