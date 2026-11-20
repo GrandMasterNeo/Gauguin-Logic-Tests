@@ -1,0 +1,72 @@
+name: Zero-start 3x3-11x11 five-difficulty seed-1 battery
+on:
+  push:
+    branches: [experiment/personal-logic-integration]
+    paths: ['.github/workflows/zero-start-seed1-battery.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  matrix:
+    name: ${{ matrix.size }}x${{ matrix.size }} zero-start seed-1
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        size: [3, 4, 5, 6, 7, 8, 9, 10, 11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Compile integration test once
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-core:compileIntegrationTestKotlin --no-daemon --console=plain -Pbuildserver
+      - name: Test five difficulties (zero-start, seed 1)
+        working-directory: upstream/gauguin
+        shell: bash
+        run: |
+          set -uo pipefail
+          echo 'size,digits,difficulty,seed,status,solutions,exit' > zero-seed1-results.csv
+          failures=0
+          for difficulty in VERY_EASY EASY MEDIUM HARD VERY_HARD; do
+            export GAUGUIN_MATRIX_SIZE="${{ matrix.size }}"
+            export GAUGUIN_MATRIX_DIGIT_SETTING=FIRST_DIGIT_ZERO
+            export GAUGUIN_MATRIX_DIFFICULTY="$difficulty"
+            export GAUGUIN_MATRIX_SEED=1
+            export GAUGUIN_MATRIX_MAX_CANDIDATES=100000 GAUGUIN_MATRIX_BUDGET_MS=60000
+            rm -rf gauguin-core/build/test-results/integrationTest
+            timeout --signal=TERM --kill-after=5s 120s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --quiet > cell.log 2>&1
+            rc=$?
+            result=$(grep -oh 'MATRIX_RESULT [^<]*' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -1 || true)
+            [ -n "$result" ] || result=$(grep -m1 'MATRIX_RESULT ' cell.log || true)
+            solutions=$(printf '%s' "$result" | grep -oE 'solutions=[0-9]+' | head -1 | cut -d= -f2 || true)
+            status=PASS_UNIQUENESS
+            if [ "$rc" -ne 0 ] || [ -z "$result" ] || [ "${solutions:-0}" -ne 1 ]; then
+              status=FAIL
+              if [ "$rc" -eq 124 ] || [ "$rc" -eq 137 ]; then status=TIMEOUT; fi
+              failures=$((failures+1))
+              cp cell.log "failure-$difficulty.log"
+              echo "::group::Failure $difficulty"
+              tail -n 100 cell.log
+              echo "::endgroup::"
+              export GAUGUIN_DEBUG_START_MS=30000 GAUGUIN_DEBUG_DEEP_MS=50000 GAUGUIN_DEBUG_REJECTIONS=5000
+              timeout --signal=TERM --kill-after=5s 120s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --info --stacktrace --rerun-tasks > "debug-$difficulty.log" 2>&1
+              echo "DEBUG_RETRY $difficulty exit=$?"
+            fi
+            echo "${{ matrix.size }},FIRST_DIGIT_ZERO,$difficulty,1,$status,${solutions:-0},$rc" >> zero-seed1-results.csv
+            echo "CELL size=${{ matrix.size }} digits=FIRST_DIGIT_ZERO difficulty=$difficulty seed=1 status=$status exit=$rc $result"
+          done
+          cat zero-seed1-results.csv
+          if [ "$failures" -gt 0 ]; then exit 1; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: zero-seed1-${{ matrix.size }}x${{ matrix.size }}
+          path: |
+            upstream/gauguin/zero-seed1-results.csv
+            upstream/gauguin/failure-*.log
+            upstream/gauguin/debug-*.log
+          if-no-files-found: warn
