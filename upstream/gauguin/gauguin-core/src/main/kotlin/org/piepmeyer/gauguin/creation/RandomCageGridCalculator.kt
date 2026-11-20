@@ -73,7 +73,7 @@ class RandomCageGridCalculator(
             if (!difficultyGate.isWantedDifficulty(grid)) {
                 difficultyRejects++
                 // Report the distribution without changing acceptance criteria.
-                val rated = org.piepmeyer.gauguin.difficulty.(GameDifficultyRater().difficulty(grid)?.name ?: "UNRATED")
+                val rated = (org.piepmeyer.gauguin.difficulty.GameDifficultyRater().difficulty(grid)?.name ?: "UNRATED")
                 rejectedDifficultyCounts[rated] = (rejectedDifficultyCounts[rated] ?: 0) + 1
                 // Never reuse a previous candidate's successful DLX result.
                 dlxNumber = 0
