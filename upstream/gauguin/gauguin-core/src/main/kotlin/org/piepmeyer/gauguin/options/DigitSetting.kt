@@ -7,6 +7,7 @@ enum class DigitSetting(
 ) {
     FIRST_DIGIT_ONE((1..12).toSet()),
     FIRST_DIGIT_ZERO((0..11).toSet()),
+    FIRST_DIGIT_MINUS_ONE((-1..10).toSet()),
     PRIME_NUMBERS(setOf(1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31)),
     FIBONACCI_SEQUENCE(
         setOf(
