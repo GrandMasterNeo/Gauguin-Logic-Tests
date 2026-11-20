@@ -1,15 +1,15 @@
-name: Isolated seed 1 9x9 two digit variants
+name: Isolated seed 1 11x11 two digit variants
 on:
   push:
-    branches: [experiment/seed-one-9x9-two-variants]
+    branches: [experiment/seed-one-11x11-two-variants]
     paths:
-      - '.github/workflows/seed-one-9x9-two-variants.yml'
+      - '.github/workflows/seed-one-11x11-two-variants.yml'
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   seed-one:
-    name: 9x9 seed 1 ${{ matrix.digits }}
+    name: 11x11 seed 1 ${{ matrix.digits }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     strategy:
@@ -26,10 +26,10 @@ jobs:
       - name: Compile integration tests
         working-directory: upstream/gauguin
         run: ./gradlew :gauguin-core:compileIntegrationTestKotlin --no-daemon --console=plain -Pbuildserver
-      - name: Generate 9x9 Medium using seed 1
+      - name: Generate 11x11 Medium using seed 1
         working-directory: upstream/gauguin
         env:
-          GAUGUIN_MATRIX_SIZE: '9'
+          GAUGUIN_MATRIX_SIZE: '11'
           GAUGUIN_MATRIX_DIFFICULTY: MEDIUM
           GAUGUIN_MATRIX_DIGIT_SETTING: ${{ matrix.digits }}
           GAUGUIN_MATRIX_SEED: '1'
@@ -42,6 +42,6 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: seed-one-9x9-${{ matrix.digits }}
+          name: seed-one-11x11-${{ matrix.digits }}
           path: upstream/gauguin/seed-one.log
           if-no-files-found: warn
