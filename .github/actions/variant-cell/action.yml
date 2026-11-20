@@ -20,6 +20,9 @@ runs:
         GAUGUIN_MATRIX_SEED: '0'
         GAUGUIN_MATRIX_MAX_CANDIDATES: '100000'
         GAUGUIN_MATRIX_BUDGET_MS: '60000'
+        GAUGUIN_DEBUG_START_MS: '30000'
+        GAUGUIN_DEBUG_DEEP_MS: '50000'
+        GAUGUIN_DEBUG_REJECTIONS: '5000'
       run: |
         set -uo pipefail
         # GitHub composite bash invokes -e; explicitly capture nonzero test exits so debug retry runs.
