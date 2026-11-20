@@ -37,7 +37,7 @@ jobs:
             [ -n "$result" ] || result=$(grep -m1 'MATRIX_RESULT ' cell.log || true)
             solutions=$(printf '%s' "$result" | grep -oE 'solutions=[0-9]+' | head -1 | cut -d= -f2 || true)
             status=PASS_UNIQUENESS
-            if [ "$rc" -ne 0 ] || [ -z "$result" ] || [ "${solutions:-0}" -ne 1 ] || [[ "$result" != *"difficulty=$difficulty "* ]] || [[ "$result" != *"seed=1 "* ]] || [[ "$result" != *"size=$size "* && "$result" != *"size=11 "* ]]; then
+            if [ "$rc" -ne 0 ] || [ -z "$result" ] || [ "${solutions:-0}" -ne 1 ] || [[ "$result" != *"difficulty=$difficulty "* ]] || [[ "$result" != *"seed=1 "* ]] || [[ "$result" != *"size=11 "* ]] || [[ "$result" != *"digitSetting=FIRST_DIGIT_ZERO "* ]]; then
               status=FAIL
               if [ "$rc" -eq 124 ] || [ "$rc" -eq 137 ]; then status=TIMEOUT; fi
               failures=$((failures+1))
