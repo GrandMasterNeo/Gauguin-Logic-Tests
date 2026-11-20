@@ -22,6 +22,8 @@ runs:
         GAUGUIN_MATRIX_BUDGET_MS: '60000'
       run: |
         set -uo pipefail
+        # GitHub composite bash invokes -e; explicitly capture nonzero test exits so debug retry runs.
+        set +e
         echo "CELL_START size=$GAUGUIN_MATRIX_SIZE digits=$GAUGUIN_MATRIX_DIGIT_SETTING difficulty=$GAUGUIN_MATRIX_DIFFICULTY numeral=$GAUGUIN_MATRIX_NUMERAL_SYSTEM singles=$GAUGUIN_MATRIX_SINGLE_CAGE seed=$GAUGUIN_MATRIX_SEED candidates=$GAUGUIN_MATRIX_MAX_CANDIDATES budget_ms=$GAUGUIN_MATRIX_BUDGET_MS"
         start=$SECONDS
         timeout --signal=TERM --kill-after=5s 120s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --quiet > cell.log 2>&1
