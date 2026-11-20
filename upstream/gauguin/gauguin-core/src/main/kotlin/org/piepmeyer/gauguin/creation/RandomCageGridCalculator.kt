@@ -32,6 +32,8 @@ class RandomCageGridCalculator(
         val startedAt = System.nanoTime()
         val creator = GridCreator(variant, randomizer, shuffler)
         val difficultyGate = DifficultyAwareGridCreator(variant, randomizer, shuffler)
+        // Load calibration once; diagnostics must not reload it for every rejected candidate.
+        val diagnosticDifficultyRater = org.piepmeyer.gauguin.difficulty.GameDifficultyRater()
 
         // A failed search must terminate explicitly instead of looping indefinitely.
         // Override in bounded diagnostic tests without changing puzzle acceptance rules.
@@ -73,7 +75,7 @@ class RandomCageGridCalculator(
             if (!difficultyGate.isWantedDifficulty(grid)) {
                 difficultyRejects++
                 // Report the distribution without changing acceptance criteria.
-                val rated = (org.piepmeyer.gauguin.difficulty.GameDifficultyRater().difficulty(grid)?.name ?: "UNRATED")
+                val rated = (diagnosticDifficultyRater.difficulty(grid)?.name ?: "UNRATED")
                 rejectedDifficultyCounts[rated] = (rejectedDifficultyCounts[rated] ?: 0) + 1
                 // Never reuse a previous candidate's successful DLX result.
                 dlxNumber = 0
