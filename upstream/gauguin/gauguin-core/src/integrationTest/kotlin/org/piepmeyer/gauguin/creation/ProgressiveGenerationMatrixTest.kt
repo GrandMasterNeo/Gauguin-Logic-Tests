@@ -45,6 +45,9 @@ class ProgressiveGenerationMatrixTest : FunSpec({
         // Properties are read by the production calculator when calculate() starts.
         System.setProperty("gauguin.generation.maxAttempts", maxCandidates.toString())
         System.setProperty("gauguin.generation.maxMillis", budgetMs.toString())
+        System.setProperty("gauguin.generation.diagnosticStartMs", (System.getenv("GAUGUIN_DEBUG_START_MS")?.toLongOrNull() ?: 30_000L).toString())
+        System.setProperty("gauguin.generation.deepStartMs", (System.getenv("GAUGUIN_DEBUG_DEEP_MS")?.toLongOrNull() ?: 50_000L).toString())
+        System.setProperty("gauguin.generation.diagnosticRejectThreshold", (System.getenv("GAUGUIN_DEBUG_REJECTIONS")?.toIntOrNull() ?: 5_000).toString())
         startKoin { modules(module { single { GameDifficultyRatingService() } }) }
         val started = System.nanoTime()
         println("MATRIX_START size=$size difficulty=$difficulty seed=$seed production=true digitSetting=$digitSetting numeralSystem=$numeralSystem singleCage=$singleCageUsage budgetMs=$budgetMs maxCandidates=$maxCandidates")
@@ -66,6 +69,9 @@ class ProgressiveGenerationMatrixTest : FunSpec({
             stopKoin()
             System.clearProperty("gauguin.generation.maxAttempts")
             System.clearProperty("gauguin.generation.maxMillis")
+            System.clearProperty("gauguin.generation.diagnosticStartMs")
+            System.clearProperty("gauguin.generation.deepStartMs")
+            System.clearProperty("gauguin.generation.diagnosticRejectThreshold")
         }
     }
 })
