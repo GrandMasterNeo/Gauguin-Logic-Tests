@@ -52,7 +52,7 @@ class RandomCageGridCalculator(
             currentCoroutineContext().ensureActive()
             val elapsedMs = (System.nanoTime() - startedAt) / 1_000_000
             if (numAttempts >= maxAttempts || elapsedMs >= maxMillis) {
-                error("Generation budget exhausted: attempts=$numAttempts difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects dlxMs=$sumDLXDuration elapsedMs=$elapsedMs maxAttempts=$maxAttempts maxMillis=$maxMillis")
+                error("Generation budget exhausted: attempts=$numAttempts difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects dlxMs=$sumDLXDuration elapsedMs=$elapsedMs maxAttempts=$maxAttempts maxMillis=$maxMillis difficultyRatings=${rejectedDifficultyCounts.toSortedMap()} dlxSolutionCounts=${uniquenessSolutionCounts.toSortedMap()} maxSingleDlxMs=$maxSingleDlxMs invalidCageTargets=$invalidCageTargets cageShapes=${cageShapeCounts.toSortedMap()} cageOperations=${cageOperationCounts.toSortedMap()}")
             }
 
             if (!diagnosticReported && (elapsedMs >= diagnosticStartMs || difficultyRejects >= diagnosticRejectThreshold)) {
