@@ -23,6 +23,9 @@ class RandomCageGridCalculator(
         var sumDLXDuration: Long = 0
         var difficultyRejects = 0
         var uniquenessRejects = 0
+        val rejectedDifficultyCounts = mutableMapOf<String, Int>()
+        val uniquenessSolutionCounts = mutableMapOf<Int, Int>()
+        var maxSingleDlxMs = 0L
         val cageShapeCounts = mutableMapOf<String, Int>()
         val cageOperationCounts = mutableMapOf<String, Int>()
         var invalidCageTargets = 0
@@ -69,6 +72,9 @@ class RandomCageGridCalculator(
             }
             if (!difficultyGate.isWantedDifficulty(grid)) {
                 difficultyRejects++
+                // Report the distribution without changing acceptance criteria.
+                val rated = org.piepmeyer.gauguin.difficulty.GameDifficultyRater().difficulty(grid).name
+                rejectedDifficultyCounts[rated] = (rejectedDifficultyCounts[rated] ?: 0) + 1
                 // Never reuse a previous candidate's successful DLX result.
                 dlxNumber = 0
                 continue
@@ -81,6 +87,8 @@ class RandomCageGridCalculator(
             dlxNumber = mdd.solve(DLX.SolveType.MULTIPLE)
             val dlxDuration = System.currentTimeMillis() - dlxMillis
             sumDLXDuration += dlxDuration
+            maxSingleDlxMs = maxOf(maxSingleDlxMs, dlxDuration)
+            uniquenessSolutionCounts[dlxNumber] = (uniquenessSolutionCounts[dlxNumber] ?: 0) + 1
             logger.debug { "DLX Num Solns = $dlxNumber in $dlxDuration ms" }
 
             if (dlxNumber != 1) uniquenessRejects++
@@ -97,6 +105,7 @@ class RandomCageGridCalculator(
             val summary = "GENERATION_SUMMARY candidates=$numAttempts difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects dlxMs=$sumDLXDuration elapsedMs=$elapsedMs"
             logger.warn { summary }
             println(summary)
+            println("GENERATION_REJECTION_DIAGNOSTIC difficultyRatings=${rejectedDifficultyCounts.toSortedMap()} dlxSolutionCounts=${uniquenessSolutionCounts.toSortedMap()} maxSingleDlxMs=$maxSingleDlxMs")
             println("CAGE_CONSTRUCTION_DIAGNOSTIC invalidTargets=$invalidCageTargets shapes=${cageShapeCounts.toSortedMap()} operations=${cageOperationCounts.toSortedMap()}")
             System.out.flush()
         }
