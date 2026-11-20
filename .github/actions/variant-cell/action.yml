@@ -22,13 +22,31 @@ runs:
         GAUGUIN_MATRIX_BUDGET_MS: '60000'
       run: |
         set -uo pipefail
+        echo "CELL_START size=$GAUGUIN_MATRIX_SIZE digits=$GAUGUIN_MATRIX_DIGIT_SETTING difficulty=$GAUGUIN_MATRIX_DIFFICULTY numeral=$GAUGUIN_MATRIX_NUMERAL_SYSTEM singles=$GAUGUIN_MATRIX_SINGLE_CAGE seed=$GAUGUIN_MATRIX_SEED candidates=$GAUGUIN_MATRIX_MAX_CANDIDATES budget_ms=$GAUGUIN_MATRIX_BUDGET_MS"
+        start=$SECONDS
         timeout --signal=TERM --kill-after=5s 120s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --quiet > cell.log 2>&1
         rc=$?
         result=$(grep -oh 'MATRIX_RESULT [^<]*' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -1 || true)
         [ -n "$result" ] || result=$(grep -m1 'MATRIX_RESULT ' cell.log || true)
-        echo "VARIANT_RESULT size=$GAUGUIN_MATRIX_SIZE digits=$GAUGUIN_MATRIX_DIGIT_SETTING difficulty=$GAUGUIN_MATRIX_DIFFICULTY numeral=$GAUGUIN_MATRIX_NUMERAL_SYSTEM singles=$GAUGUIN_MATRIX_SINGLE_CAGE exit=$rc $result"
+        echo "VARIANT_RESULT size=$GAUGUIN_MATRIX_SIZE digits=$GAUGUIN_MATRIX_DIGIT_SETTING difficulty=$GAUGUIN_MATRIX_DIFFICULTY numeral=$GAUGUIN_MATRIX_NUMERAL_SYSTEM singles=$GAUGUIN_MATRIX_SINGLE_CAGE exit=$rc elapsed_s=$((SECONDS-start)) $result"
         if [ "$rc" -ne 0 ] || ! printf '%s' "$result" | grep -q 'solutions=1'; then
           tail -n 100 cell.log
           grep -A 20 -B 2 '<failure' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -n 80 || true
+          echo "DIAGNOSTIC_RETRY starting with Gradle --info --stacktrace (failure-only)"
+          timeout --signal=TERM --kill-after=5s 120s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --info --stacktrace --rerun-tasks > cell-debug.log 2>&1
+          debug_rc=$?
+          echo "DIAGNOSTIC_RETRY exit=$debug_rc"
+          tail -n 160 cell-debug.log
           exit 1
         fi
+    - name: Upload variant diagnostics
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: variant-diagnostics-${{ inputs.size }}-${{ inputs.digits }}-${{ inputs.difficulty }}-${{ inputs.numeral }}-${{ inputs.singles }}
+        path: |
+          upstream/gauguin/cell.log
+          upstream/gauguin/cell-debug.log
+          upstream/gauguin/gauguin-core/build/test-results/integrationTest/**
+        if-no-files-found: warn
+        retention-days: 7
