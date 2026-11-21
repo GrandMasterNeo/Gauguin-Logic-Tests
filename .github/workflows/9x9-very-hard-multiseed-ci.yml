@@ -1,0 +1,43 @@
+name: 9x9 Very Hard multiseed production verification
+on:
+  push:
+    branches: [experiment/personal-logic-integration]
+    paths:
+      - '.github/workflows/9x9-very-hard-multiseed-ci.yml'
+      - 'upstream/gauguin/gauguin-core/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  multiseed:
+    name: 9x9 Very Hard seed ${{ matrix.seed }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        seed: [0, 1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Exercise production difficulty and uniqueness gates
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_MATRIX_SIZE: '9'
+          GAUGUIN_MATRIX_DIFFICULTY: VERY_HARD
+          GAUGUIN_MATRIX_SEED: ${{ matrix.seed }}
+          GAUGUIN_MATRIX_MAX_CANDIDATES: '100000'
+          GAUGUIN_MATRIX_BUDGET_MS: '60000'
+        run: ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver
+      - name: Preserve verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: 9x9-very-hard-seed-${{ matrix.seed }}
+          path: |
+            upstream/gauguin/gauguin-core/build/test-results/integrationTest/**
+            upstream/gauguin/gauguin-core/build/reports/tests/integrationTest/**
+          if-no-files-found: warn

@@ -16,13 +16,13 @@ data class GameDifficultyRating(
             DifficultySetting.EASY -> thresholdEasy
             DifficultySetting.MEDIUM -> thresholdMedium
             DifficultySetting.HARD -> thresholdHard
-            DifficultySetting.EXTREME -> thresholdExtreme
+            DifficultySetting.VERY_HARD -> thresholdExtreme
             else -> throw IllegalArgumentException("Threshold of difficulty $difficulty is not implemented.")
         }
 
     fun getDifficulty(difficultyValue: Double): DifficultySetting {
         if (difficultyValue >= thresholdExtreme) {
-            return DifficultySetting.EXTREME
+            return DifficultySetting.VERY_HARD
         }
         if (difficultyValue >= thresholdHard) {
             return DifficultySetting.HARD

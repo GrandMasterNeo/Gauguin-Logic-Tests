@@ -17,6 +17,6 @@ enum class SavedDifficultySetting {
             EASY -> setOf(DifficultySetting.EASY)
             MEDIUM -> setOf(DifficultySetting.MEDIUM)
             HARD -> setOf(DifficultySetting.HARD)
-            EXTREME -> setOf(DifficultySetting.EXTREME)
+            EXTREME -> setOf(DifficultySetting.VERY_HARD)
         }
 }

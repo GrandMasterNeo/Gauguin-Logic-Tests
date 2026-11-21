@@ -77,6 +77,7 @@ testing {
                 implementation.bundle(libs.bundles.kotest)
 
                 implementation(libs.kotlin.coroutines.debug)
+                implementation.bundle(libs.bundles.koin)
             }
 
             targets {

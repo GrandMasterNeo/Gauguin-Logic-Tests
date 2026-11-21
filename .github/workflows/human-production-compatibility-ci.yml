@@ -1,0 +1,48 @@
+name: Human production compatibility 3x3-11x11 (45 isolated cells)
+on:
+  push:
+    branches: [experiment/personal-logic-integration]
+    paths:
+      - '.github/workflows/human-production-compatibility-ci.yml'
+      - 'upstream/gauguin/gauguin-human-solver/**'
+      - 'upstream/gauguin/gauguin-grid-creation-via-merge/**'
+      - 'upstream/gauguin/gauguin-core/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  human-compatibility:
+    name: ${{ matrix.size }}x${{ matrix.size }} ${{ matrix.difficulty }} seed 0
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        size: [3, 4, 5, 6, 7, 8, 9, 10, 11]
+        difficulty: [VERY_EASY, EASY, MEDIUM, HARD, VERY_HARD]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+          cache-dependency-path: upstream/gauguin/**/*.gradle.kts
+      - name: Test production generation and deduction-only human completion
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_HUMAN_SIZE: ${{ matrix.size }}
+          GAUGUIN_HUMAN_DIFFICULTY: ${{ matrix.difficulty }}
+          GAUGUIN_HUMAN_SEED: '0'
+        run: |
+          ./gradlew :gauguin-human-solver:integrationTest --tests '*HumanProductionCompatibilityMatrixTest' --no-daemon --stacktrace -Pbuildserver -Dgauguin.generation.maxMillis=60000 -Dgauguin.generation.maxAttempts=100000
+      - name: Upload individual cell logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: human-compat-${{ matrix.size }}-${{ matrix.difficulty }}-seed0
+          path: |
+            upstream/gauguin/gauguin-human-solver/build/test-results/integrationTest/**
+            upstream/gauguin/gauguin-human-solver/build/reports/tests/integrationTest/**
+          if-no-files-found: warn

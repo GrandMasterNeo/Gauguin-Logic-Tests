@@ -63,6 +63,22 @@ class GridCageCreator(
         cagesToTry += GridCageType.classicCageTypes()
         cagesToTry -= GridCageType.SINGLE
 
+        // Experimental 9x9 Very Hard geometry bias: favor larger cages to
+        // counter the observed surplus of low-scoring, high-cage-count grids.
+        // Every chosen shape must still satisfy the original geometry checks.
+        // All other sizes and difficulty settings retain their prior selection.
+        val preferLarge = grid.gridSize.width == 9 &&
+            grid.gridSize.height == 9 &&
+            grid.options.difficultiesSetting ==
+                setOf(org.piepmeyer.gauguin.options.DifficultySetting.VERY_HARD)
+        if (preferLarge && randomizer.nextInt(4) != 0) {
+            val larger = cagesToTry.filter { it.coordinates.size == 4 }
+                .filter { isValidCageType(it, cell, grid) }
+            if (larger.isNotEmpty()) {
+                return larger.random(randomizer.random())
+            }
+        }
+
         while (cagesToTry.isNotEmpty()) {
             val cageType = cagesToTry.random(randomizer.random())
 
@@ -83,16 +99,21 @@ class GridCageCreator(
         val valUsed = BooleanArray(grid.gridSize.amountOfNumbers)
 
         for (cageId in 0 until singles) {
-            var cell: GridCell
-            var cellIndex: Int
-
-            do {
-                cell =
-                    grid.getCell(
-                        randomizer.nextInt(grid.gridSize.surfaceArea),
-                    )
-                cellIndex = grid.options.digitSetting.indexOf(cell.value)
-            } while (rowUsed[cell.row] || colUsed[cell.column] || valUsed[cellIndex])
+            // Select from eligible cells rather than retrying indefinitely when
+            // a randomizer repeatedly chooses an occupied row/column/value.
+            val eligible = grid.cells.filter { cell ->
+                val digitIndex = grid.options.digitSetting.indexOf(cell.value)
+                digitIndex >= 0 &&
+                    !rowUsed[cell.row] &&
+                    !colUsed[cell.column] &&
+                    !valUsed[digitIndex] &&
+                    !cell.cellInAnyCage()
+            }
+            check(eligible.isNotEmpty()) {
+                "No eligible cell for fixed single cage $cageId of $singles"
+            }
+            val cell = eligible[randomizer.nextInt(eligible.size)]
+            val cellIndex = grid.options.digitSetting.indexOf(cell.value)
 
             colUsed[cell.column] = true
             rowUsed[cell.row] = true

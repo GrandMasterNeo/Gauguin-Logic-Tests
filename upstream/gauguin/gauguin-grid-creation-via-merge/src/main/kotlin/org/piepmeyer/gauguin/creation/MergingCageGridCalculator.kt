@@ -120,7 +120,7 @@ class MergingCageGridCalculator(
                 DifficultySetting.EASY -> 2.31
                 DifficultySetting.MEDIUM -> 2.61
                 DifficultySetting.HARD -> 3.0
-                DifficultySetting.EXTREME -> Double.MAX_VALUE
+                DifficultySetting.EXTREME, DifficultySetting.VERY_HARD -> Double.MAX_VALUE
             }
 
         return round(variant.surfaceArea.toDouble() / maximumAverageCageCells).toInt()

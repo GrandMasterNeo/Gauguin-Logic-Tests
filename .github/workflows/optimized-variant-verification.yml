@@ -1,0 +1,154 @@
+name: Optimized staged variant verification
+on:
+  push:
+    branches: [experiment/personal-logic-integration]
+    paths:
+      - '.github/workflows/optimized-variant-verification.yml'
+      - '.github/actions/variant-cell/action.yml'
+      - 'upstream/gauguin/gauguin-core/src/main/kotlin/org/piepmeyer/gauguin/creation/RandomCageGridCalculator.kt'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fast-invariants:
+    name: Stage 1 - numeral conversion and core compilation
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Verify numeral system conversions
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-core:test --tests '*NumeralSystemTest' :gauguin-core:compileIntegrationTestKotlin --no-daemon --console=plain -Pbuildserver
+      - name: Verify all seven sequence definitions and boundary sizes
+        working-directory: upstream/gauguin
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          s = Path('gauguin-core/src/main/kotlin/org/piepmeyer/gauguin/options/DigitSetting.kt').read_text()
+          for name in ['FIRST_DIGIT_ONE','FIRST_DIGIT_ZERO','PRIME_NUMBERS','FIBONACCI_SEQUENCE','PADOVAN_SEQUENCE','FIRST_DIGIT_MINUS_TWO','FIRST_DIGIT_MINUS_FIVE']:
+              assert name in s, name
+          assert 'numbers.take(gridSize.amountOfNumbers)' in s
+          print('Seven preserved sequences; 3..11 digit selection implementation found')
+          PY
+  sequence-smoke:
+    name: Stage 2 - ${{ matrix.digits }} ${{ matrix.size }}x${{ matrix.size }}
+    needs: fast-invariants
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        digits: [FIRST_DIGIT_ONE, FIRST_DIGIT_ZERO, PRIME_NUMBERS, FIBONACCI_SEQUENCE, PADOVAN_SEQUENCE, FIRST_DIGIT_MINUS_TWO, FIRST_DIGIT_MINUS_FIVE]
+        size: [3, 7, 10, 11]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Build before timed generation
+        working-directory: upstream/gauguin
+        run: |
+          # Plugin resolution can transiently fail on fresh runners; retry setup only.
+          for attempt in 1 2 3; do
+            if ./gradlew :gauguin-core:compileIntegrationTestKotlin --no-daemon -Pbuildserver --console=plain; then
+              exit 0
+            fi
+            echo "::warning::Gradle compilation/setup attempt $attempt failed"
+            if [ "$attempt" -lt 3 ]; then sleep $((attempt * 15)); fi
+          done
+          exit 1
+      - name: Check unique solution at representative size
+        uses: ./.github/actions/variant-cell
+        with:
+          size: ${{ matrix.size }}
+          digits: ${{ matrix.digits }}
+          difficulty: MEDIUM
+  difficulty-boundaries:
+    name: Stage 3 - ${{ matrix.size }}x${{ matrix.size }} ${{ matrix.difficulty }}
+    needs: sequence-smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        size: [3, 7, 10, 11]
+        difficulty: [VERY_EASY, EASY, MEDIUM, HARD, VERY_HARD]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Build before timed generation
+        working-directory: upstream/gauguin
+        run: |
+          # Plugin resolution can transiently fail on fresh runners; retry setup only.
+          for attempt in 1 2 3; do
+            if ./gradlew :gauguin-core:compileIntegrationTestKotlin --no-daemon -Pbuildserver --console=plain; then
+              exit 0
+            fi
+            echo "::warning::Gradle compilation/setup attempt $attempt failed"
+            if [ "$attempt" -lt 3 ]; then sleep $((attempt * 15)); fi
+          done
+          exit 1
+      - name: Verify difficulty on established standard sequence
+        uses: ./.github/actions/variant-cell
+        with:
+          size: ${{ matrix.size }}
+          digits: FIRST_DIGIT_ONE
+          difficulty: ${{ matrix.difficulty }}
+  interaction-pairs:
+    name: Stage 4 - ${{ matrix.label }}
+    needs: difficulty-boundaries
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        include:
+          - {label: binary-zero, digits: FIRST_DIGIT_ZERO, numeral: Binary, singles: FIXED_NUMBER, size: 3}
+          - {label: hex-prime, digits: PRIME_NUMBERS, numeral: Hexadecimal, singles: FIXED_NUMBER, size: 7}
+          - {label: duo-fibonacci, digits: FIBONACCI_SEQUENCE, numeral: DuoDecimal, singles: FIXED_NUMBER, size: 7}
+          - {label: octal-padovan, digits: PADOVAN_SEQUENCE, numeral: Octal, singles: FIXED_NUMBER, size: 7}
+          - {label: quaternary-negative, digits: FIRST_DIGIT_MINUS_TWO, numeral: Quaternary, singles: FIXED_NUMBER, size: 3}
+          - {label: decimal-negative, digits: FIRST_DIGIT_MINUS_FIVE, numeral: Decimal, singles: FIXED_NUMBER, size: 7}
+          - {label: binary-no-singles, digits: FIRST_DIGIT_ONE, numeral: Binary, singles: NO_SINGLE_CAGES, size: 3}
+          - {label: hex-dynamic, digits: FIRST_DIGIT_ONE, numeral: Hexadecimal, singles: DYNAMIC, size: 7}
+          - {label: duo-no-singles, digits: FIRST_DIGIT_ONE, numeral: DuoDecimal, singles: NO_SINGLE_CAGES, size: 7}
+          - {label: octal-dynamic, digits: FIRST_DIGIT_ONE, numeral: Octal, singles: DYNAMIC, size: 3}
+          - {label: prime-no-singles, digits: PRIME_NUMBERS, numeral: Decimal, singles: NO_SINGLE_CAGES, size: 7}
+          - {label: padovan-dynamic, digits: PADOVAN_SEQUENCE, numeral: Quaternary, singles: DYNAMIC, size: 7}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Build before timed generation
+        working-directory: upstream/gauguin
+        run: |
+          # Plugin resolution can transiently fail on fresh runners; retry setup only.
+          for attempt in 1 2 3; do
+            if ./gradlew :gauguin-core:compileIntegrationTestKotlin --no-daemon -Pbuildserver --console=plain; then
+              exit 0
+            fi
+            echo "::warning::Gradle compilation/setup attempt $attempt failed"
+            if [ "$attempt" -lt 3 ]; then sleep $((attempt * 15)); fi
+          done
+          exit 1
+      - name: Verify interaction
+        uses: ./.github/actions/variant-cell
+        with:
+          size: ${{ matrix.size }}
+          digits: ${{ matrix.digits }}
+          difficulty: MEDIUM
+          numeral: ${{ matrix.numeral }}
+          singles: ${{ matrix.singles }}

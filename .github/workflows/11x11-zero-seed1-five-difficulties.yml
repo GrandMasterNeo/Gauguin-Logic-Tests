@@ -1,0 +1,64 @@
+name: 11x11 zero-start seed-1 five difficulties
+on:
+  push:
+    branches: [experiment/personal-logic-integration]
+    paths: ['.github/workflows/11x11-zero-seed1-five-difficulties.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    name: 11x11 zero seed1 ${{ matrix.difficulty }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        difficulty: [VERY_EASY, EASY, MEDIUM, HARD, VERY_HARD]
+    env:
+      GAUGUIN_MATRIX_SIZE: '11'
+      GAUGUIN_MATRIX_DIGIT_SETTING: FIRST_DIGIT_ZERO
+      GAUGUIN_MATRIX_DIFFICULTY: ${{ matrix.difficulty }}
+      GAUGUIN_MATRIX_SEED: '1'
+      GAUGUIN_MATRIX_MAX_CANDIDATES: '100000'
+      GAUGUIN_MATRIX_BUDGET_MS: '60000'
+      GAUGUIN_DEBUG_START_MS: '1000'
+      GAUGUIN_DEBUG_DEEP_MS: '5000'
+      GAUGUIN_DEBUG_REJECTIONS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Run independent generation and uniqueness check
+        working-directory: upstream/gauguin
+        shell: bash
+        run: |
+          set -uo pipefail
+          echo "RUN 11x11 $GAUGUIN_MATRIX_DIFFICULTY seed=1 digits=0-10"
+          timeout --signal=TERM --kill-after=5s 240s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --debug > cell.log 2>&1
+          rc=$?
+          tail -n 80 cell.log
+          # Bound retained debug output without losing the final failure diagnostics.
+          tail -c 2000000 cell.log > cell.log.bounded && mv cell.log.bounded cell.log
+          result=$(grep -oh 'MATRIX_RESULT [^<]*' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -1 || true)
+          [ -n "$result" ] || result=$(grep -m1 'MATRIX_RESULT ' cell.log || true)
+          echo "RESULT $result"
+          printf '%s\n' "$result" > result.txt
+          { printf 'commit=%s\nsize=%s\ndifficulty=%s\nseed=%s\ndigitSetting=%s\nexitCode=%s\n' "$GITHUB_SHA" "$GAUGUIN_MATRIX_SIZE" "$GAUGUIN_MATRIX_DIFFICULTY" "$GAUGUIN_MATRIX_SEED" "$GAUGUIN_MATRIX_DIGIT_SETTING" "$rc"; printf 'result=%s\n' "$result"; grep -m1 'Generation budget exhausted:' cell.log || true; } > diagnostic-report.txt
+          solutions=$(printf '%s' "$result" | grep -oE 'solutions=[0-9]+' | head -1 | cut -d= -f2 || true)
+          if [ "$rc" -ne 0 ] || [ -z "$result" ] || [ "${solutions:-0}" -ne 1 ] || [[ "$result" != *"size=11 "* ]] || [[ "$result" != *"difficulty=$GAUGUIN_MATRIX_DIFFICULTY "* ]] || [[ "$result" != *"seed=1 "* ]] || [[ "$result" != *"digitSetting=FIRST_DIGIT_ZERO "* ]]; then
+            echo "::error::Cell failed: exit=$rc difficulty=$GAUGUIN_MATRIX_DIFFICULTY; check uploaded log"
+            exit 1
+          fi
+          echo "PASS_UNIQUENESS $GAUGUIN_MATRIX_DIFFICULTY (human certification separate)"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: 11x11-zero-seed1-${{ matrix.difficulty }}
+          path: |
+            upstream/gauguin/cell.log
+            upstream/gauguin/result.txt
+            upstream/gauguin/diagnostic-report.txt
+          if-no-files-found: warn
