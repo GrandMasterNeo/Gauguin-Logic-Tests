@@ -37,7 +37,7 @@ jobs:
         working-directory: upstream/gauguin
         shell: bash
         run: |
-          set -uo pipefail
+          set -euo pipefail
           mkdir -p seed-reports
           echo 'seed,difficulty,digitSetting,exitCode,solutions,actual,resultStatus' > seed-reports/summary.csv
           failures=0
@@ -45,8 +45,10 @@ jobs:
             export GAUGUIN_MATRIX_SEED="$seed"
             rm -rf gauguin-core/build/test-results/integrationTest
             echo "::group::Seed $seed difficulty $GAUGUIN_MATRIX_DIFFICULTY"
+            set +e
             timeout --signal=TERM --kill-after=5s 240s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --info --rerun-tasks > "seed-reports/seed-$seed.log" 2>&1
             rc=$?
+            set -e
             result=$(grep -oh 'MATRIX_RESULT [^<]*' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -1 || true)
             [ -n "$result" ] || result=$(grep -m1 'MATRIX_RESULT ' "seed-reports/seed-$seed.log" || true)
             solutions=$(printf '%s' "$result" | grep -oE 'solutions=[0-9]+' | head -1 | cut -d= -f2 || true)
@@ -57,7 +59,7 @@ jobs:
               failures=$((failures+1))
             fi
             echo "$seed,$GAUGUIN_MATRIX_DIFFICULTY,FIRST_DIGIT_ZERO,$rc,${solutions:-0},${actual:-NA},$status" >> seed-reports/summary.csv
-            { echo "commit=$GITHUB_SHA"; echo "seed=$seed"; echo "difficulty=$GAUGUIN_MATRIX_DIFFICULTY"; echo "digitSetting=FIRST_DIGIT_ZERO"; echo "exitCode=$rc"; echo "result=$result"; grep -m1 'Generation budget exhausted:' "seed-reports/seed-$seed.log" || true; } > "seed-reports/seed-$seed-report.txt"
+            { echo "humanCertification=NOT_EVALUATED"; echo "failureClassification=$([ "$rc" -eq 124 ] && echo COMMAND_TIMEOUT || ([ "$rc" -ne 0 ] && echo TEST_OR_GENERATION_FAILURE || echo VALIDATION_FAILURE))"; echo "commit=$GITHUB_SHA"; echo "seed=$seed"; echo "difficulty=$GAUGUIN_MATRIX_DIFFICULTY"; echo "digitSetting=FIRST_DIGIT_ZERO"; echo "exitCode=$rc"; echo "result=$result"; grep -m1 'Generation budget exhausted:' "seed-reports/seed-$seed.log" || true; } > "seed-reports/seed-$seed-report.txt"
             tail -n 12 "seed-reports/seed-$seed.log"
             tail -c 250000 "seed-reports/seed-$seed.log" > "seed-reports/seed-$seed.bounded" && mv "seed-reports/seed-$seed.bounded" "seed-reports/seed-$seed.log"
             echo "SEED_RESULT seed=$seed difficulty=$GAUGUIN_MATRIX_DIFFICULTY status=$status exit=$rc $result"
