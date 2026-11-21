@@ -1,7 +1,7 @@
 name: 11x11 zero-start Hard and Very Hard seeds 0-10
 on:
   push:
-    branches: [experiment/personal-logic-integration]
+    branches: [experiment/autonomous-generation-lab]
     paths: ['.github/workflows/11x11-zero-hard-seeds-0-10.yml']
   workflow_dispatch:
 permissions:
