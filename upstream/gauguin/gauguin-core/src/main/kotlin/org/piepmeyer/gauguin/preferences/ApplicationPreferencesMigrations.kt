@@ -6,7 +6,15 @@ class ApplicationPreferencesMigrations(
     private val applicationPreferences: ApplicationPreferences,
 ) {
     fun migrateDifficultySettingIfNecessary() {
-        if (applicationPreferences.getStringSet("difficulties", null) != null) {
+        val existingDifficulties = applicationPreferences.getStringSet("difficulties", null)
+        if (existingDifficulties != null) {
+            // Normalize existing multi-select preferences without dropping selections.
+            if ("EXTREME" in existingDifficulties) {
+                applicationPreferences.difficultiesSetting = existingDifficulties
+                    .filterNotNull()
+                    .map { DifficultySetting.valueOf(if (it == "EXTREME") "VERY_HARD" else it) }
+                    .toSet()
+            }
             return
         }
 
