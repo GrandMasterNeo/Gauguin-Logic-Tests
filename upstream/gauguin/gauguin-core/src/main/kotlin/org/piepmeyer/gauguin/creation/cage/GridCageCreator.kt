@@ -17,10 +17,21 @@ class GridCageCreator(
     private val grid: Grid,
 ) {
     fun createCages() {
-        var restart: Boolean
-        do {
-            restart = createOneCage()
-        } while (restart)
+        // A fixed-single-cage layout can leave an uncovered cell with no legal
+        // multi-cell cage. Restarting the same grid indefinitely is not progress.
+        val maxRestarts = Integer.getInteger("gauguin.generation.maxCageRestarts", 32).coerceAtLeast(0)
+        var restarts = 0
+        while (true) {
+            val restart = createOneCage()
+            if (!restart) return
+            if (restarts >= maxRestarts) {
+                grid.clearAllCages()
+                throw CageConstructionExhaustedException(
+                    "No valid cage partition after ${restarts + 1} layouts (maxRestarts=$maxRestarts)"
+                )
+            }
+            restarts++
+        }
     }
 
     private fun createOneCage(): Boolean {
