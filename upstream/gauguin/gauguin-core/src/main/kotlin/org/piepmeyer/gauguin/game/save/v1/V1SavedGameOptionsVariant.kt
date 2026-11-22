@@ -26,7 +26,9 @@ data class V1SavedGameOptionsVariant(
                 showOperators = showOperators,
                 cageOperation = cageOperation,
                 digitSetting = digitSetting,
-                difficultiesSetting = difficultySetting!!.toDifficultySetting(),
+                difficultiesSetting = difficultySetting?.toDifficultySetting()
+                    ?: difficultiesSetting.takeIf { it.isNotEmpty() }
+                    ?: error("Saved V1 game has neither a difficulty setting nor a difficulty selection"),
                 singleCageUsage = singleCageUsage,
                 numeralSystem = numeralSystem,
             ),
