@@ -33,6 +33,11 @@ class ProgressiveGenerationMatrixTest : FunSpec({
     val seed = System.getenv("GAUGUIN_MATRIX_SEED")?.toIntOrNull() ?: 0
     val maxCandidates = System.getenv("GAUGUIN_MATRIX_MAX_CANDIDATES")?.toIntOrNull() ?: 1000
     val budgetMs = System.getenv("GAUGUIN_MATRIX_BUDGET_MS")?.toLongOrNull() ?: 60000L
+    // Opt-in experimental generator parameters; unset means unmodified baseline.
+    val experimentalLargeCagePercent = System.getenv("GAUGUIN_MATRIX_LARGE_CAGE_PERCENT")?.toIntOrNull()
+    val experimentalZeroMultiplicationWeight = System.getenv("GAUGUIN_MATRIX_ZERO_MULTIPLICATION_WEIGHT")?.toIntOrNull()
+    require(experimentalLargeCagePercent == null || experimentalLargeCagePercent in 0..100)
+    require(experimentalZeroMultiplicationWeight == null || experimentalZeroMultiplicationWeight in 0..100)
     require(size in 3..11 && seed >= 0 && maxCandidates in 1..100000 && budgetMs in 1000L..60000L)
 
     test("production generation size=$size difficulty=$difficulty seed=$seed") {
@@ -49,12 +54,18 @@ class ProgressiveGenerationMatrixTest : FunSpec({
         // Properties are read by the production calculator when calculate() starts.
         System.setProperty("gauguin.generation.maxAttempts", maxCandidates.toString())
         System.setProperty("gauguin.generation.maxMillis", budgetMs.toString())
+        experimentalLargeCagePercent?.let {
+            System.setProperty("gauguin.generation.experimentalLargeCagePercent", it.toString())
+        }
+        experimentalZeroMultiplicationWeight?.let {
+            System.setProperty("gauguin.generation.experimentalZeroMultiplicationWeight", it.toString())
+        }
         System.setProperty("gauguin.generation.diagnosticStartMs", (System.getenv("GAUGUIN_DEBUG_START_MS")?.toLongOrNull() ?: 30_000L).toString())
         System.setProperty("gauguin.generation.deepStartMs", (System.getenv("GAUGUIN_DEBUG_DEEP_MS")?.toLongOrNull() ?: 50_000L).toString())
         System.setProperty("gauguin.generation.diagnosticRejectThreshold", (System.getenv("GAUGUIN_DEBUG_REJECTIONS")?.toIntOrNull() ?: 5_000).toString())
         startKoin { modules(module { single { GameDifficultyRatingService() } }) }
         val started = System.nanoTime()
-        println("MATRIX_START size=$size difficulty=$difficulty seed=$seed production=true digitSetting=$digitSetting numeralSystem=$numeralSystem singleCage=$singleCageUsage cageOperation=$cageOperation showOperators=$showOperators budgetMs=$budgetMs maxCandidates=$maxCandidates")
+        println("MATRIX_START size=$size difficulty=$difficulty seed=$seed production=true digitSetting=$digitSetting numeralSystem=$numeralSystem singleCage=$singleCageUsage cageOperation=$cageOperation showOperators=$showOperators budgetMs=$budgetMs maxCandidates=$maxCandidates largeCagePercent=${experimentalLargeCagePercent ?: 0} zeroMultiplicationWeight=${experimentalZeroMultiplicationWeight ?: 65}")
         try {
             val randomizer = SeedRandomizerMock(seed)
             val grid = runBlocking {
@@ -73,6 +84,8 @@ class ProgressiveGenerationMatrixTest : FunSpec({
             stopKoin()
             System.clearProperty("gauguin.generation.maxAttempts")
             System.clearProperty("gauguin.generation.maxMillis")
+            System.clearProperty("gauguin.generation.experimentalLargeCagePercent")
+            System.clearProperty("gauguin.generation.experimentalZeroMultiplicationWeight")
             System.clearProperty("gauguin.generation.diagnosticStartMs")
             System.clearProperty("gauguin.generation.deepStartMs")
             System.clearProperty("gauguin.generation.diagnosticRejectThreshold")
