@@ -33,8 +33,16 @@ class GridCageOperationDecider(
     // Target weights are conditional on cage feasibility, not guaranteed grid-wide ratios.
     // Subtraction and division are only defined for two-cell cages.
     private fun decideWeightedAllOperations(): GridCageAction {
+        // Experimental knob for cages containing zero: zero-product cages are
+        // often ambiguous. The default (65) retains the original weighting.
+        val multiplyWeight = if (cells.any { it.value == 0 }) {
+            Integer.getInteger("gauguin.generation.experimentalZeroMultiplicationWeight", 65)
+                .coerceIn(0, 100).toDouble()
+        } else {
+            65.0
+        }
         val options = mutableListOf(
-            GridCageAction.ACTION_MULTIPLY to 65.0,
+            GridCageAction.ACTION_MULTIPLY to multiplyWeight,
             GridCageAction.ACTION_ADD to 16.0,
         )
         if (cells.size == 2) {
