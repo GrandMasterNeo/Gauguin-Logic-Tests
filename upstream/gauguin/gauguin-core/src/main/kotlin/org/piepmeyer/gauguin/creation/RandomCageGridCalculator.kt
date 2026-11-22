@@ -47,7 +47,7 @@ class RandomCageGridCalculator(
         val diagnosticRejectThreshold = Integer.getInteger("gauguin.generation.diagnosticRejectThreshold", 5_000)
         var diagnosticReported = false
         var deepReported = false
-        var grid: Grid
+        lateinit var grid: Grid
 
         try {
         do {
