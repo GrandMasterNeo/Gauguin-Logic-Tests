@@ -1,0 +1,106 @@
+name: Opt-in generator parameter calibration (11x11 zero-start)
+on:
+  push:
+    branches: [experiment/generator-parameter-calibration]
+    paths:
+      - .github/workflows/generator-parameter-calibration-ci.yml
+      - upstream/gauguin/gauguin-core/src/main/kotlin/org/piepmeyer/gauguin/creation/cage/**
+      - upstream/gauguin/gauguin-core/src/integrationTest/kotlin/org/piepmeyer/gauguin/creation/ProgressiveGenerationMatrixTest.kt
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  parameters:
+    name: ${{ matrix.case.name }} zero-start 11x11
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        case:
+          - { name: "BASELINE", large: 0, zero_mult: 65 }
+          - { name: "LARGE_CAGES", large: 75, zero_mult: 65 }
+          - { name: "ZERO_OPERATION_BIAS", large: 0, zero_mult: 20 }
+          - { name: "COMBINED", large: 75, zero_mult: 20 }
+    env:
+      GAUGUIN_MATRIX_SIZE: '11'
+      GAUGUIN_MATRIX_DIGIT_SETTING: FIRST_DIGIT_ZERO
+      GAUGUIN_MATRIX_MAX_CANDIDATES: '100000'
+      GAUGUIN_MATRIX_BUDGET_MS: '60000'
+      GAUGUIN_MATRIX_LARGE_CAGE_PERCENT: '${{ matrix.case.large }}'
+      GAUGUIN_MATRIX_ZERO_MULTIPLICATION_WEIGHT: '${{ matrix.case.zero_mult }}'
+      GAUGUIN_DEBUG_START_MS: '1000'
+      GAUGUIN_DEBUG_DEEP_MS: '5000'
+      GAUGUIN_DEBUG_REJECTIONS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Compile production integration tests
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-core:compileIntegrationTestKotlin --no-daemon --console=plain -Pbuildserver
+      - name: Compare identical seeds and difficulty targets with fresh execution
+        shell: bash
+        working-directory: upstream/gauguin
+        run: |
+          set -euo pipefail
+          mkdir -p parameter-reports
+          echo 'case,difficulty,seed,requested,actual,solutions,elapsedMs,candidates,difficultyRejected,uniquenessRejected,exitCode,status' > parameter-reports/summary.csv
+          failures=0
+          for difficulty in HARD VERY_HARD; do
+            for seed in 1 5; do
+              export GAUGUIN_MATRIX_DIFFICULTY="$difficulty" GAUGUIN_MATRIX_SEED="$seed"
+              prefix="parameter-reports/${difficulty}-seed-${seed}"
+              rm -rf gauguin-core/build/test-results/integrationTest
+              set +e
+              timeout --signal=TERM --kill-after=5s 180s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver --info --rerun-tasks > "${prefix}.log" 2>&1
+              rc=$?
+              set -e
+              result=$(grep -oh 'MATRIX_RESULT [^<]*' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -1 || true)
+              [ -n "$result" ] || result=$(grep -m1 'MATRIX_RESULT ' "${prefix}.log" || true)
+              summary=$(grep -o 'GENERATION_SUMMARY [^<]*' "${prefix}.log" | tail -1 || true)
+              [ -n "$summary" ] || summary=$(grep -oh 'GENERATION_SUMMARY [^<]*' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | tail -1 || true)
+              solutions=$(printf '%s' "$result" | grep -oE 'solutions=[0-9]+' | head -1 | cut -d= -f2 || true)
+              actual=$(printf '%s' "$result" | grep -oE 'actual=[A-Z_]+' | head -1 | cut -d= -f2 || true)
+              elapsed=$(printf '%s' "$result" | grep -oE 'elapsedMs=[0-9]+' | head -1 | cut -d= -f2 || true)
+              candidates=$(printf '%s' "$summary" | grep -oE 'candidates=[0-9]+' | head -1 | cut -d= -f2 || true)
+              dreject=$(printf '%s' "$summary" | grep -oE 'difficultyRejected=[0-9]+' | head -1 | cut -d= -f2 || true)
+              ureject=$(printf '%s' "$summary" | grep -oE 'uniquenessRejected=[0-9]+' | head -1 | cut -d= -f2 || true)
+              status=FAIL
+              if [ "$rc" -eq 0 ] && [ "${solutions:-0}" -eq 1 ] &&
+                 [ "$actual" = "$difficulty" ] &&
+                 [[ "$result" == *"size=11 "* ]] &&
+                 [[ "$result" == *"difficulty=$difficulty "* ]] &&
+                 [[ "$result" == *"seed=$seed "* ]] &&
+                 [[ "$result" == *"digitSetting=FIRST_DIGIT_ZERO "* ]]; then
+                status=PASS_UNIQUENESS
+              else
+                failures=$((failures+1))
+              fi
+              echo "${{ matrix.case.name }},$difficulty,$seed,$difficulty,${actual:-NA},${solutions:-0},${elapsed:-NA},${candidates:-NA},${dreject:-NA},${ureject:-NA},$rc,$status" >> parameter-reports/summary.csv
+              {
+                echo "commit=$GITHUB_SHA case=${{ matrix.case.name }} difficulty=$difficulty seed=$seed"
+                echo "largeCagePercent=$GAUGUIN_MATRIX_LARGE_CAGE_PERCENT zeroMultiplicationWeight=$GAUGUIN_MATRIX_ZERO_MULTIPLICATION_WEIGHT"
+                echo "humanCertification=NOT_EVALUATED"
+                echo "exitCode=$rc status=$status"
+                echo "$result"
+                echo "$summary"
+                grep -E 'GENERATION_REJECTION_DIAGNOSTIC|CAGE_CONSTRUCTION_DIAGNOSTIC|Generation budget exhausted:' "${prefix}.log" | tail -10 || true
+              } > "${prefix}-report.txt"
+              tail -c 250000 "${prefix}.log" > "${prefix}.tmp" && mv "${prefix}.tmp" "${prefix}.log"
+              echo "PARAMETER_CELL case=${{ matrix.case.name }} difficulty=$difficulty seed=$seed status=$status exit=$rc $result"
+            done
+          done
+          cat parameter-reports/summary.csv
+          [ "$failures" -eq 0 ]
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: parameter-calibration-${{ matrix.case.name }}
+          path: upstream/gauguin/parameter-reports/
+          if-no-files-found: warn
+          retention-days: 30
