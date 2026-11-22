@@ -79,6 +79,18 @@ class GridCageCreator(
             }
         }
 
+        // Experimental, opt-in geometry bias. Default 0 leaves production behaviour
+        // unchanged. The candidate still passes the original cage validity checks.
+        val experimentalLargeCagePercent =
+            Integer.getInteger("gauguin.generation.experimentalLargeCagePercent", 0).coerceIn(0, 100)
+        if (experimentalLargeCagePercent > 0 && randomizer.nextInt(100) < experimentalLargeCagePercent) {
+            val larger = cagesToTry.filter { it.coordinates.size == 4 }
+                .filter { isValidCageType(it, cell, grid) }
+            if (larger.isNotEmpty()) {
+                return larger.random(randomizer.random())
+            }
+        }
+
         while (cagesToTry.isNotEmpty()) {
             val cageType = cagesToTry.random(randomizer.random())
 
