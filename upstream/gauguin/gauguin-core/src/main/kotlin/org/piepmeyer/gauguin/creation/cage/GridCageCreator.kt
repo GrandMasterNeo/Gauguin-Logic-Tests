@@ -21,20 +21,24 @@ class GridCageCreator(
         // multi-cell cage. Restarting the same grid indefinitely is not progress.
         val maxRestarts = Integer.getInteger("gauguin.generation.maxCageRestarts", 32).coerceAtLeast(0)
         var restarts = 0
+        val deadEndCells = mutableMapOf<String, Int>()
         while (true) {
-            val restart = createOneCage()
+            val restart = createOneCage { cell ->
+                val position = "${cell.row},${cell.column}"
+                deadEndCells[position] = (deadEndCells[position] ?: 0) + 1
+            }
             if (!restart) return
             if (restarts >= maxRestarts) {
                 grid.clearAllCages()
                 throw CageConstructionExhaustedException(
-                    "No valid cage partition after ${restarts + 1} layouts (maxRestarts=$maxRestarts)"
+                    "No valid cage partition after ${restarts + 1} layouts (maxRestarts=$maxRestarts, deadEndCells=${deadEndCells.toSortedMap()})"
                 )
             }
             restarts++
         }
     }
 
-    private fun createOneCage(): Boolean {
+    private fun createOneCage(onDeadEnd: (GridCell) -> Unit): Boolean {
         var cageId = 0
         if (grid.options.singleCageUsage == SingleCageUsage.FIXED_NUMBER) {
             cageId = createSingleCages()
@@ -54,6 +58,7 @@ class GridCageCreator(
                 if (grid.options.singleCageUsage == SingleCageUsage.DYNAMIC) {
                     cageType = GridCageType.SINGLE
                 } else {
+                    onDeadEnd(cell)
                     grid.clearAllCages()
                     logger.trace { "Clearing cages." }
                     return true
