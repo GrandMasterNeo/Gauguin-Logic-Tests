@@ -48,7 +48,7 @@ class GridCageCreator(
         // placement. Reject that layout immediately instead of spending time on
         // cage-type sampling that cannot repair it.
         if (grid.options.singleCageUsage == SingleCageUsage.FIXED_NUMBER &&
-            hasIsolatedUncoveredCell()
+            hasIsolatedUncoveredCell(onDeadEnd)
         ) {
             grid.clearAllCages()
             return true
@@ -122,7 +122,7 @@ class GridCageCreator(
     // to a multi-cell cage. Do not place a cage that isolates an uncovered cell.
     // This is a necessary (not sufficient) feasibility check: it preserves all
     // existing legal cage shapes and arithmetic rules while pruning dead ends.
-    private fun hasIsolatedUncoveredCell(): Boolean = grid.cells.any { cell ->
+    private fun hasIsolatedUncoveredCell(onDeadEnd: (GridCell) -> Unit): Boolean = grid.cells.any { cell ->
         if (cell.cellInAnyCage()) return@any false
         val row = cell.row
         val col = cell.column
@@ -131,7 +131,7 @@ class GridCageCreator(
             row to (col - 1), row to (col + 1),
         ).none { (r, c) ->
             grid.getCellAt(r, c)?.cellInAnyCage() == false
-        }
+        }.also { isolated -> if (isolated) onDeadEnd(cell) }
     }
 
     private fun wouldStrandUncoveredCell(type: GridCageType, origin: GridCell): Boolean {
