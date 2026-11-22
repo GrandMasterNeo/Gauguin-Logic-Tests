@@ -5,6 +5,7 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import org.piepmeyer.gauguin.RandomSingleton
 import org.piepmeyer.gauguin.Randomizer
+import org.piepmeyer.gauguin.creation.cage.CageConstructionExhaustedException
 import org.piepmeyer.gauguin.creation.dlx.DLX
 import org.piepmeyer.gauguin.creation.dlx.MathDokuDLX
 import org.piepmeyer.gauguin.grid.Grid
@@ -23,6 +24,7 @@ class RandomCageGridCalculator(
         var sumDLXDuration: Long = 0
         var difficultyRejects = 0
         var uniquenessRejects = 0
+        var cageConstructionRejects = 0
         val rejectedDifficultyCounts = mutableMapOf<String, Int>()
         val uniquenessSolutionCounts = mutableMapOf<Int, Int>()
         var maxSingleDlxMs = 0L
@@ -52,7 +54,7 @@ class RandomCageGridCalculator(
             currentCoroutineContext().ensureActive()
             val elapsedMs = (System.nanoTime() - startedAt) / 1_000_000
             if (numAttempts >= maxAttempts || elapsedMs >= maxMillis) {
-                error("Generation budget exhausted: attempts=$numAttempts difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects dlxMs=$sumDLXDuration elapsedMs=$elapsedMs maxAttempts=$maxAttempts maxMillis=$maxMillis difficultyRatings=${rejectedDifficultyCounts.toSortedMap()} dlxSolutionCounts=${uniquenessSolutionCounts.toSortedMap()} maxSingleDlxMs=$maxSingleDlxMs invalidCageTargets=$invalidCageTargets cageShapes=${cageShapeCounts.toSortedMap()} cageOperations=${cageOperationCounts.toSortedMap()}")
+                error("Generation budget exhausted: attempts=$numAttempts difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects cageConstructionRejected=$cageConstructionRejects dlxMs=$sumDLXDuration elapsedMs=$elapsedMs maxAttempts=$maxAttempts maxMillis=$maxMillis difficultyRatings=${rejectedDifficultyCounts.toSortedMap()} dlxSolutionCounts=${uniquenessSolutionCounts.toSortedMap()} maxSingleDlxMs=$maxSingleDlxMs invalidCageTargets=$invalidCageTargets cageShapes=${cageShapeCounts.toSortedMap()} cageOperations=${cageOperationCounts.toSortedMap()}")
             }
 
             if (!diagnosticReported && (elapsedMs >= diagnosticStartMs || difficultyRejects >= diagnosticRejectThreshold)) {
@@ -65,8 +67,16 @@ class RandomCageGridCalculator(
                 println("GENERATION_CHECKPOINT level=deep candidates=$numAttempts elapsedMs=$elapsedMs difficultyRatings=${rejectedDifficultyCounts.toSortedMap()} dlxSolutionCounts=${uniquenessSolutionCounts.toSortedMap()} maxSingleDlxMs=$maxSingleDlxMs")
                 System.out.flush()
             }
-            grid = creator.createRandomizedGridWithCages()
+            // An impossible partial cage partition is a rejected candidate, not
+            // a reason to abort the entire generation search.
             numAttempts++
+            grid = try {
+                creator.createRandomizedGridWithCages()
+            } catch (ex: CageConstructionExhaustedException) {
+                cageConstructionRejects++
+                dlxNumber = 0
+                continue
+            }
             // Record the actual construction distribution before difficulty filtering.
             // No gameplay, acceptance, or randomization behavior is changed.
             for (cage in grid.cages) {
@@ -120,7 +130,7 @@ class RandomCageGridCalculator(
         } finally {
             // Includes cancellation and timeouts; do not lose rejection evidence on failed jobs.
             val elapsedMs = (System.nanoTime() - startedAt) / 1_000_000
-            val summary = "GENERATION_SUMMARY candidates=$numAttempts difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects dlxMs=$sumDLXDuration elapsedMs=$elapsedMs"
+            val summary = "GENERATION_SUMMARY candidates=$numAttempts difficultyRejected=$difficultyRejects uniquenessRejected=$uniquenessRejects cageConstructionRejected=$cageConstructionRejects dlxMs=$sumDLXDuration elapsedMs=$elapsedMs"
             logger.warn { summary }
             println(summary)
             println("GENERATION_REJECTION_DIAGNOSTIC difficultyRatings=${rejectedDifficultyCounts.toSortedMap()} dlxSolutionCounts=${uniquenessSolutionCounts.toSortedMap()} maxSingleDlxMs=$maxSingleDlxMs")
