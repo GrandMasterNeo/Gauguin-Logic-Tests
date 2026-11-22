@@ -67,6 +67,19 @@ class ApplicationPreferencesMigrationsTest :
             migrations.migrateDifficultySettingIfNecessary()
         }
 
+        test("legacy EXTREME in existing multi-select is normalized without losing selections") {
+            val preferences = mockk<ApplicationPreferences> {
+                every { getStringSet("difficulties", null) } returns setOf("EASY", "EXTREME", "HARD")
+                every { difficultiesSetting = setOf(DifficultySetting.EASY, DifficultySetting.VERY_HARD, DifficultySetting.HARD) } just runs
+            }
+
+            ApplicationPreferencesMigrations(preferences).migrateDifficultySettingIfNecessary()
+
+            verify(exactly = 1) {
+                preferences.difficultiesSetting = setOf(DifficultySetting.EASY, DifficultySetting.VERY_HARD, DifficultySetting.HARD)
+            }
+        }
+
         test("difficulty migration gets not triggered if no difficulty preference is used yet") {
             val preferences =
                 mockk<ApplicationPreferences> {
@@ -88,7 +101,7 @@ class ApplicationPreferencesMigrationsTest :
         withData(
             DifficultyMigrationTestData("EASY", setOf(DifficultySetting.EASY)),
             DifficultyMigrationTestData("EXTREME", setOf(DifficultySetting.EXTREME)),
-            DifficultyMigrationTestData("VERY_HARD", setOf(DifficultySetting.EXTREME)),
+            DifficultyMigrationTestData("VERY_HARD", setOf(DifficultySetting.VERY_HARD)),
             DifficultyMigrationTestData("ANY", DifficultySetting.all()),
         ) { testData ->
             val preferences =
