@@ -1,0 +1,70 @@
+name: Isolated Gauguin architecture audit
+on:
+  push:
+    branches: [experiment/architecture-audit]
+    paths:
+      - AGENTS.md
+      - audit/architecture/**
+      - .github/workflows/architecture-audit-ci.yml
+      - upstream/gauguin/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  structural-scan:
+    name: Read-only architecture source survey
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout audit branch
+        uses: actions/checkout@v4
+      - name: Verify and run scanner
+        run: |
+          python3 -m py_compile audit/architecture/scan_repo.py
+          python3 audit/architecture/scan_repo.py --root upstream/gauguin --output audit-artifacts/structural-survey.md
+      - name: Upload bounded architecture survey
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: architecture-structural-survey
+          path: audit-artifacts/
+          if-no-files-found: warn
+          retention-days: 30
+
+  core-tests:
+    name: Original core and human solver unit-test baseline
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout audit branch
+        uses: actions/checkout@v4
+      - name: Install JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Execute established unit-test suites without source changes
+        working-directory: upstream/gauguin
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=10s 1400s ./gradlew :gauguin-core:test :gauguin-human-solver:test --no-daemon --console=plain -Pbuildserver 2>&1 | tee /tmp/gauguin-architecture-unit-tests.log
+      - name: Retain bounded logs
+        if: always()
+        run: |
+          mkdir -p audit-artifacts
+          if [ -f /tmp/gauguin-architecture-unit-tests.log ]; then
+            tail -c 250000 /tmp/gauguin-architecture-unit-tests.log > audit-artifacts/unit-test-log.txt
+          fi
+      - name: Upload test logs and reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: architecture-core-human-unit-tests
+          path: |
+            audit-artifacts/unit-test-log.txt
+            upstream/gauguin/gauguin-core/build/test-results/test/
+            upstream/gauguin/gauguin-human-solver/build/test-results/test/
+          if-no-files-found: warn
+          retention-days: 30
