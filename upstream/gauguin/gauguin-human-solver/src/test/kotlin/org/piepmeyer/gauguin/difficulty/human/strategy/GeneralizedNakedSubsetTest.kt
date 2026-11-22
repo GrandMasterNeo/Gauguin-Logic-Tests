@@ -77,8 +77,8 @@ class GeneralizedNakedSubsetTest : FunSpec({
         println("HALL_SUBSET_ORACLE compatibleLatinSquareMasks=90 deductions=$deductions noTrueCandidateErased=true")
     }
 
-    test("experiment does not change the 37-strategy registered production order") {
-        HumanSolverStrategies.entries.size shouldBe 37
+    test("experiment does not change the 38-strategy registered production order") {
+        HumanSolverStrategies.entries.size shouldBe 38
         HumanSolverStrategies.entries.none { it.solver is GeneralizedNakedSubset } shouldBe true
     }
 })
