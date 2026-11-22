@@ -1,0 +1,46 @@
+name: Isolated architecture-audit proof tests
+on:
+  push:
+    branches: [experiment/architecture-audit-proofs]
+    paths:
+      - .github/workflows/architecture-audit-proof-ci.yml
+      - upstream/gauguin/**
+      - audit/architecture/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression-proof:
+    name: Full core and human-solver unit tests (no cached tasks)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Rerun source unit tests
+        working-directory: upstream/gauguin
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=10s 1400s ./gradlew :gauguin-core:test :gauguin-human-solver:test --rerun-tasks --no-daemon --console=plain -Pbuildserver 2>&1 | tee /tmp/audit-proof-tests.log
+      - name: Bound logs
+        if: always()
+        run: |
+          mkdir -p audit-artifacts
+          if [ -f /tmp/audit-proof-tests.log ]; then
+            tail -c 250000 /tmp/audit-proof-tests.log > audit-artifacts/audit-proof-tests.log
+          fi
+      - name: Persist test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: architecture-audit-proof-unit-tests
+          path: |
+            audit-artifacts/audit-proof-tests.log
+            upstream/gauguin/gauguin-core/build/test-results/test/
+            upstream/gauguin/gauguin-human-solver/build/test-results/test/
+          if-no-files-found: warn
+          retention-days: 30
