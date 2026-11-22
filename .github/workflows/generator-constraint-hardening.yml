@@ -41,14 +41,22 @@ jobs:
         run: |
           set -o pipefail
           ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --rerun-tasks --no-daemon --console=plain -Pbuildserver --info 2>&1 | tee /tmp/generator-constraint-regression.log
+      - name: Compile Android app and resolve Ferris Wheel dependency
+        id: android_compile
+        if: always() && steps.unit_tests.outcome != 'cancelled'
+        working-directory: upstream/gauguin
+        run: |
+          set -o pipefail
+          ./gradlew :gauguin-app:compileDebugKotlin --rerun-tasks --no-daemon --console=plain -Pbuildserver 2>&1 | tee /tmp/generator-constraint-android.log
       - name: Save bounded diagnostics
         if: always()
         run: |
           mkdir -p reports
           if [ -f /tmp/generator-constraint-unit.log ]; then tail -c 100000 /tmp/generator-constraint-unit.log > reports/unit-debug.log; fi
           if [ -f /tmp/generator-constraint-regression.log ]; then tail -c 250000 /tmp/generator-constraint-regression.log > reports/integration-debug.log; fi
+          if [ -f /tmp/generator-constraint-android.log ]; then tail -c 150000 /tmp/generator-constraint-android.log > reports/android-compile.log; fi
           printf 'commit=%s\nrun_id=%s\nrun_attempt=%s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT" > reports/run-metadata.txt
-          printf 'unitOutcome=%s\nintegrationOutcome=%s\nhumanCertification=NOT_EVALUATED\n' '${{ steps.unit_tests.outcome }}' '${{ steps.generation_regression.outcome }}' >> reports/run-metadata.txt
+          printf 'unitOutcome=%s\nintegrationOutcome=%s\nhumanCertification=NOT_EVALUATED\nandroidCompileOutcome=%s\n' '${{ steps.unit_tests.outcome }}' '${{ steps.generation_regression.outcome }}' '${{ steps.android_compile.outcome }}' >> reports/run-metadata.txt
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -64,6 +72,7 @@ jobs:
         env:
           UNIT_OUTCOME: ${{ steps.unit_tests.outcome }}
           INTEGRATION_OUTCOME: ${{ steps.generation_regression.outcome }}
+          ANDROID_OUTCOME: ${{ steps.android_compile.outcome }}
         run: |
-          echo "unit=$UNIT_OUTCOME integration=$INTEGRATION_OUTCOME"
-          test "$UNIT_OUTCOME" = success && test "$INTEGRATION_OUTCOME" = success
+          echo "unit=$UNIT_OUTCOME integration=$INTEGRATION_OUTCOME android=$ANDROID_OUTCOME"
+          test "$UNIT_OUTCOME" = success && test "$INTEGRATION_OUTCOME" = success && test "$ANDROID_OUTCOME" = success
