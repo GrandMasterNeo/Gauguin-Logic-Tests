@@ -84,7 +84,7 @@ class GridCageCreator(
                 setOf(org.piepmeyer.gauguin.options.DifficultySetting.VERY_HARD)
         if (preferLarge && randomizer.nextInt(4) != 0) {
             val larger = cagesToTry.filter { it.coordinates.size == 4 }
-                .filter { isValidCageType(it, cell, grid) }
+                .filter { isValidCageType(it, cell, grid) && !wouldStrandUncoveredCell(it, cell) }
             if (larger.isNotEmpty()) {
                 return larger.random(randomizer.random())
             }
@@ -93,7 +93,7 @@ class GridCageCreator(
         while (cagesToTry.isNotEmpty()) {
             val cageType = cagesToTry.random(randomizer.random())
 
-            if (isValidCageType(cageType, cell, grid)) {
+            if (isValidCageType(cageType, cell, grid) && !wouldStrandUncoveredCell(cageType, cell)) {
                 return cageType
             }
 
@@ -101,6 +101,36 @@ class GridCageCreator(
         }
 
         return null
+    }
+
+    // With a fixed number of single-cell cages, every other cell must belong
+    // to a multi-cell cage. Do not place a cage that isolates an uncovered cell.
+    // This is a necessary (not sufficient) feasibility check: it preserves all
+    // existing legal cage shapes and arithmetic rules while pruning dead ends.
+    private fun wouldStrandUncoveredCell(type: GridCageType, origin: GridCell): Boolean {
+        if (grid.options.singleCageUsage != SingleCageUsage.FIXED_NUMBER) return false
+
+        val selected = type.coordinates.map { (dx, dy) ->
+            (origin.row + dy) to (origin.column + dx)
+        }.toSet()
+
+        return grid.cells.any { cell ->
+            val position = cell.row to cell.column
+            if (cell.cellInAnyCage() || position in selected) return@any false
+
+            val row = cell.row
+            val col = cell.column
+            val adjacent = arrayOf(
+                (row - 1) to col,
+                (row + 1) to col,
+                row to (col - 1),
+                row to (col + 1),
+            )
+            adjacent.none { (r, c) ->
+                val neighbor = grid.getCellAt(r, c)
+                neighbor != null && !neighbor.cellInAnyCage() && (r to c) !in selected
+            }
+        }
     }
 
     private fun createSingleCages(): Int {
