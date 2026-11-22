@@ -74,6 +74,10 @@ class RandomCageGridCalculator(
                 creator.createRandomizedGridWithCages()
             } catch (ex: CageConstructionExhaustedException) {
                 cageConstructionRejects++
+                if (cageConstructionRejects == 1) {
+                    println("CAGE_RESTART_SAMPLE ${ex.message}")
+                    System.out.flush()
+                }
                 dlxNumber = 0
                 continue
             }
