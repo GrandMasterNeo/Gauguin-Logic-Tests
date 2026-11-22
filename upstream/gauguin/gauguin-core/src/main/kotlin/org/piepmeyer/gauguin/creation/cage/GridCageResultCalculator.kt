@@ -2,6 +2,7 @@ package org.piepmeyer.gauguin.creation.cage
 
 import org.piepmeyer.gauguin.grid.GridCage
 import org.piepmeyer.gauguin.grid.GridCageAction
+import java.math.BigInteger
 import kotlin.math.max
 import kotlin.math.min
 
@@ -16,19 +17,19 @@ class GridCageResultCalculator(
         }
 
         if (cage.action == GridCageAction.ACTION_ADD) {
-            var total = 0
+            var total = BigInteger.ZERO
             for (cell in cage.cells) {
-                total += cell.value
+                total = total.add(BigInteger.valueOf(cell.value.toLong()))
             }
-            return total
+            return total.intValueExact()
         }
 
         if (cage.action == GridCageAction.ACTION_MULTIPLY) {
-            var total = 1
+            var total = BigInteger.ONE
             for (cell in cage.cells) {
-                total *= cell.value
+                total = total.multiply(BigInteger.valueOf(cell.value.toLong()))
             }
-            return total
+            return total.intValueExact()
         }
 
         val higher = max(cage.cells[0].value, cage.cells[1].value)
