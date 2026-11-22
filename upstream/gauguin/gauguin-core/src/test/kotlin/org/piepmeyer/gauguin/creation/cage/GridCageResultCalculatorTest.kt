@@ -132,6 +132,34 @@ class GridCageResultCalculatorTest :
             GridCageResultCalculator(cage).calculateResultFromAction() shouldBe 30
         }
 
+        test("multiply rejects an exact product beyond Int range") {
+            val cage = GridCage(0, true, GridCageAction.ACTION_MULTIPLY, mockk())
+            cage.addCell(createCellWithValue(50_000))
+            cage.addCell(createCellWithValue(50_000))
+            shouldThrow<ArithmeticException> {
+                GridCageResultCalculator(cage).calculateResultFromAction()
+            }
+        }
+
+        test("multiply rejects a product that would wrap to a small Int") {
+            val cage = GridCage(0, true, GridCageAction.ACTION_MULTIPLY, mockk())
+            cage.addCell(createCellWithValue(65_536))
+            cage.addCell(createCellWithValue(65_536))
+            cage.addCell(createCellWithValue(1))
+            shouldThrow<ArithmeticException> {
+                GridCageResultCalculator(cage).calculateResultFromAction()
+            }
+        }
+
+        test("addition rejects an exact sum beyond Int range") {
+            val cage = GridCage(0, true, GridCageAction.ACTION_ADD, mockk())
+            cage.addCell(createCellWithValue(Int.MAX_VALUE))
+            cage.addCell(createCellWithValue(1))
+            shouldThrow<ArithmeticException> {
+                GridCageResultCalculator(cage).calculateResultFromAction()
+            }
+        }
+
         test("addition with 2 cells") {
             val cage = GridCage(0, true, GridCageAction.ACTION_ADD, mockk())
 
