@@ -1,0 +1,59 @@
+name: Targeted 10x10 11x11 integer variant regression
+on:
+  push:
+    branches: [experiment/generator-constraint-hardening]
+    paths: ['.github/workflows/targeted-integer-variant-regression.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  matrix:
+    name: ${{ matrix.size }}x${{ matrix.size }} ${{ matrix.difficulty }} ${{ matrix.digits }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      max-parallel: 7
+      matrix:
+        size: [10, 11]
+        difficulty: [HARD, VERY_HARD]
+        digits: [FIRST_DIGIT_ONE, FIRST_DIGIT_ZERO, PRIME_NUMBERS, FIBONACCI_SEQUENCE, PADOVAN_SEQUENCE, FIRST_DIGIT_MINUS_TWO, FIRST_DIGIT_MINUS_FIVE]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Compile integration tests
+        working-directory: upstream/gauguin
+        run: ./gradlew :gauguin-core:compileIntegrationTestKotlin --no-daemon --console=plain -Pbuildserver
+      - name: Generate and independently count solutions (seed 1)
+        working-directory: upstream/gauguin
+        shell: bash
+        env:
+          GAUGUIN_MATRIX_SIZE: ${{ matrix.size }}
+          GAUGUIN_MATRIX_DIFFICULTY: ${{ matrix.difficulty }}
+          GAUGUIN_MATRIX_DIGIT_SETTING: ${{ matrix.digits }}
+          GAUGUIN_MATRIX_SEED: '1'
+          GAUGUIN_MATRIX_MAX_CANDIDATES: '100000'
+          GAUGUIN_MATRIX_BUDGET_MS: '60000'
+        run: |
+          set -uo pipefail
+          timeout --signal=TERM --kill-after=5s 150s ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --rerun-tasks --no-daemon --console=plain -Pbuildserver > cell.log 2>&1
+          rc=$?
+          result=$(grep -oh 'MATRIX_RESULT [^<]*' gauguin-core/build/test-results/integrationTest/TEST-*ProgressiveGenerationMatrixTest*.xml 2>/dev/null | head -1 || true)
+          [ -n "$result" ] || result=$(grep -m1 'MATRIX_RESULT ' cell.log || true)
+          echo "MATRIX_CELL size=$GAUGUIN_MATRIX_SIZE difficulty=$GAUGUIN_MATRIX_DIFFICULTY digits=$GAUGUIN_MATRIX_DIGIT_SETTING seed=1 exit=$rc $result"
+          if [ "$rc" -ne 0 ] || ! printf '%s' "$result" | grep -q 'solutions=1'; then
+            tail -n 120 cell.log
+            exit 1
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: matrix-${{ matrix.size }}-${{ matrix.difficulty }}-${{ matrix.digits }}
+          path: |
+            upstream/gauguin/cell.log
+            upstream/gauguin/gauguin-core/build/test-results/integrationTest/
+          if-no-files-found: warn
+          retention-days: 7
