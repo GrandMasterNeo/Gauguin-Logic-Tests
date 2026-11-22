@@ -21,11 +21,11 @@ class GridCage(
     }
 
     private fun isMultiplyMathsCorrect(): Boolean {
-        var total = 1
+        var total = 1L
         for (cell in cells) {
             total *= cell.userValue ?: return false
         }
-        return total == result
+        return total == result.toLong()
     }
 
     fun isDivideMathsCorrect(): Boolean {
