@@ -19,11 +19,14 @@ jobs:
           distribution: temurin
           java-version: '21'
       - name: Compile and run core and human solver unit tests
+        id: unit_tests
         working-directory: upstream/gauguin
         run: |
           set -o pipefail
           ./gradlew :gauguin-core:test :gauguin-human-solver:test --rerun-tasks --no-daemon --console=plain -Pbuildserver 2>&1 | tee /tmp/generator-constraint-unit.log
       - name: Reproduce previously passing 11x11 Hard seed 5 with debug
+        id: generation_regression
+        if: always() && steps.unit_tests.outcome != 'cancelled'
         working-directory: upstream/gauguin
         env:
           GAUGUIN_MATRIX_SIZE: '11'
@@ -45,7 +48,7 @@ jobs:
           if [ -f /tmp/generator-constraint-unit.log ]; then tail -c 100000 /tmp/generator-constraint-unit.log > reports/unit-debug.log; fi
           if [ -f /tmp/generator-constraint-regression.log ]; then tail -c 250000 /tmp/generator-constraint-regression.log > reports/integration-debug.log; fi
           printf 'commit=%s\nrun_id=%s\nrun_attempt=%s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" "$GITHUB_RUN_ATTEMPT" > reports/run-metadata.txt
-          printf 'humanCertification=NOT_EVALUATED\n' >> reports/run-metadata.txt
+          printf 'unitOutcome=%s\nintegrationOutcome=%s\nhumanCertification=NOT_EVALUATED\n' '${{ steps.unit_tests.outcome }}' '${{ steps.generation_regression.outcome }}' >> reports/run-metadata.txt
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -56,3 +59,11 @@ jobs:
             upstream/gauguin/gauguin-human-solver/build/test-results/
           if-no-files-found: warn
           retention-days: 14
+      - name: Enforce both regression gates
+        if: always()
+        env:
+          UNIT_OUTCOME: ${{ steps.unit_tests.outcome }}
+          INTEGRATION_OUTCOME: ${{ steps.generation_regression.outcome }}
+        run: |
+          echo "unit=$UNIT_OUTCOME integration=$INTEGRATION_OUTCOME"
+          test "$UNIT_OUTCOME" = success && test "$INTEGRATION_OUTCOME" = success
