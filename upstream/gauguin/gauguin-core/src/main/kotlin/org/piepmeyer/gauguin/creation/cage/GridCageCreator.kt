@@ -44,6 +44,16 @@ class GridCageCreator(
             cageId = createSingleCages()
         }
 
+        // Fixed singles can isolate an uncovered cell before the first multi-cell
+        // placement. Reject that layout immediately instead of spending time on
+        // cage-type sampling that cannot repair it.
+        if (grid.options.singleCageUsage == SingleCageUsage.FIXED_NUMBER &&
+            wouldStrandUncoveredCell(GridCageType.SINGLE, grid.cells.first())
+        ) {
+            grid.clearAllCages()
+            return true
+        }
+
         for (cell in grid.cells) {
             if (cell.cellInAnyCage()) {
                 continue
