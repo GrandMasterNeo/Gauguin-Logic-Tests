@@ -27,7 +27,7 @@ class ApplicationPreferencesMigrations(
                 if (oldDifficultyValue == "ANY") {
                     DifficultySetting.all()
                 } else {
-                    setOf(DifficultySetting.valueOf(if (oldDifficultyValue == "VERY_HARD") "EXTREME" else oldDifficultyValue))
+                    setOf(DifficultySetting.valueOf(if (oldDifficultyValue == "EXTREME") "VERY_HARD" else oldDifficultyValue))
                 }
         }
     }
