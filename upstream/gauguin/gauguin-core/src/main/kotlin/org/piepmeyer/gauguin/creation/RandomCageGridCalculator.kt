@@ -34,6 +34,7 @@ class RandomCageGridCalculator(
         val startedAt = System.nanoTime()
         val creator = GridCreator(variant, randomizer, shuffler)
         val difficultyGate = DifficultyAwareGridCreator(variant, randomizer, shuffler)
+        difficultyGate.validateRequestedDifficulty()
         // Load calibration once; diagnostics must not reload it for every rejected candidate.
         val diagnosticDifficultyRater = org.piepmeyer.gauguin.difficulty.GameDifficultyRater()
 
