@@ -20,6 +20,26 @@ class DifficultyAwareGridCreator(
     private val difficultyService: GameDifficultyRatingService by inject()
 
     fun createRandomizedGridWithCages(): Grid {
+        // A requested difficulty must be classifiable before we spend the generation budget.
+        // Equal adjacent thresholds make the lower category unreachable because the
+        // classifier checks the higher category first.
+        if (variant.options.difficultiesSetting != DifficultySetting.all()) {
+            val rating = difficultyService.difficultyRating(variant)
+                ?: error("No difficulty rating available for requested variant: $variant")
+            val requested = variant.options.difficultiesSetting
+            val thresholds = listOf(
+                rating.thresholdEasy,
+                rating.thresholdMedium,
+                rating.thresholdHard,
+                rating.thresholdExtreme,
+            )
+            val reachable = DifficultySetting.entries.filterIndexed { index, _ ->
+                index == 0 || index == 4 || thresholds[index - 1] < thresholds[index]
+            }.toSet()
+            require(requested.any { it in reachable }) {
+                "Requested difficulty $requested is unreachable for variant $variant: thresholds=$thresholds"
+            }
+        }
         val coreCreator = GridCreator(variant, randomizer, shuffler)
 
         // This entry point can be called independently of RandomCageGridCalculator.
@@ -49,10 +69,6 @@ class DifficultyAwareGridCreator(
         if (variant.options.difficultiesSetting == DifficultySetting.all()) {
             return true
         }
-        return if (!difficultyService.isSupported(grid.variant)) {
-            true
-        } else {
-            difficultyService.difficultyOfGrid(grid) in variant.options.difficultiesSetting
-        }
+        return difficultyService.difficultyOfGrid(grid) in variant.options.difficultiesSetting
     }
 }
