@@ -4,4 +4,6 @@ data class HumanSolverResult(
     val success: Boolean,
     val usedNishio: Boolean,
     val difficulty: Int,
+    val revealedCells: Int = 0,
+    val strategyTrace: List<String> = emptyList(),
 )
