@@ -160,10 +160,19 @@ data class Game(
     }
 
     fun revealCell(cell: GridCell) {
+        if (!grid.isActive || cell !in grid.cells) {
+            return
+        }
+
         cell.isCheated = true
 
         if (!cell.isUserValueCorrect) {
+            // Pass the target explicitly: a reveal must not depend on the selected cell.
             enterNumber(cell.value, cell)
+        } else {
+            // A correct pre-filled cell still changes state when marked as revealed.
+            // Refresh it even though enterNumber is not called.
+            gridUI.invalidate()
         }
     }
 
