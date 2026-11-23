@@ -89,6 +89,51 @@ class GameTest :
                 cellToReveal.userValue shouldBe 2
             }
 
+            test("revealing a different cell replaces its incorrect value without changing selection") {
+                val preferences = mockk<ApplicationPreferences> {
+                    every { showDupedDigits() } returns true
+                    every { removePencils() } returns false
+                }
+                val grid = GridBuilder(2)
+                    .addCageMultiply(2, GridCageType.ANGLE_RIGHT_BOTTOM)
+                    .addCageSingle(2)
+                    .createGrid()
+                grid.isActive = true
+                val target = grid.cells[0]
+                target.value = 2
+                target.userValue = 1
+                grid.selectedCell = grid.cells[1]
+                val game = Game(grid, mockk(relaxed = true), mockk(relaxed = true), preferences)
+
+                game.revealCell(target)
+
+                target.userValue shouldBe 2
+                target.isCheated shouldBe true
+                grid.selectedCell shouldBe grid.cells[1]
+            }
+
+            test("revealing an already correct cell marks it revealed and refreshes the grid") {
+                val preferences = mockk<ApplicationPreferences> {
+                    every { showDupedDigits() } returns true
+                }
+                val grid = GridBuilder(2)
+                    .addCageMultiply(2, GridCageType.ANGLE_RIGHT_BOTTOM)
+                    .addCageSingle(2)
+                    .createGrid()
+                grid.isActive = true
+                val target = grid.cells[0]
+                target.value = 2
+                target.userValue = 2
+                val gridUI = mockk<org.piepmeyer.gauguin.grid.GridView>(relaxed = true)
+                val game = Game(grid, gridUI, mockk(relaxed = true), preferences)
+
+                game.revealCell(target)
+
+                target.userValue shouldBe 2
+                target.isCheated shouldBe true
+                io.mockk.verify(exactly = 1) { gridUI.invalidate() }
+            }
+
             test("fillSingleCagesInNewGrid fills userValues of single cages") {
                 val preferences =
                     mockk<ApplicationPreferences> {
