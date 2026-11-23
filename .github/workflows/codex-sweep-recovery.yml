@@ -1,0 +1,50 @@
+name: Codex sweep recovery - bounded generation probes
+on:
+  push:
+    branches: [experiment/codex-sweep-recovery]
+    paths:
+      - .github/workflows/codex-sweep-recovery.yml
+      - upstream/gauguin/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  generation-probes:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {size: '8', difficulty: HARD, digit: FIRST_DIGIT_ZERO, seed: '1'}
+          - {size: '9', difficulty: HARD, digit: FIRST_DIGIT_ZERO, seed: '1'}
+          - {size: '10', difficulty: HARD, digit: FIRST_DIGIT_ZERO, seed: '1'}
+          - {size: '11', difficulty: HARD, digit: FIRST_DIGIT_ZERO, seed: '5'}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Run bounded generation integration probe
+        working-directory: upstream/gauguin
+        env:
+          GAUGUIN_MATRIX_SIZE: ${{ matrix.size }}
+          GAUGUIN_MATRIX_DIFFICULTY: ${{ matrix.difficulty }}
+          GAUGUIN_MATRIX_DIGIT_SETTING: ${{ matrix.digit }}
+          GAUGUIN_MATRIX_SEED: ${{ matrix.seed }}
+          GAUGUIN_MATRIX_BUDGET_MS: '60000'
+          GAUGUIN_MATRIX_MAX_CANDIDATES: '100000'
+        run: |
+          set -o pipefail
+          ./gradlew :gauguin-core:integrationTest --tests '*ProgressiveGenerationMatrixTest' --no-daemon --console=plain -Pbuildserver 2>&1 | tee /tmp/generation-probe.log
+      - name: Save evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: probe-${{ matrix.size }}-${{ matrix.difficulty }}-${{ matrix.seed }}
+          path: |
+            upstream/gauguin/gauguin-core/build/test-results/integrationTest/
+            /tmp/generation-probe.log
+          if-no-files-found: warn
+          retention-days: 14
