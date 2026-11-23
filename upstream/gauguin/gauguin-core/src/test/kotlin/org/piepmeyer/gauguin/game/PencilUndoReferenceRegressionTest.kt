@@ -102,7 +102,7 @@ class PencilUndoReferenceRegressionTest : FunSpec({
         game.lastPossibles shouldBe setOf(1, 2)
         game.undoOneStep()
         cell.possibles shouldBe setOf(1)
-        game.lastPossibles shouldBe setOf(1)
+        game.lastPossibles shouldBe emptySet()
     }
 
 })
