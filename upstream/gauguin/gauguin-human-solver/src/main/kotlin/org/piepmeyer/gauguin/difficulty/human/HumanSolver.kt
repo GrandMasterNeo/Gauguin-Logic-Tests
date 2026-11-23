@@ -29,6 +29,8 @@ class HumanSolver(
     private val difficultyUnsolvedCell = 1000
 
     fun solveAndCalculateDifficulty(avoidReveal: Boolean = false): HumanSolverResult {
+        // A solver instance may be reused; never validate stale changes from a prior run.
+        changedCells = emptyList()
         revealedCells = 0
         strategyTrace.clear()
         currentStep = 0
