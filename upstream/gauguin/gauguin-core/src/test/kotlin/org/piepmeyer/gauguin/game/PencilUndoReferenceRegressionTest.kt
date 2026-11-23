@@ -87,4 +87,22 @@ class PencilUndoReferenceRegressionTest : FunSpec({
         grid.cells.map { it.value } shouldBe beforeAnswers
         grid.undoSteps.size shouldBe 0
     }
+    test("undo must not leave a stale last pencil marks buffer") {
+        val grid = GridBuilder(2)
+            .addCageMultiply(2, GridCageType.ANGLE_RIGHT_BOTTOM)
+            .addCageSingle(2)
+            .createGrid()
+        val preferences = mockk<ApplicationPreferences> {
+            every { showDupedDigits() } returns true
+        }
+        val game = Game(grid, mockk(relaxed = true), mockk(relaxed = true), preferences)
+        val cell = grid.cells[0]
+        cell.possibles = setOf(1)
+        game.enterPossibleNumberCore(cell, 2)
+        game.lastPossibles shouldBe setOf(1, 2)
+        game.undoOneStep()
+        cell.possibles shouldBe setOf(1)
+        game.lastPossibles shouldBe setOf(1)
+    }
+
 })
