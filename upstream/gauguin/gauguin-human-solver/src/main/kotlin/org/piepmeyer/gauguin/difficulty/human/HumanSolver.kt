@@ -21,6 +21,7 @@ class HumanSolver(
     private val cache = HumanSolverCacheImpl(grid)
     private var changedCells: Collection<GridCell> = emptyList()
 
+    private val strategyTrace = mutableListOf<String>()
     private var revealedCells = 0
     private var usedNishio = false
     private var currentStep = 0
@@ -28,6 +29,10 @@ class HumanSolver(
     private val difficultyUnsolvedCell = 1000
 
     fun solveAndCalculateDifficulty(avoidReveal: Boolean = false): HumanSolverResult {
+        revealedCells = 0
+        strategyTrace.clear()
+        currentStep = 0
+        usedNishio = false
         var progress: HumanSolverStep
         var success = true
         var difficulty = FillSingleCages().fillCells(grid) * 1
@@ -46,7 +51,7 @@ class HumanSolver(
             // Never hand an inconsistent cache to strategies that may use all(empty).
             if (hasContradictoryCandidates()) {
                 logger.warn { "Human solver stopped: contradictory candidates or cage combinations." }
-                return HumanSolverResult(false, usedNishio, difficulty + difficultyUnsolvedCell)
+                return HumanSolverResult(false, usedNishio, difficulty + difficultyUnsolvedCell, revealedCells, strategyTrace.toList())
             }
 
             progress = doProgress()
@@ -67,7 +72,7 @@ class HumanSolver(
 
         logger.info { "Solver finished, difficulty of $difficulty, revealed $revealedCells cells." }
 
-        return HumanSolverResult(success, usedNishio, difficulty)
+        return HumanSolverResult(success && revealedCells == 0, usedNishio, difficulty, revealedCells, strategyTrace.toList())
     }
 
     private fun revealUnsolvedCell() {
@@ -104,6 +109,7 @@ class HumanSolver(
                 logger.trace { "Current grid: ${grid.detailedToString(result.changedCells)}" }
 
                 changedCells = result.changedCells
+                strategyTrace.add(it.name)
                 currentStep++
 
                 if (validate &&
