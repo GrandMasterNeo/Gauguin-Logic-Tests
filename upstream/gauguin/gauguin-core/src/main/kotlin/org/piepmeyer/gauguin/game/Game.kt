@@ -322,6 +322,8 @@ data class Game(
 
         clearLastModified()
         undoManager.restoreUndo()
+        // The copy-pencils shortcut must not reuse marks from a state that was undone.
+        lastPossibles = emptySet()
         userValueChanged()
 
         gridUI.invalidate()
